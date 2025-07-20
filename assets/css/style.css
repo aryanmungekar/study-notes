@@ -7,7 +7,7 @@
 
 html, body {
   height: 100%;
-  font-family: cursive;
+  font-family: 'Poppins', sans-serif;
   background: #f8f9fa;
   overflow-x: hidden;
 }
