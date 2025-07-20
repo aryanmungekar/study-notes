@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF Viewer</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f4;
+    }
+
+    header {
+      background-color: #4a90e2;
+      color: white;
+      padding: 15px 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .iframe-container {
+      position: absolute;
+      top: 60px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header id="subjectTitle">Loading...</header>
+
+  <div class="iframe-container">
+    <iframe id="pdfViewer" src="" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    async function getSubjectById(pdfId) {
+      try {
+        const response = await fetch('pdfs.json');
+        const data = await response.json();
+        const entry = data.find(item => item.id === pdfId);
+        return entry ? entry.subject : "Unknown Subject";
+      } catch (error) {
+        console.error("Error loading JSON:", error);
+        return "Error Loading Subject";
+      }
+    }
+
+    async function loadPDF() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const pdfId = urlParams.get('pdfId');
+
+      if (!pdfId) {
+        document.getElementById('subjectTitle').textContent = "Invalid PDF ID";
+        return;
+      }
+
+      const subject = await getSubjectById(pdfId);
+      document.getElementById('subjectTitle').textContent = subject;
+
+      const embedUrl = `https://drive.google.com/file/d/1-FQOq6kP_GUpnG7gcaXr6IAmA4jv1sOT/preview`;
+    //   const embedUrl = `https://drive.google.com/file/d/${pdfId}/preview`;
+      document.getElementById('pdfViewer').src = embedUrl;
+    }
+
+    
+
+    loadPDF();
+  </script>
+
+</body>
+</html>
