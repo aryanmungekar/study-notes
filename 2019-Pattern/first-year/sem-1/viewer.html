@@ -78,6 +78,20 @@
     }
 
     loadPDF();
+
+
+     // Disable right-click
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
+  // Disable common shortcuts
+  document.addEventListener('keydown', function (e) {
+    if (
+      e.ctrlKey &&
+      ['u', 's', 'c', 'v', 'x', 'i', 'j', 'k'].includes(e.key.toLowerCase())
+    ) {
+      e.preventDefault();
+    }
+  });
   </script>
 
 </body>
