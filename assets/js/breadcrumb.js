@@ -1,17 +1,16 @@
 // breadcrumb.js
 
 document.addEventListener("DOMContentLoaded", function () {
-  const path = window.location.pathname.replace(/\/$/, "");
+  const path = window.location.pathname.replace(/\/$/, ""); // Remove trailing slash
   const segments = path.split("/").filter(Boolean);
-  const startIndex = segments.indexOf("study-demo");
 
-  let breadcrumbHtml = `<a href="/study-demo/"><i class="fa-solid fa-house"></i></a> &gt; `;
+  let breadcrumbHtml = `<a href="/"><i class="fa-solid fa-house"></i></a>`;
   let fullPath = "";
 
-  for (let i = startIndex + 1; i < segments.length; i++) {
+  for (let i = 0; i < segments.length; i++) {
     let segment = segments[i];
 
-    // ✅ Remove .html from last segment for cleaner breadcrumb
+    // Remove .html from final breadcrumb
     if (i === segments.length - 1 && segment.endsWith(".html")) {
       segment = segment.replace(/\.html$/, "");
     }
@@ -20,9 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
     fullPath += "/" + segments[i];
 
     if (i === segments.length - 1) {
-      breadcrumbHtml += `<span>${name}</span>`;
+      breadcrumbHtml += ` &gt; <span>${name}</span>`;
     } else {
-      breadcrumbHtml += `<a href="/study-demo${fullPath}/">${name}</a> &gt; `;
+      breadcrumbHtml += ` &gt; <a href="${fullPath}/">${name}</a>`;
     }
   }
 
