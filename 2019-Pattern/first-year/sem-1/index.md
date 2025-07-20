@@ -38,6 +38,13 @@ title: Home
     </div>
   </a>
 
+  <a href="1001.html" style="text-decoration: none;">
+    <div class="subject-card">
+      <div class="subject-title">Computer</div>
+      <div class="subject-code">Code : 1001</div>
+    </div>
+  </a>
+
   <!-- More cards as needed -->
 
 </div>
