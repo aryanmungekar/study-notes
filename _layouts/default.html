@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>{{ page.title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css" />
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
 </head>
@@ -15,9 +15,9 @@
     <div class="header-content">
       <h1>📘 Engineering Notes</h1>
       <nav>
-        <a href="{{ site.baseurl }}/">Home</a>
-        <a href="{{ site.baseurl }}/first-year/">First Year</a>
-        <a href="{{ site.baseurl }}/aids/">AI & DS</a>
+        <a href="/">Home</a>
+        <a href="/first-year/">First Year</a>
+        <a href="/aids/">AI & DS</a>
       </nav>
     </div>
   </header>
@@ -30,23 +30,23 @@
 
   <!-- Fixed Footer -->
   <footer class="mobile-footer">
-    <a href="{{ site.baseurl }}/" class="footer-item">
+    <a href="/" class="footer-item">
     <i class="fa-solid fa-house"></i>
     <span>Home</span>
   </a>
-  <a href="{{ site.baseurl }}/pages/updates/" class="footer-item">
+  <a href="/pages/updates/" class="footer-item">
     <i class="fas fa-newspaper"></i>
     <span>Updates</span>
   </a>
-  <a href="{{ site.baseurl }}/pages/community/" class="footer-item">
+  <a href="/pages/community/" class="footer-item">
     <i class="fas fa-comments"></i>
     <span>Community</span>
   </a>
-  <a href="{{ site.baseurl }}/pages/following/" class="footer-item">
+  <a href="/pages/following/" class="footer-item">
     <i class="fas fa-user-friends"></i>
     <span>Following</span>
   </a>
-  <a href="{{ site.baseurl }}/pages/profile/" class="footer-item">
+  <a href="/pages/profile/" class="footer-item">
     <i class="fas fa-user"></i>
     <span>Profile</span>
   </a>

@@ -1,6 +1,7 @@
 
 title: Engineering Notes Site
-baseurl: "/study-demo"
+baseurl: ""
+url: "https://glistening-daifuku-2a27f1.netlify.app"
 markdown: kramdown
 theme: minima
 plugins:
