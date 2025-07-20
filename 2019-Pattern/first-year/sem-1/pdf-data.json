@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Unit 1 Notes",
+    "subtitle": "Computer Networks",
+    "exam": "Insem",
+    "type": "notes",
+    "url": "/assets/pdfs/unit1.pdf",
+    "thumbnail": "/assets/thumbnails/unit1.png"
+  },
+  {
+    "title": "Question Paper 2023",
+    "subtitle": "CN & Security",
+    "exam": "Insem",
+    "type": "pyq",
+    "url": "/assets/pdfs/qpaper2023.pdf",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRhUlXCh7YPvKIVLmTaE89HXao3giQVZTMxw&s"
+  },
+  {
+    "title": "Question Paper 2023",
+    "subtitle": "CN & Security",
+    "exam": "Insem",
+    "type": "pyq",
+    "url": "/assets/pdfs/qpaper2023.pdf",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRhUlXCh7YPvKIVLmTaE89HXao3giQVZTMxw&s"
+  },
+  {
+    "title": "Solved Paper 2022",
+    "subtitle": "CN & Security",
+    "exam": "Endsem",
+    "type": "solved_pyq",
+    "url": "/assets/pdfs/solved2022.pdf",
+    "thumbnail": "/assets/thumbnails/solved2022.png"
+  },
+  {
+    "title": "Upload Example",
+    "subtitle": "Contributed by Student",
+    "exam": "Other",
+    "type": "uploads",
+    "url": "/assets/pdfs/student_upload.pdf",
+    "thumbnail": "/assets/thumbnails/upload.png"
+  }
+]

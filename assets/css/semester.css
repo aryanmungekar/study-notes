@@ -1,0 +1,43 @@
+/* semester.css */
+
+.card-container {
+  display: flex;
+  gap: 23px 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.card {
+  background: #d6d6d6ff;
+  border: 1px black;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgb(0 0 0 / 38%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 230px;
+  height: 120px;
+  text-decoration: none;
+  color: #000000ff;
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 150px;
+    height: auto;
+  }
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
