@@ -1,7 +1,7 @@
 
 title: Engineering Notes Site
 baseurl: ""
-url: "https://my-sppu.netlify.app/"
+url: "https://my-sppu.netlify.app"
 markdown: kramdown
 theme: minima
 plugins:
