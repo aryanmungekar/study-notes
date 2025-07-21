@@ -79,7 +79,7 @@ function loadPDFs(subjectCode, category, allData) {
       <h4>${item.title}</h4>
       <p>${item.subtitle}</p>
       <p>${item.exam}</p>
-      <a href="/assets/pdf/viewer?=${item.url}" target="_blank">View PDF</a>
+      <a href="/assets/pdf/viewer?pdfId=${item.url}" target="_blank">View PDF</a>
     `;
     grid.appendChild(card);
   });
