@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF Viewer</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f4;
+      overflow: hidden;
+    }
+
+    header {
+      background-color: #4a90e2;
+      color: white;
+      padding: 15px 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .iframe-container {
+      position: absolute;
+      top: 60px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      pointer-events: auto;
+    }
+
+    /* Hide Google Drive viewer pop-out button (basic approach) */
+    iframe::-webkit-media-controls-enclosure {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <header id="subjectTitle">Loading...</header>
+
+  <div class="iframe-container">
+    <iframe id="pdfViewer" src="" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    async function getSubjectById(pdfId) {
+      try {
+        const response = await fetch('pdfs.json');
+        const data = await response.json();
+        const entry = data.find(item => item.id === pdfId);
+        return entry ? entry.subject : "Unknown Subject";
+      } catch (error) {
+        console.error("Error loading JSON:", error);
+        return "Error Loading Subject";
+      }
+    }
+
+    async function loadPDF() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const pdfId = urlParams.get('pdfId');
+
+      if (!pdfId) {
+        document.getElementById('subjectTitle').textContent = "Invalid PDF ID";
+        return;
+      }
+
+      const subject = await getSubjectById(pdfId);
+      document.getElementById('subjectTitle').textContent = subject;
+
+      const embedUrl = `https://drive.google.com/file/d/${pdfId}/preview`;
+      document.getElementById('pdfViewer').src = embedUrl;
+    }
+
+    loadPDF();
+
+    // Disable right-click
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // Disable common developer shortcuts
+    document.addEventListener('keydown', function (e) {
+      if (
+        e.ctrlKey &&
+        ['u', 's', 'c', 'v', 'x', 'i', 'j', 'k'].includes(e.key.toLowerCase())
+      ) {
+        e.preventDefault();
+      }
+    });
+  </script>
+
+</body>
+</html>
