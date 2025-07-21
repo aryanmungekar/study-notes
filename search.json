@@ -4,12 +4,15 @@ layout: none
 {
   "pages": [
     {% assign valid_pages = site.pages | where_exp: "page", "page.title and page.content" %}
-    {% for page in valid_pages %}
+    {% assign filtered_pages = valid_pages | reject: "url", "/search/" | reject: "url", "/404.html" %}
+    {% for page in filtered_pages %}
+      {% unless page.url contains 'first-year%20copy' or page.url contains '%20copy' %}
       {
         "title": {{ page.title | jsonify }},
         "url": {{ page.url | jsonify }},
         "content": {{ page.content | strip_html | strip_newlines | jsonify }}
       }{% unless forloop.last %},{% endunless %}
+      {% endunless %}
     {% endfor %}
   ]
 }
