@@ -36,21 +36,25 @@ window.onpopstate = () => {
 function attachLinkInterceptors() {
   const links = document.querySelectorAll('a[href]');
   links.forEach(link => {
-    const url = link.getAttribute('href');
+    const href = link.getAttribute('href');
 
-    const isExternal = url.startsWith('http') || url.startsWith('//');
-    const isAnchor = url.startsWith('#');
+    const isExternal = href.startsWith('http') || href.startsWith('//');
+    const isAnchor = href.startsWith('#');
     const isDownload = link.hasAttribute('download');
     const noSpa = link.hasAttribute('data-no-spa');
 
     if (!isExternal && !isAnchor && !isDownload && !noSpa) {
       link.addEventListener('click', function (e) {
         e.preventDefault();
-        navigateTo(url);
+
+        // Convert relative to absolute path using <a> element
+        const absoluteURL = new URL(href, window.location.href).pathname;
+        navigateTo(absoluteURL);
       });
     }
   });
 }
+
 
 // Initial run
 document.addEventListener('DOMContentLoaded', () => {
