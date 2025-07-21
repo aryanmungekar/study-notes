@@ -6,6 +6,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+  #search-box {
+  padding: 8px;
+  width: 100%;
+  max-width: 400px;
+  font-size: 16px;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#search-results {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#search-results li {
+  padding: 6px 10px;
+  background: #f2f2f2;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+#search-results a {
+  text-decoration: none;
+  color: #333;
+}
+
+</style>
 
 </head>
 <body>
@@ -81,6 +111,65 @@ fetch('/search.json')
     });
   });
 </script>
+
+<!-- lunr.js library -->
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+
+<script>
+  let idx = null;
+  let store = [];
+
+  // Fetch search data from search.json
+  fetch('/search.json')
+    .then(res => res.json())
+    .then(data => {
+      const pages = data.pages;
+      store = pages;
+
+      idx = lunr(function () {
+        this.ref('url');
+        this.field('title');
+        this.field('content');
+
+        pages.forEach(page => this.add(page));
+      });
+
+      // Enable search if there is a value already
+      const input = document.getElementById('search-box');
+      if (input.value) {
+        performSearch(input.value);
+      }
+    });
+
+  // Search on input
+  document.getElementById('search-box').addEventListener('input', function (e) {
+    performSearch(e.target.value);
+  });
+
+  function performSearch(query) {
+    const resultList = document.getElementById('search-results');
+    if (!idx || !query) {
+      resultList.innerHTML = '';
+      return;
+    }
+
+    const results = idx.search(query);
+    resultList.innerHTML = '';
+
+    if (results.length === 0) {
+      resultList.innerHTML = '<li>No results found</li>';
+      return;
+    }
+
+    results.forEach(result => {
+      const item = store.find(p => p.url === result.ref);
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="${item.url}">${item.title}</a>`;
+      resultList.appendChild(li);
+    });
+  }
+</script>
+
 
 </body>
 </html>
