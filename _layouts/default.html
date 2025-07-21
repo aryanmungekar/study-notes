@@ -15,9 +15,11 @@
     <div class="header-content">
       <h1>📘 Engineering Notes</h1>
       <nav>
-        <a href="/">Home</a>
-        <a href="/first-year/">First Year</a>
-        <a href="/aids/">AI & DS</a>
+        <form id="search-form" action="#" onsubmit="return false;">
+  <input type="text" id="search-box" placeholder="Search notes…" autocomplete="off">
+</form>
+<ul id="search-results" class="search-results"></ul>
+
       </nav>
     </div>
   </header>
@@ -53,6 +55,32 @@
 </footer>
 
 
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script>
+fetch('/search.json')
+  .then(res => res.json())
+  .then(data => {
+    const pages = data.pages;
+    const idx = lunr(function () {
+      this.ref('url');
+      this.field('title');
+      this.field('content');
+      pages.forEach(page => this.add(page));
+    });
+
+    document.getElementById('search-box').addEventListener('input', evt => {
+      const query = evt.target.value;
+      const results = query ? idx.search(query) : [];
+      const out = document.getElementById('search-results');
+      out.innerHTML = results.length
+        ? results.map(r => {
+            const p = pages.find(p => p.url === r.ref);
+            return `<li><a href="${p.url}">${p.title}</a></li>`;
+          }).join('')
+        : '<li>No results found</li>';
+    });
+  });
+</script>
 
 </body>
 </html>
