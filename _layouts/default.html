@@ -6,37 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-<style>
-  #search-box {
-  padding: 8px;
-  width: 100%;
-  max-width: 400px;
-  font-size: 16px;
-  margin: 20px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-#search-results {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#search-results li {
-  padding: 6px 10px;
-  background: #f2f2f2;
-  margin-bottom: 5px;
-  border-radius: 5px;
-}
-
-#search-results a {
-  text-decoration: none;
-  color: #333;
-}
-
-</style>
-
 </head>
 <body>
 
@@ -45,15 +14,11 @@
     <div class="header-content">
       <h1>📘 Engineering Notes</h1>
       <nav>
-        <form id="search-form" action="#" onsubmit="return false;">
-  <input type="text" id="search-box" placeholder="Search notes…" autocomplete="off">
-</form>
-<ul id="search-results" class="search-results"></ul>
-
+        <!-- Navigation can go here if needed -->
+        <!-- Search box removed -->
       </nav>
     </div>
   </header>
-  
 
   <!-- Main content area -->
   <div class="main-content">
@@ -62,87 +27,27 @@
 
   <!-- Fixed Footer -->
   <footer class="mobile-footer">
-  <a href="/" class="footer-item" onclick="event.preventDefault(); navigateTo('/')">
-    <i class="fa-solid fa-house"></i>
-    <span>Home</span>
-  </a>
-  <a href="/pages/updates/" class="footer-item" onclick="event.preventDefault(); navigateTo('/pages/updates/')">
-    <i class="fas fa-newspaper"></i>
-    <span>Updates</span>
-  </a>
-  <a href="/pages/community/" class="footer-item" onclick="event.preventDefault(); navigateTo('/pages/community/')">
-    <i class="fas fa-comments"></i>
-    <span>Community</span>
-  </a>
-  <a href="/pages/following/" class="footer-item" onclick="event.preventDefault(); navigateTo('/pages/following/')">
-    <i class="fas fa-user-friends"></i>
-    <span>Following</span>
-  </a>
-  <a href="/pages/profile/" class="footer-item" onclick="event.preventDefault(); navigateTo('/pages/profile/')">
-    <i class="fas fa-user"></i>
-    <span>Profile</span>
-  </a>
-</footer>
-
-
-<!-- Include Lunr.js -->
-<script src="https://unpkg.com/lunr/lunr.js"></script>
-
-<script>
-  let idx = null;
-  let store = [];
-
-  // Fetch search data from search.json
-  fetch('/search.json')
-    .then(res => res.json())
-    .then(data => {
-      const pages = data.pages;
-      store = pages;
-
-      idx = lunr(function () {
-        this.ref('url');
-        this.field('title');
-        this.field('content');
-
-        pages.forEach(page => this.add(page));
-      });
-
-      const input = document.getElementById('search-box');
-      input.addEventListener('input', function (e) {
-        performSearch(e.target.value);
-      });
-
-      // If input already has value on page load
-      if (input.value) {
-        performSearch(input.value);
-      }
-    });
-
-  function performSearch(query) {
-    const resultList = document.getElementById('search-results');
-    resultList.innerHTML = '';
-
-    if (!idx || !query) return;
-
-    const results = idx.search(query);
-
-    if (results.length === 0) {
-      resultList.innerHTML = '<li>No results found</li>';
-      return;
-    }
-
-    results.forEach(result => {
-      const item = store.find(p => p.url === result.ref);
-      if (item) {
-        const li = document.createElement('li');
-        li.innerHTML = `<a href="${item.url}">${item.title}</a>`;
-        resultList.appendChild(li);
-      }
-    });
-  }
-</script>
-
-
+    <a href="/" class="footer-item" onclick="event.preventDefault(); navigateTo('/')">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+    <a href="/pages/updates/" class="footer-item" onclick="event.preventDefault(); navigateTo('/pages/updates/')">
+      <i class="fas fa-newspaper"></i>
+      <span>Updates</span>
+    </a>
+    <a href="/pages/community/" class="footer-item" onclick="event.preventDefault(); navigateTo('/pages/community/')">
+      <i class="fas fa-comments"></i>
+      <span>Community</span>
+    </a>
+    <a href="/pages/following/" class="footer-item" onclick="event.preventDefault(); navigateTo('/pages/following/')">
+      <i class="fas fa-user-friends"></i>
+      <span>Following</span>
+    </a>
+    <a href="/pages/profile/" class="footer-item" onclick="event.preventDefault(); navigateTo('/pages/profile/')">
+      <i class="fas fa-user"></i>
+      <span>Profile</span>
+    </a>
+  </footer>
 
 </body>
 </html>
