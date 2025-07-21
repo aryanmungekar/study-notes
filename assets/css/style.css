@@ -24,13 +24,13 @@ header {
   z-index: 1000;
 }
 
-.header-content {
+/* .header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
   padding: 0 20px;
-}
+} */
 
 header h1 {
   font-size: 18px;
@@ -203,12 +203,12 @@ nav a:hover {
 
 /* ========== Responsive Header Adjustments ========== */
 @media (max-width: 600px) {
-  .header-content {
+  /* .header-content {
     flex-direction: column;
     align-items: flex-start;
     padding: 10px;
     height: auto;
-  }
+  } */
 
   nav a {
     margin: 5px 10px;
@@ -219,3 +219,69 @@ nav a:hover {
   }
 }
 
+
+    .header-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+}
+
+.header-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background-color: #007acc;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav-button i {
+  font-size: 18px;
+}
+
+.nav-button:hover {
+  background-color: #005a99;
+}
+
+/* Mobile friendly adjustments */
+@media (max-width: 600px) {
+  .header-content {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .header-content h1 {
+    font-size: 20px;
+  }
+
+  .nav-button {
+    width: 100%;
+    justify-content: center;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .header-nav {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+}
+
+  

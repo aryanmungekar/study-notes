@@ -3,75 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <title>{{ page.title }}</title>
+
+<!-- 🔽 SEO START -->
+  <title>{{ page.title | default: "SPPU Notes - PYQ & Solved Papers" }}</title>
+  <meta name="description" content="{{ page.description | default: "Download solved SPPU notes and previous year question papers for Computer Engineering, Information Technology, and AI & Data Science. Covers 2019 and 2024 pattern for Insem and Endsem exams." }}">
+  <meta name="keywords" content="{{ page.keywords | default: "SPPU notes, PYQ, solved papers, Computer Engineering, IT, AI & DS, 2019 pattern, 2024 pattern, Insem, Endsem, SPPU question papers" }}">
+  <meta name="author" content="{{ site.author | default: 'Aryan Mungekar' }}">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="{{ page.title | default: 'SPPU Notes - PYQ & Solved Papers' }}">
+  <meta property="og:description" content="{{ page.description | default: 'Solved SPPU notes and question papers for Computer, IT, and AI & DS (2019 & 2024 pattern). Includes Insem and Endsem coverage.' }}">
+  <meta property="og:type" content="website">
+  <!-- End SEO block -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    .header-content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-}
-
-.header-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.nav-button {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 14px;
-  background-color: #007acc;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 6px;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-  white-space: nowrap;
-}
-
-.nav-button i {
-  font-size: 18px;
-}
-
-.nav-button:hover {
-  background-color: #005a99;
-}
-
-/* Mobile friendly adjustments */
-@media (max-width: 600px) {
-  .header-content {
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    text-align: center;
-  }
-
-  .header-content h1 {
-    font-size: 20px;
-  }
-
-  .nav-button {
-    width: 100%;
-    justify-content: center;
-    font-size: 14px;
-    padding: 10px;
-  }
-
-  .header-nav {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-  }
-}
-
-  </style>
+  
 
 </head>
 <body>
