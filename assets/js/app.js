@@ -5,23 +5,14 @@ function navigateTo(url) {
       const tempDiv = document.createElement('div');
       tempDiv.innerHTML = html;
 
+      // Replace only the #main-content
       const newContent = tempDiv.querySelector('#main-content');
-      const mainContainer = document.querySelector('#main-content');
-
-      if (newContent && mainContainer) {
-        mainContainer.innerHTML = newContent.innerHTML;
+      if (newContent) {
+        document.querySelector('#main-content').innerHTML = newContent.innerHTML;
         window.history.pushState({}, '', url);
         window.scrollTo(0, 0);
-
-        // Re-attach internal link handlers
-        attachLinkInterceptors();
-
-        // Optional: Call a custom update function after content loads
-        if (typeof updateBreadcrumb === 'function') {
-          updateBreadcrumb();
-        }
-      } else {
-        console.warn('Main content container not found.');
+        attachLinkInterceptors(); // Re-attach SPA link handlers
+        reloadBreadcrumbScript(); // Reload breadcrumb logic manually
       }
     })
     .catch(err => console.error('Navigation failed:', err));
@@ -65,3 +56,15 @@ document.addEventListener('DOMContentLoaded', () => {
     updateBreadcrumb();
   }
 });
+
+function reloadBreadcrumbScript() {
+  // Remove old script if it exists
+  const oldScript = document.querySelector('script[data-dynamic="breadcrumb"]');
+  if (oldScript) oldScript.remove();
+
+  // Create a new script tag
+  const newScript = document.createElement('script');
+  newScript.src = '/assets/js/breadcrumb.js';
+  newScript.setAttribute('data-dynamic', 'breadcrumb'); // For easy reference
+  document.body.appendChild(newScript);
+}
