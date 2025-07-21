@@ -85,34 +85,7 @@
 </footer>
 
 
-<script src="https://unpkg.com/lunr/lunr.js"></script>
-<script>
-fetch('/search.json')
-  .then(res => res.json())
-  .then(data => {
-    const pages = data.pages;
-    const idx = lunr(function () {
-      this.ref('url');
-      this.field('title');
-      this.field('content');
-      pages.forEach(page => this.add(page));
-    });
-
-    document.getElementById('search-box').addEventListener('input', evt => {
-      const query = evt.target.value;
-      const results = query ? idx.search(query) : [];
-      const out = document.getElementById('search-results');
-      out.innerHTML = results.length
-        ? results.map(r => {
-            const p = pages.find(p => p.url === r.ref);
-            return `<li><a href="${p.url}">${p.title}</a></li>`;
-          }).join('')
-        : '<li>No results found</li>';
-    });
-  });
-</script>
-
-<!-- lunr.js library -->
+<!-- Include Lunr.js -->
 <script src="https://unpkg.com/lunr/lunr.js"></script>
 
 <script>
@@ -134,27 +107,24 @@ fetch('/search.json')
         pages.forEach(page => this.add(page));
       });
 
-      // Enable search if there is a value already
       const input = document.getElementById('search-box');
+      input.addEventListener('input', function (e) {
+        performSearch(e.target.value);
+      });
+
+      // If input already has value on page load
       if (input.value) {
         performSearch(input.value);
       }
     });
 
-  // Search on input
-  document.getElementById('search-box').addEventListener('input', function (e) {
-    performSearch(e.target.value);
-  });
-
   function performSearch(query) {
     const resultList = document.getElementById('search-results');
-    if (!idx || !query) {
-      resultList.innerHTML = '';
-      return;
-    }
+    resultList.innerHTML = '';
+
+    if (!idx || !query) return;
 
     const results = idx.search(query);
-    resultList.innerHTML = '';
 
     if (results.length === 0) {
       resultList.innerHTML = '<li>No results found</li>';
@@ -163,12 +133,15 @@ fetch('/search.json')
 
     results.forEach(result => {
       const item = store.find(p => p.url === result.ref);
-      const li = document.createElement('li');
-      li.innerHTML = `<a href="${item.url}">${item.title}</a>`;
-      resultList.appendChild(li);
+      if (item) {
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="${item.url}">${item.title}</a>`;
+        resultList.appendChild(li);
+      }
     });
   }
 </script>
+
 
 
 </body>
