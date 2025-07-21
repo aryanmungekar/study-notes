@@ -1,42 +1,64 @@
-[
-  {
-    "title": "Unit 1 Notes",
-    "subtitle": "Computer Networks",
-    "exam": "Insem",
-    "type": "notes",
-    "url": "/assets/pdfs/unit1.pdf",
-    "thumbnail": "/assets/thumbnails/unit1.png"
+{
+  "1000": {
+    "name": "Engineering Mathematics",
+    "notes": [
+      {
+        "title": "Unit 1 Notes",
+        "subtitle": "Limits and Continuity",
+        "exam": "Semester 1",
+        "thumbnail": "assets/thumbnails/1000/unit1.png",
+        "url": "assets/pdfs/1000/unit1.pdf"
+      },
+      {
+        "title": "Unit 2 Notes",
+        "subtitle": "Differentiation",
+        "exam": "Semester 1",
+        "thumbnail": "assets/thumbnails/1000/unit2.png",
+        "url": "assets/pdfs/1000/unit2.pdf"
+      }
+    ],
+    "pyq": [
+      {
+        "title": "Midterm 2022",
+        "subtitle": "Engineering Maths",
+        "exam": "University Exam",
+        "thumbnail": "assets/thumbnails/1000/pyq2022.png",
+        "url": "assets/pdfs/1000/pyq2022.pdf"
+      }
+    ],
+    "solved_pyq": [],
+    "uploads": []
   },
-  {
-    "title": "Question Paper 2023",
-    "subtitle": "CN & Security",
-    "exam": "Insem",
-    "type": "pyq",
-    "url": "/assets/pdfs/qpaper2023.pdf",
-    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRhUlXCh7YPvKIVLmTaE89HXao3giQVZTMxw&s"
+
+  "2000": {
+    "name": "Engineering Physics",
+    "notes": [],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
   },
-  {
-    "title": "Question Paper 2023",
-    "subtitle": "CN & Security",
-    "exam": "Insem",
-    "type": "pyq",
-    "url": "/assets/pdfs/qpaper2023.pdf",
-    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRhUlXCh7YPvKIVLmTaE89HXao3giQVZTMxw&s"
+
+  "3000": {
+    "name": "Basic Electronics",
+    "notes": [],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
   },
-  {
-    "title": "Solved Paper 2022",
-    "subtitle": "CN & Security",
-    "exam": "Endsem",
-    "type": "solved_pyq",
-    "url": "/assets/pdfs/solved2022.pdf",
-    "thumbnail": "/assets/thumbnails/solved2022.png"
+
+  "4000": {
+    "name": "Engineering Mechanics",
+    "notes": [],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
   },
-  {
-    "title": "Upload Example",
-    "subtitle": "Contributed by Student",
-    "exam": "Other",
-    "type": "uploads",
-    "url": "/assets/pdfs/student_upload.pdf",
-    "thumbnail": "/assets/thumbnails/upload.png"
+
+  "5000": {
+    "name": "Environmental Studies",
+    "notes": [],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
   }
-]
+}
