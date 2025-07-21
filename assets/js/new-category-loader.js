@@ -74,17 +74,39 @@ function loadPDFs(subjectCode, category, allData) {
     items.forEach(item => {
         const card = document.createElement('div');
         card.className = 'pdf-card';
+        const shareLink = `/assets/pdf/viewer.html?pdfId=${item.url}&title=${encodeURIComponent(item.title)}`;
+
         card.innerHTML = `
-      <img src="${item.thumbnail}" alt="${item.title}">
-      <h4>${item.title}</h4>
-      <p>${item.subtitle}</p>
-      <p>${item.exam}</p>
-      <a href="/assets/pdf/viewer.html?pdfId=${item.url}&title=${encodeURIComponent(item.title)}" target="_blank">View PDF</a>
-  <button class="share-btn" data-url="/assets/pdf/viewer.html?pdfId=${item.url}&title=${encodeURIComponent(item.title)}" title="Share PDF">
-    <i class="fas fa-share-alt"></i>
-  </button>     
-      
-    `;
+            <img src="${item.thumbnail}" alt="${item.title}">
+            <h4>${item.title}</h4>
+            <p>${item.subtitle}</p>
+            <p>${item.exam}</p>
+            <a href="${shareLink}" target="_blank">View PDF</a>
+            <button class="share-btn" data-url="${shareLink}" title="Share PDF">
+              <i class="fas fa-share-alt"></i>
+            </button>
+        `;
+
         grid.appendChild(card);
     });
+
+    // ✅ Add click listeners after DOM update
+    grid.querySelectorAll(".share-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const shareUrl = window.location.origin + btn.getAttribute("data-url");
+
+            if (navigator.share) {
+                navigator.share({
+                    title: "Check this PDF on SPPU Notes",
+                    text: "Useful note/PYQ from SPPU Notes:",
+                    url: shareUrl
+                }).catch(err => console.error("Sharing failed:", err));
+            } else {
+                navigator.clipboard.writeText(shareUrl)
+                    .then(() => alert("Link copied to clipboard!"))
+                    .catch(() => alert("Failed to copy link"));
+            }
+        });
+    });
 }
+
