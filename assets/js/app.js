@@ -1,12 +1,10 @@
-// Dynamically loads pages and updates the main-content area
 function navigateTo(url) {
   fetch(url)
     .then(res => res.text())
-    .then(data => {
+    .then(html => {
       const tempDiv = document.createElement('div');
-      tempDiv.innerHTML = data;
+      tempDiv.innerHTML = html;
       const newContent = tempDiv.querySelector('#main-content');
-
       if (newContent) {
         document.querySelector('#main-content').innerHTML = newContent.innerHTML;
         window.history.pushState({}, '', url);
@@ -16,5 +14,4 @@ function navigateTo(url) {
     .catch(err => console.error('Navigation failed:', err));
 }
 
-// Enable browser back/forward navigation
 window.onpopstate = () => navigateTo(location.pathname);
