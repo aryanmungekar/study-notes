@@ -77,15 +77,30 @@ function loadPDFs(subjectCode, category, allData) {
         const shareLink = `/assets/pdf/viewer.html?pdfId=${item.url}&title=${encodeURIComponent(item.title)}`;
 
         card.innerHTML = `
-            <img src="${item.thumbnail}" alt="${item.title}">
-            <h4>${item.title}</h4>
-            <p>${item.subtitle}</p>
-            <p>${item.exam}</p>
-            <a href="${shareLink}" target="_blank">View PDF</a>
-            <button class="share-btn" data-url="${shareLink}" title="Share PDF">
-              <i class="fas fa-share-alt"></i>
-            </button>
-        `;
+  <img src="${item.thumbnail}" alt="${item.title}">
+  <h4>${item.title}</h4>
+  <p>${item.subtitle}</p>
+  <p>${item.exam}</p>
+  <a href="${shareLink}" target="_blank">View PDF</a>
+  <div class="share-group">
+    <a href="https://wa.me/?text=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://t.me/share/url?url=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Telegram">
+      <i class="fab fa-telegram"></i>
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <button class="share-btn" data-url="${shareLink}" title="Copy Link">
+      <i class="fas fa-link"></i>
+    </button>
+  </div>
+`;
+
 
         grid.appendChild(card);
     });
