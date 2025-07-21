@@ -1,10 +1,10 @@
 // ✅ subject-loader.js – for subject-specific pages (like 1000.md)
 
 const categories = {
-  notes: "📝 Notes",
-  pyq: "📄 PYQ",
-  solved_pyq: "✅ Solved PYQ",
-  uploads: "📤 Uploads"
+    notes: "📝 Notes",
+    pyq: "📄 PYQ",
+    solved_pyq: "✅ Solved PYQ",
+    uploads: "📤 Uploads"
 };
 
 const headerBar = document.getElementById("headerBar");
@@ -13,75 +13,75 @@ const initialButtonsDiv = document.getElementById("initialButtons"); // Optional
 const subjectCode = window.location.pathname.match(/(\d{4})\/?$/)?.[1]; // e.g., '1000'
 
 if (subjectCode) {
-  fetch('./new-pdf-data.json')
-    .then(res => res.json())
-    .then(data => {
-      const subject = data[subjectCode];
-      if (!subject) {
-        document.getElementById("contentArea").innerHTML = `<p>Subject not found.</p>`;
-        return;
-      }
+    fetch('./new-pdf-data.json')
+        .then(res => res.json())
+        .then(data => {
+            const subject = data[subjectCode];
+            if (!subject) {
+                document.getElementById("contentArea").innerHTML = `<p>Subject not found.</p>`;
+                return;
+            }
 
-      // Create category buttons
-      headerBar.style.display = "flex";
-      for (const key in categories) {
-        createButton(key, categories[key], headerBar, () => showCategoryContent(subjectCode, key, data));
-      }
+            // Create category buttons
+            headerBar.style.display = "flex";
+            for (const key in categories) {
+                createButton(key, categories[key], headerBar, () => showCategoryContent(subjectCode, key, data));
+            }
 
-      // Optionally load default category
-      showCategoryContent(subjectCode, "notes", data);
-    })
-    .catch(err => console.error("Error loading subject:", err));
+            // Optionally load default category
+            showCategoryContent(subjectCode, "notes", data);
+        })
+        .catch(err => console.error("Error loading subject:", err));
 }
 
 function createButton(id, label, parent, handler) {
-  const btn = document.createElement("button");
-  btn.textContent = label;
-  btn.className = "category-button";
-  btn.onclick = handler;
-  parent.appendChild(btn);
+    const btn = document.createElement("button");
+    btn.textContent = label;
+    btn.className = "category-button";
+    btn.onclick = handler;
+    parent.appendChild(btn);
 }
 
 function showCategoryContent(subjectCode, category, data) {
-  document.querySelectorAll(".content-section").forEach(div => {
-    div.style.display = "none";
-    div.classList.remove("slide-in");
-  });
+    document.querySelectorAll(".content-section").forEach(div => {
+        div.style.display = "none";
+        div.classList.remove("slide-in");
+    });
 
-  const section = document.getElementById(category);
-  if (!section) return;
+    const section = document.getElementById(category);
+    if (!section) return;
 
-  section.style.display = "block";
-  section.classList.add("slide-in");
+    section.style.display = "block";
+    section.classList.add("slide-in");
 
-  loadPDFs(subjectCode, category, data);
+    loadPDFs(subjectCode, category, data);
 }
 
 function loadPDFs(subjectCode, category, allData) {
-  const grid = document.getElementById(category + 'Grid');
-  if (!grid) return;
+    const grid = document.getElementById(category + 'Grid');
+    if (!grid) return;
 
-  grid.innerHTML = "";
+    grid.innerHTML = "";
 
-  const subject = allData[subjectCode];
-  const items = subject[category] || [];
+    const subject = allData[subjectCode];
+    const items = subject[category] || [];
 
-  if (items.length === 0) {
-    grid.innerHTML = `<p>No PDFs available in ${categories[category]}.</p>`;
-    return;
-  }
+    if (items.length === 0) {
+        grid.innerHTML = `<p>No PDFs available in ${categories[category]}.</p>`;
+        return;
+    }
 
-  items.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'pdf-card';
-    card.innerHTML = `
+    items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'pdf-card';
+        card.innerHTML = `
       <img src="${item.thumbnail}" alt="${item.title}">
       <h4>${item.title}</h4>
       <p>${item.subtitle}</p>
       <p>${item.exam}</p>
       <a href="/assets/pdf/viewer.html?pdfId=${item.url}&title=${encodeURIComponent(item.title)}" target="_blank">View PDF</a>
-      <a href="/assets/pdf/viewer?pdfId=${item.url}" target="_blank">View PDF</a>
+      
     `;
-    grid.appendChild(card);
-  });
+        grid.appendChild(card);
+    });
 }
