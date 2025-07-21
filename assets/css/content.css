@@ -142,17 +142,41 @@
 }
 
 
-.share-btn {
-  margin-top: 8px;
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 8px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
+.pdf-card {
+  position: relative; /* Make card the positioning context */
+  padding-bottom: 50px; /* Give space at bottom for share buttons */
 }
 
-.share-btn:hover {
-  background: #0056b3;
+.share-group {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 2;
+}
+
+.share-group a,
+.share-group button {
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  padding: 6px;
+  border-radius: 50%;
+  font-size: 14px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.share-group a:hover,
+.share-group button:hover {
+  background-color: #e0e0e0;
 }

@@ -102,6 +102,7 @@ function loadPDFs(subjectCode, category, allData) {
 `;
 
 
+
         grid.appendChild(card);
     });
 
