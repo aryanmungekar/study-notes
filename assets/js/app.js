@@ -46,7 +46,6 @@ function attachLinkInterceptors() {
   });
 }
 
-
 // Initial run
 document.addEventListener('DOMContentLoaded', () => {
   attachLinkInterceptors();
