@@ -62,7 +62,7 @@
     .floating-share {
   position: fixed;
   bottom: 70px;
-  right: 22px;
+  right: 10px;
   z-index: 9999;
 }
 
