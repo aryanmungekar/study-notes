@@ -1,0 +1,10 @@
+[build]
+  command = "jekyll build"
+  publish = "_site"
+
+[build.environment]
+  JEKYLL_ENV = "production"
+  RUBY_VERSION = "3.2.2" # optional; match your local Ruby version if needed
+
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
