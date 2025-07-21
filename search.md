@@ -1,13 +1,10 @@
 ---
-layout: none
+layout: default
 title: Search
 permalink: /search/
 ---
 
-<head>
-  <meta charset="UTF-8">
-  <title>Search | Engineering Notes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -99,4 +96,4 @@ permalink: /search/
       });
   </script>
 </body>
-</html>
+
