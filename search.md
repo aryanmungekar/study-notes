@@ -44,8 +44,7 @@ permalink: /search/
       color: #555;
     }
   </style>
-</head>
-<body>
+
 
   <h1>🔍 Search Notes</h1>
   <input type="text" id="search-box" placeholder="Type to search notes..." autocomplete="off">
@@ -95,5 +94,4 @@ permalink: /search/
         });
       });
   </script>
-</body>
 
