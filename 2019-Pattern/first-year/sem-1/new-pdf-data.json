@@ -1,0 +1,64 @@
+{
+  "2001": {
+    "name": "Engineering Mathematics",
+    "notes": [
+      {
+        "title": "Unit 1 Notes",
+        "subtitle": "Limits and Continuity",
+        "exam": "Semester 1",
+        "thumbnail": "assets/thumbnails/1000/unit1.png",
+        "url": "assets/pdfs/1000/unit1.pdf"
+      },
+      {
+        "title": "Unit 2 Notes",
+        "subtitle": "Differentiation",
+        "exam": "Semester 1",
+        "thumbnail": "assets/thumbnails/1000/unit2.png",
+        "url": "assets/pdfs/1000/unit2.pdf"
+      }
+    ],
+    "pyq": [
+      {
+        "title": "Midterm 2022",
+        "subtitle": "Engineering Maths",
+        "exam": "University Exam",
+        "thumbnail": "assets/thumbnails/1000/pyq2022.png",
+        "url": "assets/pdfs/1000/pyq2022.pdf"
+      }
+    ],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "2000": {
+    "name": "Engineering Physics",
+    "notes": [],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "3000": {
+    "name": "Basic Electronics",
+    "notes": [],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "4000": {
+    "name": "Engineering Mechanics",
+    "notes": [],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "5000": {
+    "name": "Environmental Studies",
+    "notes": [],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  }
+}
