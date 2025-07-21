@@ -80,6 +80,9 @@ function loadPDFs(subjectCode, category, allData) {
       <p>${item.subtitle}</p>
       <p>${item.exam}</p>
       <a href="/assets/pdf/viewer.html?pdfId=${item.url}&title=${encodeURIComponent(item.title)}" target="_blank">View PDF</a>
+  <button class="share-btn" data-url="/assets/pdf/viewer.html?pdfId=${item.url}&title=${encodeURIComponent(item.title)}" title="Share PDF">
+    <i class="fas fa-share-alt"></i>
+  </button>     
       
     `;
         grid.appendChild(card);
