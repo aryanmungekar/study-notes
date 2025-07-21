@@ -3,14 +3,13 @@ layout: none
 ---
 {
   "pages": [
-    {% for page in site.pages %}
-      {% if page.title and page.content %}
+    {% assign valid_pages = site.pages | where_exp: "page", "page.title and page.content" %}
+    {% for page in valid_pages %}
       {
         "title": {{ page.title | jsonify }},
         "url": {{ page.url | jsonify }},
         "content": {{ page.content | strip_html | strip_newlines | jsonify }}
-      }{% if forloop.last == false %},{% endif %}
-      {% endif %}
+      }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   ]
 }
