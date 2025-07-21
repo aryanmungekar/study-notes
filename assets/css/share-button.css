@@ -1,7 +1,7 @@
 .floating-share {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 9px;
+  right: 81px;
   z-index: 9999;
 }
 
@@ -56,4 +56,14 @@
 .floating-share-menu a:hover,
 .floating-share-menu button:hover {
   background-color: #ddd;
+}
+
+@media (max-width: 600px) {
+    .floating-share {
+  position: fixed;
+  bottom: 70px;
+  right: 22px;
+  z-index: 9999;
+}
+
 }
