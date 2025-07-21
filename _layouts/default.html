@@ -24,6 +24,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/share-button.css' | relative_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
 
@@ -54,6 +55,19 @@
     {{ content }}
   </div>
 
+   <!-- Floating share button -->
+  <div class="floating-share">
+  <button class="share-toggle" onclick="toggleShareMenu()">🔗</button>
+  <div class="floating-share-menu" id="shareMenu">
+    <a target="_blank" href="#" id="share-whatsapp"><i class="fab fa-whatsapp"></i></a>
+    <a target="_blank" href="#" id="share-telegram"><i class="fab fa-telegram"></i></a>
+    <a target="_blank" href="#" id="share-facebook"><i class="fab fa-facebook-f"></i></a>
+    <a target="_blank" href="#" id="share-twitter"><i class="fab fa-twitter"></i></a>
+    <button onclick="copyLink()" title="Copy"><i class="fas fa-link"></i></button>
+  </div>
+</div>
+
+
   <!-- Fixed Footer -->
   <footer class="mobile-footer">
     <a href="/" class="footer-item" onclick="event.preventDefault(); navigateTo('/')">
@@ -77,6 +91,8 @@
       <span>Profile</span>
     </a>
   </footer>
+
+  <script src="/assets/js/share-button.js"></script>
 
 </body>
 
