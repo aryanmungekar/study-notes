@@ -11,7 +11,7 @@
 }
 
 .button-card {
-    height: 100px;
+    height: 140px;
     border: 0px solid;
     padding: 15px;
     margin: 10px;
@@ -27,15 +27,15 @@
 
 
 @media (max-width: 600px) {
-    .branch-grid1 {
+    /* .branch-grid1 {
         flex-direction: column;
         align-items: center;
         flex-wrap: wrap;
 
-    }
+    } */
 
     .button-card {
-        width: 80%;
+        width: 180px;
         /* Full width on mobile */
         margin: 10px 0;
         padding: 20px;
