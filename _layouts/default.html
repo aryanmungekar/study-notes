@@ -27,21 +27,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/share-button.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/home-buttons.css' | relative_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <script src="https://unpkg.com/htmx.org@1.9.5"></script>
-<style>
-  #main-content { position: relative; overflow-x: hidden; }
-  .slide-in-right { animation: slideInFromRight 0.3s ease-out forwards; }
-  .slide-in-left { animation: slideInFromLeft 0.3s ease-out forwards; }
-  @keyframes slideInFromRight {
-    from { transform: translateX(100%); opacity: 0; }
-    to   { transform: translateX(0); opacity: 1; }
-  }
-  @keyframes slideInFromLeft {
-    from { transform: translateX(-100%); opacity: 0; }
-    to   { transform: translateX(0); opacity: 1; }
-  }
-</style>
-
+  
 
 </head>
 
@@ -66,10 +52,9 @@
 
 
   <!-- Main content area -->
-<div class="main-content" id="main-content">
-  {{ content }}
-</div>
-
+  <div class="main-content">
+    {{ content }}
+  </div>
 
    <!-- Floating share button -->
   <div class="floating-share">
@@ -109,49 +94,6 @@
   </footer>
 
   <script src="/assets/js/share-button.js"></script>
-
-  <script>
-  const main = document.getElementById("main-content");
-  let isBack = false;
-
-  // Detect back/forward navigation
-  window.addEventListener("popstate", () => {
-    isBack = true;
-  });
-
-  document.addEventListener("click", function (e) {
-    const link = e.target.closest("a");
-    if (!link ||
-        link.hasAttribute("download") ||
-        link.target === "_blank" ||
-        link.href.startsWith("mailto:") ||
-        link.href.startsWith("tel:") ||
-        link.origin !== location.origin) return;
-
-    e.preventDefault();
-
-    fetch(link.href)
-      .then(res => res.text())
-      .then(html => {
-        const doc = new DOMParser().parseFromString(html, "text/html");
-        const newContent = doc.getElementById("main-content");
-        if (!newContent) return;
-
-        const anim = isBack ? "slide-in-left" : "slide-in-right";
-        isBack = false;
-
-        main.innerHTML = newContent.innerHTML;
-        main.classList.remove("slide-in-left", "slide-in-right");
-        void main.offsetWidth; // force reflow
-        main.classList.add(anim);
-
-        history.pushState({}, "", link.href);
-        window.scrollTo(0, 0);
-      })
-      .catch(err => console.error("Navigation error:", err));
-  });
-</script>
-
 
 </body>
 
