@@ -18,22 +18,22 @@ title: Home
 <div class="branch-grid1">
 
             <div style="background-color: rgba(172, 238, 65, 0.342);" class="button-card">
-                <i class="fa-solid fa-atom"></i>
+                <i style="font-size: 40px; color: black;" class="fa-solid fa-atom"></i>
                 <h4>Artificial Intelligence & Data Science</h4>
             </div>
 
             <div style="background-color: rgba(82, 65, 238, 0.342);" class="button-card">
-                <i class="fa-solid fa-chalkboard"></i>
+                <i style="font-size: 40px; color: black;" class="fa-solid fa-chalkboard"></i>
                 <h4>Computer Science</h4>
             </div>
 
             <div style="background-color: rgba(238, 65, 229, 0.342);" class="button-card">
-                <i class="fa-solid fa-bolt"></i>
+                <i style="font-size: 40px; color: black;" class="fa-solid fa-bolt"></i>
                 <h4>Information Technology</h4>
             </div>
 
             <div style="background-color: rgba(65, 238, 157, 0.342);" class="button-card">
-                <i class="fa-solid fa-lightbulb"></i>
+                <i style="font-size: 40px; color: black;" class="fa-solid fa-lightbulb"></i>
                 <h4>E&TC</h4>
             </div>
 
