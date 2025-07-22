@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head?>
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        .branch-grid {
+            display: flex;
+            flex-direction: row;
+            /* background-color: red; */
+            padding: 10px;
+            /* border: 10px solid black; */
+            /* height: 150px; */
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .button-card {
+            height: 100px;
+            border: 0px solid;
+            padding: 15px;
+            margin: 10px;
+            /* background-color: rgba(218, 221, 10, 0.486); */
+            justify-content: center;
+            text-align: center;
+            width: 150px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+        }
+
+        i {
+            font-size: 45px;
+            /* or 2rem, etc. */
+            color: rgb(0, 0, 0);
+        }
+
+        @media (max-width: 600px) {
+  .branch-grid {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+
+  }
+
+  .button-card {
+    width: 80%;               /* Full width on mobile */
+    margin: 10px 0;
+    padding: 20px;
+  }
+
+  .button-card i {
+    font-size: 36px;          /* Slightly smaller icons for small screens */
+  }
+
+  .button-card h4 {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+}
+
+    </style>
+
+    </head>
+
+    <body>
+
+        <div class="branch-grid">
+
+            <div style="background-color: rgba(172, 238, 65, 0.342);" class="button-card">
+                <i class="fa-solid fa-atom"></i>
+                <h4>Artificial Intelligence & Data Science</h4>
+            </div>
+
+            <div style="background-color: rgba(82, 65, 238, 0.342);" class="button-card">
+                <i class="fa-solid fa-chalkboard"></i>
+                <h4>Computer Science</h4>
+            </div>
+
+            <div style="background-color: rgba(238, 65, 229, 0.342);" class="button-card">
+                <i class="fa-solid fa-bolt"></i>
+                <h4>Information Technology</h4>
+            </div>
+
+            <div style="background-color: rgba(65, 238, 157, 0.342);" class="button-card">
+                <i class="fa-solid fa-lightbulb"></i>
+                <h4>E&TC</h4>
+            </div>
+
+        </div>
+
+
+    </body>
