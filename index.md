@@ -15,7 +15,7 @@ title: Home
   <a class="branch-btn" href="/aids/">🤖 AI & Data Science</a>
 </div>
 
-<div class="branch-grid">
+<div class="branch-grid1">
 
             <div style="background-color: rgba(172, 238, 65, 0.342);" class="button-card">
                 <i class="fa-solid fa-atom"></i>
