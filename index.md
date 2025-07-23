@@ -21,7 +21,7 @@ title: Home
               <a href="/2019-Pattern/first-year" style="text-decoration: none; color: inherit;"><div style="background-color: rgba(65, 238, 157, 0.342);" class="button-card">
                 <i style="font-size: 40px; color: black;" class="fa-solid fa-lightbulb"></i>
                 <h4>First Year</h4></a>
-            </div>
+            </div></a>
 
             <a href="/2019-Pattern/aids/" style="text-decoration: none; color: inherit;"><div style="background-color: rgba(172, 238, 65, 0.342);" class="button-card">
                 <i style="font-size: 40px; color: black;" class="fa-solid fa-atom"></i>
