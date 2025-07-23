@@ -38,10 +38,10 @@
     } */
 
     .button-card {
-        width: 180px;
-        /* Full width on mobile */
-        margin: 10px 0;
-        padding: 20px;
+        width: 130px;
+        margin: 10px;
+        padding: 5px;
+        height: 140px;
     }
 
 
