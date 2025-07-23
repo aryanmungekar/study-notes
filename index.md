@@ -18,26 +18,36 @@ title: Home
 
 <div class="branch-grid1">
 
-              <a href="/2019-Pattern/first-year" style="text-decoration: none; color: inherit;"><div style="background-color: rgba(65, 238, 157, 0.342);" class="button-card">
-                <i style="font-size: 40px; color: black;" class="fa-solid fa-lightbulb"></i>
-                <h4>First Year</h4></a>
-            </div></a>
+  <a href="/2019-Pattern/first-year" style="text-decoration: none; color: inherit;">
+    <div style="background-color: rgba(65, 238, 157, 0.342);" class="button-card">
+      <i style="font-size: 40px; color: black;" class="fa-solid fa-lightbulb"></i>
+      <h4>First Year</h4>
 
-            <a href="/2019-Pattern/aids/" style="text-decoration: none; color: inherit;"><div style="background-color: rgba(172, 238, 65, 0.342);" class="button-card">
-                <i style="font-size: 40px; color: black;" class="fa-solid fa-atom"></i>
-                <h4>Artificial Intelligence & Data Science</h4>
-            </div></a>
+    </div>
+  </a>
 
-            <a href="/2019-Pattern/computer-science/" style="text-decoration: none; color: inherit;"><div style="background-color: rgba(82, 65, 238, 0.342);" class="button-card">
-                <i style="font-size: 40px; color: black;" class="fa-solid fa-chalkboard"></i>
-                <h4>Computer Science</h4>
-            </div></a>
+  <a href="/2019-Pattern/aids/" style="text-decoration: none; color: inherit;">
+    <div style="background-color: rgba(172, 238, 65, 0.342);" class="button-card">
+      <i style="font-size: 40px; color: black;" class="fa-solid fa-atom"></i>
+      <h4>Artificial Intelligence & Data Science</h4>
+    </div>
+  </a>
 
-            <a href="/2019-Pattern/it/" style="text-decoration: none; color: inherit;"><div style="background-color: rgba(238, 65, 229, 0.342);" class="button-card">
-                <i style="font-size: 40px; color: black;" class="fa-solid fa-bolt"></i>
-                <h4>Information Technology</h4>
-            </div></a>
 
-          
+  <a href="/2019-Pattern/computer-science/" style="text-decoration: none; color: inherit;">
+    <div style="background-color: rgba(82, 65, 238, 0.342);" class="button-card">
+      <i style="font-size: 40px; color: black;" class="fa-solid fa-chalkboard"></i>
+      <h4>Computer Science</h4>
+    </div>
+  </a>
 
-        </div>
+  <a href="/2019-Pattern/it/" style="text-decoration: none; color: inherit;">
+    <div style="background-color: rgba(238, 65, 229, 0.342);" class="button-card">
+      <i style="font-size: 40px; color: black;" class="fa-solid fa-bolt"></i>
+      <h4>Information Technology</h4>
+    </div>
+  </a>
+
+
+
+</div>
