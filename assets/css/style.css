@@ -57,28 +57,29 @@ nav a:hover {
 
 /* ========== Slider ========== */
 .slider-container {
-  width: 100%;
-  max-width: 800px;
-  height: 300px;
-  overflow: hidden;
-  margin: auto;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  position: relative;
-}
+            width: 100%;
+            max-width: 800px;
+            height: 300px;
+            overflow: hidden;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
 
-.slider-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: 300%; /* 100% * number of slides */
-}
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 400%;
+            /* 100% * number of images (3 + 1 clone) */
+        }
 
-.slide-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  flex-shrink: 0;
-}
+        .slide-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
 
 /* ========== Button Grid ========== */
 .branch-grid {
