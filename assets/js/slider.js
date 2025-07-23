@@ -1,20 +1,8 @@
+const track = document.getElementById('sliderTrack');
+            const totalSlides = track.children.length;
+            let currentIndex = 0;
 
-  const images = [
-    '/assets/images/slider1.jpg',
-    '/assets/images/slider2.jpg',
-    '/assets/images/slider3.jpg'
-  ];
-
-  let index = 0;
-  const slider = document.getElementById('slider');
-
-  setInterval(() => {
-  slider.style.opacity = 0;
-  setTimeout(() => {
-    index = (index + 1) % images.length;
-    slider.src = images[index];
-    slider.style.opacity = 1;
-  }, 300);
-}, 3000);
-
-
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }, 3000);

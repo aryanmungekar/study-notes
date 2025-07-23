@@ -4,8 +4,13 @@ title: Home
 ---
 
 <div class="slider-container">
-  <img class="slider-image" id="slider" src="/assets/images/slider1.jpg" alt="Slide 1">
+  <div class="slider-track" id="sliderTrack">
+    <img src="/assets/images/slider1.jpg" class="slide-img">
+    <img src="/assets/images/slider2.jpg" class="slide-img">
+    <img src="/assets/images/slider3.jpg" class="slide-img">
+  </div>
 </div>
+
 
 <h2>Pattern 2019</h2>
 <br>
