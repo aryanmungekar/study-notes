@@ -57,14 +57,18 @@ nav a:hover {
 
 /* ========== Slider ========== */
 .slider-container {
-            width: 100%;
-            max-width: 800px;
-            height: 300px;
-            overflow: hidden;
+            
+            
             margin: auto;
-            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             position: relative;
+
+            width: 320px;
+            height: 150px;
+            margin: 0 auto 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
         .slider-track {
