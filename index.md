@@ -8,12 +8,13 @@ title: Home
 </div>
 
 <h2>Pattern 2019</h2>
-<div class="branch-grid">
+<br>
+<!-- <div class="branch-grid">
   <a class="branch-btn" href="/2019-Pattern/first-year">🧠 First Year</a>
   <a class="branch-btn" href="/computer-science/">💻 Computer Science</a>
   <a class="branch-btn" href="/it/">💽 Information Technology</a>
   <a class="branch-btn" href="/aids/">🤖 AI & Data Science</a>
-</div>
+</div> -->
 
 <div class="branch-grid1">
 
