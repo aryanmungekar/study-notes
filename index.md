@@ -17,10 +17,10 @@ title: Home
 
 <div class="branch-grid1">
 
-            <div style="background-color: rgba(172, 238, 65, 0.342);" class="button-card">
+            <a href="/2019-Pattern/first-year"><div style="background-color: rgba(172, 238, 65, 0.342);" class="button-card">
                 <i style="font-size: 40px; color: black;" class="fa-solid fa-atom"></i>
                 <h4>Artificial Intelligence & Data Science</h4>
-            </div>
+            </div></a>
 
             <div style="background-color: rgba(82, 65, 238, 0.342);" class="button-card">
                 <i style="font-size: 40px; color: black;" class="fa-solid fa-chalkboard"></i>
