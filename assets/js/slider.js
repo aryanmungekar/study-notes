@@ -9,7 +9,12 @@
   const slider = document.getElementById('slider');
 
   setInterval(() => {
+  slider.style.opacity = 0;
+  setTimeout(() => {
     index = (index + 1) % images.length;
     slider.src = images[index];
-  }, 3000); // change every 3 seconds
+    slider.style.opacity = 1;
+  }, 300);
+}, 3000);
+
 
