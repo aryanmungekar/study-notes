@@ -1,0 +1,24 @@
+{
+  "1000": {
+    "name": "Engineering Mathematics",
+    "notes": [
+      {
+        "title": "Unit 1 Notes",
+        "subtitle": "Limits and Continuity",
+        "exam": "Semester 1",
+        "thumbnail": "assets/images/cover.png",
+        "url": "project/Unit1_Database_Management.md"
+      },
+      {
+        "title": "Unit 2 Notes",
+        "subtitle": "Differentiation",
+        "exam": "Semester 1",
+        "thumbnail": "assets/images/cover2.png",
+        "url": "project/Unit1_Database_Management.md"
+      }
+    ],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  }
+}
