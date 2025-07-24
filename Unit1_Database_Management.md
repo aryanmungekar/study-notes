@@ -1,6 +1,8 @@
-# 📘 Unit I: Introduction to Database Management Systems and ER Model
-
 ---
+layout: default
+title: Home
+---
+
 
 ## 🧠 Learning Objectives
 
