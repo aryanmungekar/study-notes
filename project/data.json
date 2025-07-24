@@ -7,14 +7,14 @@
         "subtitle": "Limits and Continuity",
         "exam": "Semester 1",
         "thumbnail": "assets/images/cover.png",
-        "url": "project/Unit1_Database_Management.md"
+        "url": "Unit1_Database_Management.md"
       },
       {
         "title": "Unit 2 Notes",
         "subtitle": "Differentiation",
         "exam": "Semester 1",
         "thumbnail": "assets/images/cover2.png",
-        "url": "project/Unit1_Database_Management.md"
+        "url": "/Unit1_Database_Management.md"
       }
     ],
     "pyq": [],
