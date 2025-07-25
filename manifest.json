@@ -1,7 +1,7 @@
 {
   "name": "SPPU Notes",
-  "short_name": "SPPU Notes",
-  "start_url": "/index.html",
+  "short_name": "SPPU",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#007acc",

@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/share-button.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/home-buttons.css' | relative_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="manifest" href="/assets/manifest.json">
+  <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#007acc">
 
 
@@ -100,7 +100,44 @@
   <!-- Javascripts -->
   <script src="/assets/js/share-button.js"></script>
   <script src="/assets/js/slider.js"></script>
-  <script src="/assets/js/service-worker.js"></script>
+  <script src="/assets/js/pwa-prompt.js"></script>
+
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register('/assets/js/service-worker.js')
+      .then(reg => console.log('✅ Service Worker registered'))
+      .catch(err => console.error('❌ SW registration failed', err));
+  }
+
+   let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    console.log('📲 App can be installed');
+
+    // Show your custom install button
+    const installBtn = document.createElement('button');
+    installBtn.innerText = "📲 Install App";
+    installBtn.style.cssText = "position:fixed; bottom:100px; left:50%; transform:translateX(-50%); padding:10px 20px; background:#007acc; color:white; border:none; border-radius:8px; z-index:10000;";
+    installBtn.onclick = () => {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(choice => {
+        if (choice.outcome === 'accepted') {
+          console.log("✅ User installed the app");
+        } else {
+          console.log("❌ User dismissed the install");
+        }
+        installBtn.remove();
+      });
+    };
+
+    document.body.appendChild(installBtn);
+  });
+</script>
+
+  
 
 </body>
 
