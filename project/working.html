@@ -78,43 +78,6 @@
     #download-btn:hover {
       background: #005f9e;
     }
-    #control-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #ffffff;
-  padding: 10px 20px;
-  border-top: 1px solid #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  z-index: 999;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-}
-
-#control-bar button {
-  padding: 8px 14px;
-  font-size: 16px;
-  cursor: pointer;
-  background: #007acc;
-  color: white;
-  border: none;
-  border-radius: 6px;
-}
-
-#control-bar button:hover {
-  background: #005f9e;
-}
-
-#fontSizeDisplay {
-  font-size: 16px;
-  font-weight: bold;
-  min-width: 40px;
-  text-align: center;
-}
-
   </style>
 </head>
 <body>
@@ -123,14 +86,7 @@
 
   <div id="pages-container"></div>
 
-  <!-- Sticky Control Bar -->
-<div id="control-bar">
-  <button onclick="adjustFontSize(-1)">➖</button>
-  <span id="fontSizeDisplay">16px</span>
-  <button onclick="adjustFontSize(1)">➕</button>
-  <button onclick="generatePDF()">⬇️ Download PDF</button>
-</div>
-
+  <button id="download-btn" onclick="generatePDF()">⬇️ Download PDF</button>
 
   <script>
     // ===== Viewer Logic (Paginated Markdown Display) =====
@@ -174,82 +130,54 @@
     }
 
     // ===== PDF Generation Logic (Separate) =====
-    function generatePDF() {
-      fetch('Unit1_Database_Management.md')
-        .then(res => res.text())
-        .then(md => {
-          const markdownHtml = marked.parse(md);
+        let fetchedMarkdown = '';
 
-          // Cover page
-          const cover = document.createElement("div");
-          cover.className = "cover-page";
-          cover.style.cssText = `
-            height: 250mm;
-            page-break-after: always;
-            padding: 40px;
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-          `;
-          cover.innerHTML = `
-            <style>
-              .university { font-size: 28px; font-weight: bold; color: #003366; margin-bottom: 10px; }
-              .department { font-size: 18px; color: #555; margin-bottom: 40px; }
-              .subject { font-size: 32px; font-weight: bold; color: #222; margin-bottom: 25px; }
-              .meta { font-size: 18px; color: #444; margin: 5px 0; }
-              .theme-box { margin-top: 40px; border-top: 3px solid #003366; padding-top: 20px; width: 100%; }
-              .theme-box p { margin: 10px 0; font-size: 16px; }
-            </style>
-            <div class="university">Savitribai Phule Pune University</div>
-            <div class="department">Department of AI & Data Science<br>Faculty of Science and Technology</div>
-            <div class="subject">Database Management System</div>
-            <div class="meta">Semester: <strong>III</strong></div>
-            <div class="meta">Year: <strong>2025</strong></div>
-            <div class="meta">Pattern: <strong>2019</strong></div>
-            <div class="meta">Exam: <strong>End Semester</strong></div>
-            <div class="theme-box">
-              <p><strong>Prepared By:</strong> __________________________</p>
-              <p><strong>Roll No.:</strong> __________________________</p>
-              <p><strong>Submitted To:</strong> __________________________</p>
-            </div>
-          `;
+    async function generatePDF() {
+      if (!fetchedMarkdown) {
+        alert("Markdown not loaded.");
+        return;
+      }
 
-          // Markdown content
-          const content = document.createElement("div");
-          content.className = "pdf-content";
-          content.innerHTML = markdownHtml;
+      const markdownHtml = marked.parse(fetchedMarkdown);
 
-          const wrapper = document.createElement("div");
-          wrapper.appendChild(cover);
-          wrapper.appendChild(content);
+      // Cover page HTML
+      const cover = document.createElement("div");
+      cover.className = "cover-page";
+      cover.innerHTML = `
+        <h1 style="font-size: 36px;">Database Management System</h1>
+        <h3>By Aryan Mungekar</h3>
+        <h4>${new Date().toLocaleDateString()}</h4>
+      `;
 
-          html2pdf().set({
-            margin: 10,
-            filename: 'DBMS_Notes_with_Cover.pdf',
-            html2canvas: { scale: 1.4 },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-            pagebreak: { mode: ['css', 'avoid-all', 'legacy'] }
-          }).from(wrapper).save();
-        });
+      const content = document.createElement("div");
+      content.className = "pdf-content";
+      content.innerHTML = markdownHtml;
+
+      const wrapper = document.createElement("div");
+      wrapper.appendChild(cover);
+      wrapper.appendChild(content);
+
+      html2pdf().set({
+        margin: 10,
+        filename: 'markdown_with_cover.pdf',
+        html2canvas: { scale: 1.4 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['css', 'avoid-all', 'legacy'] }
+      }).from(wrapper).save();
     }
 
-    let currentFontSize = 16;
-
-  function adjustFontSize(change) {
-    currentFontSize += change;
-    if (currentFontSize < 10) currentFontSize = 10;
-    if (currentFontSize > 32) currentFontSize = 32;
-
-    document.querySelectorAll('.page').forEach(page => {
-      page.style.fontSize = currentFontSize + 'px';
-    });
-
-    document.getElementById('fontSizeDisplay').innerText = currentFontSize + 'px';
-  }
+    // 🔗 Fetch the Markdown file from a URL
+    const markdownUrl = 'Unit1_Database_Management.md'; // ← Replace with your actual file path or URL
+    fetch(markdownUrl)
+      .then(res => res.text())
+      .then(data => {
+        fetchedMarkdown = data;
+        console.log('Markdown loaded successfully.');
+      })
+      .catch(err => {
+        console.error("Failed to load markdown file:", err);
+        alert("Failed to load Markdown file.");
+      });
   </script>
 
 </body>
