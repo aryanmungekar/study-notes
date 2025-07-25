@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Markdown to PDF (with Cover Page)</title>
+  <title>Markdown to PDF (HTML2PDF)</title>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
@@ -54,38 +54,17 @@
       background: #f0f0f0;
       padding: 2px 4px;
     }
-
-    .cover-page {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      /* width: 210mm; */
-      height: 250mm;
-      page-break-after: always;
-      text-align: center;
-      padding: 40px;
-      background-color: #f0f8ff;
-      font-family: Arial, sans-serif;
-    }
-
-    .cover-page h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-
-    .cover-page h3, .cover-page h4 {
-      font-size: 20px;
-      color: #555;
-    }
   </style>
 </head>
 <body>
 
-  <h1>📝 Markdown to PDF (With Cover Page)</h1>
+  <h1>📝 Markdown to PDF (JS-based, No Print)</h1>
 
   <textarea id="mdInput" placeholder="# Hello\n\nThis is **Markdown** content."></textarea><br>
   <button onclick="generatePDF()">⬇️ Download PDF</button>
+
+  <!-- Preview (optional) -->
+  <div id="previewArea" class="pdf-content"></div>
 
   <script>
     function generatePDF() {
@@ -96,31 +75,20 @@
         return;
       }
 
-      const markdownHtml = marked.parse(md);
+      const html = marked.parse(md);
 
-      // 👉 Create the cover page
-      const cover = document.createElement("div");
-      cover.className = "cover-page";
-      cover.innerHTML = `
-        <h1>Your Document Title</h1>
-        <h3>By Your Name</h3>
-        <h4>${new Date().toLocaleDateString()}</h4>
-      `;
+      // Optional: show preview
+      const preview = document.getElementById("previewArea");
+      preview.innerHTML = html;
+      preview.style.display = "block";
 
-      // 👉 Create the markdown content
-      const content = document.createElement("div");
-      content.className = "pdf-content";
-      content.innerHTML = markdownHtml;
-
-      // 👉 Combine both into a wrapper
       const wrapper = document.createElement("div");
-      wrapper.appendChild(cover);
-      wrapper.appendChild(content);
+      wrapper.className = "pdf-content";
+      wrapper.innerHTML = html;
 
-      // 👉 Generate the PDF
       html2pdf().set({
         margin: 10,
-        filename: 'markdown_with_cover.pdf',
+        filename: 'markdown.pdf',
         html2canvas: { scale: 1.4 },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
         pagebreak: { mode: ['css', 'avoid-all', 'legacy'] }
