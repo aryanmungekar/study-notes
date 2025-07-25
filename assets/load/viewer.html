@@ -123,7 +123,9 @@
 <body>
 
     <center>
-        <h1 id="dynamic-title">📘 Notes Viewer</h1>
+        <h1 id="dynamic-title">📘 Loading...</h1>
+        <h3 id="unit-title" style="text-align:center; margin-top: -10px;"></h3>
+
     </center>
     <div id="pages-container"></div>
 
@@ -145,32 +147,46 @@
     </div>
 
     <script>
+        // Extract parameters from URL
+const urlParams = new URLSearchParams(window.location.search);
+const subjectName = urlParams.get("subject");
+const fileTitle = urlParams.get("title");
+
+// Set dynamic titles
+if (subjectName) {
+    document.getElementById("dynamic-title").innerText = `📘 ${decodeURIComponent(subjectName)}`;
+}
+if (fileTitle) {
+    document.getElementById("unit-title").innerText = decodeURIComponent(fileTitle);
+}
+
+
         let currentFontSize = 16;
         let originalMarkdown = "";
         let pages = [];
 
         // Fetch and render from ?file=
-const params = new URLSearchParams(window.location.search);
-const file = params.get("file");
+        const params = new URLSearchParams(window.location.search);
+        const file = params.get("file");
 
-if (!file) {
-    document.getElementById('pages-container').innerHTML = `<h2>No file specified in URL!</h2>`;
-} else {
-    fetch(file)
-        .then(res => {
-            if (!res.ok) throw new Error("File not found.");
-            return res.text();
-        })
-        .then(md => {
-            originalMarkdown = md;
-            renderPages(md);
-            document.getElementById('dynamic-title').innerText = `📘 ${file.split('/').pop().replace('.md', '').replace(/_/g, ' ')}`;
+        if (!file) {
+            document.getElementById('pages-container').innerHTML = `<h2>No file specified in URL!</h2>`;
+        } else {
+            fetch(file)
+                .then(res => {
+                    if (!res.ok) throw new Error("File not found.");
+                    return res.text();
+                })
+                .then(md => {
+                    originalMarkdown = md;
+                    renderPages(md);
+                    document.getElementById('dynamic-title').innerText = `📘 ${file.split('/').pop().replace('.md', '').replace(/_/g, ' ')}`;
 
-        })
-        .catch(err => {
-            document.getElementById('pages-container').innerHTML = `<h2>Error</h2><p>${err.message}</p>`;
-        });
-}
+                })
+                .catch(err => {
+                    document.getElementById('pages-container').innerHTML = `<h2>Error</h2><p>${err.message}</p>`;
+                });
+        }
 
 
         function renderPages(md) {
