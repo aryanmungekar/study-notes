@@ -117,43 +117,35 @@
 
     let deferredPrompt;
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      console.log('📲 App can be installed');
+  // Listen for the event
+  window.addEventListener('beforeinstallprompt', (e) => {
+    console.log('✅ beforeinstallprompt fired');
+    // Prevent Chrome's default prompt
+    e.preventDefault();
+    deferredPrompt = e;
 
-      if (!document.getElementById("installAppBtn")) {
-        const installBtn = document.createElement('button');
-        installBtn.id = "installAppBtn";
-        installBtn.innerText = "📲 Install App";
-        installBtn.style.cssText = `
-        position:fixed;
-        bottom:100px;
-        left:50%;
-        transform:translateX(-50%);
-        padding:10px 20px;
-        background:#007acc;
-        color:white;
-        border:none;
-        border-radius:8px;
-        z-index:10000;
-      `;
+    // Show a custom install button
+    document.getElementById('install-button').style.display = 'block';
+  });
 
-        installBtn.onclick = () => {
-          deferredPrompt.prompt();
-          deferredPrompt.userChoice.then(choice => {
-            if (choice.outcome === 'accepted') {
-              console.log("✅ User installed the app");
-            } else {
-              console.log("❌ User dismissed the install");
-            }
-            installBtn.remove();
-          });
-        };
+  // Handle click on install button
+  document.getElementById('install-button').addEventListener('click', () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();  // Show install prompt
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('✅ User accepted the install prompt');
+        } else {
+          console.log('❌ User dismissed the install prompt');
+        }
+        deferredPrompt = null;
+      });
+    }
+  });
+</script>
 
-        document.body.appendChild(installBtn);
-      }
-    });
+<!-- Button to manually show install prompt -->
+<button id="install-button" style="display:none;">📲 Install App</button>
 
 
   </script>
