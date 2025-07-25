@@ -27,8 +27,15 @@
   <link rel="stylesheet" href="{{ '/assets/css/share-button.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/home-buttons.css' | relative_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- pwa app -->
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#007acc">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SPPU NOTES">
+  <link rel="apple-touch-icon" href="/web-app-manifest-192x192.png">
 
 
 
@@ -102,41 +109,41 @@
   <script src="/assets/js/slider.js"></script>
 
   <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-      .register('/service-worker.js')
-      .then(reg => console.log('✅ Service Worker registered'))
-      .catch(err => console.error('❌ SW registration failed', err));
-  }
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('/service-worker.js')
+        .then(reg => console.log('✅ Service Worker registered'))
+        .catch(err => console.error('❌ SW registration failed', err));
+    }
 
-   let deferredPrompt;
+    let deferredPrompt;
 
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    console.log('📲 App can be installed');
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      console.log('📲 App can be installed');
 
-    // Show your custom install button
-    const installBtn = document.createElement('button');
-    installBtn.innerText = "📲 Install App";
-    installBtn.style.cssText = "position:fixed; bottom:100px; left:50%; transform:translateX(-50%); padding:10px 20px; background:#007acc; color:white; border:none; border-radius:8px; z-index:10000;";
-    installBtn.onclick = () => {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(choice => {
-        if (choice.outcome === 'accepted') {
-          console.log("✅ User installed the app");
-        } else {
-          console.log("❌ User dismissed the install");
-        }
-        installBtn.remove();
-      });
-    };
+      // Show your custom install button
+      const installBtn = document.createElement('button');
+      installBtn.innerText = "📲 Install App";
+      installBtn.style.cssText = "position:fixed; bottom:100px; left:50%; transform:translateX(-50%); padding:10px 20px; background:#007acc; color:white; border:none; border-radius:8px; z-index:10000;";
+      installBtn.onclick = () => {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(choice => {
+          if (choice.outcome === 'accepted') {
+            console.log("✅ User installed the app");
+          } else {
+            console.log("❌ User dismissed the install");
+          }
+          installBtn.remove();
+        });
+      };
 
-    document.body.appendChild(installBtn);
-  });
-</script>
+      document.body.appendChild(installBtn);
+    });
+  </script>
 
-  
+
 
 </body>
 
