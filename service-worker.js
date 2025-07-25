@@ -5,8 +5,8 @@ const OFFLINE_FILES = [
   "/assets/css/style.css",      // your main CSS
   "/assets/js/subject-loader.js",  // your subject JS
   "/assets/load/viewer.html",  // viewer
-  "/assets/icons/icon-192.png",
-  "/assets/icons/icon-512.png",
+  "/web-app-manifest-192x192.png",
+  "/web-app-manifest-512x512.png",
   // Add more files if needed
 ];
 
