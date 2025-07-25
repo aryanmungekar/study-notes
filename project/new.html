@@ -343,6 +343,37 @@
             document.getElementById('pageSlider').disabled = !enabled;
         }
 
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function (e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipeGesture();
+        });
+
+        function handleSwipeGesture() {
+            const minSwipeDistance = 50; // Adjust for sensitivity
+
+            if (!isPaginated) return; // Only activate in paginated mode
+
+            const distance = touchEndX - touchStartX;
+
+            if (Math.abs(distance) > minSwipeDistance) {
+                if (distance < 0) {
+                    // Swiped left → next page
+                    goToPage(currentPage + 1);
+                } else {
+                    // Swiped right → previous page
+                    goToPage(currentPage - 1);
+                }
+            }
+        }
+
+
 
     </script>
 </body>
