@@ -178,11 +178,16 @@ if (fileTitle) {
                     return res.text();
                 })
                 .then(md => {
-                    originalMarkdown = md;
-                    renderPages(md);
-                    document.getElementById('dynamic-title').innerText = `📘 ${file.split('/').pop().replace('.md', '').replace(/_/g, ' ')}`;
+    originalMarkdown = md;
+    renderPages(md);
 
-                })
+    // ✅ Only set dynamic-title if subjectName wasn't provided
+    if (!subjectName) {
+        document.getElementById('dynamic-title').innerText =
+            `📘 ${file.split('/').pop().replace('.md', '').replace(/_/g, ' ')}`;
+    }
+})
+
                 .catch(err => {
                     document.getElementById('pages-container').innerHTML = `<h2>Error</h2><p>${err.message}</p>`;
                 });
@@ -315,9 +320,9 @@ if (fileTitle) {
         background-color: #f0f8ff;
       `;
             cover.innerHTML = `
-        <h1 style="font-size: 36px;">Database Management System</h1>
-        <h3>By Aryan Mungekar</h3>
-        <h4>${new Date().toLocaleDateString()}</h4>
+        <h1 style="font-size: 36px;">${subjectName || 'Notes Viewer'}</h1>
+    <h3>${fileTitle || ''}</h3>
+    <h4>${new Date().toLocaleDateString()}</h4>
       `;
 
             const content = document.createElement('div');
