@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DBMS Notes Viewer + PDF Generator</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #f5f5f5;
+      margin: 0;
+    }
+
+    #pages-container {
+      max-width: 900px;
+      margin: 40px auto;
+    }
+
+    .page {
+      background: white;
+      width: 100%;
+      height: 1123px;
+      margin: 0 auto 20px auto;
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+
+    code, pre {
+      background-color: #f0f0f0;
+      padding: 8px;
+      border-radius: 5px;
+      display: block;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    blockquote {
+      background: #eef;
+      padding: 15px;
+      border-left: 5px solid #88f;
+      margin: 20px 0;
+    }
+
+    /* Floating Button */
+    #download-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #007acc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+    }
+
+    #download-btn:hover {
+      background: #005f9e;
+    }
+  </style>
+</head>
+<body>
+
+  <center><h1>📘 DBMS Notes Viewer</h1></center>
+
+  <div id="pages-container"></div>
+
+  <button id="download-btn" onclick="generatePDF()">⬇️ Download PDF</button>
+
+  <script>
+    // ===== Viewer Logic (Paginated Markdown Display) =====
+    fetch('Unit1_Database_Management.md')
+      .then(res => res.text())
+      .then(md => {
+        const html = marked.parse(md);
+        const temp = document.createElement('div');
+        temp.style.position = 'absolute';
+        temp.style.visibility = 'hidden';
+        temp.style.width = '794px';
+        temp.style.padding = '40px';
+        temp.innerHTML = html;
+        document.body.appendChild(temp);
+
+        const container = document.getElementById('pages-container');
+        const elements = [...temp.children];
+
+        let currentPage = createNewPage();
+        container.appendChild(currentPage);
+
+        for (let el of elements) {
+          const clone = el.cloneNode(true);
+          currentPage.appendChild(clone);
+
+          if (currentPage.scrollHeight > currentPage.clientHeight) {
+            currentPage.removeChild(clone);
+            currentPage = createNewPage();
+            currentPage.appendChild(clone);
+            container.appendChild(currentPage);
+          }
+        }
+
+        document.body.removeChild(temp);
+      });
+
+    function createNewPage() {
+      const page = document.createElement('div');
+      page.className = 'page';
+      return page;
+    }
+
+    // ===== PDF Generation Logic (Separate) =====
+    function generatePDF() {
+      fetch('Unit1_Database_Management.md')
+        .then(res => res.text())
+        .then(md => {
+          const markdownHtml = marked.parse(md);
+
+          // Cover page
+          const cover = document.createElement("div");
+          cover.className = "cover-page";
+          cover.style.cssText = `
+            height: 250mm;
+            page-break-after: always;
+            padding: 40px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          `;
+          cover.innerHTML = `
+            <style>
+              .university { font-size: 28px; font-weight: bold; color: #003366; margin-bottom: 10px; }
+              .department { font-size: 18px; color: #555; margin-bottom: 40px; }
+              .subject { font-size: 32px; font-weight: bold; color: #222; margin-bottom: 25px; }
+              .meta { font-size: 18px; color: #444; margin: 5px 0; }
+              .theme-box { margin-top: 40px; border-top: 3px solid #003366; padding-top: 20px; width: 100%; }
+              .theme-box p { margin: 10px 0; font-size: 16px; }
+            </style>
+            <div class="university">Savitribai Phule Pune University</div>
+            <div class="department">Department of AI & Data Science<br>Faculty of Science and Technology</div>
+            <div class="subject">Database Management System</div>
+            <div class="meta">Semester: <strong>III</strong></div>
+            <div class="meta">Year: <strong>2025</strong></div>
+            <div class="meta">Pattern: <strong>2019</strong></div>
+            <div class="meta">Exam: <strong>End Semester</strong></div>
+            <div class="theme-box">
+              <p><strong>Prepared By:</strong> __________________________</p>
+              <p><strong>Roll No.:</strong> __________________________</p>
+              <p><strong>Submitted To:</strong> __________________________</p>
+            </div>
+          `;
+
+          // Markdown content
+          const content = document.createElement("div");
+          content.className = "pdf-content";
+          content.innerHTML = markdownHtml;
+
+          const wrapper = document.createElement("div");
+          wrapper.appendChild(cover);
+          wrapper.appendChild(content);
+
+          html2pdf().set({
+            margin: 10,
+            filename: 'DBMS_Notes_with_Cover.pdf',
+            html2canvas: { scale: 1.4 },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            pagebreak: { mode: ['css', 'avoid-all', 'legacy'] }
+          }).from(wrapper).save();
+        });
+    }
+  </script>
+
+</body>
+</html>
