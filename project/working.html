@@ -78,6 +78,43 @@
     #download-btn:hover {
       background: #005f9e;
     }
+    #control-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  padding: 10px 20px;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  z-index: 999;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+#control-bar button {
+  padding: 8px 14px;
+  font-size: 16px;
+  cursor: pointer;
+  background: #007acc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+#control-bar button:hover {
+  background: #005f9e;
+}
+
+#fontSizeDisplay {
+  font-size: 16px;
+  font-weight: bold;
+  min-width: 40px;
+  text-align: center;
+}
+
   </style>
 </head>
 <body>
@@ -86,7 +123,14 @@
 
   <div id="pages-container"></div>
 
-  <button id="download-btn" onclick="generatePDF()">⬇️ Download PDF</button>
+  <!-- Sticky Control Bar -->
+<div id="control-bar">
+  <button onclick="adjustFontSize(-1)">➖</button>
+  <span id="fontSizeDisplay">16px</span>
+  <button onclick="adjustFontSize(1)">➕</button>
+  <button onclick="generatePDF()">⬇️ Download PDF</button>
+</div>
+
 
   <script>
     // ===== Viewer Logic (Paginated Markdown Display) =====
@@ -192,6 +236,20 @@
           }).from(wrapper).save();
         });
     }
+
+    let currentFontSize = 16;
+
+  function adjustFontSize(change) {
+    currentFontSize += change;
+    if (currentFontSize < 10) currentFontSize = 10;
+    if (currentFontSize > 32) currentFontSize = 32;
+
+    document.querySelectorAll('.page').forEach(page => {
+      page.style.fontSize = currentFontSize + 'px';
+    });
+
+    document.getElementById('fontSizeDisplay').innerText = currentFontSize + 'px';
+  }
   </script>
 
 </body>
