@@ -3,7 +3,7 @@ const OFFLINE_FILES = [
   "/",
   "/index.html",
   "/assets/css/style.css",      // your main CSS
-  "/assets/js/subject-loader.js",  // your subject JS
+  "/assets/js/viewer-loader.js",  // your subject JS
   "/assets/load/viewer.html",  // viewer
   "/web-app-manifest-192x192.png",
   "/web-app-manifest-512x512.png",
