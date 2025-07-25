@@ -56,10 +56,13 @@
     </div>
   </header>
 
-<!-- Button to manually show install prompt -->
-<button id="install-button" style="display:none;">📲 Install App</button>
+
   <!-- Main content area -->
   <div class="main-content">
+    <button id="install-button" style="display: none; position: fixed; bottom: 70px; right: 20px; padding: 10px 20px; font-size: 16px; background-color: #007acc; color: white; border: none; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 999;">
+  📲 Install App
+</button>
+
     {{ content }}
   </div>
 
