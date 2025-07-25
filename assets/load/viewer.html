@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Markdown Viewer with Controls</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: #f5f5f5;
+            margin: 0;
+        }
+
+        #pages-container {
+            max-width: 900px;
+            margin: 40px auto 100px auto;
+            /* leave space for fixed bar */
+        }
+
+        .page {
+            background: white;
+            width: 100%;
+            /* A4 width */
+            height: 1123px;
+            /* A4 height */
+            margin: 0 auto 20px auto;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #2c3e50;
+        }
+
+        code,
+        pre {
+            background-color: #f0f0f0;
+            padding: 8px;
+            border-radius: 5px;
+            display: block;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        blockquote {
+            background: #eef;
+            padding: 15px;
+            border-left: 5px solid #88f;
+            margin: 20px 0;
+        }
+
+        /* Fixed bottom control bar */
+        #control-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            padding: 10px 20px;
+            border-top: 1px solid #ccc;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            z-index: 999;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #control-bar button {
+            padding: 8px 14px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #007acc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+        }
+
+        #control-bar button:hover {
+            background: #005f9e;
+        }
+
+        #control-bar input[type="text"] {
+            padding: 6px 10px;
+            font-size: 14px;
+            width: 150px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        #control-bar input[type="range"] {
+            width: 150px;
+        }
+
+        #fontSizeDisplay,
+        #pageIndicator {
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <center>
+        <h1 id="dynamic-title">📘 Notes Viewer</h1>
+    </center>
+    <div id="pages-container"></div>
+
+    <!-- Control bar -->
+    <div id="control-bar">
+        <button onclick="adjustFontSize(-1)">➖</button>
+        <span id="fontSizeDisplay">16px</span>
+        <button onclick="adjustFontSize(1)">➕</button>
+
+        <input type="text" id="searchInput" placeholder="🔍 Search..." oninput="searchText()" />
+
+        <input type="range" id="pageSlider" min="1" step="1" value="1" onchange="goToPage(this.value)">
+        <span id="pageIndicator">Page 1</span>
+
+        <button onclick="toggleViewMode()">🌀 Toggle View Mode</button>
+
+
+        <button onclick="generatePDF()">⬇️ Download PDF</button>
+    </div>
+
+    <script>
+        let currentFontSize = 16;
+        let originalMarkdown = "";
+        let pages = [];
+
+        // Fetch and render from ?file=
+const params = new URLSearchParams(window.location.search);
+const file = params.get("file");
+
+if (!file) {
+    document.getElementById('pages-container').innerHTML = `<h2>No file specified in URL!</h2>`;
+} else {
+    fetch(file)
+        .then(res => {
+            if (!res.ok) throw new Error("File not found.");
+            return res.text();
+        })
+        .then(md => {
+            originalMarkdown = md;
+            renderPages(md);
+            document.getElementById('dynamic-title').innerText = `📘 ${file.split('/').pop().replace('.md', '').replace(/_/g, ' ')}`;
+
+        })
+        .catch(err => {
+            document.getElementById('pages-container').innerHTML = `<h2>Error</h2><p>${err.message}</p>`;
+        });
+}
+
+
+        function renderPages(md) {
+            const html = marked.parse(md);
+            const temp = document.createElement('div');
+            temp.style.position = 'absolute';
+            temp.style.visibility = 'hidden';
+            temp.style.width = '794px';
+            temp.style.padding = '40px';
+            temp.style.fontSize = currentFontSize + 'px';
+            temp.innerHTML = html;
+            document.body.appendChild(temp);
+
+            const container = document.getElementById('pages-container');
+            container.innerHTML = '';
+            const elements = [...temp.children];
+
+            let currentPageElement = createNewPage();
+            currentPageElement.style.fontSize = currentFontSize + 'px';
+            container.appendChild(currentPageElement);
+
+            pages = []; // reset
+            pages.push(currentPageElement);
+
+            for (let el of elements) {
+                const clone = el.cloneNode(true);
+                currentPageElement.appendChild(clone);
+
+                if (currentPageElement.scrollHeight > currentPageElement.clientHeight) {
+                    currentPageElement.removeChild(clone);
+                    currentPageElement = createNewPage();
+                    currentPageElement.style.fontSize = currentFontSize + 'px';
+                    currentPageElement.appendChild(clone);
+                    container.appendChild(currentPageElement);
+                    pages.push(currentPageElement);
+                }
+            }
+
+            document.body.removeChild(temp);
+
+            updatePageControls();
+
+            if (isPaginated) {
+                showOnlyPage(currentPage);
+                enablePageInput(true);
+            } else {
+                showAllPages();
+                enablePageInput(false);
+            }
+        }
+
+
+
+        function createNewPage() {
+            const page = document.createElement('div');
+            page.className = 'page';
+            return page;
+        }
+
+        function adjustFontSize(change) {
+            currentFontSize += change;
+            if (currentFontSize < 10) currentFontSize = 10;
+            if (currentFontSize > 32) currentFontSize = 32;
+
+            document.getElementById('fontSizeDisplay').innerText = currentFontSize + 'px';
+            renderPages(originalMarkdown); // Re-render pages and keep view mode
+        }
+
+
+        function updatePageSlider() {
+            pages = document.querySelectorAll('.page');
+            const slider = document.getElementById('pageSlider');
+            slider.max = pages.length;
+            slider.value = 1;
+            showOnlyPage(1);
+        }
+
+        function searchText() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            if (!query.trim()) {
+                showOnlyPage(currentPage);
+                return;
+            }
+
+            pages.forEach((page, idx) => {
+                const match = page.innerText.toLowerCase().includes(query);
+                if (isPaginated) {
+                    page.style.display = (match && idx + 1 === currentPage) ? 'block' : 'none';
+                } else {
+                    page.style.display = match ? 'block' : 'none';
+                }
+            });
+
+        }
+
+        let currentPage = 1;
+
+        function goToPage(pageNum) {
+            pageNum = parseInt(pageNum);
+            if (pageNum < 1 || pageNum > pages.length) return;
+            showOnlyPage(pageNum);
+        }
+
+        function showOnlyPage(n) {
+            currentPage = n;
+            pages.forEach((page, idx) => {
+                page.style.display = (idx + 1 === n) ? 'block' : 'none';
+            });
+            document.getElementById('pageSlider').value = n;
+            document.getElementById('pageIndicator').innerText = `Page ${n}`;
+        }
+
+        function generatePDF() {
+            const wrapper = document.createElement('div');
+            const cover = document.createElement('div');
+            cover.className = 'cover-page';
+            cover.style.cssText = `
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 250mm;
+        page-break-after: always;
+        text-align: center;
+        padding: 40px;
+        background-color: #f0f8ff;
+      `;
+            cover.innerHTML = `
+        <h1 style="font-size: 36px;">Database Management System</h1>
+        <h3>By Aryan Mungekar</h3>
+        <h4>${new Date().toLocaleDateString()}</h4>
+      `;
+
+            const content = document.createElement('div');
+            content.className = 'pdf-content';
+            content.style.padding = '20px';
+            content.innerHTML = marked.parse(originalMarkdown);
+
+            wrapper.appendChild(cover);
+            wrapper.appendChild(content);
+
+            html2pdf().set({
+                margin: 10,
+                filename: 'notes.pdf',
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['css', 'legacy'] }
+            }).from(wrapper).save();
+        }
+
+        let isPaginated = false;
+
+        function toggleViewMode() {
+            isPaginated = !isPaginated;
+            renderPages(originalMarkdown);
+            if (isPaginated) {
+                showOnlyPage(currentPage);
+                document.getElementById('pageSlider').disabled = false;
+            } else {
+                // Show all pages
+                pages.forEach(page => {
+                    page.style.display = 'block';
+                });
+                document.getElementById('pageIndicator').innerText = "All Pages";
+                document.getElementById('pageSlider').disabled = true;
+            }
+        }
+
+        function updatePageControls() {
+            const pageIndicator = document.getElementById('pageIndicator');
+            if (isPaginated) {
+                pageIndicator.innerText = `Page ${currentPage}`;
+            } else {
+                pageIndicator.innerText = "All Pages";
+            }
+        }
+
+        function showAllPages() {
+            pages.forEach(page => {
+                page.style.display = 'block';
+                page.style.fontSize = currentFontSize + 'px';
+            });
+        }
+
+        function enablePageInput(enabled) {
+            document.getElementById('pageSlider').disabled = !enabled;
+        }
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function (e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipeGesture();
+        });
+
+        function handleSwipeGesture() {
+            const minSwipeDistance = 50; // Adjust for sensitivity
+
+            if (!isPaginated) return; // Only activate in paginated mode
+
+            const distance = touchEndX - touchStartX;
+
+            if (Math.abs(distance) > minSwipeDistance) {
+                if (distance < 0) {
+                    // Swiped left → next page
+                    goToPage(currentPage + 1);
+                } else {
+                    // Swiped right → previous page
+                    goToPage(currentPage - 1);
+                }
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

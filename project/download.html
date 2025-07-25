@@ -89,7 +89,7 @@
 
   <script>
     function generatePDF() {
-      const md = document.getElementById("mdInput").value;
+      const md = fetch('your-md-file.md');
 
       if (!md.trim()) {
         alert("Please enter some Markdown!");

@@ -17,33 +17,34 @@ title: Home
 <!-- ✅ Subject Cards -->
 <div class="card-container">
 
-  <a href="1518987.html" style="text-decoration: none;">
-    <div class="subject-card">
-      <div class="subject-title">Computer Networks and Security</div>
-      <div class="subject-code">Code : 310244</div>
-    </div>
-  </a>
-
-  <a href="5100010.html" style="text-decoration: none;">
-    <div class="subject-card">
-      <div class="subject-title">Computer Networks and Security and database management</div>
-      <div class="subject-code">Code : 310244</div>
-    </div>
-  </a>
-
   <a href="1000.html" style="text-decoration: none;">
     <div class="subject-card">
-      <div class="subject-title">Computer</div>
-      <div class="subject-code">Code : 310244</div>
+      <div class="subject-title">Subject 1</div>
+      <div class="subject-code">Code : 1000</div>
     </div>
   </a>
 
-  <a href="1001.html" style="text-decoration: none;">
+  <a href="2000.html" style="text-decoration: none;">
     <div class="subject-card">
-      <div class="subject-title">Computer</div>
-      <div class="subject-code">Code : 1001</div>
+      <div class="subject-title">Subject 2</div>
+      <div class="subject-code">Code : 2000</div>
     </div>
   </a>
+
+    <a href="3000.html" style="text-decoration: none;">
+    <div class="subject-card">
+      <div class="subject-title">Subject 2</div>
+      <div class="subject-code">Code : 2000</div>
+    </div>
+  </a>
+
+    <a href="4000.html" style="text-decoration: none;">
+    <div class="subject-card">
+      <div class="subject-title">Subject 2</div>
+      <div class="subject-code">Code : 2000</div>
+    </div>
+  </a>
+
 
   <!-- More cards as needed -->
 

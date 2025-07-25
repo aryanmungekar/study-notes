@@ -1,20 +1,20 @@
 {
-  "2001": {
+  "1000": {
     "name": "Engineering Mathematics",
     "notes": [
       {
         "title": "Unit 1 Notes",
         "subtitle": "Limits and Continuity",
         "exam": "Semester 1",
-        "thumbnail": "assets/thumbnails/1000/unit1.png",
-        "url": "assets/pdfs/1000/unit1.pdf"
+        "thumbnail": "/assets/images/cover.png",
+        "url": "2019-Pattern/first-year/sem-2"
       },
       {
         "title": "Unit 2 Notes",
         "subtitle": "Differentiation",
         "exam": "Semester 1",
-        "thumbnail": "assets/thumbnails/1000/unit2.png",
-        "url": "assets/pdfs/1000/unit2.pdf"
+        "thumbnail": "https://raw.githubusercontent.com/aryanmungekar/study-notes/refs/heads/main/assets/images/slider3.jpg",
+        "url": "2019-Pattern/first-year/sem-2"
       }
     ],
     "pyq": [
@@ -22,8 +22,8 @@
         "title": "Midterm 2022",
         "subtitle": "Engineering Maths",
         "exam": "University Exam",
-        "thumbnail": "assets/thumbnails/1000/pyq2022.png",
-        "url": "assets/pdfs/1000/pyq2022.pdf"
+        "thumbnail": "https://raw.githubusercontent.com/aryanmungekar/study-notes/refs/heads/main/assets/images/slider3.jpg",
+        "url": "2019-Pattern/first-year/sem-2"
       }
     ],
     "solved_pyq": [],
