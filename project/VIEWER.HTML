@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Markdown Notes with Page Break Effect</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #f5f5f5;
+      margin: 0;
+    }
+
+    #pages-container {
+      max-width: 900px;
+      margin: 40px auto;
+    }
+
+    .page {
+      background: white;
+      width: 794px;   /* A4 width */
+      height: 1123px; /* A4 height */
+      margin: 0 auto 20px auto;
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+
+    code, pre {
+      background-color: #f0f0f0;
+      padding: 8px;
+      border-radius: 5px;
+      display: block;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    blockquote {
+      background: #eef;
+      padding: 15px;
+      border-left: 5px solid #88f;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+    <center><h1>Database Management System</h1></center>
+  <div id="pages-container"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    fetch('Unit1_Database_Management.md')
+      .then(res => res.text())
+      .then(md => {
+        const html = marked.parse(md);
+
+        // Temporary hidden container to measure height
+        const temp = document.createElement('div');
+        temp.style.position = 'absolute';
+        temp.style.visibility = 'hidden';
+        temp.style.width = '794px';
+        temp.style.padding = '40px';
+        temp.innerHTML = html;
+        document.body.appendChild(temp);
+
+        const container = document.getElementById('pages-container');
+        const elements = [...temp.children];
+
+        let currentPage = createNewPage();
+        container.appendChild(currentPage);
+
+        for (let el of elements) {
+          const clone = el.cloneNode(true);
+          currentPage.appendChild(clone);
+
+          if (currentPage.scrollHeight > currentPage.clientHeight) {
+            currentPage.removeChild(clone);
+            currentPage = createNewPage();
+            currentPage.appendChild(clone);
+            container.appendChild(currentPage);
+          }
+        }
+
+        document.body.removeChild(temp);
+
+        function createNewPage() {
+          const page = document.createElement('div');
+          page.className = 'page';
+          return page;
+        }
+      });
+  </script>
+</body>
+</html>

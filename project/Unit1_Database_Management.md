@@ -1,8 +1,14 @@
-# 📘 Database Management Systems
-
 ## Unit I: Introduction to DBMS
 
+<div style=" padding: 20px; border-radius: 10px; background-color: #ecf5ff; font-family: 'Georgia', serif; font-weight: bold;"><h3 style="margin-top: 0;">Syllabus:</h3>Introduction, Purpose of Database Systems, Database-System Applications, View of Data, Database
+Languages, Database System Structure, Data Models. Database Design and ER Model: Entity,
+Attributes, Relationships, Constraints, Keys, Design Process, Entity-Relationship Model, ER
+Diagram, Design Issues, Extended E-R Features, converting ER and EER diagram into tables. </div>
+
+
+
 ---
+<br>
 
 ### 1. **Introduction**
 A **Database Management System (DBMS)** is a software that facilitates the creation, management, and utilization of databases. Unlike traditional file systems, which require manual handling of data storage and retrieval, DBMS provides a systematic and organized method of storing, managing, and accessing data. It acts as an intermediary between the end-users and the database, ensuring that data remains consistent, accurate, and accessible. DBMS provides several important services such as data abstraction, data security, transaction management, concurrency control, and crash recovery.
@@ -10,6 +16,7 @@ A **Database Management System (DBMS)** is a software that facilitates the creat
 Modern DBMS systems are used in nearly every software-driven environment, from small business apps to enterprise-level ERP systems. By maintaining a high level of abstraction, DBMS allows users to interact with data without worrying about the internal complexities. It separates physical data storage from logical data structures, allowing changes to be made to one without affecting the other (known as **data independence**). Overall, DBMS plays a critical role in the data lifecycle of any application.
 
 ---
+<br>
 
 ### 2. **Purpose of Database Systems**
 The key purposes of a DBMS include:
@@ -24,6 +31,7 @@ The key purposes of a DBMS include:
 Unlike file-based systems, which are limited in capabilities and error-prone, DBMS offers powerful mechanisms to ensure data reliability, accuracy, and speed. In modern applications, DBMS is indispensable for handling massive datasets and complex data relationships.
 
 ---
+<br>
 
 ### 3. **Database-System Applications**
 DBMS is used in nearly all industries:
@@ -36,6 +44,7 @@ DBMS is used in nearly all industries:
 Each of these applications requires quick, consistent, and concurrent access to massive volumes of structured data — all made possible through DBMS systems. For instance, an airline booking system must process thousands of seat reservations in real time without any duplication or conflict.
 
 ---
+<br>
 
 ### 4. **View of Data**
 DBMS supports multiple views or levels of data abstraction:
@@ -46,6 +55,7 @@ DBMS supports multiple views or levels of data abstraction:
 This abstraction model is crucial in isolating internal database complexity from end users and application developers. It also enables data independence — meaning you can change storage methods or logical schema without affecting the application using the data.
 
 ---
+<br>
 
 ### 5. **Database Languages**
 A DBMS uses different languages to perform various operations:
@@ -58,6 +68,7 @@ A DBMS uses different languages to perform various operations:
 These languages form the backbone of SQL, the most widely used database interaction language. Developers use these statements to design, manage, and protect data structures effectively.
 
 ---
+<br>
 
 ### 6. **Database System Structure**
 A DBMS consists of multiple integrated components:
@@ -71,6 +82,7 @@ A DBMS consists of multiple integrated components:
 These modules work together to ensure efficient, reliable, and secure access to the database, regardless of the number of users or volume of data being processed.
 
 ---
+<br>
 
 ### 7. **Data Models**
 Data models define how data is represented, structured, and stored. The most common types include:
@@ -82,6 +94,7 @@ Data models define how data is represented, structured, and stored. The most com
 Each model defines a unique way of managing relationships and constraints, with the **Relational Model** being dominant in modern applications due to its simplicity and powerful querying abilities.
 
 ---
+<br>
 
 ### 8. **Database Design and ER Model**
 
@@ -132,6 +145,7 @@ A visual representation showing entities, attributes, and relationships using sh
 This conversion ensures that conceptual models are translated into functional relational schemas for DBMS implementation.
 
 ---
+<br>
 
 ## ✅ Summary
 
