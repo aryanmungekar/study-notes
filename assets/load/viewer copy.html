@@ -148,17 +148,17 @@
 
     <script>
         // Extract parameters from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const subjectName = urlParams.get("subject");
-        const fileTitle = urlParams.get("title");
+const urlParams = new URLSearchParams(window.location.search);
+const subjectName = urlParams.get("subject");
+const fileTitle = urlParams.get("title");
 
-        // Set dynamic titles
-        if (subjectName) {
-            document.getElementById("dynamic-title").innerText = `📘 ${decodeURIComponent(subjectName)}`;
-        }
-        if (fileTitle) {
-            document.getElementById("unit-title").innerText = decodeURIComponent(fileTitle);
-        }
+// Set dynamic titles
+if (subjectName) {
+    document.getElementById("dynamic-title").innerText = `📘 ${decodeURIComponent(subjectName)}`;
+}
+if (fileTitle) {
+    document.getElementById("unit-title").innerText = decodeURIComponent(fileTitle);
+}
 
 
         let currentFontSize = 16;
@@ -178,15 +178,15 @@
                     return res.text();
                 })
                 .then(md => {
-                    originalMarkdown = md;
-                    renderPages(md);
+    originalMarkdown = md;
+    renderPages(md);
 
-                    // ✅ Only set dynamic-title if subjectName wasn't provided
-                    if (!subjectName) {
-                        document.getElementById('dynamic-title').innerText =
-                            `📘 ${file.split('/').pop().replace('.md', '').replace(/_/g, ' ')}`;
-                    }
-                })
+    // ✅ Only set dynamic-title if subjectName wasn't provided
+    if (!subjectName) {
+        document.getElementById('dynamic-title').innerText =
+            `📘 ${file.split('/').pop().replace('.md', '').replace(/_/g, ' ')}`;
+    }
+})
 
                 .catch(err => {
                     document.getElementById('pages-container').innerHTML = `<h2>Error</h2><p>${err.message}</p>`;
@@ -410,24 +410,6 @@
             }
         }
 
-        // if offline param is present, load from IndexedDB
-        if (params.has("offline")) {
-            const key = atob(params.get("offline"));
-            const dbReq = indexedDB.open("offlineMDStore", 1);
-            dbReq.onsuccess = (e) => {
-                const db = e.target.result;
-                const tx = db.transaction("mdfiles", "readonly");
-                const getReq = tx.objectStore("mdfiles").get(key);
-                getReq.onsuccess = () => {
-                    const content = getReq.result;
-                    if (content) {
-                        renderMarkdown(content); // Your existing markdown render logic
-                    } else {
-                        document.body.innerHTML = "<p>❌ File not available offline.</p>";
-                    }
-                };
-            };
-        }
 
 
     </script>

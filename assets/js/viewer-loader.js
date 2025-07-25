@@ -4,7 +4,7 @@ const categories = {
   notes: "📝 Notes",
   pyq: "📄 PYQ",
   solved_pyq: "✅ Solved PYQ",
-  uploads: "📄 Uploads"
+  uploads: "📤 Uploads"
 };
 
 const headerBar = document.getElementById("headerBar");
@@ -85,12 +85,12 @@ function loadPDFs(subjectCode, category, allData) {
       <h4>${item.title}</h4>
       <p>${item.subtitle}</p>
       <p>${item.exam}</p>
-      <a href="${isDownloaded ? offlineUrl : onlineUrl}" target="_blank">
+      <a href="${isDownloaded ? offlineUrl : onlineUrl}" target="_blank" class="view-link">
         ${isDownloaded ? "✅ Open Offline" : "View PDF"}
       </a>
       <div class="share-group">
         <button class="download-btn" data-url="${item.url}" title="Download">
-          <i class="fas ${isDownloaded ? "fa-check" : "fa-download"}"></i>
+          <i class="fas ${isDownloaded ? "fa-check-circle" : "fa-download"}"></i>
         </button>
         <button class="share-btn" data-url="${onlineUrl}" title="Copy Link">
           <i class="fas fa-link"></i>
@@ -125,27 +125,97 @@ function setupShareButtons() {
 
 function setupDownloadButtons() {
   document.querySelectorAll(".download-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", async () => {
       const url = btn.getAttribute("data-url");
-      fetch(url)
-        .then((res) => res.text())
-        .then((text) => {
-          const req = indexedDB.open("offlineMDStore", 1);
-          req.onsuccess = (e) => {
-            const db = e.target.result;
-            const tx = db.transaction("mdfiles", "readwrite");
-            tx.objectStore("mdfiles").put(text, url);
-            localStorage.setItem(url, "downloaded");
-            btn.innerHTML = '<i class="fas fa-check"></i>';
-          };
-        });
+      const card = btn.closest(".pdf-card");
+      const viewLink = card.querySelector(".view-link");
+
+      if (!isRunningAsPWA()) {
+        showToast("📥 Download the app to use offline feature");
+        return;
+      }
+
+      try {
+        const cache = await caches.open("markdown-cache");
+        const response = await fetch(url);
+        if (response.ok) {
+          const text = await response.text();
+          const db = await getDB();
+          const tx = db.transaction("mdfiles", "readwrite");
+          tx.objectStore("mdfiles").put(text, url);
+          localStorage.setItem(url, "downloaded");
+
+          btn.innerHTML = `<i class="fas fa-check-circle"></i>`;
+          viewLink.href = `/assets/load/viewer.html?offline=${btoa(url)}`;
+          viewLink.innerText = "✅ Open Offline";
+
+          showToast("✅ File cached for offline use");
+        } else {
+          showToast("❌ Failed to fetch file");
+        }
+      } catch (err) {
+        console.error(err);
+        showToast("❌ Error saving file");
+      }
     });
   });
 }
 
-// ✅ IndexedDB setup
-const dbRequest = indexedDB.open("offlineMDStore", 1);
-dbRequest.onupgradeneeded = function (e) {
-  const db = e.target.result;
-  db.createObjectStore("mdfiles");
-};
+// ✅ Toast Message
+function showToast(msg) {
+  let toast = document.getElementById("toast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "toast";
+    toast.style.cssText = `
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: #333; color: white; padding: 10px 20px; border-radius: 8px;
+      font-size: 14px; z-index: 9999; display: none;
+    `;
+    document.body.appendChild(toast);
+  }
+  toast.innerText = msg;
+  toast.style.display = "block";
+  setTimeout(() => {
+    toast.style.display = "none";
+  }, 3000);
+}
+
+// ✅ Check PWA
+function isRunningAsPWA() {
+  return window.matchMedia('(display-mode: standalone)').matches
+    || window.navigator.standalone === true
+    || document.referrer.startsWith("android-app://");
+}
+
+// ✅ IndexedDB Setup
+function getDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open("offlineMDStore", 1);
+    req.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      db.createObjectStore("mdfiles");
+    };
+    req.onsuccess = (e) => resolve(e.target.result);
+    req.onerror = (e) => reject(e.target.error);
+  });
+}
+
+
+
+function showTemporaryMessage(msg) {
+  const temp = document.createElement("div");
+  temp.textContent = msg;
+  temp.style.position = "fixed";
+  temp.style.bottom = "80px";
+  temp.style.left = "50%";
+  temp.style.transform = "translateX(-50%)";
+  temp.style.background = "#333";
+  temp.style.color = "#fff";
+  temp.style.padding = "10px 20px";
+  temp.style.borderRadius = "8px";
+  temp.style.zIndex = "9999";
+  document.body.appendChild(temp);
+  setTimeout(() => temp.remove(), 3000);
+}
+

@@ -27,7 +27,10 @@
   <link rel="stylesheet" href="{{ '/assets/css/share-button.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/home-buttons.css' | relative_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  
+  <link rel="manifest" href="/assets/manifest.json">
+  <meta name="theme-color" content="#007acc">
+
+
 
 </head>
 
@@ -56,17 +59,17 @@
     {{ content }}
   </div>
 
-   <!-- Floating share button -->
+  <!-- Floating share button -->
   <div class="floating-share">
-  <button class="share-toggle" onclick="toggleShareMenu()"><i class="fa-solid fa-share"></i></button>
-  <div class="floating-share-menu" id="shareMenu">
-    <a target="_blank" href="#" id="share-whatsapp"><i class="fab fa-whatsapp"></i></a>
-    <a target="_blank" href="#" id="share-telegram"><i class="fab fa-telegram"></i></a>
-    <a target="_blank" href="#" id="share-facebook"><i class="fab fa-facebook-f"></i></a>
-    <a target="_blank" href="#" id="share-twitter"><i class="fab fa-twitter"></i></a>
-    <button onclick="copyLink()" title="Copy"><i class="fas fa-link"></i></button>
+    <button class="share-toggle" onclick="toggleShareMenu()"><i class="fa-solid fa-share"></i></button>
+    <div class="floating-share-menu" id="shareMenu">
+      <a target="_blank" href="#" id="share-whatsapp"><i class="fab fa-whatsapp"></i></a>
+      <a target="_blank" href="#" id="share-telegram"><i class="fab fa-telegram"></i></a>
+      <a target="_blank" href="#" id="share-facebook"><i class="fab fa-facebook-f"></i></a>
+      <a target="_blank" href="#" id="share-twitter"><i class="fab fa-twitter"></i></a>
+      <button onclick="copyLink()" title="Copy"><i class="fas fa-link"></i></button>
+    </div>
   </div>
-</div>
 
 
   <!-- Fixed Footer -->
@@ -94,9 +97,10 @@
   </footer>
 
 
-<!-- Javascripts -->
+  <!-- Javascripts -->
   <script src="/assets/js/share-button.js"></script>
   <script src="/assets/js/slider.js"></script>
+  <script src="/assets/js/service-worker.js"></script>
 
 </body>
 
