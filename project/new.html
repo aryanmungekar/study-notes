@@ -158,53 +158,53 @@
             });
 
         function renderPages(md) {
-  const html = marked.parse(md);
-  const temp = document.createElement('div');
-  temp.style.position = 'absolute';
-  temp.style.visibility = 'hidden';
-  temp.style.width = '794px';
-  temp.style.padding = '40px';
-  temp.style.fontSize = currentFontSize + 'px';
-  temp.innerHTML = html;
-  document.body.appendChild(temp);
+            const html = marked.parse(md);
+            const temp = document.createElement('div');
+            temp.style.position = 'absolute';
+            temp.style.visibility = 'hidden';
+            temp.style.width = '794px';
+            temp.style.padding = '40px';
+            temp.style.fontSize = currentFontSize + 'px';
+            temp.innerHTML = html;
+            document.body.appendChild(temp);
 
-  const container = document.getElementById('pages-container');
-  container.innerHTML = '';
-  const elements = [...temp.children];
+            const container = document.getElementById('pages-container');
+            container.innerHTML = '';
+            const elements = [...temp.children];
 
-  let currentPageElement = createNewPage();
-  currentPageElement.style.fontSize = currentFontSize + 'px';
-  container.appendChild(currentPageElement);
+            let currentPageElement = createNewPage();
+            currentPageElement.style.fontSize = currentFontSize + 'px';
+            container.appendChild(currentPageElement);
 
-  pages = []; // reset
-  pages.push(currentPageElement);
+            pages = []; // reset
+            pages.push(currentPageElement);
 
-  for (let el of elements) {
-    const clone = el.cloneNode(true);
-    currentPageElement.appendChild(clone);
+            for (let el of elements) {
+                const clone = el.cloneNode(true);
+                currentPageElement.appendChild(clone);
 
-    if (currentPageElement.scrollHeight > currentPageElement.clientHeight) {
-      currentPageElement.removeChild(clone);
-      currentPageElement = createNewPage();
-      currentPageElement.style.fontSize = currentFontSize + 'px';
-      currentPageElement.appendChild(clone);
-      container.appendChild(currentPageElement);
-      pages.push(currentPageElement);
-    }
-  }
+                if (currentPageElement.scrollHeight > currentPageElement.clientHeight) {
+                    currentPageElement.removeChild(clone);
+                    currentPageElement = createNewPage();
+                    currentPageElement.style.fontSize = currentFontSize + 'px';
+                    currentPageElement.appendChild(clone);
+                    container.appendChild(currentPageElement);
+                    pages.push(currentPageElement);
+                }
+            }
 
-  document.body.removeChild(temp);
+            document.body.removeChild(temp);
 
-  updatePageControls();
+            updatePageControls();
 
-  if (isPaginated) {
-    showOnlyPage(currentPage);
-    enablePageInput(true);
-  } else {
-    showAllPages();
-    enablePageInput(false);
-  }
-}
+            if (isPaginated) {
+                showOnlyPage(currentPage);
+                enablePageInput(true);
+            } else {
+                showAllPages();
+                enablePageInput(false);
+            }
+        }
 
 
 
@@ -215,13 +215,13 @@
         }
 
         function adjustFontSize(change) {
-  currentFontSize += change;
-  if (currentFontSize < 10) currentFontSize = 10;
-  if (currentFontSize > 32) currentFontSize = 32;
+            currentFontSize += change;
+            if (currentFontSize < 10) currentFontSize = 10;
+            if (currentFontSize > 32) currentFontSize = 32;
 
-  document.getElementById('fontSizeDisplay').innerText = currentFontSize + 'px';
-  renderPages(originalMarkdown); // Re-render pages and keep view mode
-}
+            document.getElementById('fontSizeDisplay').innerText = currentFontSize + 'px';
+            renderPages(originalMarkdown); // Re-render pages and keep view mode
+        }
 
 
         function updatePageSlider() {
@@ -324,24 +324,24 @@
         }
 
         function updatePageControls() {
-  const pageIndicator = document.getElementById('pageIndicator');
-  if (isPaginated) {
-    pageIndicator.innerText = `Page ${currentPage}`;
-  } else {
-    pageIndicator.innerText = "All Pages";
-  }
-}
+            const pageIndicator = document.getElementById('pageIndicator');
+            if (isPaginated) {
+                pageIndicator.innerText = `Page ${currentPage}`;
+            } else {
+                pageIndicator.innerText = "All Pages";
+            }
+        }
 
-function showAllPages() {
-  pages.forEach(page => {
-    page.style.display = 'block';
-    page.style.fontSize = currentFontSize + 'px';
-  });
-}
+        function showAllPages() {
+            pages.forEach(page => {
+                page.style.display = 'block';
+                page.style.fontSize = currentFontSize + 'px';
+            });
+        }
 
-function enablePageInput(enabled) {
-  document.getElementById('pageSlider').disabled = !enabled;
-}
+        function enablePageInput(enabled) {
+            document.getElementById('pageSlider').disabled = !enabled;
+        }
 
 
     </script>
