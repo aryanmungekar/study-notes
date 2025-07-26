@@ -70,8 +70,9 @@
 
 /* ✅ PDF Grid */
 .pdf-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 140px); 
+  /* flex-wrap: wrap; */
   column-gap: 10px; /* ⬅️ Horizontal spacing between cards */
   row-gap: 20px;    /* ⬅️ Vertical spacing between rows */
   justify-content: space-evenly; /* optional: center cards */
