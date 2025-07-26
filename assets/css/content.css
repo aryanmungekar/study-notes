@@ -38,7 +38,7 @@
 
 /* ✅ Sticky Header */
 .header-bar {
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   background: #f8f9fa;
   padding: 10px 15px;
