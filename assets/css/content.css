@@ -70,7 +70,7 @@
 
 /* ✅ PDF Grid */
 .pdf-grid {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
   margin: 30px 0;
@@ -83,6 +83,8 @@
   text-align: center;
   transition: transform 0.2s;
   padding: 10px;
+  width: 162px;
+  height: 308px;
 }
 .pdf-card:hover {
   transform: translateY(-4px);
