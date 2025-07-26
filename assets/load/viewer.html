@@ -145,78 +145,274 @@
 
         <button onclick="generatePDF()">⬇️ Download PDF</button>
     </div>
-<iframe id="pdf-frame"></iframe>
 
     <script>
-  async function getDB() {
-    return new Promise((resolve, reject) => {
-      const request = indexedDB.open("OfflinePDFDB", 1);
-      request.onsuccess = (event) => {
-        resolve(event.target.result);
-      };
-      request.onerror = (event) => {
-        reject(event.target.error);
-      };
-    });
-  }
+        // Extract parameters from URL
+const urlParams = new URLSearchParams(window.location.search);
+const subjectName = urlParams.get("subject");
+const fileTitle = urlParams.get("title");
 
-  function showPDF(url) {
-    const iframe = document.getElementById("pdf-frame");
-    if (iframe) {
-      iframe.src = url;
-    } else {
-      const newIframe = document.createElement("iframe");
-      newIframe.id = "pdf-frame";
-      newIframe.src = url;
-      newIframe.style.width = "100%";
-      newIframe.style.height = "100vh";
-      newIframe.style.border = "none";
-      document.body.appendChild(newIframe);
-    }
-  }
+// Set dynamic titles
+if (subjectName) {
+    document.getElementById("dynamic-title").innerText = `📘 ${decodeURIComponent(subjectName)}`;
+}
+if (fileTitle) {
+    document.getElementById("unit-title").innerText = decodeURIComponent(fileTitle);
+}
 
-  async function loadOfflineFile(key) {
-    try {
-      const db = await getDB();
-      const tx = db.transaction("mdfiles", "readonly");
-      const store = tx.objectStore("mdfiles");
-      const request = store.get(key);
 
-      request.onsuccess = () => {
-        const blob = request.result;
-        if (blob) {
-          const blobUrl = URL.createObjectURL(blob);
-          showPDF(blobUrl);
+        let currentFontSize = 16;
+        let originalMarkdown = "";
+        let pages = [];
+
+        // Fetch and render from ?file=
+        const params = new URLSearchParams(window.location.search);
+        const file = params.get("file");
+
+        if (!file) {
+            document.getElementById('pages-container').innerHTML = `<h2>No file specified in URL!</h2>`;
         } else {
-          document.body.innerHTML = "<p style='padding:20px;'>⚠️ File not found in offline storage.</p>";
+            fetch(file)
+                .then(res => {
+                    if (!res.ok) throw new Error("File not found.");
+                    return res.text();
+                })
+                .then(md => {
+    originalMarkdown = md;
+    renderPages(md);
+
+    // ✅ Only set dynamic-title if subjectName wasn't provided
+    if (!subjectName) {
+        document.getElementById('dynamic-title').innerText =
+            `📘 ${file.split('/').pop().replace('.md', '').replace(/_/g, ' ')}`;
+    }
+})
+
+                .catch(err => {
+                    document.getElementById('pages-container').innerHTML = `<h2>Error</h2><p>${err.message}</p>`;
+                });
         }
-      };
 
-      request.onerror = () => {
-        document.body.innerHTML = "<p style='padding:20px;'>❌ Failed to read from offline storage.</p>";
-      };
-    } catch (err) {
-      console.error(err);
-      document.body.innerHTML = "<p style='padding:20px;'>❌ Error loading offline file.</p>";
-    }
-  }
 
-  window.addEventListener("DOMContentLoaded", () => {
-    const params = new URLSearchParams(window.location.search);
-    const offlineParam = params.get("offline");
-    const fileParam = params.get("file");
+        function renderPages(md) {
+            const html = marked.parse(md);
+            const temp = document.createElement('div');
+            temp.style.position = 'absolute';
+            temp.style.visibility = 'hidden';
+            temp.style.width = '794px';
+            temp.style.padding = '40px';
+            temp.style.fontSize = currentFontSize + 'px';
+            temp.innerHTML = html;
+            document.body.appendChild(temp);
 
-    if (offlineParam) {
-      const key = atob(offlineParam);
-      loadOfflineFile(key);
-    } else if (fileParam) {
-      showPDF(fileParam);
-    } else {
-      document.body.innerHTML = "<p style='padding:20px;'>❌ No file specified. Please open a PDF via a valid link.</p>";
-    }
-  });
-</script>
+            const container = document.getElementById('pages-container');
+            container.innerHTML = '';
+            const elements = [...temp.children];
 
+            let currentPageElement = createNewPage();
+            currentPageElement.style.fontSize = currentFontSize + 'px';
+            container.appendChild(currentPageElement);
+
+            pages = []; // reset
+            pages.push(currentPageElement);
+
+            for (let el of elements) {
+                const clone = el.cloneNode(true);
+                currentPageElement.appendChild(clone);
+
+                if (currentPageElement.scrollHeight > currentPageElement.clientHeight) {
+                    currentPageElement.removeChild(clone);
+                    currentPageElement = createNewPage();
+                    currentPageElement.style.fontSize = currentFontSize + 'px';
+                    currentPageElement.appendChild(clone);
+                    container.appendChild(currentPageElement);
+                    pages.push(currentPageElement);
+                }
+            }
+
+            document.body.removeChild(temp);
+
+            updatePageControls();
+
+            if (isPaginated) {
+                showOnlyPage(currentPage);
+                enablePageInput(true);
+            } else {
+                showAllPages();
+                enablePageInput(false);
+            }
+        }
+
+
+
+        function createNewPage() {
+            const page = document.createElement('div');
+            page.className = 'page';
+            return page;
+        }
+
+        function adjustFontSize(change) {
+            currentFontSize += change;
+            if (currentFontSize < 10) currentFontSize = 10;
+            if (currentFontSize > 32) currentFontSize = 32;
+
+            document.getElementById('fontSizeDisplay').innerText = currentFontSize + 'px';
+            renderPages(originalMarkdown); // Re-render pages and keep view mode
+        }
+
+
+        function updatePageSlider() {
+            pages = document.querySelectorAll('.page');
+            const slider = document.getElementById('pageSlider');
+            slider.max = pages.length;
+            slider.value = 1;
+            showOnlyPage(1);
+        }
+
+        function searchText() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            if (!query.trim()) {
+                showOnlyPage(currentPage);
+                return;
+            }
+
+            pages.forEach((page, idx) => {
+                const match = page.innerText.toLowerCase().includes(query);
+                if (isPaginated) {
+                    page.style.display = (match && idx + 1 === currentPage) ? 'block' : 'none';
+                } else {
+                    page.style.display = match ? 'block' : 'none';
+                }
+            });
+
+        }
+
+        let currentPage = 1;
+
+        function goToPage(pageNum) {
+            pageNum = parseInt(pageNum);
+            if (pageNum < 1 || pageNum > pages.length) return;
+            showOnlyPage(pageNum);
+        }
+
+        function showOnlyPage(n) {
+            currentPage = n;
+            pages.forEach((page, idx) => {
+                page.style.display = (idx + 1 === n) ? 'block' : 'none';
+            });
+            document.getElementById('pageSlider').value = n;
+            document.getElementById('pageIndicator').innerText = `Page ${n}`;
+        }
+
+        function generatePDF() {
+            const wrapper = document.createElement('div');
+            const cover = document.createElement('div');
+            cover.className = 'cover-page';
+            cover.style.cssText = `
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 250mm;
+        page-break-after: always;
+        text-align: center;
+        padding: 40px;
+        background-color: #f0f8ff;
+      `;
+            cover.innerHTML = `
+        <h1 style="font-size: 36px;">${subjectName || 'Notes Viewer'}</h1>
+    <h3>${fileTitle || ''}</h3>
+    <h4>${new Date().toLocaleDateString()}</h4>
+      `;
+
+            const content = document.createElement('div');
+            content.className = 'pdf-content';
+            content.style.padding = '20px';
+            content.innerHTML = marked.parse(originalMarkdown);
+
+            wrapper.appendChild(cover);
+            wrapper.appendChild(content);
+
+            html2pdf().set({
+                margin: 10,
+                filename: 'notes.pdf',
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['css', 'legacy'] }
+            }).from(wrapper).save();
+        }
+
+        let isPaginated = false;
+
+        function toggleViewMode() {
+            isPaginated = !isPaginated;
+            renderPages(originalMarkdown);
+            if (isPaginated) {
+                showOnlyPage(currentPage);
+                document.getElementById('pageSlider').disabled = false;
+            } else {
+                // Show all pages
+                pages.forEach(page => {
+                    page.style.display = 'block';
+                });
+                document.getElementById('pageIndicator').innerText = "All Pages";
+                document.getElementById('pageSlider').disabled = true;
+            }
+        }
+
+        function updatePageControls() {
+            const pageIndicator = document.getElementById('pageIndicator');
+            if (isPaginated) {
+                pageIndicator.innerText = `Page ${currentPage}`;
+            } else {
+                pageIndicator.innerText = "All Pages";
+            }
+        }
+
+        function showAllPages() {
+            pages.forEach(page => {
+                page.style.display = 'block';
+                page.style.fontSize = currentFontSize + 'px';
+            });
+        }
+
+        function enablePageInput(enabled) {
+            document.getElementById('pageSlider').disabled = !enabled;
+        }
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function (e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipeGesture();
+        });
+
+        function handleSwipeGesture() {
+            const minSwipeDistance = 50; // Adjust for sensitivity
+
+            if (!isPaginated) return; // Only activate in paginated mode
+
+            const distance = touchEndX - touchStartX;
+
+            if (Math.abs(distance) > minSwipeDistance) {
+                if (distance < 0) {
+                    // Swiped left → next page
+                    goToPage(currentPage + 1);
+                } else {
+                    // Swiped right → previous page
+                    goToPage(currentPage - 1);
+                }
+            }
+        }
+
+
+
+    </script>
 </body>
 
 </html>
