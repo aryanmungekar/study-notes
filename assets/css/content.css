@@ -70,8 +70,8 @@
 
 /* ✅ PDF Grid */
 .pdf-grid {
-  display: flex;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* match card min size */
   gap: 20px;
   margin: 30px 0;
 }
