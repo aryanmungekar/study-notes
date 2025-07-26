@@ -252,18 +252,27 @@ function setupDeleteButtons() {
   });
 }
 
-window.addEventListener("DOMContentLoaded", async () => {
+window.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
-  const offline = params.get("offline");
-  const file = params.get("file");
+  const offlineParam = params.get("offline");
+  const fileParam = params.get("file");
 
-  if (offline) {
-    const url = atob(offline);
+  if (offlineParam) {
+    const key = atob(offlineParam);
+    loadOfflineFile(key);
+  } else if (fileParam) {
+    showPDF(fileParam);
+  } else {
+    document.body.innerHTML = "<p>❌ No file specified.</p>";
+  }
+});
+
+async function loadOfflineFile(key) {
+  try {
     const db = await getDB();
-
     const tx = db.transaction("mdfiles", "readonly");
     const store = tx.objectStore("mdfiles");
-    const request = store.get(url);
+    const request = store.get(key);
 
     request.onsuccess = () => {
       const blob = request.result;
@@ -276,14 +285,14 @@ window.addEventListener("DOMContentLoaded", async () => {
     };
 
     request.onerror = () => {
-      document.body.innerHTML = "<p>❌ Failed to read offline file.</p>";
+      document.body.innerHTML = "<p>❌ Failed to read from offline storage.</p>";
     };
-  } else if (file) {
-    showPDF(file);
-  } else {
-    document.body.innerHTML = "<p>❌ No file specified.</p>";
+  } catch (err) {
+    console.error(err);
+    document.body.innerHTML = "<p>❌ Error loading offline file.</p>";
   }
-});
+}
+
 
 function showPDF(url) {
   const iframe = document.createElement("iframe");
