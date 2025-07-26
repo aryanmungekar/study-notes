@@ -55,7 +55,7 @@ function showCategoryContent(subjectCode, category, data) {
   loadPDFs(subjectCode, category, data);
 }
 
-function loadPDFs(subjectCode, category, allData) {
+async function loadPDFs(subjectCode, category, allData) {
   const grid = document.getElementById(category + "Grid");
   if (!grid) return;
   grid.innerHTML = "";
@@ -68,17 +68,16 @@ function loadPDFs(subjectCode, category, allData) {
     return;
   }
 
-  items.forEach((item) => {
+  const db = await getDB();
+
+  for (const item of items) {
     const card = document.createElement("div");
     card.className = "pdf-card";
 
-    const isDownloaded = localStorage.getItem(item.url) === "downloaded";
+    const isDownloaded = await checkFileDownloaded(db, item.url);
+
     const offlineUrl = `/assets/load/viewer.html?offline=${btoa(item.url)}`;
-    const onlineUrl = `/assets/load/viewer.html?file=${encodeURIComponent(
-      item.url
-    )}&title=${encodeURIComponent(item.title)}&subject=${encodeURIComponent(
-      subject.name
-    )}`;
+    const onlineUrl = `/assets/load/viewer.html?file=${encodeURIComponent(item.url)}&title=${encodeURIComponent(item.title)}&subject=${encodeURIComponent(subject.name)}`;
 
     card.innerHTML = `
       <img src="${item.thumbnail}" alt="${item.title}">
@@ -92,6 +91,11 @@ function loadPDFs(subjectCode, category, allData) {
         <button class="download-btn" data-url="${item.url}" title="Download">
           <i class="fas ${isDownloaded ? "fa-check-circle" : "fa-download"}"></i>
         </button>
+        ${isDownloaded ? `
+          <button class="delete-btn" data-url="${item.url}" title="Delete Offline File">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        ` : ""}
         <button class="share-btn" data-url="${onlineUrl}" title="Copy Link">
           <i class="fas fa-link"></i>
         </button>
@@ -99,11 +103,13 @@ function loadPDFs(subjectCode, category, allData) {
     `;
 
     grid.appendChild(card);
-  });
+  }
 
   setupShareButtons();
   setupDownloadButtons();
+  setupDeleteButtons();
 }
+
 
 function setupShareButtons() {
   document.querySelectorAll(".share-btn").forEach((btn) => {
@@ -139,10 +145,10 @@ function setupDownloadButtons() {
         const cache = await caches.open("markdown-cache");
         const response = await fetch(url);
         if (response.ok) {
-          const text = await response.text();
+          const blob = await response.blob();
           const db = await getDB();
           const tx = db.transaction("mdfiles", "readwrite");
-          tx.objectStore("mdfiles").put(text, url);
+          tx.objectStore("mdfiles").put(blob, url);
           localStorage.setItem(url, "downloaded");
 
           btn.innerHTML = `<i class="fas fa-check-circle"></i>`;
@@ -219,3 +225,12 @@ function showTemporaryMessage(msg) {
   setTimeout(() => temp.remove(), 3000);
 }
 
+async function checkFileDownloaded(db, url) {
+  return new Promise((resolve) => {
+    const tx = db.transaction("mdfiles", "readonly");
+    const store = tx.objectStore("mdfiles");
+    const request = store.get(url);
+    request.onsuccess = () => resolve(!!request.result);
+    request.onerror = () => resolve(false);
+  });
+}
