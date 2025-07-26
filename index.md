@@ -5,10 +5,10 @@ title: Home
 
 <div class="slider-container">
             <div class="slider-track" id="sliderTrack">
-                <img src="/assets/images/slider1.jpg" class="slide-img">
-                <img src="/assets/images/slider2.jpg" class="slide-img">
-                <img src="/assets/images/slider3.jpg" class="slide-img">
-                <img src="/assets/images/slider1.jpg" class="slide-img"> <!-- clone of first -->
+                <img src="/assets/images/1.png" class="slide-img">
+                <img src="/assets/images/2.png" class="slide-img">
+                <img src="/assets/images/3.png" class="slide-img">
+                <img src="/assets/images/1.png" class="slide-img"> <!-- clone of first -->
             </div>
         </div>
 
