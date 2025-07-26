@@ -85,8 +85,8 @@ function loadPDFs(subjectCode, category, allData) {
   <p>${item.exam}</p>
   <a href="${shareLink}" target="_blank">View PDF</a>
   <div class="share-group">
-    <button class="share-btn" data-url="${shareLink}" title="Copy Link">
-      <i class="fas fa-link"></i>
+    <button class="share-btn" data-url="${shareLink}" title="Share Link">
+      <i class="fa-solid fa-arrow-up-from-bracket"></i>
     </button>
   </div>
 `;
