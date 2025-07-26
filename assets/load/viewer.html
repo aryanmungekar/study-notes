@@ -412,22 +412,48 @@
 
         // if offline param is present, load from IndexedDB
         if (params.has("offline")) {
-            const key = atob(params.get("offline"));
-            const dbReq = indexedDB.open("offlineMDStore", 1);
-            dbReq.onsuccess = (e) => {
-                const db = e.target.result;
-                const tx = db.transaction("mdfiles", "readonly");
-                const getReq = tx.objectStore("mdfiles").get(key);
-                getReq.onsuccess = () => {
-                    const content = getReq.result;
-                    if (content) {
-                        renderMarkdown(content); // Your existing markdown render logic
-                    } else {
-                        document.body.innerHTML = "<p>❌ File not available offline.</p>";
-                    }
-                };
-            };
-        }
+    const offlineKey = atob(params.get("offline"));
+
+    // Prevent online file loading by clearing any content that may already have loaded
+    document.getElementById('pages-container').innerHTML = `<h3>📦 Loading offline content...</h3>`;
+
+    const request = indexedDB.open("offlineMDStore", 1);
+
+    request.onsuccess = (event) => {
+        const db = event.target.result;
+        const tx = db.transaction("mdfiles", "readonly");
+        const store = tx.objectStore("mdfiles");
+
+        const getRequest = store.get(offlineKey);
+
+        getRequest.onsuccess = () => {
+            const result = getRequest.result;
+            if (result) {
+                originalMarkdown = result;
+                renderPages(originalMarkdown);
+
+                // Set fallback titles if none provided
+                if (!subjectName) {
+                    document.getElementById('dynamic-title').innerText = `📘 Offline Notes`;
+                }
+                if (!fileTitle) {
+                    document.getElementById('unit-title').innerText = offlineKey.split('/').pop().replace('.md', '').replace(/_/g, ' ');
+                }
+            } else {
+                document.getElementById('pages-container').innerHTML = `<p>❌ Offline content not found for: ${offlineKey}</p>`;
+            }
+        };
+
+        getRequest.onerror = () => {
+            document.getElementById('pages-container').innerHTML = `<p>❌ Error retrieving offline content.</p>`;
+        };
+    };
+
+    request.onerror = () => {
+        document.getElementById('pages-container').innerHTML = `<p>❌ Could not open offline database.</p>`;
+    };
+}
+
 
 
     </script>

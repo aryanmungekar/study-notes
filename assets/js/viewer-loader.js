@@ -75,8 +75,7 @@ async function loadPDFs(subjectCode, category, allData) {
     card.className = "pdf-card";
 
     const isDownloaded = await checkFileDownloaded(db, item.url);
-
-    const offlineUrl = `/assets/load/viewer.html?offline=${btoa(item.url)}`;
+    const offlineUrl = `/assets/load/viewer.html?offline=${encodeBase64(item.url)}`;
     const onlineUrl = `/assets/load/viewer.html?file=${encodeURIComponent(item.url)}&title=${encodeURIComponent(item.title)}&subject=${encodeURIComponent(subject.name)}`;
 
     card.innerHTML = `
@@ -110,15 +109,16 @@ async function loadPDFs(subjectCode, category, allData) {
   setupDeleteButtons();
 }
 
+function encodeBase64(str) {
+  return btoa(unescape(encodeURIComponent(str)));
+}
 
 function setupShareButtons() {
   document.querySelectorAll(".share-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const shareUrl = window.location.origin + btn.getAttribute("data-url");
       if (navigator.share) {
-        navigator
-          .share({ title: "SPPU Notes", url: shareUrl })
-          .catch(console.error);
+        navigator.share({ title: "SPPU Notes", url: shareUrl }).catch(console.error);
       } else {
         navigator.clipboard
           .writeText(shareUrl)
@@ -138,7 +138,6 @@ function setupDownloadButtons() {
 
       if (!isRunningAsPWA()) {
         showToast("⚠️ Download works, but offline use needs app installation");
-        // ✅ Continue anyway — allow download!
       }
 
       try {
@@ -150,18 +149,15 @@ function setupDownloadButtons() {
 
         const blob = await response.blob();
 
-        // ✅ Save to IndexedDB
         const db = await getDB();
         const tx = db.transaction("mdfiles", "readwrite");
         tx.objectStore("mdfiles").put(blob, url);
         localStorage.setItem(url, "downloaded");
 
-        // ✅ Update UI
         btn.innerHTML = `<i class="fas fa-check-circle"></i>`;
-        viewLink.href = `/assets/load/viewer.html?offline=${btoa(url)}`;
+        viewLink.href = `/assets/load/viewer.html?offline=${encodeBase64(url)}`;
         viewLink.innerText = "✅ Open Offline";
 
-        // ✅ Add delete button dynamically if needed
         if (!card.querySelector(".delete-btn")) {
           const deleteBtn = document.createElement("button");
           deleteBtn.className = "delete-btn";
@@ -169,7 +165,7 @@ function setupDownloadButtons() {
           deleteBtn.setAttribute("title", "Delete Offline File");
           deleteBtn.innerHTML = `<i class="fas fa-trash-alt"></i>`;
           card.querySelector(".share-group").insertBefore(deleteBtn, card.querySelector(".share-btn"));
-          setupDeleteButtons(); // Reattach listener
+          setupDeleteButtons();
         }
 
         showToast("✅ File cached for offline use");
@@ -181,8 +177,6 @@ function setupDownloadButtons() {
   });
 }
 
-
-// ✅ Toast Message
 function showToast(msg) {
   let toast = document.getElementById("toast");
   if (!toast) {
@@ -202,14 +196,12 @@ function showToast(msg) {
   }, 3000);
 }
 
-// ✅ Check PWA
 function isRunningAsPWA() {
   return window.matchMedia('(display-mode: standalone)').matches
     || window.navigator.standalone === true
     || document.referrer.startsWith("android-app://");
 }
 
-// ✅ IndexedDB Setup
 function getDB() {
   return new Promise((resolve, reject) => {
     const req = indexedDB.open("offlineMDStore", 1);
@@ -222,24 +214,6 @@ function getDB() {
   });
 }
 
-
-
-function showTemporaryMessage(msg) {
-  const temp = document.createElement("div");
-  temp.textContent = msg;
-  temp.style.position = "fixed";
-  temp.style.bottom = "80px";
-  temp.style.left = "50%";
-  temp.style.transform = "translateX(-50%)";
-  temp.style.background = "#333";
-  temp.style.color = "#fff";
-  temp.style.padding = "10px 20px";
-  temp.style.borderRadius = "8px";
-  temp.style.zIndex = "9999";
-  document.body.appendChild(temp);
-  setTimeout(() => temp.remove(), 3000);
-}
-
 async function checkFileDownloaded(db, url) {
   return new Promise((resolve) => {
     const tx = db.transaction("mdfiles", "readonly");
@@ -248,4 +222,75 @@ async function checkFileDownloaded(db, url) {
     request.onsuccess = () => resolve(!!request.result);
     request.onerror = () => resolve(false);
   });
+}
+
+function setupDeleteButtons() {
+  document.querySelectorAll(".delete-btn").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const url = btn.getAttribute("data-url");
+      const card = btn.closest(".pdf-card");
+      const db = await getDB();
+
+      const tx = db.transaction("mdfiles", "readwrite");
+      tx.objectStore("mdfiles").delete(url);
+      localStorage.removeItem(url);
+
+      showToast("🗑️ File deleted from offline storage");
+
+      const viewLink = card.querySelector(".view-link");
+      const subjectName = new URLSearchParams(viewLink.href.split("?")[1]).get("subject");
+      const fileUrl = new URLSearchParams(viewLink.href.split("?")[1]).get("file");
+
+      viewLink.href = `/assets/load/viewer.html?file=${encodeURIComponent(fileUrl)}&title=${encodeURIComponent(card.querySelector("h4").innerText)}&subject=${encodeURIComponent(subjectName)}`;
+      viewLink.innerText = "View PDF";
+
+      btn.remove();
+
+      const downloadBtn = card.querySelector(".download-btn i");
+      if (downloadBtn) downloadBtn.className = "fas fa-download";
+    });
+  });
+}
+
+window.addEventListener("DOMContentLoaded", async () => {
+  const params = new URLSearchParams(window.location.search);
+  const offline = params.get("offline");
+  const file = params.get("file");
+
+  if (offline) {
+    const url = atob(offline);
+    const db = await getDB();
+
+    const tx = db.transaction("mdfiles", "readonly");
+    const store = tx.objectStore("mdfiles");
+    const request = store.get(url);
+
+    request.onsuccess = () => {
+      const blob = request.result;
+      if (blob) {
+        const blobUrl = URL.createObjectURL(blob);
+        showPDF(blobUrl);
+      } else {
+        document.body.innerHTML = "<p>⚠️ File not found in offline storage.</p>";
+      }
+    };
+
+    request.onerror = () => {
+      document.body.innerHTML = "<p>❌ Failed to read offline file.</p>";
+    };
+  } else if (file) {
+    showPDF(file);
+  } else {
+    document.body.innerHTML = "<p>❌ No file specified.</p>";
+  }
+});
+
+function showPDF(url) {
+  const iframe = document.createElement("iframe");
+  iframe.src = url;
+  iframe.style.width = "100%";
+  iframe.style.height = "100vh";
+  iframe.style.border = "none";
+  document.body.innerHTML = "";
+  document.body.appendChild(iframe);
 }
