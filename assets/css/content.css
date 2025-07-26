@@ -72,8 +72,9 @@
 .pdf-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center; /* optional: center cards */
+  column-gap: 10px; /* ⬅️ Horizontal spacing between cards */
+  row-gap: 20px;    /* ⬅️ Vertical spacing between rows */
+  justify-content: left; /* optional: center cards */
   margin: 30px 0;
 }
 
@@ -86,8 +87,8 @@
   transition: transform 0.2s;
   padding: 10px;
 
-  width: 162px;   /* ✅ Fixed size */
-  height: 267px;  /* ✅ Fixed size */
+  width: 140px;   /* ✅ Fixed size */
+  height: 279px;  /* ✅ Fixed size */
   flex: 0 0 auto; /* ✅ Prevent stretching/shrinking */
 }
 
@@ -158,7 +159,7 @@
 .share-group {
   position: absolute;
   right: 0px;
-  bottom: 220px;
+  bottom: 234px;
   display: flex;
   gap: 6px;
   background: rgba(255, 255, 255, 0.9);
