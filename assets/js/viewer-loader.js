@@ -137,28 +137,42 @@ function setupDownloadButtons() {
       const viewLink = card.querySelector(".view-link");
 
       if (!isRunningAsPWA()) {
-        showToast("📥 Download the app to use offline feature");
-        return;
+        showToast("⚠️ Download works, but offline use needs app installation");
+        // ✅ Continue anyway — allow download!
       }
 
       try {
-        const cache = await caches.open("markdown-cache");
         const response = await fetch(url);
-        if (response.ok) {
-          const blob = await response.blob();
-          const db = await getDB();
-          const tx = db.transaction("mdfiles", "readwrite");
-          tx.objectStore("mdfiles").put(blob, url);
-          localStorage.setItem(url, "downloaded");
-
-          btn.innerHTML = `<i class="fas fa-check-circle"></i>`;
-          viewLink.href = `/assets/load/viewer.html?offline=${btoa(url)}`;
-          viewLink.innerText = "✅ Open Offline";
-
-          showToast("✅ File cached for offline use");
-        } else {
+        if (!response.ok) {
           showToast("❌ Failed to fetch file");
+          return;
         }
+
+        const blob = await response.blob();
+
+        // ✅ Save to IndexedDB
+        const db = await getDB();
+        const tx = db.transaction("mdfiles", "readwrite");
+        tx.objectStore("mdfiles").put(blob, url);
+        localStorage.setItem(url, "downloaded");
+
+        // ✅ Update UI
+        btn.innerHTML = `<i class="fas fa-check-circle"></i>`;
+        viewLink.href = `/assets/load/viewer.html?offline=${btoa(url)}`;
+        viewLink.innerText = "✅ Open Offline";
+
+        // ✅ Add delete button dynamically if needed
+        if (!card.querySelector(".delete-btn")) {
+          const deleteBtn = document.createElement("button");
+          deleteBtn.className = "delete-btn";
+          deleteBtn.setAttribute("data-url", url);
+          deleteBtn.setAttribute("title", "Delete Offline File");
+          deleteBtn.innerHTML = `<i class="fas fa-trash-alt"></i>`;
+          card.querySelector(".share-group").insertBefore(deleteBtn, card.querySelector(".share-btn"));
+          setupDeleteButtons(); // Reattach listener
+        }
+
+        showToast("✅ File cached for offline use");
       } catch (err) {
         console.error(err);
         showToast("❌ Error saving file");
@@ -166,6 +180,7 @@ function setupDownloadButtons() {
     });
   });
 }
+
 
 // ✅ Toast Message
 function showToast(msg) {
