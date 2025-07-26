@@ -74,7 +74,7 @@
   flex-wrap: wrap;
   column-gap: 10px; /* ⬅️ Horizontal spacing between cards */
   row-gap: 20px;    /* ⬅️ Vertical spacing between rows */
-  justify-content: left; /* optional: center cards */
+  justify-content: space-evenly; /* optional: center cards */
   margin: 30px 0;
 }
 
