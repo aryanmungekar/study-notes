@@ -84,7 +84,7 @@
   transition: transform 0.2s;
   padding: 10px;
   width: 162px;
-  height: 308px; 
+  height: 267px; 
 }
 .pdf-card:hover {
   transform: translateY(-4px);
@@ -151,8 +151,8 @@
 
 .share-group {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  right: 0px;
+  bottom: 220px;
   display: flex;
   gap: 6px;
   background: rgba(255, 255, 255, 0.9);
