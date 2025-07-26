@@ -71,9 +71,8 @@
 /* ✅ PDF Grid */
 .pdf-grid {
   display: flex;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* match card min size */
   gap: 20px;
-  justify-content: center; /* optional: center cards */
   margin: 30px 0;
 }
 .pdf-card {
@@ -84,10 +83,9 @@
   text-align: center;
   transition: transform 0.2s;
   padding: 10px;
-
-  width: 162px;   /* ✅ Fixed size */
-  height: 267px;  /* ✅ Fixed size */
-  flex: 0 0 auto; /* ✅ Prevent stretching/shrinking */
+  width: 162px;
+  height: 267px;
+  flex: 0 0 auto;
 }
 
 
