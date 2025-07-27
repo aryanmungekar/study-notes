@@ -298,10 +298,10 @@ nav a:hover {
 /* space for android and iphone buttons on pwa */
 @media (max-width: 600px) and (display-mode: standalone) {
   .mobile-footer {
-    padding-bottom: env(safe-area-inset-bottom, 20px); /* Use actual safe area if available */
+    padding-bottom: env(safe-area-inset-bottom, 40px); /* Use actual safe area if available */
   }
 
   .footer-item {
-    padding-bottom: env(safe-area-inset-bottom, 20px);
+    padding-bottom: env(safe-area-inset-bottom, 40px);
   }
 }
