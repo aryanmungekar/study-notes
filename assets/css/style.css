@@ -295,4 +295,14 @@ nav a:hover {
   }
 }
 
-  
+/* space for android and iphone buttons on pwa */
+@media (max-width: 600px) and (display-mode: standalone) {
+  .mobile-footer {
+    padding-bottom: env(safe-area-inset-bottom, 20px); /* Use actual safe area if available */
+    height: auto; /* Allow height to grow naturally */
+  }
+
+  .footer-item {
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+  }
+}
