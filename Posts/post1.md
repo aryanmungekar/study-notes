@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: "July 28 Update"
 description: "Added Unit 3 PYQ and solved notes for PPS."
 ---
