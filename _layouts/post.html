@@ -22,101 +22,154 @@
   <link rel="stylesheet" href="{{ '/assets/css/home-buttons.css' | relative_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    header {
+      background-color: #007acc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
     .layout {
       display: flex;
-      flex-direction: row;
+      gap: 20px;
       max-width: 1200px;
       margin: auto;
       padding: 20px;
-      gap: 20px;
+      flex: 1;
     }
 
-    .sidebar-left,
-    .sidebar-right {
-      width: 240px;
-      background-color: #f4f4f4;
-      border-radius: 12px;
+    .sidebar {
+      flex: 0 0 220px;
+      background-color: #ffffff;
       padding: 20px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .sidebar h3 {
+      margin-top: 0;
+      color: #007acc;
+      font-size: 1.1rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 8px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 10px;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #007acc;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
     }
 
     .content {
       flex: 1;
       background-color: #ffffff;
-      border-radius: 12px;
       padding: 30px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
 
-    @media (max-width: 960px) {
+    .content h2 {
+      color: #007acc;
+      margin-top: 0;
+    }
+
+    footer {
+      background-color: #222;
+      color: #aaa;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
       .layout {
         flex-direction: column;
       }
-      .sidebar-left, .sidebar-right {
+      .sidebar {
         width: 100%;
       }
     }
   </style>
-
-  <!-- PWA -->
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#007acc">
 </head>
 
 <body>
 
-  <!-- 🔹 Fixed Header -->
-  <!-- <header>
-    <div class="header-content">
-      <div><h1>Engineering Notes</h1></div>
-      <div>
-        <nav>
-          <a href="/search/"><i class="fa-solid fa-magnifying-glass"></i></a>
-        </nav>
-      </div>
-    </div>
-  </header> -->
+  <!-- ✅ Header -->
+  <header>
+    <i class="fas fa-graduation-cap"></i> My Educational Portal
+  </header>
 
-  <!-- 🔹 Install App Button -->
-  <button id="install-button" style="display: none; position: fixed; bottom: 70px; right: 20px; padding: 10px 20px; font-size: 16px; background-color: #007acc; color: white; border: none; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 999;">
-    📲 Install App
-  </button>
-
-  <!-- 🔹 3-Column Layout -->
+  <!-- ✅ Layout with Two Sidebars and Main Content -->
   <div class="layout">
-    <aside class="sidebar-left">
-      <h3>📁 Categories</h3>
+    <!-- 🔹 Left Sidebar -->
+    <aside class="sidebar">
+      <h3>📚 Subjects</h3>
       <ul>
-        <li><a href="/daily/">Daily Updates</a></li>
-        <li><a href="/2019-pattern/">2019 Pattern</a></li>
-        <li><a href="/2024-pattern/">2024 Pattern</a></li>
+        <li><a href="#">Engineering Mathematics</a></li>
+        <li><a href="#">PPS</a></li>
+        <li><a href="#">BEE</a></li>
+        <li><a href="#">EM</a></li>
       </ul>
     </aside>
 
-    <main class="content">
-      {{ content }}
-    </main>
+      <!-- Main content area -->
+  <div class="main-content">
+    {{ content }}
+  </div>
 
-    <aside class="sidebar-right">
+    <!-- 🔹 Right Sidebar -->
+    <aside class="sidebar">
       <h3>🔗 Quick Links</h3>
       <ul>
-        <li><a href="/search/">🔍 Search</a></li>
-        <li><a href="/pages/profile/">👤 Profile</a></li>
-        <li><a href="/pages/following/">👥 Following</a></li>
+        <li><a href="#">Search</a></li>
+        <li><a href="#">All Updates</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Community</a></li>
       </ul>
     </aside>
   </div>
 
-  <!-- 🔹 Footer -->
-  <!-- <footer class="mobile-footer">
-    <a href="/" class="footer-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
-    <a href="/pages/updates/" class="footer-item"><i class="fas fa-newspaper"></i><span>Updates</span></a>
-    <a href="/pages/community/" class="footer-item"><i class="fas fa-comments"></i><span>Community</span></a>
-    <a href="/pages/following/" class="footer-item"><i class="fas fa-user-friends"></i><span>Following</span></a>
-    <a href="/pages/profile/" class="footer-item"><i class="fas fa-user"></i><span>Profile</span></a>
-  </footer> -->
+  <!-- ✅ Footer -->
+  <footer>
+    © 2025 My-SPPU Notes | Built with ❤️ for students
+  </footer>
 
-  <!-- 🔹 Scripts -->
+
+  <!-- Javascripts -->
   <script src="/assets/js/share-button.js"></script>
   <script src="/assets/js/slider.js"></script>
   <script src="/service-worker.js"></script>
@@ -128,23 +181,37 @@
         .catch(err => console.error('❌ SW registration failed', err));
     }
 
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      document.getElementById('install-button').style.display = 'block';
-    });
 
-    document.getElementById('install-button').addEventListener('click', () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-          console.log(choiceResult.outcome === 'accepted' ? '✅ User accepted install' : '❌ User dismissed install');
-          deferredPrompt = null;
-        });
-      }
-    });
-  </script>
+
+
+    let deferredPrompt;
+
+  // Listen for the event
+  window.addEventListener('beforeinstallprompt', (e) => {
+    console.log('✅ beforeinstallprompt fired');
+    // Prevent Chrome's default prompt
+    e.preventDefault();
+    deferredPrompt = e;
+
+    // Show a custom install button
+    document.getElementById('install-button').style.display = 'block';
+  });
+
+  // Handle click on install button
+  document.getElementById('install-button').addEventListener('click', () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();  // Show install prompt
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('✅ User accepted the install prompt');
+        } else {
+          console.log('❌ User dismissed the install prompt');
+        }
+        deferredPrompt = null;
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
