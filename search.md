@@ -47,7 +47,7 @@ permalink: /search/
 
 
   <h1>🔍 Search Notes</h1>
-  <input type="text" id="search-box" placeholder="Type to search notes..." autocomplete="off">
+  <input type="text" id="search-box" placeholder="Type to search Notes, Subject Codes..." autocomplete="off">
   <ul id="search-results"></ul>
 
   <script src="https://unpkg.com/lunr/lunr.js"></script>
