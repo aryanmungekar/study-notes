@@ -1,83 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
 
   <!-- 🔽 SEO START -->
   <title>{{ page.title | default: "SPPU Notes - PYQ & Solved Papers" }}</title>
-  <meta name="description" content="{{ page.description | default: "Download solved SPPU notes and previous year question papers for Computer Engineering, IT, and AI & DS. Covers 2019 and 2024 pattern for Insem and Endsem exams." }}">
-  <meta name="keywords" content="{{ page.keywords | default: "SPPU notes, PYQ, solved papers, Computer Engineering, IT, AI & DS, 2019 pattern, 2024 pattern, Insem, Endsem" }}">
+  <meta name="description" content="{{ page.description | default: " Download solved SPPU notes and previous year
+    question papers for Computer Engineering, Information Technology, and AI & Data Science. Covers 2019 and 2024
+    pattern for Insem and Endsem exams." }}">
+  <meta name="keywords" content="{{ page.keywords | default: " SPPU notes, PYQ, solved papers, Computer Engineering, IT,
+    AI & DS, 2019 pattern, 2024 pattern, Insem, Endsem, SPPU question papers" }}">
   <meta name="author" content="{{ site.author | default: 'Aryan Mungekar' }}">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="{{ page.title | default: 'SPPU Notes - PYQ & Solved Papers' }}">
-  <meta property="og:description" content="{{ page.description | default: 'Solved SPPU notes and question papers for Computer, IT, and AI & DS (2019 & 2024 pattern). Includes Insem and Endsem coverage.' }}">
+  <meta property="og:description"
+    content="{{ page.description | default: 'Solved SPPU notes and question papers for Computer, IT, and AI & DS (2019 & 2024 pattern). Includes Insem and Endsem coverage.' }}">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_IN">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
+
+  <!-- End SEO block -->
+
+  <!-- 🔽 Structured Data / Schema.org Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOccupationalProgram",
+    "name": "Engineering Physics Notes 2024 SPPU",
+    "educationalCredentialAwarded": "Bachelor of Engineering",
+    "provider": {
+      "@type": "CollegeOrUniversity",
+      "name": "Savitribai Phule Pune University"
+    }
+  }
+  </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- CSS -->
-  <!-- <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}"> -->
-  <!-- <link rel="stylesheet" href="{{ '/assets/css/share-button.css' | relative_url }}"> -->
-  <!-- <link rel="stylesheet" href="{{ '/assets/css/home-buttons.css' | relative_url }}"> -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/share-button.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/home-buttons.css' | relative_url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- pwa app -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#007acc">
+
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
-
-    body {
-      display: flex;
-      flex-direction: column;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
-      background-image: url('https://my-sppu.netlify.app/assets/images/wallpaper3.png');
-      background-size: cover; /* or contain */
-      background-position: center;
-      background-repeat: no-repeat;
-      height: 100vh;
-      margin: 0;
-    }
-
-    header {
-      background-color: #007acc;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    .layout {
+    .main-wrapper {
       display: flex;
       gap: 20px;
-      max-width: 1200px;
-      margin: auto;
       padding: 20px;
-      flex: 1;
     }
 
     .sidebar {
-      flex: 0 0 220px;
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+      width: 220px;
+      background-color: #f0f0f0;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    .sidebar h3 {
-      margin-top: 0;
-      color: #007acc;
-      font-size: 1.1rem;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 8px;
+    .sidebar h2 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
     }
 
     .sidebar ul {
@@ -85,93 +71,114 @@
       padding: 0;
     }
 
-    .sidebar li {
-      margin-bottom: 10px;
+    .sidebar ul li {
+      margin: 10px 0;
     }
 
-    .sidebar a {
+    .sidebar ul li a {
       text-decoration: none;
+      color: #333;
+      transition: color 0.3s;
+    }
+
+    .sidebar ul li a:hover {
       color: #007acc;
-      font-weight: 500;
-      transition: 0.2s;
     }
 
-    .sidebar a:hover {
-      text-decoration: underline;
-    }
-
-    .content {
+    .main-content {
       flex: 1;
-      background-color: #ffffff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      padding: 10px;
     }
 
-    .content h2 {
-      color: #007acc;
-      margin-top: 0;
-    }
-
-    footer {
-      background-color: #222;
-      color: #aaa;
-      text-align: center;
-      padding: 15px 10px;
-      font-size: 14px;
-    }
-
-    @media (max-width: 600px) {
-      .layout {
+    @media (max-width: 768px) {
+      .main-wrapper {
         flex-direction: column;
       }
+
       .sidebar {
         width: 100%;
+        margin-bottom: 20px;
       }
     }
   </style>
+
+
+
+
 </head>
 
 <body>
 
-  <!-- ✅ Header -->
+  <!-- Fixed Header -->
   <header>
-    <i class="fas fa-graduation-cap"></i> My Educational Portal
+    <div class="header-content">
+      <div>
+        <h1>Engineering Notes</h1>
+      </div>
+      <div>
+        <nav>
+          <!-- Add more buttons here if needed -->
+          <a href="/search/">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </a>
+        </nav>
+      </div>
+    </div>
   </header>
 
-  <!-- ✅ Layout with Two Sidebars and Main Content -->
-  <div class="layout">
-    <!-- 🔹 Left Sidebar -->
+
+  <!-- Main content with sidebar -->
+  <div class="main-wrapper">
     <aside class="sidebar">
-      <h3>📚 Subjects</h3>
+      <h2>Quick Links</h2>
       <ul>
-        <li><a href="#">Engineering Mathematics</a></li>
-        <li><a href="#">PPS</a></li>
-        <li><a href="#">BEE</a></li>
-        <li><a href="#">EM</a></li>
+        <li><a href="/notes/">📘 Notes</a></li>
+        <li><a href="/projects/">💡 Projects</a></li>
+        <li><a href="/placements/">🎯 Placements</a></li>
+        <li><a href="/posts/">📝 Posts</a></li>
       </ul>
     </aside>
 
-      <!-- Main content area -->
-  <div style="background-color: white"; class="main-content">
-    {{ content }}
+    <main class="main-content">
+      {{ content }}
+    </main>
   </div>
 
-    <!-- 🔹 Right Sidebar -->
-    <aside class="sidebar">
-      <h3>🔗 Quick Links</h3>
-      <ul>
-        <li><a href="#">Search</a></li>
-        <li><a href="#">All Updates</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Community</a></li>
-      </ul>
-    </aside>
+  <!-- Floating share button -->
+  <div class="floating-share">
+    <button class="share-toggle" onclick="toggleShareMenu()"><i class="fa-solid fa-share"></i></button>
+    <div class="floating-share-menu" id="shareMenu">
+      <a target="_blank" href="#" id="share-whatsapp"><i class="fab fa-whatsapp"></i></a>
+      <a target="_blank" href="#" id="share-telegram"><i class="fab fa-telegram"></i></a>
+      <a target="_blank" href="#" id="share-facebook"><i class="fab fa-facebook-f"></i></a>
+      <a target="_blank" href="#" id="share-twitter"><i class="fab fa-twitter"></i></a>
+      <button onclick="copyLink()" title="Copy"><i class="fas fa-link"></i></button>
+    </div>
   </div>
 
-  <!-- ✅ Footer -->
-  <footer>
-    © 2025 My-SPPU Notes | Built with ❤️ for students
+
+  <!-- Fixed Footer -->
+  <footer class="mobile-footer">
+    <a href="/" class="footer-item">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+    <a href="/pages/updates/" class="footer-item">
+      <i class="fas fa-newspaper"></i>
+      <span>Updates</span>
+    </a>
+    <a href="/pages/community/" class="footer-item">
+      <i class="fas fa-comments"></i>
+      <span>Community</span>
+    </a>
+    <a href="/pages/following/" class="footer-item">
+      <i class="fas fa-user-friends"></i>
+      <span>Following</span>
+    </a>
+    <a href="/pages/profile/" class="footer-item">
+      <i class="fas fa-user"></i>
+      <span>Profile</span>
+    </a>
   </footer>
 
 
@@ -192,32 +199,38 @@
 
     let deferredPrompt;
 
-  // Listen for the event
-  window.addEventListener('beforeinstallprompt', (e) => {
-    console.log('✅ beforeinstallprompt fired');
-    // Prevent Chrome's default prompt
-    e.preventDefault();
-    deferredPrompt = e;
+    // Listen for the event
+    window.addEventListener('beforeinstallprompt', (e) => {
+      console.log('✅ beforeinstallprompt fired');
+      // Prevent Chrome's default prompt
+      e.preventDefault();
+      deferredPrompt = e;
 
-    // Show a custom install button
-    document.getElementById('install-button').style.display = 'block';
-  });
+      // Show a custom install button
+      document.getElementById('install-button').style.display = 'block';
+    });
 
-  // Handle click on install button
-  document.getElementById('install-button').addEventListener('click', () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();  // Show install prompt
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('✅ User accepted the install prompt');
-        } else {
-          console.log('❌ User dismissed the install prompt');
-        }
-        deferredPrompt = null;
-      });
-    }
-  });
-</script>
+    // Handle click on install button
+    document.getElementById('install-button').addEventListener('click', () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();  // Show install prompt
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('✅ User accepted the install prompt');
+          } else {
+            console.log('❌ User dismissed the install prompt');
+          }
+          deferredPrompt = null;
+        });
+      }
+    });
+  </script>
+
+
+
+
+
 
 </body>
+
 </html>
