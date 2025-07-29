@@ -47,59 +47,101 @@
   <meta name="theme-color" content="#007acc">
 
   <style>
-    .main-wrapper {
-      display: flex;
-      gap: 20px;
-      padding: 20px;
-    }
+    /* Wrapper for sidebars and main content */
+.main-wrapper {
+  display: flex;
+  gap: 20px;
+  padding: 80px 20px 80px; /* Top and bottom padding to prevent header/footer overlap */
+  box-sizing: border-box;
+  min-height: 100vh;
+}
 
-    .sidebar {
-      width: 220px;
-      background-color: #f0f0f0;
-      border-radius: 10px;
-      padding: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
+/* Common sidebar styling */
+.sidebar {
+  width: 220px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
 
-    .sidebar h2 {
-      font-size: 1.2em;
-      margin-bottom: 10px;
-    }
+.sidebar h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
 
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-    }
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-    .sidebar ul li {
-      margin: 10px 0;
-    }
+.sidebar ul li {
+  margin: 10px 0;
+}
 
-    .sidebar ul li a {
-      text-decoration: none;
-      color: #333;
-      transition: color 0.3s;
-    }
+.sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+}
 
-    .sidebar ul li a:hover {
-      color: #007acc;
-    }
+.sidebar ul li a:hover {
+  color: #007acc;
+}
 
-    .main-content {
-      flex: 1;
-      padding: 10px;
-    }
+/* Main content styling */
+.main-content {
+  flex: 1;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
 
-    @media (max-width: 768px) {
-      .main-wrapper {
-        flex-direction: column;
-      }
+/* Header and footer fix (if they are fixed) */
+body {
+  padding-top: 60px;    /* Match header height */
+  padding-bottom: 60px; /* Match footer height */
+}
 
-      .sidebar {
-        width: 100%;
-        margin-bottom: 20px;
-      }
-    }
+/* Fixed header */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Fixed footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #ffffff;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive stacking on small screens */
+@media (max-width: 768px) {
+  .main-wrapper {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .main-content {
+    padding: 15px;
+  }
+}
+
   </style>
 
 
@@ -127,22 +169,31 @@
   </header>
 
 
-  <!-- Main content with sidebar -->
-  <div class="main-wrapper">
-    <aside class="sidebar">
-      <h2>Quick Links</h2>
-      <ul>
-        <li><a href="/notes/">📘 Notes</a></li>
-        <li><a href="/projects/">💡 Projects</a></li>
-        <li><a href="/placements/">🎯 Placements</a></li>
-        <li><a href="/posts/">📝 Posts</a></li>
-      </ul>
-    </aside>
+<!-- Main layout with left sidebar, content, and right sidebar -->
+<div class="main-wrapper">
+  <aside class="sidebar-left">
+    <h3>Navigation</h3>
+    <ul>
+      <li><a href="/notes/">📘 Notes</a></li>
+      <li><a href="/projects/">💡 Projects</a></li>
+      <li><a href="/placements/">🎯 Placements</a></li>
+    </ul>
+  </aside>
 
-    <main class="main-content">
-      {{ content }}
-    </main>
-  </div>
+  <main class="main-content">
+    {{ content }}
+  </main>
+
+  <aside class="sidebar-right">
+    <h3>Resources</h3>
+    <ul>
+      <li><a href="/updates/">📢 Updates</a></li>
+      <li><a href="/community/">💬 Community</a></li>
+      <li><a href="/profile/">👤 Profile</a></li>
+    </ul>
+  </aside>
+</div>
+
 
   <!-- Floating share button -->
   <div class="floating-share">
