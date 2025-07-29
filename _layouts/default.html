@@ -117,32 +117,32 @@
 
     let deferredPrompt;
 
-  // Listen for the event
-  window.addEventListener('beforeinstallprompt', (e) => {
-    console.log('✅ beforeinstallprompt fired');
-    // Prevent Chrome's default prompt
-    e.preventDefault();
-    deferredPrompt = e;
+    // Listen for the event
+    window.addEventListener('beforeinstallprompt', (e) => {
+      console.log('✅ beforeinstallprompt fired');
+      // Prevent Chrome's default prompt
+      e.preventDefault();
+      deferredPrompt = e;
 
-    // Show a custom install button
-    document.getElementById('install-button').style.display = 'block';
-  });
+      // Show a custom install button
+      document.getElementById('install-button').style.display = 'block';
+    });
 
-  // Handle click on install button
-  document.getElementById('install-button').addEventListener('click', () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();  // Show install prompt
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('✅ User accepted the install prompt');
-        } else {
-          console.log('❌ User dismissed the install prompt');
-        }
-        deferredPrompt = null;
-      });
-    }
-  });
-</script>
+    // Handle click on install button
+    document.getElementById('install-button').addEventListener('click', () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();  // Show install prompt
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('✅ User accepted the install prompt');
+          } else {
+            console.log('❌ User dismissed the install prompt');
+          }
+          deferredPrompt = null;
+        });
+      }
+    });
+  </script>
 
 
 
