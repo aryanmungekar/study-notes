@@ -1,7 +1,9 @@
 ---
 layout: post
-title: July 28 Update
+title: FE (First Year) SPPU 2024 Pattern Notes and Solved Question Papers
 ---
 
 
-<h2>Patterhbn 2019</h2>
+<h1>FE (First Year) SPPU 2024 Pattern Notes and Solved Question Papers</h1>
+
+
