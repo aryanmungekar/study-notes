@@ -195,8 +195,8 @@ nav a:hover {
   .mobile-footer {
     top: 60px; /* below header */
     bottom: auto;
-    left: auto;
     right: auto;
+    left: auto;
     height: calc(100vh - 60px);
     width: 70px;
     flex-direction: column;
