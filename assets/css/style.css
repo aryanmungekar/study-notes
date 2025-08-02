@@ -144,8 +144,9 @@ nav a:hover {
 .mobile-footer {
   position: fixed;
   bottom: 5px;
-  left: 0;
-  width: 100%;
+  left: 5px;
+  right: 5px;
+  width: auto;
   height: 60px;
   background-color: #121212;
   display: flex;
@@ -195,7 +196,7 @@ nav a:hover {
     top: 60px; /* below header */
     bottom: auto;
     left: auto;
-    right: 0;
+    right: auto;
     height: calc(100vh - 60px);
     width: 70px;
     flex-direction: column;

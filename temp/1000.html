@@ -1,0 +1,423 @@
+<html>
+
+<head>
+    <title>ee</title>
+    
+    <style>
+      .pdf-card {
+  width: 200px;
+  height: 270px;
+  background: #16161d;
+  border: 2px solid #555;
+  border-radius: 10px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+  overflow: hidden;
+  padding: 12px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  perspective: 800px;
+}
+
+.pdf-card:hover {
+  transform: rotateX(10deg) rotateY(10deg);
+}
+
+/* 🔹 Image pops out */
+.pdf-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 6px;
+  transform: translateZ(25px);
+  transition: transform 0.5s ease;
+}
+
+/* 🔹 Title pops out more */
+.pdf-card h4 {
+  font: 700 1rem monospace;
+  margin: 10px 0 5px;
+  transform: translateZ(40px);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  transition: transform 0.5s ease;
+}
+
+/* 🔹 Subtitle (moderate pop) */
+.pdf-card p:nth-of-type(1) {
+  font-size: 0.8rem;
+  color: #ccc;
+  margin: 0;
+  transform: translateZ(30px);
+  transition: transform 0.5s ease;
+}
+
+/* 🔹 Exam (less pop) */
+.pdf-card p:nth-of-type(2) {
+  font-size: 0.75rem;
+  color: #999;
+  margin: 0;
+  transform: translateZ(20px);
+  transition: transform 0.5s ease;
+}
+
+/* 🔹 Link (distinct) */
+.pdf-card a {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #00bfff;
+  text-decoration: none;
+  transform: translateZ(35px);
+  transition: transform 0.5s ease;
+}
+.pdf-card a:hover {
+  text-decoration: underline;
+}
+
+/* 🔹 Share Button */
+.share-group {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 2;
+  transform: translateZ(50px);
+}
+
+.share-group button {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 6px;
+  border-radius: 50%;
+  font-size: 14px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.share-group button:hover {
+  background-color: #444;
+}
+
+.pdf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  margin: 30px 0;
+  perspective: 1000px; /* ⬅️ Add perspective here */
+}
+
+.pdf-card {
+  width: 200px;
+  height: 270px;
+  background: #16161d;
+  border: 2px solid #555;
+  border-radius: 10px;
+  transition: transform 0.5s ease;
+  color: #fff;
+  text-align: center;
+  transform-style: preserve-3d;
+  overflow: hidden;
+  position: relative;
+}
+
+.pdf-card:hover {
+  transform: rotateX(12deg) rotateY(12deg);
+}
+
+.pdf-card-inner {
+  transform-style: preserve-3d; /* ⬅️ Enable child 3D */
+  padding: 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.pdf-card-inner img {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 6px;
+  transform: translateZ(30px);
+}
+
+.pdf-card-inner h4 {
+  font: 700 1rem monospace;
+  margin: 10px 0 5px;
+  transform: translateZ(45px);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+}
+
+.pdf-card-inner p:nth-of-type(1) {
+  font-size: 0.8rem;
+  color: #ccc;
+  margin: 0;
+  transform: translateZ(35px);
+}
+
+.pdf-card-inner p:nth-of-type(2) {
+  font-size: 0.75rem;
+  color: #999;
+  margin: 0;
+  transform: translateZ(25px);
+}
+
+.pdf-card-inner a {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #00bfff;
+  text-decoration: none;
+  transform: translateZ(38px);
+}
+
+.pdf-card-inner a:hover {
+  text-decoration: underline;
+}
+
+/* Share Button */
+.share-group {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 2;
+  transform: translateZ(50px);
+}
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="category-buttons" id="initialButtons"></div>
+    <div class="header-bar" id="headerBar"></div>
+
+    <!-- ✅ Content Sections -->
+    <div id="contentArea">
+        <div id="pyq" class="content-section">
+            <h3>📄 PYQ</h3>
+            <div class="pdf-grid" id="pyqGrid"></div>
+        </div>
+        <div id="solved_pyq" class="content-section">
+            <h3>✅ Solved PYQ</h3>
+            <div class="pdf-grid" id="solved_pyqGrid"></div>
+        </div>
+        <div id="notes" class="content-section">
+            <h3>📝 Notes</h3>
+            <div class="pdf-grid" id="notesGrid"></div>
+        </div>
+        <div id="uploads" class="content-section">
+            <h3>📤 Uploads</h3>
+            <div class="pdf-grid" id="uploadsGrid"></div>
+        </div>
+    </div>
+
+<script>
+  const categories = {
+    notes: "📝 Notes",
+    pyq: "📄 PYQ",
+    solved_pyq: "✅ Solved PYQ",
+    uploads: "📤 Uploads"
+  };
+
+  const subjectCode = "1000"; // Hardcoded for now
+  const subjectData = {
+    "1000": {
+      name: "Engineering Mathematics",
+      notes: [
+        {
+          title: "Unit 1 Notes",
+          subtitle: "Limits and Continuity",
+          exam: "Semester 1",
+          thumbnail: "/assets/images/cover.png",
+          url: "/assets/files/sample.md"
+        },
+        {
+          title: "Unit 2 Notes",
+          subtitle: "Differentiation",
+          exam: "Semester 1",
+          thumbnail: "/assets/images/cover1.jpg",
+          url: "/assets/files/sample.md"
+        }
+      ],
+      pyq: [
+        {
+          title: "Midterm 2022",
+          subtitle: "Engineering Maths",
+          exam: "University Exam",
+          thumbnail: "https://raw.githubusercontent.com/aryanmungekar/study-notes/refs/heads/main/assets/images/slider3.jpg",
+          url: "/assets/files/sample.md"
+        },
+        {
+          title: "Unit 1 Notes",
+          subtitle: "Limits and Continuity",
+          exam: "Semester 1",
+          thumbnail: "/assets/images/cover.jpg",
+          url: "/assets/files/sample.md"
+        },
+        {
+          title: "Midterm 2022",
+          subtitle: "Engineering Maths",
+          exam: "University Exam",
+          thumbnail: "https://raw.githubusercontent.com/aryanmungekar/study-notes/refs/heads/main/assets/images/slider3.jpg",
+          url: "/assets/files/sample.md"
+        },
+        {
+          title: "Unit 1 Notes",
+          subtitle: "Limits and Continuity",
+          exam: "Semester 1",
+          thumbnail: "/assets/images/cover.jpg",
+          url: "/assets/files/sample.md"
+        },
+        {
+          title: "Midterm 2022",
+          subtitle: "Engineering Maths",
+          exam: "University Exam",
+          thumbnail: "https://raw.githubusercontent.com/aryanmungekar/study-notes/refs/heads/main/assets/images/slider3.jpg",
+          url: "/assets/files/sample.md"
+        },
+        {
+          title: "Unit 1 Notes",
+          subtitle: "Limits and Continuity",
+          exam: "Semester 1",
+          thumbnail: "/assets/images/cover.jpg",
+          url: "/assets/files/sample.md"
+        },
+        {
+          title: "Midterm 2022",
+          subtitle: "Engineering Maths",
+          exam: "University Exam",
+          thumbnail: "https://raw.githubusercontent.com/aryanmungekar/study-notes/refs/heads/main/assets/images/slider3.jpg",
+          url: "/assets/files/sample.md"
+        },
+        {
+          title: "Unit 1 Notes",
+          subtitle: "Limits and Continuity",
+          exam: "Semester 1",
+          thumbnail: "/assets/images/cover.jpg",
+          url: "/assets/files/sample.md"
+        }
+      ],
+      solved_pyq: [],
+      uploads: []
+    }
+  };
+
+  const headerBar = document.getElementById("headerBar");
+
+  // Build category buttons
+  headerBar.style.display = "flex";
+  for (const key in categories) {
+    createButton(key, categories[key], headerBar, () => showCategoryContent(subjectCode, key, subjectData));
+  }
+
+  // Load default category
+  showCategoryContent(subjectCode, "notes", subjectData);
+
+  function createButton(id, label, parent, handler) {
+    const btn = document.createElement("button");
+    btn.textContent = label;
+    btn.className = "category-button";
+    btn.onclick = handler;
+    parent.appendChild(btn);
+  }
+
+  function showCategoryContent(subjectCode, category, data) {
+    document.querySelectorAll(".content-section").forEach(div => {
+      div.style.display = "none";
+      div.classList.remove("slide-in");
+    });
+
+    const section = document.getElementById(category);
+    if (!section) return;
+
+    section.style.display = "block";
+    section.classList.add("slide-in");
+
+    loadPDFs(subjectCode, category, data);
+  }
+
+  function loadPDFs(subjectCode, category, allData) {
+    const grid = document.getElementById(category + 'Grid');
+    if (!grid) return;
+
+    grid.innerHTML = "";
+
+    const subject = allData[subjectCode];
+    const items = subject[category] || [];
+
+    if (items.length === 0) {
+      grid.innerHTML = `<p>No PDFs available in ${categories[category]}.</p>`;
+      return;
+    }
+
+    items.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'pdf-card';
+      const shareLink = `/assets/load/viewer.html?file=${encodeURIComponent(item.url)}&title=${encodeURIComponent(item.title)}&subject=${encodeURIComponent(subject.name)}`;
+
+     card.innerHTML = `
+  <div class="pdf-card-inner">
+    <img src="${item.thumbnail}" alt="${item.title}">
+    <h4>${item.title}</h4>
+    <p>${item.subtitle}</p>
+    <p>${item.exam}</p>
+    <a href="${shareLink}" target="_blank">Open PDF</a>
+    <div class="share-group">
+      <button class="share-btn" data-url="${shareLink}" title="Share Link">
+        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+      </button>
+    </div>
+  </div>
+`;
+
+
+      grid.appendChild(card);
+    });
+
+    grid.querySelectorAll(".share-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const shareUrl = window.location.origin + btn.getAttribute("data-url");
+
+        if (navigator.share) {
+          navigator.share({
+            title: "Check this PDF on SPPU Notes",
+            text: "Useful note/PYQ from SPPU Notes:",
+            url: shareUrl
+          }).catch(err => console.error("Sharing failed:", err));
+        } else {
+          navigator.clipboard.writeText(shareUrl)
+            .then(() => alert("Link copied to clipboard!"))
+            .catch(() => alert("Failed to copy link"));
+        }
+      });
+    });
+  }
+</script>
+
+
+</body>
+
+</html>
