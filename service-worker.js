@@ -1,4 +1,4 @@
-const CACHE_NAME = "sppu-notes-v4.0";  // ⬅️ Increment this on every update!
+const CACHE_NAME = "sppu-notes-v4.1";  // ⬅️ Increment this on every update!
 
 const OFFLINE_FILES = [
   "/",

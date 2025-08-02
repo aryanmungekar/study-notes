@@ -302,6 +302,7 @@ nav a:hover {
 @media (max-width: 600px) and (display-mode: standalone) {
   .mobile-footer {
     padding-bottom: env(safe-area-inset-bottom, 40px); /* Use actual safe area if available */
+    background-color: rgba(255, 0, 0, 0.1); /* temporary test */
   }
 
   .footer-item {
