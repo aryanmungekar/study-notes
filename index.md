@@ -48,12 +48,12 @@ title: Home
   </a>
 
   <a href="/2019-Pattern/it/" style="text-decoration: none; color: inherit;">
-    <div style="background-color: rgba(255, 255, 255, 1);" class="button-card">
+    <div style="background-color: rgba(253, 253, 253, 1);" class="button-card">
       <i style="font-size: 40px; color: black;" class="fa-solid fa-bolt"></i>
       <h4>Information Technology</h4>
     </div>
   </a>
 
-<button id="theme-toggle">🌙</button>
+
 
 </div>

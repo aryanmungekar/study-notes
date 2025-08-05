@@ -6,9 +6,6 @@
 }
 
 .share-toggle {
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: 1px solid var(--text-color);
   background-color: #ffffff;
   color: #000000;
   border: none;
@@ -22,7 +19,6 @@
 }
 
 .floating-share-menu {
-  background-color: var(--menu-bg);
   display: none;
   flex-direction: column;
   gap: 8px;
