@@ -9,8 +9,8 @@
 }
 
 .card {
-  background: #d6d6d6ff;
-  border: 1px black;
+  background: rgb(255, 255, 255);
+  border: 1px solid black;
   border-radius: 20px;
   box-shadow: 0 8px 20px rgb(0 0 0 / 38%);
   transition: transform 0.3s ease, box-shadow 0.3s ease;

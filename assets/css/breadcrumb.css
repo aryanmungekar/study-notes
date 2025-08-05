@@ -1,6 +1,6 @@
 /* ✅ Breadcrumb Styles (Common) */
 #breadcrumb a {
-  color: #007BFF;
+  color: #000000;
   text-decoration: none;
   margin-right: 5px;
 }
@@ -10,5 +10,5 @@
 }
 #breadcrumb span {
   font-weight: bold;
-  color: #333;
+  color: #0006ff;
 }

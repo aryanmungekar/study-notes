@@ -55,8 +55,9 @@
   height: auto;
   width: auto;
   box-shadow: none;
-  background-color: #d6d6d6;
-  border-radius: 10px;
+  background-color: #ffffff;
+  border-radius: 25px;
+  border: 1px solid black;
 }
 
 /* ✅ Sections */
