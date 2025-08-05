@@ -1,3 +1,26 @@
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --button-bg: #ffffff;
+  --button-text: #000000;
+  --menu-bg: #ffffff;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --button-bg: #1e1e1e;
+  --button-text: #ffffff;
+  --menu-bg: #1f1f1f;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
+
 /* ========== Global Reset ========== */
 * {
   margin: 0;
