@@ -3,9 +3,7 @@ layout: default
 title: Home
 ---
 
-<!-- ✅ Include external styles -->
-<link rel="stylesheet" href="../../assets/css/semester.css">
-<link rel="stylesheet" href="../../assets/css/breadcrumb.css">
+
 
 <!-- ✅ Breadcrumb container -->
 <div id="breadcrumb-container">
@@ -20,5 +18,3 @@ title: Home
   <!-- Repeat or loop cards here as needed -->
 </div>
 
-<!-- ✅ Include breadcrumb script -->
-<script src="../../assets/js/breadcrumb.js"></script>
