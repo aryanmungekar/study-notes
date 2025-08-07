@@ -3,9 +3,7 @@ layout: default
 title: Home
 ---
 
-<!-- ✅ Link to external subject style -->
-<link rel="stylesheet" href="../../../assets/css/subject.css">
-<link rel="stylesheet" href="../../../assets/css/breadcrumb.css">
+
 
 <!-- ✅ Breadcrumb -->
 <div id="breadcrumb-container">
