@@ -48,5 +48,4 @@ title: Home
 
 </div>
 
-<!-- ✅ Shared JS for breadcrumb -->
-<script src="../../../assets/js/breadcrumb.js"></script>
+
