@@ -29,14 +29,14 @@ title: Home
     </div>
   </a>
 
-    <a href="3000.html" style="text-decoration: none;">
+  <a href="3000.html" style="text-decoration: none;">
     <div class="subject-card">
       <div class="subject-title">Subject 2</div>
       <div class="subject-code">Code : 2000</div>
     </div>
   </a>
 
-    <a href="4000.html" style="text-decoration: none;">
+  <a href="4000.html" style="text-decoration: none;">
     <div class="subject-card">
       <div class="subject-title">Subject 2</div>
       <div class="subject-code">Code : 2000</div>
