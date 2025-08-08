@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Google Doc Viewer</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .header-container {
+            padding: 5px;
+            text-align: center;
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin: 0;
+        }
+
+        #google-doc-container {
+            flex-grow: 1;
+            width: 100%;
+            overflow: auto;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        #control-bar {
+    background: #ffffff;
+    border-top: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0 10px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.footer-left {
+    font-weight: bold;
+    white-space: nowrap;
+    margin-right: 15px;
+}
+
+.footer-marquee {
+    flex: 1; /* take up remaining space */
+    overflow: hidden;
+    position: relative;
+}
+
+.marquee-text {
+    display: inline-block;
+    padding-left: 100%; /* Start from outside */
+    white-space: nowrap;
+    animation: slide-left 10s linear infinite;
+}
+
+@keyframes slide-left {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+    </style>
+</head>
+
+<body>
+
+
+
+    <div id="google-doc-container">
+
+        <div class="header-container">
+            <h1 id="page-title">Google Document Viewer</h1>
+        </div>
+
+        <iframe id="google-doc-iframe"></iframe>
+    </div>
+
+    <div id="control-bar">
+    <div class="footer-left">PUNEUNIVERSITY.IN</div>
+    <div class="footer-marquee">
+        <div class="marquee-text">Admissions for 2025 are now open. Visit our website for more details.</div>
+    </div>
+</div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const file = urlParams.get("file");
+            const subjectName = urlParams.get("subject");
+            const fileTitle = urlParams.get("title");
+
+            const iframe = document.getElementById("google-doc-iframe");
+            const pageTitle = document.getElementById("page-title");
+
+            // Decide title priority: subject > fileTitle > default
+            if (subjectName) {
+                pageTitle.innerText = `${decodeURIComponent(subjectName)}`;
+            } else if (fileTitle) {
+                pageTitle.innerText = decodeURIComponent(fileTitle);
+            }
+
+            if (file) {
+                iframe.src = `https://docs.google.com/document/d/${file}/preview`;
+            } else {
+                pageTitle.innerText = "❌ Error: No Google Doc ID specified.";
+                iframe.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
