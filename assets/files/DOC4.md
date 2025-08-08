@@ -78,6 +78,8 @@ Cognitive Considerations in Control and Display Design:
 
 * Example: A volume knob increasing sound when turned clockwise fits most users' mental model.
 
+
+
 **b) List the interaction styles and explain any one in detail.**
 
 **Ans:**
@@ -145,6 +147,8 @@ Disadvantages:
 * Not suitable for complex tasks requiring many parameters or configurations
 
 * Resource-intensive, requiring graphical processing and screen space
+
+
 
 **c) Write a short note on Human Memory and its types.**
 
