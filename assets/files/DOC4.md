@@ -1,5 +1,3 @@
-**![][image1]**
-
 **T.E. (Artificial Intelligence And Data Science)**
 
 **HUMAN COMPUTER INTERFACE**
