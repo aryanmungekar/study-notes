@@ -32,7 +32,7 @@ title: Home
     </div>
   </a>
 
-  <a href="/sppu/2019-Pattern/aids/" style="text-decoration: none; color: inherit;">
+  <a href="/sppu/2019-Pattern/ai-ds/" style="text-decoration: none; color: inherit;">
     <div style="background-color: rgba(255, 255, 255, 1);" class="button-card">
       <i style="font-size: 40px; color: black;" class="fa-solid fa-atom"></i>
       <h4>Artificial Intelligence & Data Science</h4>
