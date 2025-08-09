@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
       segment = segment.replace(/\.html$/, "");
     }
 
-    const name = segment.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+    const name = segment.replace(/-/g, " ").toUpperCase();
     fullPath += "/" + segments[i];
 
     if (i === segments.length - 1) {
