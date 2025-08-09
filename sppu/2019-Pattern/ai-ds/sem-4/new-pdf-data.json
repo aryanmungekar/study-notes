@@ -1,0 +1,134 @@
+{
+  "1000": {
+    "name": "Engineering Mathematics",
+    "notes": [
+      {
+        "title": "Unit 1 Notes",
+        "subtitle": "Limits and Continuity",
+        "exam": "Semester 1",
+        "thumbnail": "/assets/images/cover4.png",
+        "url": "15-KsfP5eUC9GxIsdCmxKDMYKZ-gj275DTR8m663Fa5w"
+      },
+      {
+        "title": "Unit 2 Notes",
+        "subtitle": "Differentiation",
+        "exam": "Semester 1",
+        "thumbnail": "/assets/images/cover1.jpg",
+        "url": "1Eo3Y6mTlTQeP7m9Eo2oVjzi0IdUA2YNE_ZnZHJLHeug"
+      },
+      {
+        "title": "Unit 3 Notes",
+        "subtitle": "Differentiation",
+        "exam": "Semester 1",
+        "thumbnail": "/assets/images/cover1.jpg",
+        "url": "1Eo3Y6mTlTQeP7m9Eo2oVjzi0IdUA2YNE_ZnZHJLHeug"
+      },
+      {
+        "title": "Unit 4 Notes",
+        "subtitle": "Differentiation",
+        "exam": "Semester 1",
+        "thumbnail": "/assets/images/cover1.jpg",
+        "url": "/assets/files/doc2.md"
+      },
+      {
+        "title": "Unit 5 Notes",
+        "subtitle": "Limits and Continuity",
+        "exam": "Semester 1",
+        "thumbnail": "/assets/images/cover5.png",
+        "url": "/assets/files/doc3.md"
+      }
+    ],
+    "pyq": [
+      {
+        "title": "Midterm 2022",
+        "subtitle": "Engineering Maths",
+        "exam": "University Exam",
+        "thumbnail": "https://raw.githubusercontent.com/aryanmungekar/study-notes/refs/heads/main/assets/images/slider3.jpg",
+        "url": "/assets/files/paper.md"
+      },
+      {
+        "title": "Unit 3 Notes",
+        "subtitle": "Limits and Continuity",
+        "exam": "Semester 1",
+        "thumbnail": "/assets/images/cover.jpg",
+        "url": "/assets/files/paper2.md"
+      },
+      {
+        "title": "Midterm 2022",
+        "subtitle": "Engineering Maths",
+        "exam": "University Exam",
+        "thumbnail": "https://raw.githubusercontent.com/aryanmungekar/study-notes/refs/heads/main/assets/images/slider3.jpg",
+        "url": "/assets/files/sample.md"
+      },
+      {
+        "title": "Unit 1 Notes",
+        "subtitle": "Limits and Continuity",
+        "exam": "Semester 1",
+        "thumbnail": "/assets/images/cover.jpg",
+        "url": "/assets/files/sample.md"
+      },
+      {
+        "title": "Midterm 2022",
+        "subtitle": "Engineering Maths",
+        "exam": "University Exam",
+        "thumbnail": "https://raw.githubusercontent.com/aryanmungekar/study-notes/refs/heads/main/assets/images/slider3.jpg",
+        "url": "/assets/files/sample.md"
+      },
+      {
+        "title": "Unit 1 Notes",
+        "subtitle": "Limits and Continuity",
+        "exam": "Semester 1",
+        "thumbnail": "/assets/images/cover.jpg",
+        "url": "/assets/files/sample.md"
+      },
+      {
+        "title": "Midterm 2022",
+        "subtitle": "Engineering Maths",
+        "exam": "University Exam",
+        "thumbnail": "https://raw.githubusercontent.com/aryanmungekar/study-notes/refs/heads/main/assets/images/slider3.jpg",
+        "url": "/assets/files/sample.md"
+      },
+      {
+        "title": "Unit 1 Notes",
+        "subtitle": "Limits and Continuity",
+        "exam": "Semester 1",
+        "thumbnail": "/assets/images/cover.jpg",
+        "url": "/assets/files/sample.md"
+      }
+    ],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "2000": {
+    "name": "Engineering Physics",
+    "notes": [],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "3000": {
+    "name": "Basic Electronics",
+    "notes": [],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "4000": {
+    "name": "Engineering Mechanics",
+    "notes": [],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "5000": {
+    "name": "Environmental Studies",
+    "notes": [],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  }
+}
