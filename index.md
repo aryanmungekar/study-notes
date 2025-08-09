@@ -1,6 +1,6 @@
 ---
-layout: default
-title: post
+layout: post
+title: Home
 ---
 
 <div class="slider-container">
