@@ -1,4 +1,4 @@
-// ✅ subject-loader.js – case-insensitive, supports any-length alphanumeric subject codes
+// ✅ subject-loader.js – works for any length alphanumeric subject codes, case-insensitive
 
 const categories = {
     notes: "📝 Notes",
@@ -8,24 +8,27 @@ const categories = {
 };
 
 const headerBar = document.getElementById("headerBar");
-const initialButtonsDiv = document.getElementById("initialButtons"); // Optional (can be hidden)
+const initialButtonsDiv = document.getElementById("initialButtons");
 
-// Updated regex to match last URL segment with letters, numbers, underscores, or hyphens
-let subjectCode = window.location.pathname.match(/([A-Za-z0-9_-]+)\/?$/)?.[1];
+// Grab last URL segment without extension
+let subjectCode = window.location.pathname
+    .split("/")
+    .filter(Boolean)
+    .pop() // last segment
+    .replace(/\.[^/.]+$/, "") // remove file extension
+    .toLowerCase(); // case-insensitive
 
 if (subjectCode) {
-    subjectCode = subjectCode.toLowerCase(); // normalize case
-
     fetch('./new-pdf-data.json')
         .then(res => res.json())
         .then(data => {
-            // Convert all keys in JSON to lowercase for case-insensitive matching
-            const lowerCaseData = {};
+            // Normalize JSON keys to lowercase
+            const normalizedData = {};
             for (const key in data) {
-                lowerCaseData[key.toLowerCase()] = data[key];
+                normalizedData[key.toLowerCase()] = data[key];
             }
 
-            const subject = lowerCaseData[subjectCode];
+            const subject = normalizedData[subjectCode];
             if (!subject) {
                 document.getElementById("contentArea").innerHTML = `<p>Subject not found.</p>`;
                 return;
@@ -34,11 +37,11 @@ if (subjectCode) {
             // Create category buttons
             headerBar.style.display = "flex";
             for (const key in categories) {
-                createButton(key, categories[key], headerBar, () => showCategoryContent(subjectCode, key, lowerCaseData));
+                createButton(key, categories[key], headerBar, () => showCategoryContent(subjectCode, key, normalizedData));
             }
 
             // Load default category
-            showCategoryContent(subjectCode, "notes", lowerCaseData);
+            showCategoryContent(subjectCode, "notes", normalizedData);
         })
         .catch(err => console.error("Error loading subject:", err));
 }
@@ -86,34 +89,34 @@ function loadPDFs(subjectCode, category, allData) {
         const shareLink = `/assets/pdf/viewer.html?pdfId=${item.url}&title=${encodeURIComponent(item.title)}`;
 
         card.innerHTML = `
-            <img src="${item.thumbnail}" alt="${item.title}">
-            <h4>${item.title}</h4>
-            <p>${item.subtitle}</p>
-            <p>${item.exam}</p>
-            <a href="${shareLink}" target="_blank">View PDF</a>
-            <div class="share-group">
-                <a href="https://wa.me/?text=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://t.me/share/url?url=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Telegram">
-                    <i class="fab fa-telegram"></i>
-                </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <button class="share-btn" data-url="${shareLink}" title="Copy Link">
-                    <i class="fas fa-link"></i>
-                </button>
-            </div>
+  <img src="${item.thumbnail}" alt="${item.title}">
+  <h4>${item.title}</h4>
+  <p>${item.subtitle}</p>
+  <p>${item.exam}</p>
+  <a href="${shareLink}" target="_blank">View PDF</a>
+  <div class="share-group">
+    <a href="https://wa.me/?text=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://t.me/share/url?url=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Telegram">
+      <i class="fab fa-telegram"></i>
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <button class="share-btn" data-url="${shareLink}" title="Copy Link">
+      <i class="fas fa-link"></i>
+    </button>
+  </div>
         `;
 
         grid.appendChild(card);
     });
 
-    // Add click listeners after DOM update
+    // Share button listener
     grid.querySelectorAll(".share-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             const shareUrl = window.location.origin + btn.getAttribute("data-url");
