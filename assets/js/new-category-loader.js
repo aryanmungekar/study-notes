@@ -1,4 +1,4 @@
-// ✅ subject-loader.js – for subject-specific pages (like 1000.md)
+// ✅ subject-loader.js – case-insensitive, supports any-length alphanumeric subject codes
 
 const categories = {
     notes: "📝 Notes",
@@ -10,13 +10,22 @@ const categories = {
 const headerBar = document.getElementById("headerBar");
 const initialButtonsDiv = document.getElementById("initialButtons"); // Optional (can be hidden)
 
-const subjectCode = window.location.pathname.match(/([A-Za-z0-9_-]+)\/?$/)?.[1]; // e.g., '1000'
+// Updated regex to match last URL segment with letters, numbers, underscores, or hyphens
+let subjectCode = window.location.pathname.match(/([A-Za-z0-9_-]+)\/?$/)?.[1];
 
 if (subjectCode) {
+    subjectCode = subjectCode.toLowerCase(); // normalize case
+
     fetch('./new-pdf-data.json')
         .then(res => res.json())
         .then(data => {
-            const subject = data[subjectCode];
+            // Convert all keys in JSON to lowercase for case-insensitive matching
+            const lowerCaseData = {};
+            for (const key in data) {
+                lowerCaseData[key.toLowerCase()] = data[key];
+            }
+
+            const subject = lowerCaseData[subjectCode];
             if (!subject) {
                 document.getElementById("contentArea").innerHTML = `<p>Subject not found.</p>`;
                 return;
@@ -25,11 +34,11 @@ if (subjectCode) {
             // Create category buttons
             headerBar.style.display = "flex";
             for (const key in categories) {
-                createButton(key, categories[key], headerBar, () => showCategoryContent(subjectCode, key, data));
+                createButton(key, categories[key], headerBar, () => showCategoryContent(subjectCode, key, lowerCaseData));
             }
 
-            // Optionally load default category
-            showCategoryContent(subjectCode, "notes", data);
+            // Load default category
+            showCategoryContent(subjectCode, "notes", lowerCaseData);
         })
         .catch(err => console.error("Error loading subject:", err));
 }
@@ -77,36 +86,34 @@ function loadPDFs(subjectCode, category, allData) {
         const shareLink = `/assets/pdf/viewer.html?pdfId=${item.url}&title=${encodeURIComponent(item.title)}`;
 
         card.innerHTML = `
-  <img src="${item.thumbnail}" alt="${item.title}">
-  <h4>${item.title}</h4>
-  <p>${item.subtitle}</p>
-  <p>${item.exam}</p>
-  <a href="${shareLink}" target="_blank">View PDF</a>
-  <div class="share-group">
-    <a href="https://wa.me/?text=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="https://t.me/share/url?url=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Telegram">
-      <i class="fab fa-telegram"></i>
-    </a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Facebook">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Twitter">
-      <i class="fab fa-twitter"></i>
-    </a>
-    <button class="share-btn" data-url="${shareLink}" title="Copy Link">
-      <i class="fas fa-link"></i>
-    </button>
-  </div>
-`;
-
-
+            <img src="${item.thumbnail}" alt="${item.title}">
+            <h4>${item.title}</h4>
+            <p>${item.subtitle}</p>
+            <p>${item.exam}</p>
+            <a href="${shareLink}" target="_blank">View PDF</a>
+            <div class="share-group">
+                <a href="https://wa.me/?text=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://t.me/share/url?url=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Telegram">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <button class="share-btn" data-url="${shareLink}" title="Copy Link">
+                    <i class="fas fa-link"></i>
+                </button>
+            </div>
+        `;
 
         grid.appendChild(card);
     });
 
-    // ✅ Add click listeners after DOM update
+    // Add click listeners after DOM update
     grid.querySelectorAll(".share-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             const shareUrl = window.location.origin + btn.getAttribute("data-url");
@@ -125,4 +132,3 @@ function loadPDFs(subjectCode, category, allData) {
         });
     });
 }
-
