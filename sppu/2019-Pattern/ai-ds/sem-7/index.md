@@ -15,7 +15,7 @@ title: Home
 <!-- ✅ Subject Cards -->
 <div class="card-container">
 
-  <a href="417521.html" style="text-decoration: none;">
+  <a href="1000.html" style="text-decoration: none;">
     <div class="subject-card">
       <div class="subject-title">Machine Learning</div>
       <div class="subject-code">Code : 417521</div>
