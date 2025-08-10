@@ -6,15 +6,8 @@
         "title": "UNIT 1",
         "subtitle": "Introduction to Machine Learning",
         "exam": "Insem",
-        "thumbnail": "",
+        "thumbnail": "/assets/images/cover.jpg",
         "url": "15-KsfP5eUC9GxIsdCmxKDMYKZ-gj275DTR8m663Fa5w"
-      },
-      {
-        "title": "UNIT 2",
-        "subtitle": "Regression",
-        "exam": "Insem",
-        "thumbnail": "",
-        "url": ""
       }
     ],
     "pyq": [],
@@ -25,66 +18,21 @@
   
   "417522": {
     "name": "Data Modeling & Visualization",
-    "notes": [
-      {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
-        "thumbnail": "",
-        "url": ""
-      },
-      {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
-        "thumbnail": "",
-        "url": ""
-      }
-    ],
+    "notes": [ ],
     "pyq": [],
     "solved_pyq": [],
     "uploads": []
   },
   "417523A": {
     "name": "Quantum Artificial Intelligence",
-    "notes": [
-      {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
-        "thumbnail": "",
-        "url": ""
-      },
-      {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
-        "thumbnail": "",
-        "url": ""
-      }
-    ],
+    "notes": [],
     "pyq": [],
     "solved_pyq": [],
     "uploads": []
   },
   "417524C": {
     "name": "UI/UX Design",
-    "notes": [
-      {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
-        "thumbnail": "",
-        "url": ""
-      },
-      {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
-        "thumbnail": "",
-        "url": ""
-      }
-    ],
+    "notes": [],
     "pyq": [],
     "solved_pyq": [],
     "uploads": []
