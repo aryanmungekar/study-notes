@@ -22,7 +22,7 @@ title: Home
     </div>
   </a>
 
-  <a href="417522.html" style="text-decoration: none;">
+  <a href="2.html" style="text-decoration: none;">
     <div class="subject-card">
       <div class="subject-title">Data Modeling & Visualization</div>
       <div class="subject-code">Code : 417522</div>
