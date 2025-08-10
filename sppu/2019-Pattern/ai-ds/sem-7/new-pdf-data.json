@@ -32,7 +32,15 @@
   },
   "417524C": {
     "name": "UI/UX Design",
-    "notes": [],
+    "notes": [
+      {
+        "title": "UNIT 1",
+        "subtitle": "Introduction to Machine Learning",
+        "exam": "Insem",
+        "thumbnail": "/assets/images/cover.jpg",
+        "url": "15-KsfP5eUC9GxIsdCmxKDMYKZ-gj275DTR8m663Fa5w"
+      }
+    ],
     "pyq": [],
     "solved_pyq": [],
     "uploads": []
