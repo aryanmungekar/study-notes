@@ -8,18 +8,19 @@ const categories = {
 const headerBar = document.getElementById("headerBar");
 const initialButtonsDiv = document.getElementById("initialButtons");
 
-// Get subject code from last part of path (without extension), lowercase for matching
-const subjectCode = window.location.pathname
-    .replace(/\/+$/, '') // remove trailing slash
-    .split('/').pop()    // get last segment
-    .replace(/\.[^/.]+$/, '') // remove extension if any
-    .trim().toLowerCase();
+// Get subject code cleanly from URL
+let subjectCode = window.location.pathname
+    .split('/').filter(Boolean).pop() // last segment
+    .split('.')[0]                    // remove extension if any
+    .trim()
+    .toLowerCase();
+
+console.log("Detected subject code:", subjectCode);
 
 if (subjectCode) {
-    fetch('./new-pdf-data.json')
+    fetch('/new-pdf-data.json') // Always from root
         .then(res => res.json())
         .then(data => {
-            // Make all keys lowercase for case-insensitive match
             const lowerKeyMap = {};
             for (const key in data) {
                 lowerKeyMap[key.toLowerCase()] = data[key];
