@@ -1,3 +1,5 @@
+// ✅ subject-loader.js – for subject-specific pages (like 1000.md)
+
 const categories = {
     notes: "📝 Notes",
     pyq: "📄 PYQ",
@@ -6,38 +8,28 @@ const categories = {
 };
 
 const headerBar = document.getElementById("headerBar");
-const initialButtonsDiv = document.getElementById("initialButtons");
+const initialButtonsDiv = document.getElementById("initialButtons"); // Optional (can be hidden)
 
-// Get subject code cleanly from URL
-let subjectCode = window.location.pathname
-    .split('/').filter(Boolean).pop() // last segment
-    .split('.')[0]                    // remove extension if any
-    .trim()
-    .toLowerCase();
-
-console.log("Detected subject code:", subjectCode);
+const subjectCode = window.location.pathname.match(/(\d{4})\/?$/)?.[1]; // e.g., '1000'
 
 if (subjectCode) {
-    fetch('/new-pdf-data.json') // Always from root
+    fetch('./new-pdf-data.json')
         .then(res => res.json())
         .then(data => {
-            const lowerKeyMap = {};
-            for (const key in data) {
-                lowerKeyMap[key.toLowerCase()] = data[key];
-            }
-
-            const subject = lowerKeyMap[subjectCode];
+            const subject = data[subjectCode];
             if (!subject) {
                 document.getElementById("contentArea").innerHTML = `<p>Subject not found.</p>`;
                 return;
             }
 
+            // Create category buttons
             headerBar.style.display = "flex";
             for (const key in categories) {
-                createButton(key, categories[key], headerBar, () => showCategoryContent(subjectCode, key, lowerKeyMap));
+                createButton(key, categories[key], headerBar, () => showCategoryContent(subjectCode, key, data));
             }
 
-            showCategoryContent(subjectCode, "notes", lowerKeyMap);
+            // Optionally load default category
+            showCategoryContent(subjectCode, "notes", data);
         })
         .catch(err => console.error("Error loading subject:", err));
 }
@@ -85,32 +77,36 @@ function loadPDFs(subjectCode, category, allData) {
         const shareLink = `/assets/pdf/viewer.html?pdfId=${item.url}&title=${encodeURIComponent(item.title)}`;
 
         card.innerHTML = `
-            <img src="${item.thumbnail}" alt="${item.title}">
-            <h4>${item.title}</h4>
-            <p>${item.subtitle}</p>
-            <p>${item.exam}</p>
-            <a href="${shareLink}" target="_blank">View PDF</a>
-            <div class="share-group">
-                <a href="https://wa.me/?text=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://t.me/share/url?url=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Telegram">
-                    <i class="fab fa-telegram"></i>
-                </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Twitter">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <button class="share-btn" data-url="${shareLink}" title="Copy Link">
-                    <i class="fas fa-link"></i>
-                </button>
-            </div>
-        `;
+  <img src="${item.thumbnail}" alt="${item.title}">
+  <h4>${item.title}</h4>
+  <p>${item.subtitle}</p>
+  <p>${item.exam}</p>
+  <a href="${shareLink}" target="_blank">View PDF</a>
+  <div class="share-group">
+    <a href="https://wa.me/?text=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://t.me/share/url?url=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Telegram">
+      <i class="fab fa-telegram"></i>
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <button class="share-btn" data-url="${shareLink}" title="Copy Link">
+      <i class="fas fa-link"></i>
+    </button>
+  </div>
+`;
+
+
+
         grid.appendChild(card);
     });
 
+    // ✅ Add click listeners after DOM update
     grid.querySelectorAll(".share-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             const shareUrl = window.location.origin + btn.getAttribute("data-url");
@@ -129,3 +125,4 @@ function loadPDFs(subjectCode, category, allData) {
         });
     });
 }
+
