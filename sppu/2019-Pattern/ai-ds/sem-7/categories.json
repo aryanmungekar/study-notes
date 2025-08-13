@@ -1,7 +1,7 @@
 {
   "categories": {
     "pyq": true,
-    "solved_pyq": true,
+    "solved_pyq": false,
     "notes": true,
     "uploads": true
   }

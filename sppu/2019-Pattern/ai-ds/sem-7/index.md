@@ -15,7 +15,7 @@ title: Home
 <!-- ✅ Subject Cards -->
 <div class="card-container">
 
-  <a href="1000.html" style="text-decoration: none;">
+  <a href="417521.html" style="text-decoration: none;">
     <div class="subject-card">
       <div class="subject-title">Machine Learning</div>
       <div class="subject-code">Code : 417521</div>
@@ -29,14 +29,14 @@ title: Home
     </div>
   </a>
 
-  <a href="417523A.html" style="text-decoration: none;">
+  <a href="a-417523A.html" style="text-decoration: none;">
     <div class="subject-card">
       <div class="subject-title">Quantum Artificial Intelligence</div>
       <div class="subject-code">Code : 417523A</div>
     </div>
   </a>
 
-  <a href="417524C.html" style="text-decoration: none;">
+  <a href="c-417524.html" style="text-decoration: none;">
     <div class="subject-card">
       <div class="subject-title">UI/UX Design</div>
       <div class="subject-code">Code : 417524C</div>
