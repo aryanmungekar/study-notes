@@ -2,9 +2,9 @@
 
 const categories = {
     notes: "📝 Notes",
-    pyq: "📄 PYQ",
-    solved_pyq: "✅ Solved PYQ",
-    uploads: "📤 Uploads"
+    // pyq: "📄 PYQ",
+    // solved_pyq: "✅ Solved PYQ",
+    // uploads: "📤 Uploads"
 };
 
 const headerBar = document.getElementById("headerBar");
