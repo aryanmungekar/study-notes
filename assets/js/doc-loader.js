@@ -67,7 +67,7 @@ function loadPDFs(subjectCode, category, allData) {
     const items = subject[category] || [];
 
     if (items.length === 0) {
-        grid.innerHTML = `<p>No PDFs  in ${categories[category]}.</p>`;
+        grid.innerHTML = `<p>No PDFs available in ${categories[category]}.</p>`;
         return;
     }
 
