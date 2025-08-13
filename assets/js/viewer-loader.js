@@ -10,7 +10,7 @@ const categories = {
 const headerBar = document.getElementById("headerBar");
 const initialButtonsDiv = document.getElementById("initialButtons"); // Optional (can be hidden)
 
-const subjectCode = window.location.pathname.match(/([0-9a-zA-Z]+)\/?$/)?.[1];
+const subjectCode = window.location.pathname.match(/(\d{4})\/?$/)?.[1]; // e.g., '1000'
 
 if (subjectCode) {
     fetch('./new-pdf-data.json')
@@ -67,36 +67,26 @@ function loadPDFs(subjectCode, category, allData) {
     const items = subject[category] || [];
 
     if (items.length === 0) {
-        grid.innerHTML = `<p>No PDFs  in ${categories[category]}.</p>`;
+        grid.innerHTML = `<p>No PDFs available in ${categories[category]}.</p>`;
         return;
     }
 
     items.forEach(item => {
         const card = document.createElement('div');
         card.className = 'pdf-card';
-        const shareLink = `/assets/pdf/viewer.html?pdfId=${item.url}&title=${encodeURIComponent(item.title)}`;
+        const shareLink = `/assets/load/viewer.html?file=${encodeURIComponent(item.url)}&title=${encodeURIComponent(item.title)}&subject=${encodeURIComponent(subject.name)}`;
+
+
 
         card.innerHTML = `
   <img src="${item.thumbnail}" alt="${item.title}">
   <h4>${item.title}</h4>
   <p>${item.subtitle}</p>
   <p>${item.exam}</p>
-  <a href="${shareLink}" target="_blank">View PDF</a>
+  <a href="${shareLink}" target="_blank">Open PDF</a>
   <div class="share-group">
-    <a href="https://wa.me/?text=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="https://t.me/share/url?url=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Telegram">
-      <i class="fab fa-telegram"></i>
-    </a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Facebook">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.origin + shareLink)}" target="_blank" title="Twitter">
-      <i class="fab fa-twitter"></i>
-    </a>
-    <button class="share-btn" data-url="${shareLink}" title="Copy Link">
-      <i class="fas fa-link"></i>
+    <button class="share-btn" data-url="${shareLink}" title="Share Link">
+      <i class="fa-solid fa-arrow-up-from-bracket"></i>
     </button>
   </div>
 `;
