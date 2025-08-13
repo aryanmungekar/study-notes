@@ -10,7 +10,7 @@ const categories = {
 const headerBar = document.getElementById("headerBar");
 const initialButtonsDiv = document.getElementById("initialButtons"); // Optional (can be hidden)
 
-const subjectCode = window.location.pathname.match(/([0-9a-zA-Z]+)\/?$/)?.[1];
+const subjectCode = window.location.pathname.match(/(\d{4})\/?$/)?.[1]; // e.g., '1000'
 
 if (subjectCode) {
     fetch('./new-pdf-data.json')
