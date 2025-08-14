@@ -22,5 +22,6 @@ title: Home
   <!-- Repeat or loop cards here as needed -->
 </div>
 
+<br><br>
 <center><h2>Team is continously working on providing Premium Notes</h2></center>
 
