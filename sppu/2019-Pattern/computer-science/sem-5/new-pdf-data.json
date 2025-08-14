@@ -1,6 +1,6 @@
 {
-  "210241": {
-    "name": "Discrete Mathematics",
+  "310241": {
+    "name": "Database Management Systems",
     "notes": [
       {
         "title": "",
@@ -15,8 +15,8 @@
     "uploads": []
   },
 
-  "210242": {
-    "name": "Fundamentals of Data Structures",
+  "310242": {
+    "name": "Theory of Computation",
     "notes": [
       {
         "title": "",
@@ -31,8 +31,8 @@
     "uploads": []
   },
 
-  "210243": {
-    "name": "Object Oriented Programming (OOP)",
+  "310243": {
+    "name": "Systems Programming and Operating System",
     "notes": [
       {
         "title": "",
@@ -47,8 +47,8 @@
     "uploads": []
   },
 
-  "210244": {
-    "name": "Computer Graphics",
+  "310244": {
+    "name": "Computer Networks and Security",
     "notes": [
       {
         "title": "",
@@ -63,8 +63,8 @@
     "uploads": []
   },
 
-  "217521": {
-    "name": "Operating Systems",
+  "310245b": {
+    "name": "Elective I - Human Computer Interface",
     "notes": [
       {
         "title": "",
