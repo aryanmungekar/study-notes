@@ -8,6 +8,13 @@
         "exam": "Insem",
         "thumbnail": "",
         "url": "1mZHYXleKCSaVTn_B7o6jWPgZfhbQBlu5ywbxZ2jYKwE"
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "SQL and PL/SQL",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1QHJCpp5Hi5ddHMaCaW86X9J-AhA3bcCx3uttObZhNtI"
       }
     ],
     "pyq": [],
@@ -15,61 +22,89 @@
     "uploads": []
   },
 
-  "2": {
-    "name": "",
+  "317521": {
+    "name": "Computer Networks",
     "notes": [
       {
-        "title": "",
+        "title": "Unit 1",
+        "subtitle": "Fundamentals of Computer Network",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1B9Y7n32c4PTliM9VWNCPOgBcDuLd3fclJbPpdYVgi9g"
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "Physical Layer",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1eaywdiMCCGVVqJUJLDqz8vDVKzYO0c8-CZmVL9bmYjk"
+      }
+    ],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "310252": {
+    "name": "Web Technology",
+    "notes": [
+      {
+        "title": "Unit 1",
+        "subtitle": "Web Essentials and Mark-up language- HTML",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1ga0aL6eIh95HI5jasWJLIdtiwKeiKvHoOAyS8MQX5so"
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "Client Side Technologies: JavaScript and DOM",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1NWWn_C28UZrM1SpOHXQYv-1kvZgICykZ-3zbFr9H3BU"
+      }
+    ],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "310253": {
+    "name": "Artificial Intelligence",
+    "notes": [
+      {
+        "title": "Unit 1",
+        "subtitle": "Introduction",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1z63M6FOd5rfJdEcDK-WKKt_8TYTdeCFjMd1PgBtsLZs"
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "Problem-solving",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1lutxrJTnVLLYvXRTI_o6BJBh0laI7CMJYf7V5KY8kU4"
+      }
+    ],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "310245b": {
+    "name": "Human Computer Interface",
+    "notes": [
+      {
+        "title": "Unit 1",
         "subtitle": "",
-        "exam": "",
+        "exam": "Insem",
         "thumbnail": "",
         "url": ""
-      }
-    ],
-    "pyq": [],
-    "solved_pyq": [],
-    "uploads": []
-  },
-
-  "3": {
-    "name": "",
-    "notes": [
+      },
       {
-        "title": "",
+        "title": "Unit 2",
         "subtitle": "",
-        "exam": "",
-        "thumbnail": "",
-        "url": ""
-      }
-    ],
-    "pyq": [],
-    "solved_pyq": [],
-    "uploads": []
-  },
-
-  "4": {
-    "name": "",
-    "notes": [
-      {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
-        "thumbnail": "",
-        "url": ""
-      }
-    ],
-    "pyq": [],
-    "solved_pyq": [],
-    "uploads": []
-  },
-
-  "5": {
-    "name": "",
-    "notes": [
-      {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
+        "exam": "Insem",
         "thumbnail": "",
         "url": ""
       }
