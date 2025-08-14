@@ -54,6 +54,13 @@
         "exam": "Insem",
         "thumbnail": "",
         "url": "10RBbeeiLu9w0JeSXnLSgpzAAkpWqRVTSpLVYq-rKw0w"
+      },
+      {
+        "title": "UNIT 2",
+        "subtitle": "Architecture Frameworks",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1VuRUVl8n4of7wI4N29Xcw55RbI74a_AgkR-pQTePSg0"
       }
     ],
     "pyq": [],
@@ -65,10 +72,10 @@
     "notes": [
       {
         "title": "UNIT 1",
-        "subtitle": "Introduction to Machine Learning",
+        "subtitle": "",
         "exam": "Insem",
-        "thumbnail": "/assets/images/cover.jpg",
-        "url": "15-KsfP5eUC9GxIsdCmxKDMYKZ-gj275DTR8m663Fa5w"
+        "thumbnail": "",
+        "url": ""
       }
     ],
     "pyq": [],
