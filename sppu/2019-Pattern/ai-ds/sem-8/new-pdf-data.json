@@ -1,6 +1,6 @@
 {
-  "1": {
-    "name": "",
+  "417530": {
+    "name": ": Computational Intelligence",
     "notes": [
       {
         "title": "",
@@ -15,8 +15,8 @@
     "uploads": []
   },
 
-  "2": {
-    "name": "",
+  "417531": {
+    "name": " Distributed Computing",
     "notes": [
       {
         "title": "",
@@ -31,8 +31,8 @@
     "uploads": []
   },
 
-  "3": {
-    "name": "",
+  "417532a": {
+    "name": "Virtual Reality and Game Development",
     "notes": [
       {
         "title": "",
@@ -47,24 +47,8 @@
     "uploads": []
   },
 
-  "4": {
-    "name": "",
-    "notes": [
-      {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
-        "thumbnail": "",
-        "url": ""
-      }
-    ],
-    "pyq": [],
-    "solved_pyq": [],
-    "uploads": []
-  },
-
-  "5": {
-    "name": "",
+  "417533b": {
+    "name": "Business Intelligence",
     "notes": [
       {
         "title": "",
@@ -78,4 +62,5 @@
     "solved_pyq": [],
     "uploads": []
   }
+  
 }
