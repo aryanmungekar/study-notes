@@ -15,10 +15,10 @@ title: Home
 <!-- ✅ Subject Cards -->
 <div class="card-container">
 
-  <a href="1000.html" style="text-decoration: none;">
+  <a href="310241.html" style="text-decoration: none;">
     <div class="subject-card">
-      <div class="subject-title">Subject 1</div>
-      <div class="subject-code">Code : 1000</div>
+      <div class="subject-title">Database Management Systems</div>
+      <div class="subject-code">Code : 310241</div>
     </div>
   </a>
 
