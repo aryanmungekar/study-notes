@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: AI&DS SPPU (2019 Pattern)
 ---
 
 
