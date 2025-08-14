@@ -25,7 +25,15 @@
   
   "417522": {
     "name": "Data Modeling & Visualization",
-    "notes": [ ],
+    "notes": [
+      {
+        "title": "UNIT 1",
+        "subtitle": "Introduction to Data Modelling",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1pmA5QKq5jOczQT9WNvVlCGSl5DYUdV40UeyhpunX_k4"
+      }
+    ],
     "pyq": [],
     "solved_pyq": [],
     "uploads": []
