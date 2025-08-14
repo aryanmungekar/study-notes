@@ -15,31 +15,31 @@ title: Home
 <!-- ✅ Subject Cards -->
 <div class="card-container">
 
-  <a href="1000.html" style="text-decoration: none;">
+  <a href="317529.html" style="text-decoration: none;">
     <div class="subject-card">
-      <div class="subject-title">Subject 1</div>
-      <div class="subject-code">Code : 1000</div>
+      <div class="subject-title">Data Science</div>
+      <div class="subject-code">Code : 317529</div>
     </div>
   </a>
 
-  <a href="2000.html" style="text-decoration: none;">
+  <a href="317530.html" style="text-decoration: none;">
     <div class="subject-card">
-      <div class="subject-title">Subject 2</div>
-      <div class="subject-code">Code : 2000</div>
+      <div class="subject-title">Cyber Security</div>
+      <div class="subject-code">Code : 317530</div>
     </div>
   </a>
 
-  <a href="3000.html" style="text-decoration: none;">
+  <a href="317531.html" style="text-decoration: none;">
     <div class="subject-card">
-      <div class="subject-title">Subject 3</div>
-      <div class="subject-code">Code : 2000</div>
+      <div class="subject-title">Artificial Neural Network</div>
+      <div class="subject-code">Code : 317531</div>
     </div>
   </a>
 
-  <a href="4000.html" style="text-decoration: none;">
+  <a href="310254c.html" style="text-decoration: none;">
     <div class="subject-card">
-      <div class="subject-title">Subject 4</div>
-      <div class="subject-code">Code : 2000</div>
+      <div class="subject-title">Cloud Computing</div>
+      <div class="subject-code">Code : 310254c</div>
     </div>
   </a>
 

@@ -1,6 +1,6 @@
 {
-  "1": {
-    "name": "",
+  "317529": {
+    "name": "Data Science",
     "notes": [
       {
         "title": "",
@@ -15,8 +15,8 @@
     "uploads": []
   },
 
-  "2": {
-    "name": "",
+  "317530": {
+    "name": "Cyber Security",
     "notes": [
       {
         "title": "",
@@ -31,8 +31,8 @@
     "uploads": []
   },
 
-  "3": {
-    "name": "",
+  "317531": {
+    "name": "Artificial Neural Network",
     "notes": [
       {
         "title": "",
@@ -47,24 +47,8 @@
     "uploads": []
   },
 
-  "4": {
-    "name": "",
-    "notes": [
-      {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
-        "thumbnail": "",
-        "url": ""
-      }
-    ],
-    "pyq": [],
-    "solved_pyq": [],
-    "uploads": []
-  },
-
-  "5": {
-    "name": "",
+  "310254c": {
+    "name": "Cloud Computing",
     "notes": [
       {
         "title": "",
@@ -78,4 +62,5 @@
     "solved_pyq": [],
     "uploads": []
   }
+
 }
