@@ -23,5 +23,8 @@ title: AI&DS SPPU (2019 Pattern)
 </div>
 
 <br><br>
-<center><h2>Team is continously working on providing Premium Notes!!!</h2></center>
+<center><h2>🚧 Notes Coming Soon</h2></center>
+<center><h3>Our team is continuously working to prepare the most accurate, detailed, and student-friendly notes for you.
+Quality takes time — and we’re making sure every topic is explained in the best possible way.
+Stay tuned, fresh content will be here shortly!</h3></center>
 
