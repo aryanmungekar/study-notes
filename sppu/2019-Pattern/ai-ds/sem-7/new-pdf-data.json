@@ -45,9 +45,17 @@
     "solved_pyq": [],
     "uploads": []
   },
-  "417523a": {
-    "name": "Quantum Artificial Intelligence",
-    "notes": [],
+  "417523c": {
+    "name": " Enterprise Architecture and Components",
+    "notes": [
+      {
+        "title": "UNIT 1",
+        "subtitle": "Introduction to Enterprise Architecture",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "10RBbeeiLu9w0JeSXnLSgpzAAkpWqRVTSpLVYq-rKw0w"
+      }
+    ],
     "pyq": [],
     "solved_pyq": [],
     "uploads": []

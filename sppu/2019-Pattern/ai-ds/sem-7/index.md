@@ -29,9 +29,9 @@ title: Home
     </div>
   </a>
 
-  <a href="417523a.html" style="text-decoration: none;">
+  <a href="417523c.html" style="text-decoration: none;">
     <div class="subject-card">
-      <div class="subject-title">Quantum Artificial Intelligence</div>
+      <div class="subject-title">Enterprise Architecture and Components</div>
       <div class="subject-code">Code : 417523A</div>
     </div>
   </a>
