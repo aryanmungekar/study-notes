@@ -2,6 +2,112 @@
 layout: default
 title: Home
 ---
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #fff;
+        color: #000;
+    }
+    header {
+        background-color: #eee;
+        padding: 20px;
+        text-align: center;
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 10px;
+        background: #ddd;
+    }
+    nav a {
+        color: black;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    nav a:hover {
+        text-decoration: underline;
+    }
+    .hero {
+        text-align: center;
+        padding: 50px 20px;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    .hero p {
+        font-size: 1.1rem;
+        color: #555;
+        max-width: 600px;
+        margin: auto;
+    }
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 40px 20px;
+    }
+    .feature-card {
+        background: #f4f4f4;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    .feature-card h3 {
+        margin-bottom: 10px;
+    }
+    .reviews {
+        padding: 40px 20px;
+        text-align: center;
+    }
+    .reviews h2 {
+        margin-bottom: 20px;
+    }
+    .slider-container {
+        overflow-x: auto;
+        display: flex;
+        gap: 20px;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+    .slider-container::-webkit-scrollbar {
+        display: none;
+    }
+    .review {
+        flex: 0 0 auto;
+        scroll-snap-align: center;
+        background: #f4f4f4;
+        padding: 15px;
+        border-radius: 10px;
+        width: 200px;
+        text-align: center;
+    }
+    .review img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid black;
+        margin-bottom: 10px;
+    }
+    footer {
+        background: #eee;
+        padding: 20px;
+        text-align: center;
+        color: #555;
+        font-size: 0.9rem;
+    }
+</style>
 
 <div class="slider-container">
       <div class="slider-track" id="sliderTrack">
