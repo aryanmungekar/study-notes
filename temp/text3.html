@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title><h1 id="page-title">Google Document Viewer</h1></title>
+    <title>Google Document Viewer</title>
 
     <!-- <link rel="stylesheet" href="{{ '/assets/css/share-button.css' | relative_url }}"> -->
     <link rel="stylesheet" href="/assets/css/share-button.css">
@@ -184,35 +184,46 @@
     <script src="/assets/js/share-button.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            const file = urlParams.get("file");
-            const subjectName = urlParams.get("subject");
-            const fileTitle = urlParams.get("title");
+    document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const file = urlParams.get("file");
+    const subjectName = urlParams.get("subject");
+    const fileTitle = urlParams.get("title");
 
-            const iframe = document.getElementById("google-doc-iframe");
-            const pageTitle = document.getElementById("page-title");
-            const loader = document.getElementById("loader");
+    const iframe = document.getElementById("google-doc-iframe");
+    const pageTitle = document.getElementById("page-title");
+    const loader = document.getElementById("loader");
 
-            if (subjectName) {
-                pageTitle.innerText = decodeURIComponent(subjectName);
-            } else if (fileTitle) {
-                pageTitle.innerText = decodeURIComponent(fileTitle);
-            }
+    let finalTitle = "Google Document Viewer";
 
-            if (file) {
-                iframe.src = `https://docs.google.com/document/d/${file}/preview`;
+    if (fileTitle && subjectName) {
+        finalTitle = `${decodeURIComponent(fileTitle)} – ${decodeURIComponent(subjectName)}`;
+    } else if (fileTitle) {
+        finalTitle = decodeURIComponent(fileTitle);
+    } else if (subjectName) {
+        finalTitle = decodeURIComponent(subjectName);
+    }
 
-                iframe.addEventListener("load", () => {
-                    loader.classList.add("hidden");
-                    setTimeout(() => loader.style.display = "none", 500); // fully remove after fade
-                });
-            } else {
-                pageTitle.innerText = "❌ Error: No Google Doc ID specified.";
-                iframe.style.display = 'none';
-                loader.style.display = "none";
-            }
+    // Set both heading and browser tab title
+    pageTitle.innerText = finalTitle;
+    document.title = finalTitle;
+
+    if (file) {
+        iframe.src = `https://docs.google.com/document/d/${file}/preview`;
+
+        iframe.addEventListener("load", () => {
+            loader.classList.add("hidden");
+            setTimeout(() => loader.style.display = "none", 500);
         });
+    } else {
+        finalTitle = "❌ Error: No Google Doc ID specified.";
+        pageTitle.innerText = finalTitle;
+        document.title = finalTitle;
+        iframe.style.display = 'none';
+        loader.style.display = "none";
+    }
+});
+
     </script>
 
 </body>
