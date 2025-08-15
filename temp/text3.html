@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Google Document Viewer</title>
+    <title>PDF</title>
 
     <!-- <link rel="stylesheet" href="{{ '/assets/css/share-button.css' | relative_url }}"> -->
     <link rel="stylesheet" href="/assets/css/share-button.css">
@@ -150,7 +150,7 @@
     <div id="google-doc-container">
 
         <div class="header-container">
-            <h1 id="page-title">Google Document Viewer</h1>
+            <h1 id="page-title">PDF</h1>
         </div>
 
         <div class="iframe-wrapper">
@@ -216,7 +216,7 @@
             setTimeout(() => loader.style.display = "none", 500);
         });
     } else {
-        finalTitle = "❌ Error: No Google Doc ID specified.";
+        finalTitle = "❌ Error: No PDF File specified.";
         pageTitle.innerText = finalTitle;
         document.title = finalTitle;
         iframe.style.display = 'none';
