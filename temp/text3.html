@@ -148,6 +148,17 @@
         </div>
     </div>
 
+    <div class="floating-share">
+    <button class="share-toggle" onclick="toggleShareMenu()"><i class="fa-solid fa-share"></i></button>
+    <div class="floating-share-menu" id="shareMenu">
+      <a target="_blank" href="#" id="share-whatsapp"><i class="fab fa-whatsapp"></i></a>
+      <a target="_blank" href="#" id="share-telegram"><i class="fab fa-telegram"></i></a>
+      <a target="_blank" href="#" id="share-facebook"><i class="fab fa-facebook-f"></i></a>
+      <a target="_blank" href="#" id="share-twitter"><i class="fab fa-twitter"></i></a>
+      <button onclick="copyLink()" title="Copy"><i class="fas fa-link"></i></button>
+    </div>
+  </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const urlParams = new URLSearchParams(window.location.search);
