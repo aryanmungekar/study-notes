@@ -3,11 +3,18 @@
     "name": "Database Management Systems",
     "notes": [
       {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
+        "title": "Unit 1",
+        "subtitle": "Introduction to Database Management Systems and ER Model",
+        "exam": "Insem",
         "thumbnail": "",
-        "url": ""
+        "url": "1mjjbmnmWoS9-WcBi_4nuYtNtepTmIAx63vbWEHt8uvw"
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "SQL and PL/SQL",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1Rof1DPdTYqRy9yZfDGzswKgrWGtD5XBKJC_c9-NrerM"
       }
     ],
     "pyq": [],
@@ -19,11 +26,18 @@
     "name": "Theory of Computation",
     "notes": [
       {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
+        "title": "Unit 1",
+        "subtitle": "Formal Language Theory and Finite Automata",
+        "exam": "Insem",
         "thumbnail": "",
-        "url": ""
+        "url": "1YZ1UwyuvVC84nkwG9vZhNYrIjp-ZV3GaLuojIG3LAB0"
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "Regular Expressions (RE)",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1RpjsV1rV5Z5kmECzgGxc76xBOOEJj0_eVYcWHNTXA5M"
       }
     ],
     "pyq": [],
@@ -35,11 +49,18 @@
     "name": "Systems Programming and Operating System",
     "notes": [
       {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
+        "title": "Unit 1",
+        "subtitle": "Introduction",
+        "exam": "Insem",
         "thumbnail": "",
-        "url": ""
+        "url": "1HXgFMF9ILhAz4HZtyOYk8u9H1sKD3yO3pXXenL6y-co"
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "Macro Processor and Compilers",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1sbSaV1ub41aYjC1ECIdpPrZYdrbqt41h2TZN1VSfuuU"
       }
     ],
     "pyq": [],
@@ -51,11 +72,18 @@
     "name": "Computer Networks and Security",
     "notes": [
       {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
+        "title": "Unit 1",
+        "subtitle": "Introduction To Computer Networks",
+        "exam": "Insem",
         "thumbnail": "",
-        "url": ""
+        "url": "1_IPwiLjKugl_U2lJ_AnlCHF3YpMO7sUYPzlr1JrC_yE"
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "Data Link Layer",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "16diecd6kjl4ajNribCou2N8UMXJJ2Tuj4wZIe_NzCFI"
       }
     ],
     "pyq": [],
@@ -67,11 +95,18 @@
     "name": "Elective I - Human Computer Interface",
     "notes": [
       {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
+        "title": "Unit 1",
+        "subtitle": "Introduction and Foundation of HCI ",
+        "exam": "Insem",
         "thumbnail": "",
-        "url": ""
+        "url": "1kuhuhZIGvaxerNu9p8NXVbcsjIHWSa8GG_Or3KtZALg"
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "Human Perspective in Interaction Design Process",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1rJi7v0vgv40pcXd_QGcjgNkqMIqn_p3DKEUsL9v6c0A"
       }
     ],
     "pyq": [],
