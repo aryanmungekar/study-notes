@@ -85,8 +85,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Footer bar */
@@ -122,8 +127,20 @@
         }
 
         @keyframes slide-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .floating-share {
+            position: fixed;
+            bottom: 66px;
+            right: 20px;
+            z-index: 9999;
         }
     </style>
 </head>
@@ -131,7 +148,7 @@
 <body>
 
     <div id="google-doc-container">
-        
+
         <div class="header-container">
             <h1 id="page-title">Google Document Viewer</h1>
         </div>
@@ -154,17 +171,17 @@
     </div>
 
     <div class="floating-share">
-    <button class="share-toggle" onclick="toggleShareMenu()"><i class="fa-solid fa-share"></i></button>
-    <div class="floating-share-menu" id="shareMenu">
-      <a target="_blank" href="#" id="share-whatsapp"><i class="fab fa-whatsapp"></i></a>
-      <a target="_blank" href="#" id="share-telegram"><i class="fab fa-telegram"></i></a>
-      <a target="_blank" href="#" id="share-facebook"><i class="fab fa-facebook-f"></i></a>
-      <a target="_blank" href="#" id="share-twitter"><i class="fab fa-twitter"></i></a>
-      <button onclick="copyLink()" title="Copy"><i class="fas fa-link"></i></button>
+        <button class="share-toggle" onclick="toggleShareMenu()"><i class="fa-solid fa-share"></i></button>
+        <div class="floating-share-menu" id="shareMenu">
+            <a target="_blank" href="#" id="share-whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a target="_blank" href="#" id="share-telegram"><i class="fab fa-telegram"></i></a>
+            <a target="_blank" href="#" id="share-facebook"><i class="fab fa-facebook-f"></i></a>
+            <a target="_blank" href="#" id="share-twitter"><i class="fab fa-twitter"></i></a>
+            <button onclick="copyLink()" title="Copy"><i class="fas fa-link"></i></button>
+        </div>
     </div>
-  </div>
 
-   <script src="/assets/js/share-button.js"></script>
+    <script src="/assets/js/share-button.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -199,4 +216,5 @@
     </script>
 
 </body>
+
 </html>
