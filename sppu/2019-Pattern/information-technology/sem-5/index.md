@@ -15,37 +15,37 @@ title: Home
 <!-- ✅ Subject Cards -->
 <div class="card-container">
 
-<a href="310241.html" style="text-decoration: none;">
-    <div class="subject-card">
-      <div class="subject-title">Database Management Systems</div>
-      <div class="subject-code">Code : 310241</div>
-    </div>
-</a>
-
-<a href="310242.html" style="text-decoration: none;">
+<a href="314441.html" style="text-decoration: none;">
     <div class="subject-card">
       <div class="subject-title">Theory of Computation</div>
-      <div class="subject-code">Code : 310242</div>
+      <div class="subject-code">Code : 314441</div>
     </div>
 </a>
 
-<a href="310243.html" style="text-decoration: none;">
+<a href="314442.html" style="text-decoration: none;">
     <div class="subject-card">
-      <div class="subject-title">Systems Programming and Operating System</div>
-      <div class="subject-code">Code : 310243</div>
+      <div class="subject-title">Operating System</div>
+      <div class="subject-code">Code : 314442</div>
     </div>
 </a>
 
-<a href="310244.html" style="text-decoration: none;">
+<a href="314443.html" style="text-decoration: none;">
     <div class="subject-card">
-      <div class="subject-title">Computer Networks and Security</div>
-      <div class="subject-code">Code : 310244</div>
+      <div class="subject-title">Machine Learning</div>
+      <div class="subject-code">Code : 314443</div>
     </div>
 </a>
 
-<a href="310245B.html" style="text-decoration: none;">
+<a href="314444.html" style="text-decoration: none;">
     <div class="subject-card">
-      <div class="subject-title">Elective I - Human Computer Interface</div>
+      <div class="subject-title">Human Computer Interaction</div>
+      <div class="subject-code">Code : 314444</div>
+    </div>
+</a>
+
+<a href="314445d.html" style="text-decoration: none;">
+    <div class="subject-card">
+      <div class="subject-title">Elective -I : Internet of Things</div>
       <div class="subject-code">Code : 310245B</div>
     </div>
 </a>

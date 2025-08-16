@@ -1,6 +1,6 @@
 {
-  "0": {
-    "name": "",
+  "314441": {
+    "name": "Theory of Computation",
     "notes": [
       {
         "title": "Unit 1",
@@ -21,8 +21,8 @@
     "solved_pyq": [],
     "uploads": []
   },
-  "1": {
-    "name": "",
+  "314442": {
+    "name": "Operating System",
     "notes": [
       {
         "title": "Unit 1",
@@ -43,8 +43,8 @@
     "solved_pyq": [],
     "uploads": []
   },
-  "2": {
-    "name": "",
+  "314443": {
+    "name": "Machine Learning",
     "notes": [
       {
         "title": "Unit 1",
@@ -65,8 +65,8 @@
     "solved_pyq": [],
     "uploads": []
   },
-  "3": {
-    "name": "",
+  "314444": {
+    "name": "Human Computer Interaction",
     "notes": [
       {
         "title": "Unit 1",
@@ -87,8 +87,8 @@
     "solved_pyq": [],
     "uploads": []
   },
-  "4": {
-    "name": "",
+  "314445d": {
+    "name": "Elective -I : Internet of Things",
     "notes": [
       {
         "title": "Unit 1",
