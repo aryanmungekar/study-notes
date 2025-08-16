@@ -47,7 +47,7 @@ title: Home
     </div>
   </a>
 
-  <a href="/sppu/2019-Pattern/it/" style="text-decoration: none; color: inherit;">
+  <a href="/sppu/2019-Pattern/information-technology/" style="text-decoration: none; color: inherit;">
     <div style="background-color: rgba(253, 253, 253, 1);" class="button-card">
       <i style="font-size: 40px; color: black;" class="fa-solid fa-bolt"></i>
       <h4>Information Technology</h4>
