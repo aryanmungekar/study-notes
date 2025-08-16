@@ -1,6 +1,6 @@
 {
-  "0": {
-    "name": "",
+  "314451": {
+    "name": "Computer Network and Security",
     "notes": [
       {
         "title": "Unit 1",
@@ -21,8 +21,8 @@
     "solved_pyq": [],
     "uploads": []
   },
-  "1": {
-    "name": "",
+  "314452": {
+    "name": "Data Science and Big Data Analytics",
     "notes": [
       {
         "title": "Unit 1",
@@ -43,8 +43,8 @@
     "solved_pyq": [],
     "uploads": []
   },
-  "2": {
-    "name": "",
+  "314453": {
+    "name": "Web Application Development",
     "notes": [
       {
         "title": "Unit 1",
@@ -65,30 +65,8 @@
     "solved_pyq": [],
     "uploads": []
   },
-  "3": {
-    "name": "",
-    "notes": [
-      {
-        "title": "Unit 1",
-        "subtitle": "",
-        "exam": "Insem",
-        "thumbnail": "",
-        "url": ""
-      },
-      {
-        "title": "Unit 2",
-        "subtitle": "",
-        "exam": "Insem",
-        "thumbnail": "",
-        "url": ""
-      }
-    ],
-    "pyq": [],
-    "solved_pyq": [],
-    "uploads": []
-  },
-  "4": {
-    "name": "",
+  "314454a": {
+    "name": "Elective-II (Artificial Intelligence)",
     "notes": [
       {
         "title": "Unit 1",
