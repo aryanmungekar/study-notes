@@ -15,38 +15,24 @@ title: Home
 <!-- ✅ Subject Cards -->
 <div class="card-container">
 
-<a href=".html" style="text-decoration: none;">
+<a href="414450.html" style="text-decoration: none;">
     <div class="subject-card">
-      <div class="subject-title"></div>
-      <div class="subject-code">Code : </div>
+      <div class="subject-title">Distributed Systems</div>
+      <div class="subject-code">Code : 414450</div>
     </div>
 </a>
 
-<a href=".html" style="text-decoration: none;">
+<a href="414451.html" style="text-decoration: none;">
     <div class="subject-card">
-      <div class="subject-title"></div>
-      <div class="subject-code">Code : </div>
+      <div class="subject-title">Elective-V (Software Defined Network)</div>
+      <div class="subject-code">Code : 414451</div>
     </div>
 </a>
 
-<a href=".html" style="text-decoration: none;">
+<a href="414452.html" style="text-decoration: none;">
     <div class="subject-card">
-      <div class="subject-title"></div>
-      <div class="subject-code">Code : </div>
-    </div>
-</a>
-
-<a href=".html" style="text-decoration: none;">
-    <div class="subject-card">
-      <div class="subject-title"></div>
-      <div class="subject-code">Code : </div>
-    </div>
-</a>
-
-<a href=".html" style="text-decoration: none;">
-    <div class="subject-card">
-      <div class="subject-title"></div>
-      <div class="subject-code">Code : </div>
+      <div class="subject-title">ElectiveVI (Ethical Hacking and Security)</div>
+      <div class="subject-code">Code : 414452</div>
     </div>
 </a>
 

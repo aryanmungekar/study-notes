@@ -1,6 +1,6 @@
 {
-  "0": {
-    "name": "",
+  "414450": {
+    "name": "Distributed Systems",
     "notes": [
       {
         "title": "Unit 1",
@@ -21,8 +21,8 @@
     "solved_pyq": [],
     "uploads": []
   },
-  "1": {
-    "name": "",
+  "414451": {
+    "name": "Elective-V (Software Defined Network)",
     "notes": [
       {
         "title": "Unit 1",
@@ -43,52 +43,8 @@
     "solved_pyq": [],
     "uploads": []
   },
-  "2": {
-    "name": "",
-    "notes": [
-      {
-        "title": "Unit 1",
-        "subtitle": "",
-        "exam": "Insem",
-        "thumbnail": "",
-        "url": ""
-      },
-      {
-        "title": "Unit 2",
-        "subtitle": "",
-        "exam": "Insem",
-        "thumbnail": "",
-        "url": ""
-      }
-    ],
-    "pyq": [],
-    "solved_pyq": [],
-    "uploads": []
-  },
-  "3": {
-    "name": "",
-    "notes": [
-      {
-        "title": "Unit 1",
-        "subtitle": "",
-        "exam": "Insem",
-        "thumbnail": "",
-        "url": ""
-      },
-      {
-        "title": "Unit 2",
-        "subtitle": "",
-        "exam": "Insem",
-        "thumbnail": "",
-        "url": ""
-      }
-    ],
-    "pyq": [],
-    "solved_pyq": [],
-    "uploads": []
-  },
-  "4": {
-    "name": "",
+  "414452": {
+    "name": "ElectiveVI (Ethical Hacking and Security)",
     "notes": [
       {
         "title": "Unit 1",
@@ -109,5 +65,4 @@
     "solved_pyq": [],
     "uploads": []
   }
-
 }
