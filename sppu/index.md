@@ -38,7 +38,7 @@ title: SPPU
   <a href="/sppu/2019-Pattern/ai&ml/" style="text-decoration: none; color: inherit;">
     <div style="background-color: rgba(253, 253, 253, 1);" class="button-card">
       <i style="font-size: 40px; color: black;" class="fa-solid fa-hexagon-nodes"></i>
-      <h4>Artificial Intelligence & Machine Learning</h4>
+      <h4>AI & ML</h4>
     </div>
   </a>
 
