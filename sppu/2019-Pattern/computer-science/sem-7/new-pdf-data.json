@@ -8,15 +8,7 @@
         "exam": "Insem",
         "thumbnail": "",
         "url": "1cU4U0ReR6MuhSNi3n-i50MlEKFQ4dW01-AMBSUsGQKg"
-      }
-    ],
-    "pyq": [],
-    "solved_pyq": [],
-    "uploads": []
-  },
-  "410242": {
-    "name": "Machine Learning",
-    "notes": [
+      },
       {
         "title": "Unit 2",
         "subtitle": "Analysis of Algorithms and Complexity Theory",
@@ -29,8 +21,8 @@
     "solved_pyq": [],
     "uploads": []
   },
-  "410243": {
-    "name": "Blockchain Technology",
+  "410242": {
+    "name": "Machine Learning",
     "notes": [
       {
         "title": "Unit 1",
@@ -51,44 +43,66 @@
     "solved_pyq": [],
     "uploads": []
   },
-  "410244B": {
-    "name": "Multimedia Techniques",
+  "410243": {
+    "name": "Blockchain Technology",
     "notes": [
-     {
+      {
         "title": "Unit 1",
-        "subtitle": "",
+        "subtitle": "Mathematical Foundation for Blockchain",
         "exam": "Insem",
         "thumbnail": "",
-        "url": ""
+        "url": "1FXJA9pS7E10VmGL5bR4hDb1CWoxUor3cNBPfFxv3hSM"
       },
       {
         "title": "Unit 2",
-        "subtitle": "",
+        "subtitle": "Feature Engineering",
         "exam": "Insem",
         "thumbnail": "",
-        "url": ""
+        "url": "1zxYECbZt0hDI5YIn06n5MyHTdect2BuxpP4X5Py55f0"
       }
     ],
     "pyq": [],
     "solved_pyq": [],
     "uploads": []
   },
-  "410245C": {
+  "410244b": {
+    "name": "Multimedia Techniques",
+    "notes": [
+     {
+        "title": "Unit 1",
+        "subtitle": "Introduction to multimedia",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1Wv_ZqtuJYfr8GLFCqEuq478ROPAx_E8EWc12pqv8Emk"
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "Graphics and Data Representation Techniques",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1FJOMaQ2Zr3LKKZVCyRSOOx-Co4S9M5NeyD0hXVOJXiI"
+      }
+    ],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+  "410245c": {
     "name": "Mobile Computing",
     "notes": [
       {
         "title": "Unit 1",
-        "subtitle": "",
+        "subtitle": "Introduction to Mobile Computing",
         "exam": "Insem",
         "thumbnail": "",
-        "url": ""
+        "url": "1lbwBFuMQ__11wz_rsUvJp0hH9Ya-W75zTLJJTIbZKak"
       },
       {
         "title": "Unit 2",
-        "subtitle": "",
+        "subtitle": "Mobile Wireless protocols",
         "exam": "Insem",
         "thumbnail": "",
-        "url": ""
+        "url": "1UZpwXfZON3kK0Y6-Xrx4tcWQBapkqZ52Va_CXXadaEk"
       }
     ],
     "pyq": [],
