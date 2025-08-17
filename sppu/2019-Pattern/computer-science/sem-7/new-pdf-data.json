@@ -3,11 +3,11 @@
     "name": "Design and Analysis of Algorithms",
     "notes": [
       {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
+        "title": "Unit 1",
+        "subtitle": "Algorithms and Problem Solving",
+        "exam": "Insem",
         "thumbnail": "",
-        "url": ""
+        "url": "1cU4U0ReR6MuhSNi3n-i50MlEKFQ4dW01-AMBSUsGQKg"
       }
     ],
     "pyq": [],
@@ -18,11 +18,11 @@
     "name": "Machine Learning",
     "notes": [
       {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
+        "title": "Unit 2",
+        "subtitle": "Analysis of Algorithms and Complexity Theory",
+        "exam": "Insem",
         "thumbnail": "",
-        "url": ""
+        "url": "1gyjBp4yIlIVfdq1WcMMQnvoFANu3rbHfJgfcJnXfExw"
       }
     ],
     "pyq": [],
@@ -33,11 +33,18 @@
     "name": "Blockchain Technology",
     "notes": [
       {
-        "title": "",
-        "subtitle": "",
-        "exam": "",
+        "title": "Unit 1",
+        "subtitle": "Introduction To Machine Learning",
+        "exam": "Insem",
         "thumbnail": "",
-        "url": ""
+        "url": "1XLmpkQVaokL8t_bhzy908Ax4hkEqL69m_03H0UhsaEo"
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "Feature Engineering",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1hRwsFiOAZ_A2xwDtgLhBVvDceVjPIXF7P95iRufvFy0"
       }
     ],
     "pyq": [],
@@ -48,12 +55,20 @@
     "name": "Pervasive Computing",
     "notes": [
       {
-        "title": "",
+        "title": "Unit 1",
         "subtitle": "",
-        "exam": "",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "",
+        "exam": "Insem",
         "thumbnail": "",
         "url": ""
       }
+
     ],
     "pyq": [],
     "solved_pyq": [],
@@ -62,10 +77,17 @@
   "410244B": {
     "name": "Multimedia Techniques",
     "notes": [
-      {
-        "title": "",
+     {
+        "title": "Unit 1",
         "subtitle": "",
-        "exam": "",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "",
+        "exam": "Insem",
         "thumbnail": "",
         "url": ""
       }
@@ -78,9 +100,16 @@
     "name": "Cyber Security And Digital Forensics",
     "notes": [
       {
-        "title": "",
+        "title": "Unit 1",
         "subtitle": "",
-        "exam": "",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "",
+        "exam": "Insem",
         "thumbnail": "",
         "url": ""
       }
@@ -93,9 +122,16 @@
     "name": "Object Oriented Modeling And Design",
     "notes": [
       {
-        "title": "",
+        "title": "Unit 1",
         "subtitle": "",
-        "exam": "",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "",
+        "exam": "Insem",
         "thumbnail": "",
         "url": ""
       }
@@ -108,9 +144,16 @@
     "name": "Digital Signal Processing",
     "notes": [
       {
-        "title": "",
+        "title": "Unit 1",
         "subtitle": "",
-        "exam": "",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "",
+        "exam": "Insem",
         "thumbnail": "",
         "url": ""
       }
@@ -123,9 +166,16 @@
     "name": "Information Retrieval",
     "notes": [
       {
-        "title": "",
+        "title": "Unit 1",
         "subtitle": "",
-        "exam": "",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "",
+        "exam": "Insem",
         "thumbnail": "",
         "url": ""
       }
@@ -138,9 +188,16 @@
     "name": "GPU Programming And Architecture",
     "notes": [
       {
-        "title": "",
+        "title": "Unit 1",
         "subtitle": "",
-        "exam": "",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "",
+        "exam": "Insem",
         "thumbnail": "",
         "url": ""
       }
@@ -153,9 +210,16 @@
     "name": "Mobile Computing",
     "notes": [
       {
-        "title": "",
+        "title": "Unit 1",
         "subtitle": "",
-        "exam": "",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "",
+        "exam": "Insem",
         "thumbnail": "",
         "url": ""
       }
@@ -168,9 +232,16 @@
     "name": "Software Testing And Quality Assurance",
     "notes": [
       {
-        "title": "",
+        "title": "Unit 1",
         "subtitle": "",
-        "exam": "",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "",
+        "exam": "Insem",
         "thumbnail": "",
         "url": ""
       }
@@ -183,9 +254,16 @@
     "name": "Compilers",
     "notes": [
       {
-        "title": "",
+        "title": "Unit 1",
         "subtitle": "",
-        "exam": "",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "",
+        "exam": "Insem",
         "thumbnail": "",
         "url": ""
       }
