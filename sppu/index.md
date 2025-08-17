@@ -37,6 +37,14 @@ title: SPPU
     </div>
   </a>
 
-
+<a href="https://drive.google.com/uc?export=download&id=1eTziLrIactZTQd0AqcCht-PDrOi4GslW1WX54BUD8SU"
+   target="_blank"
+   onclick="gtag('event', 'download', {
+       event_category: 'Files',
+       event_label: 'My PDF File',
+       value: 1
+   });">
+   Download PDF
+</a>
 
 </div>
