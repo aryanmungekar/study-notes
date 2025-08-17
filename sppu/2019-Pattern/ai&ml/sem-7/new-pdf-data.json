@@ -1,0 +1,116 @@
+{
+  "418541": {
+    "name": "Information Retrieval in AI",
+    "notes": [
+      {
+        "title": "Unit 1",
+        "subtitle": "Introduction to Information Retrieval ",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "Indexing and Searching Techniques",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      }
+    ],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "418542": {
+    "name": "Cloud Computing",
+    "notes": [
+      {
+        "title": "Unit 1",
+        "subtitle": "Fundamentals of Cloud Computing",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "Common Enabling Technology",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      }
+    ],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "418543": {
+    "name": "Deep Learning for AI",
+    "notes": [
+      {
+        "title": "Unit 1",
+        "subtitle": "Fundamentals of Deep Learning",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "Convolutional Neural Network:",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      }
+    ],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "418544a": {
+    "name": "Elective –III (Quantum computing)",
+    "notes": [
+      {
+        "title": "Unit 1",
+        "subtitle": "Introduction to Quantum Computing",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "Mathematical Foundation of Quantum Computing",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      }
+    ],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "418545a": {
+    "name": " Elective IV - (Ethical Hacking and Cyber Forensics)",
+    "notes": [
+      {
+        "title": "Unit 1",
+        "subtitle": "Introduction to Ethical Hacking and Cyber Forensics",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "Scanning, Testing and Enumeration ",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      }
+    ],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  }
+}

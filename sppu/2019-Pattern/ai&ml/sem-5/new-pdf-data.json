@@ -1,0 +1,116 @@
+{
+  "318541": {
+    "name": ": Design and Analysis of Algorithm",
+    "notes": [
+      {
+        "title": "Unit 1",
+        "subtitle": "INTRODUCTION",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "DIVIDE & CONQUER AND GREEDY METHOD",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      }
+    ],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "318542": {
+    "name": "IoT with Artificial Intelligence",
+    "notes": [
+      {
+        "title": "Unit 1",
+        "subtitle": "INTRODUCTION TO INTERNET OF THINGS",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "Fundamentals of IoT",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      }
+    ],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "318543": {
+    "name": "Web Technology",
+    "notes": [
+      {
+        "title": "Unit 1",
+        "subtitle": "INTRODUCTION TO WEB TECHNOLOGIES",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "WEB SCRIPTING LANGUAGES",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      }
+    ],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "3318544": {
+    "name": "Management and Entrepreneurship for IT Industry",
+    "notes": [
+      {
+        "title": "Unit 1",
+        "subtitle": "INTRODUCTION",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "DIRECTING AND CONTROLLING",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      }
+    ],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  },
+
+  "318545": {
+    "name": "Elective-I-(A): Robotics",
+    "notes": [
+      {
+        "title": "Unit 1",
+        "subtitle": "INTRODUCTION: OVERVIEW OF ROBOTS",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      },
+      {
+        "title": "Unit 2",
+        "subtitle": "MECHANICAL SYSTEMS: COMPONENTS, DYNAMICS AND MODELING",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": ""
+      }
+    ],
+    "pyq": [],
+    "solved_pyq": [],
+    "uploads": []
+  }
+}
