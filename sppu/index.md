@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: SPPU
 ---
 
 <h2>2019 Pattern</h2>
