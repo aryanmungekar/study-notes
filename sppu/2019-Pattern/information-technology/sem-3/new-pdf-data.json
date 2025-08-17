@@ -1,6 +1,6 @@
 {
-  "0": {
-    "name": "",
+  "214441": {
+    "name": "Discrete Mathematics",
     "notes": [
       {
         "title": "Unit 1",
@@ -21,8 +21,8 @@
     "solved_pyq": [],
     "uploads": []
   },
-  "1": {
-    "name": "",
+  "214442": {
+    "name": "Logic Design & Computer Organization",
     "notes": [
       {
         "title": "Unit 1",
@@ -43,8 +43,8 @@
     "solved_pyq": [],
     "uploads": []
   },
-  "2": {
-    "name": "",
+  "214443": {
+    "name": "Data Structure & Algorithms",
     "notes": [
       {
         "title": "Unit 1",
@@ -65,8 +65,8 @@
     "solved_pyq": [],
     "uploads": []
   },
-  "3": {
-    "name": "",
+  "214444": {
+    "name": "Object-Oriented Programming",
     "notes": [
       {
         "title": "Unit 1",
@@ -87,8 +87,8 @@
     "solved_pyq": [],
     "uploads": []
   },
-  "4": {
-    "name": "",
+  "214445": {
+    "name": "Basics of Computer Network",
     "notes": [
       {
         "title": "Unit 1",
