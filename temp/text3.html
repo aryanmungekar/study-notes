@@ -212,10 +212,10 @@
 
             if (files) {
                 // Case 1: Google Drive file (PDF, PPT, Word, etc.)
-                src = `https://drive.google.com/file/d/${files}/preview`;
+                src = `https://drive.google.com/file/d/${file}/preview`;
             } else if (file) {
                 // Case 2: Google Doc file
-                src = `https://docs.google.com/document/d/${file}/preview`;
+                src = `https://docs.google.com/document/d/${files}/preview`;
             } else {
                 // Case 3: Nothing passed
                 finalTitle = "❌ Error: No file specified.";
