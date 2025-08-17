@@ -184,51 +184,57 @@
     <script src="/assets/js/share-button.js"></script>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const file = urlParams.get("file");
-    const subjectName = urlParams.get("subject");
-    const fileTitle = urlParams.get("title");
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const file = urlParams.get("file");        // Google Doc ID
+            const files = urlParams.get("files");    // Google Drive File ID
+            const subjectName = urlParams.get("subject");
+            const fileTitle = urlParams.get("title");
 
-    const iframe = document.getElementById("google-doc-iframe");
-    const pageTitle = document.getElementById("page-title");
-    const loader = document.getElementById("loader");
+            const iframe = document.getElementById("google-doc-iframe");
+            const pageTitle = document.getElementById("page-title");
+            const loader = document.getElementById("loader");
 
-    let finalTitle = "Google Document Viewer";
+            let finalTitle = "Google Document Viewer";
 
-    if (fileTitle && subjectName) {
-        finalTitle = `${decodeURIComponent(fileTitle)} – ${decodeURIComponent(subjectName)}`;
-    } else if (fileTitle) {
-        finalTitle = decodeURIComponent(fileTitle);
-    } else if (subjectName) {
-        finalTitle = decodeURIComponent(subjectName);
-    }
+            if (fileTitle && subjectName) {
+                finalTitle = `${decodeURIComponent(fileTitle)} – ${decodeURIComponent(subjectName)}`;
+            } else if (fileTitle) {
+                finalTitle = decodeURIComponent(fileTitle);
+            } else if (subjectName) {
+                finalTitle = decodeURIComponent(subjectName);
+            }
 
-    // Set both heading and browser tab title
-    pageTitle.innerText = finalTitle;
-    document.title = finalTitle;
+            pageTitle.innerText = finalTitle;
+            document.title = finalTitle;
 
-    if (file) {
+            let src = "";
 
-        // for Google Drive files
-        iframe.src = `https://drive.google.com/file/d/${file}/preview`;  
+            if (files) {
+                // Case 1: Google Drive file (PDF, PPT, Word, etc.)
+                src = `https://drive.google.com/file/d/${files}/preview`;
+            } else if (file) {
+                // Case 2: Google Doc file
+                src = `https://docs.google.com/document/d/${file}/preview`;
+            } else {
+                // Case 3: Nothing passed
+                finalTitle = "❌ Error: No file specified.";
+                pageTitle.innerText = finalTitle;
+                document.title = finalTitle;
+                iframe.style.display = 'none';
+                loader.style.display = "none";
+                return;
+            }
 
-        // iframe.src = `https://docs.google.com/document/d/${file}/preview`;  for Google Docs
+            iframe.src = src;
 
-        iframe.addEventListener("load", () => {
-            loader.classList.add("hidden");
-            setTimeout(() => loader.style.display = "none", 500);
+            iframe.addEventListener("load", () => {
+                loader.classList.add("hidden");
+                setTimeout(() => loader.style.display = "none", 500);
+            });
         });
-    } else {
-        finalTitle = "❌ Error: No PDF File specified.";
-        pageTitle.innerText = finalTitle;
-        document.title = finalTitle;
-        iframe.style.display = 'none';
-        loader.style.display = "none";
-    }
-});
-
     </script>
+
 
 </body>
 
