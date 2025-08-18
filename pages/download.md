@@ -63,7 +63,7 @@ title: Download
 
   <!-- Guide for iOS -->
   <div class="guide">
-    <h3>🍏 How to Install on iOS</h3>
+    <h3> How to Install on iOS</h3>
     <div class="step">1. Open this website in <b>Safari</b> on your iPhone/iPad.</div>
     <div class="step">2. Tap the <b>Share icon</b> (square with ↑ arrow).</div>
     <div class="step">3. Scroll down and select <b>"Add to Home Screen"</b>.</div>
