@@ -97,7 +97,7 @@ title: Home
           <img src="/assets/images/1.png" class="slide-img">
           <img src="/assets/images/2.png" class="slide-img">
           <img src="/assets/images/3.png" class="slide-img">
-          <img src="/assets/images/1.png" class="slide-img"> <!-- clone of first -->
+          <img src="/assets/images/1.png" class="slide-img"> 
       </div>
 </div> -->
 
