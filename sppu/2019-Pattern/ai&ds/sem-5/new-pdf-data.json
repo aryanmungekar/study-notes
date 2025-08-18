@@ -17,7 +17,29 @@
         "url": "1QHJCpp5Hi5ddHMaCaW86X9J-AhA3bcCx3uttObZhNtI"
       }
     ],
-    "pyq": [],
+    "pyq": [
+      {
+        "title": "Sept-2024",
+        "subtitle": "",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1-Xfmf3RQKCg_CvBSI9wVIyTIrPukmoen"
+      },
+      {
+        "title": "Sept-2023",
+        "subtitle": "",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1v9GMS6WC4DVM8oUYpFvTkaSx5_fBAOKG"
+      },
+      {
+        "title": "Oct-2022",
+        "subtitle": "",
+        "exam": "Insem",
+        "thumbnail": "",
+        "url": "1QSJA5ScLXlGiR7rambtqUFCyIJLUxF93"
+      }
+    ],
     "solved_pyq": [],
     "uploads": []
   },
