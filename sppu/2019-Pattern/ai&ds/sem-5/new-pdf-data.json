@@ -62,7 +62,29 @@
         "url": "1eaywdiMCCGVVqJUJLDqz8vDVKzYO0c8-CZmVL9bmYjk"
       }
     ],
-    "pyq": [],
+    "pyq": [
+        {
+        "title": "Sept-2024",
+        "subtitle": "",
+        "exam": "Insem",
+        "thumbnail": "/assets/images/pyq_cover.png",
+        "url": "1Kbu3EDHRES-wArBdIwzBEWdErY7Yk6cC"
+      },
+      {
+        "title": "Sept-2023",
+        "subtitle": "",
+        "exam": "Insem",
+        "thumbnail": "/assets/images/pyq_cover.png",
+        "url": "1L-detEvtkofwipDLPbqthE9qH0Jh-8bu"
+      },
+      {
+        "title": "Oct-2022",
+        "subtitle": "",
+        "exam": "Insem",
+        "thumbnail": "/assets/images/pyq_cover.png",
+        "url": "1AlKRMJdNwqk1NJEANvpLXeg1u3vPkLd-"
+      }
+    ],
     "solved_pyq": [],
     "uploads": []
   },
@@ -108,7 +130,29 @@
         "url": "1lutxrJTnVLLYvXRTI_o6BJBh0laI7CMJYf7V5KY8kU4"
       }
     ],
-    "pyq": [],
+    "pyq": [
+      {
+        "title": "Sept 2024",
+        "subtitle": "",
+        "exam": "Insem",
+        "thumbnail": "/assets/images/pyq_cover.png",
+        "url": "1QudpgB84JbZ6NB1dS92LLZUFc6_yWcvF"
+      },
+      {
+        "title": "Sept 2024",
+        "subtitle": "",
+        "exam": "Insem",
+        "thumbnail": "/assets/images/pyq_cover.png",
+        "url": "14soahlc4j0uDPKSmc8npafN87miBwjUG"
+      },
+      {
+        "title": "Oct 2022",
+        "subtitle": "",
+        "exam": "Insem",
+        "thumbnail": "/assets/images/pyq_cover.png",
+        "url": "1L4L4uWhprWAKKBjSDCzRJMs-uw_GdfQO"
+      }
+    ],
     "solved_pyq": [],
     "uploads": []
   },
@@ -131,7 +175,29 @@
         "url": "120DXKyeK15zLoePcv1WfrRjsjkW3MrYnymCYu8Rk0cs"
       }
     ],
-    "pyq": [],
+    "pyq": [
+      {
+        "title": "Sept 2024",
+        "subtitle": "",
+        "exam": "Insem",
+        "thumbnail": "/assets/images/pyq_cover.png",
+        "url": "1hzDSfH1S8N1tekZy4hesScB9SuUKRAsS"
+      },
+      {
+        "title": "Sept 2023",
+        "subtitle": "",
+        "exam": "Insem",
+        "thumbnail": "/assets/images/pyq_cover.png",
+        "url": "1R4kaZll5EjtWYo0_fyl_ikWLn2WcEQDr"
+      },
+      {
+        "title": "Oct 2022",
+        "subtitle": "",
+        "exam": "Insem",
+        "thumbnail": "/assets/images/pyq_cover.png",
+        "url": "1T6glhtw-ymZhn7NDQXCfCseeiNhhCGHW"
+      }
+    ],
     "solved_pyq": [],
     "uploads": []
   }
