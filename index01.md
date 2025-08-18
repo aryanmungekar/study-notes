@@ -3,21 +3,7 @@ layout: default
 title: Home
 ---
 <style>
-    nav {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        padding: 10px;
-        background: #ddd;
-    }
-    nav a {
-        color: black;
-        text-decoration: none;
-        font-weight: 500;
-    }
-    nav a:hover {
-        text-decoration: underline;
-    }
+
     .hero {
         text-align: center;
         padding: 50px 20px;
