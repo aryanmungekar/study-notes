@@ -1,10 +1,10 @@
 {
-  "name": "SPPU NOTES",
-  "short_name": "AM",
+  "name": "Pune University",
+  "short_name": "RN",
   "start_url": "/index.html",
   "display": "standalone",
-  "theme_color": "#c1ff72",
-  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "background_color": "#000000",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
