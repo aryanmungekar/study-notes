@@ -47,7 +47,7 @@ title: Download
 
 <div class="download-container">
   <h1>📲 Install Our App</h1>
-  <p>Download our APP for a faster and smoother experience.</p>
+  <p>Download our APP for a faster and smoother experience.</p><br>
 
   <!-- Install button (only for Android + PC Chrome/Edge) -->
   <button id="installBtn">Install App</button>
