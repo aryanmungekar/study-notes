@@ -10,18 +10,19 @@ title: Download
     text-align: center;
     padding: 40px 20px;
   }
-  .download-btn {
-    display: inline-block;
+  #installBtn {
+    display: none; /* Hidden by default */
     background: #007bff;
     color: white;
     padding: 15px 25px;
     border-radius: 8px;
     font-size: 18px;
     font-weight: bold;
-    text-decoration: none;
+    border: none;
+    cursor: pointer;
     transition: 0.3s;
   }
-  .download-btn:hover {
+  #installBtn:hover {
     background: #0056b3;
   }
   .guide {
@@ -42,11 +43,11 @@ title: Download
 </style>
 
 <div class="download-container">
-  <h1>📲 Download Our App</h1>
-  <p>Install our Progressive Web App (PWA) directly on your device for a faster and smoother experience.</p>
+  <h1>📲 Install Our App</h1>
+  <p>Download our APP for a faster and smoother experience.</p>
 
-  <!-- Download Button -->
-  <a href="/" class="download-btn">Install Now</a>
+  <!-- Install button (only for Android + PC Chrome/Edge) -->
+  <button id="installBtn">Install App</button>
 
   <!-- Guide for Android -->
   <div class="guide">
@@ -66,3 +67,28 @@ title: Download
     <div class="step">4. Confirm, and the app will appear on your home screen.</div>
   </div>
 </div>
+
+<script>
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+
+  // Listen for the install prompt
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'inline-block'; // Show button only when available
+  });
+
+  installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt(); // Show native install popup
+      const choiceResult = await deferredPrompt.userChoice;
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      deferredPrompt = null; // Reset
+    }
+  });
+</script>
