@@ -12,8 +12,9 @@ title: Download
   }
   #installBtn {
     display: none; /* Hidden by default */
-    background: #007bff;
-    color: white;
+    background: #ffffffff;
+    color: #007bff;
+    border: 1px solid #007bff;
     padding: 15px 25px;
     border-radius: 8px;
     font-size: 18px;
@@ -24,6 +25,8 @@ title: Download
   }
   #installBtn:hover {
     background: #0056b3;
+    color: white;
+    border: 1px solid #ffffffff;
   }
   .guide {
     text-align: left;
