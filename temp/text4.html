@@ -243,6 +243,29 @@
 
     </script>
 
+<script>
+function adjustHeight() {
+    const header = document.querySelector('.header-container');
+    const footer = document.querySelector('#control-bar');
+    const container = document.querySelector('#google-doc-container');
+
+    // Actual visible height of viewport
+    const viewportHeight = window.innerHeight;
+
+    // Subtract header + footer
+    const newHeight = viewportHeight - header.offsetHeight - footer.offsetHeight;
+
+    // Apply to iframe wrapper
+    container.style.height = viewportHeight + 'px';
+    document.querySelector('.iframe-wrapper').style.height = newHeight + 'px';
+}
+
+// Run on load + resize + orientation change
+window.addEventListener('load', adjustHeight);
+window.addEventListener('resize', adjustHeight);
+window.addEventListener('orientationchange', adjustHeight);
+</script>
+
 </body>
 
 </html>
