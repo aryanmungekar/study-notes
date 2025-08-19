@@ -4,7 +4,7 @@ const categories = {
     notes: "📝 Notes",
     pyq: "📄 PYQ",
     solved_pyq: "✅ Solved PYQ",
-    uploads: "📤 Uploads"
+    uploads: "📤 Micro"
 };
 
 const headerBar = document.getElementById("headerBar");
