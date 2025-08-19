@@ -3,8 +3,9 @@
 const categories = {
     notes: "📝 Notes",
     pyq: "📄 PYQ",
-    solved_pyq: "✅ Solved PYQ",
-    uploads: "📤 Micro"
+    uploads: "📤 Micro",
+    solved_pyq: "✅ Solved PYQ"
+    
 };
 
 const headerBar = document.getElementById("headerBar");
