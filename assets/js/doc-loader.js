@@ -74,7 +74,7 @@ function loadPDFs(subjectCode, category, allData) {
     items.forEach(item => {
         const card = document.createElement('div');
         card.className = 'pdf-card';
-        const shareLink = `/temp/text3.html?file=${encodeURIComponent(item.url)}&title=${encodeURIComponent(item.title)}&subject=${encodeURIComponent(subject.name)}`;
+        const shareLink = `/temp/text4.html?file=${encodeURIComponent(item.url)}&title=${encodeURIComponent(item.title)}&subject=${encodeURIComponent(subject.name)}`;
 
 
 
