@@ -187,25 +187,7 @@
       }
     });
 
-    if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/service-worker.js").then((reg) => {
-    // Check for updates every 1 minute
-    setInterval(() => {
-      reg.update();
-    }, 60 * 1000);
 
-    // If new SW is found
-    reg.onupdatefound = () => {
-      const newSW = reg.installing;
-      newSW.onstatechange = () => {
-        if (newSW.state === "installed" && navigator.serviceWorker.controller) {
-          // Auto reload when new version is ready
-          window.location.reload();
-        }
-      };
-    };
-  });
-}
 
   </script>
 
