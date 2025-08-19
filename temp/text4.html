@@ -46,19 +46,17 @@
 
         #google-doc-container {
             flex-grow: 1;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            height: calc(100vh - 50px);
-            /* full height minus footer */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: auto; /* let JS handle it */
         }
 
         /* Iframe wrapper so loader only covers iframe */
         .iframe-wrapper {
             position: relative;
-            flex-grow: 1;
-            height: calc(100vh - 100px);
-            /* 50px header + 50px footer = 100px */
+    flex-grow: 1;
+    height: 100%; /* controlled by JS */
         }
 
         iframe {
@@ -111,14 +109,18 @@
         /* Footer bar */
         #control-bar {
             background: #ffffff;
-            border-top: 1px solid #ccc;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 50px;
-            padding: 0 10px;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+    border-top: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0 10px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: fixed;   /* ✅ make sticky */
+    bottom: 0;
+    left: 0;
+    right: 0;
         }
 
         .footer-left {
@@ -263,13 +265,14 @@ function adjustHeight() {
     // Actual visible height of viewport
     const viewportHeight = window.innerHeight;
 
-    // Subtract header + footer
+    // Subtract header + fixed footer
     const newHeight = viewportHeight - header.offsetHeight - footer.offsetHeight;
 
-    // Apply to iframe wrapper
-    container.style.height = viewportHeight + 'px';
+    // Apply to iframe wrapper only
+    container.style.height = viewportHeight - footer.offsetHeight + 'px';
     document.querySelector('.iframe-wrapper').style.height = newHeight + 'px';
 }
+
 
 // Run on load + resize + orientation change
 window.addEventListener('load', adjustHeight);
