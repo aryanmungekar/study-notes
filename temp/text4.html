@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
     <!-- pwa app -->
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ffffff">
 
-  <!-- ✅ Link to external subject style (for semester page css) -->
-  <link rel="stylesheet" href="/assets/css/semester.css">
-  <link rel="stylesheet" href="/assets/css/subject.css">
-  <link rel="stylesheet" href="/assets/css/breadcrumb.css">
-  <link rel="stylesheet" href="/assets/css/subject.css">
-  <link rel="stylesheet" href="/assets/css/content.css">
+    <!-- ✅ Link to external subject style (for semester page css) -->
+    <link rel="stylesheet" href="/assets/css/semester.css">
+    <link rel="stylesheet" href="/assets/css/subject.css">
+    <link rel="stylesheet" href="/assets/css/breadcrumb.css">
+    <link rel="stylesheet" href="/assets/css/subject.css">
+    <link rel="stylesheet" href="/assets/css/content.css">
 
     <style>
         body {
@@ -46,17 +46,19 @@
 
         #google-doc-container {
             flex-grow: 1;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    height: auto; /* let JS handle it */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            /* let JS handle it */
         }
 
         /* Iframe wrapper so loader only covers iframe */
         .iframe-wrapper {
             position: relative;
-    flex-grow: 1;
-    height: 100%; /* controlled by JS */
+            flex-grow: 1;
+            height: 100%;
+            /* controlled by JS */
         }
 
         iframe {
@@ -109,18 +111,19 @@
         /* Footer bar */
         #control-bar {
             background: #ffffff;
-    border-top: 1px solid #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
-    padding: 0 10px;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    position: fixed;   /* ✅ make sticky */
-    bottom: 0;
-    left: 0;
-    right: 0;
+            border-top: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 50px;
+            padding: 0 10px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: fixed;
+            /* ✅ make sticky */
+            bottom: 0;
+            left: 0;
+            right: 0;
         }
 
         .footer-left {
@@ -192,7 +195,8 @@
     <div id="control-bar">
         <div class="footer-left">PUNE UNIVERSITY</div>
         <div class="footer-marquee">
-            <div class="marquee-text">Insem Notes and PYQ Papers are updated for semester 5 and 7 of all branches. Please leave comments in community sections. that means a lot!!! ThankYou</div>
+            <div class="marquee-text">Insem Notes and PYQ Papers are updated for semester 5 and 7 of all branches.
+                Please leave comments in community sections. that means a lot!!! ThankYou</div>
         </div>
     </div>
 
@@ -256,29 +260,29 @@
 
     </script>
 
-<script>
-function adjustHeight() {
-    const header = document.querySelector('.header-container');
-    const footer = document.querySelector('#control-bar');
-    const container = document.querySelector('#google-doc-container');
+    <script>
+        function adjustHeight() {
+            const header = document.querySelector('.header-container');
+            const footer = document.querySelector('#control-bar');
+            const container = document.querySelector('#google-doc-container');
 
-    // Actual visible height of viewport
-    const viewportHeight = window.innerHeight;
+            // Actual visible height of viewport
+            const viewportHeight = window.innerHeight;
 
-    // Subtract header + fixed footer
-    const newHeight = viewportHeight - header.offsetHeight - footer.offsetHeight;
+            // Subtract header + fixed footer
+            const newHeight = viewportHeight - header.offsetHeight - footer.offsetHeight;
 
-    // Apply to iframe wrapper only
-    container.style.height = viewportHeight - footer.offsetHeight + 'px';
-    document.querySelector('.iframe-wrapper').style.height = newHeight + 'px';
-}
+            // Apply to iframe wrapper only
+            container.style.height = viewportHeight - footer.offsetHeight + 'px';
+            document.querySelector('.iframe-wrapper').style.height = newHeight + 'px';
+        }
 
 
-// Run on load + resize + orientation change
-window.addEventListener('load', adjustHeight);
-window.addEventListener('resize', adjustHeight);
-window.addEventListener('orientationchange', adjustHeight);
-</script>
+        // Run on load + resize + orientation change
+        window.addEventListener('load', adjustHeight);
+        window.addEventListener('resize', adjustHeight);
+        window.addEventListener('orientationchange', adjustHeight);
+    </script>
 
 </body>
 
