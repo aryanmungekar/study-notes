@@ -311,7 +311,7 @@ nav a:hover {
 
   .mobile-footer {
     padding-bottom: env(safe-area-inset-bottom, 0px);
-    background-color: rgba(255, 0, 0, 0.1); /* ✅ test highlight */
+    /* background-color: rgba(255, 0, 0, 0.1); */
   }
 
   .footer-item {
