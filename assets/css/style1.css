@@ -309,7 +309,7 @@ nav a:hover {
   .mobile-footer {
     /* padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); */
     background-color: rgba(26, 123, 187, 0.1);
-    padding-bottom: 50px;
+    margin-bottom: 50px;
   }
 
   .footer-item {
