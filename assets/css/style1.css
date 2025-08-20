@@ -305,14 +305,20 @@ nav a:hover {
 /* Space for Android + iPhone home indicator in standalone PWA */
 @media (max-width: 600px) and (display-mode: standalone) {
   
+   body {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
 
-  .mobile-footer {
-    /* padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); */
+  /* .mobile-footer {
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
     background-color: rgba(26, 123, 187, 0.1);
     margin-bottom: 50px;
-  }
+  } */
 
-  .footer-item {
-    padding-bottom: 0; /* prevent double spacing */
-  }
+  /* .footer-item {
+    padding-bottom: 0;
+  } */
 }
