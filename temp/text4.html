@@ -164,15 +164,17 @@
 
         @media (display-mode: standalone) {
             #control-bar {
-                position: fixed;
-                bottom: env(safe-area-inset-bottom, 0px);
+                /* position: fixed; */
+                /* bottom: env(safe-area-inset-bottom, 0px); */
                 /* ✅ Moves it above the safe area */
-                left: 0;
-                right: 0;
+                /* left: 0; */
+                /* right: 0; */
+                padding-bottom: 20px;
             }
 
             .floating-share {
-                margin-bottom: calc(66px + env(safe-area-inset-bottom, 0px));
+                /* margin-bottom: calc(66px + env(safe-area-inset-bottom, 0px)); */
+                padding-bottom: 20px;
             }
         }
     </style>
