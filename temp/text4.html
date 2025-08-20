@@ -161,6 +161,19 @@
             right: 20px;
             z-index: 9999;
         }
+
+        @media (display-mode: standalone) {
+  #control-bar {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    /* Ensures buttons/text don’t overlap home indicator */
+  }
+
+  .floating-share {
+    margin-bottom: calc(66px + env(safe-area-inset-bottom, 0px));
+    /* pushes the floating button above footer + safe area */
+  }
+}
+
     </style>
 
     <!-- Google tag (gtag.js) -->
