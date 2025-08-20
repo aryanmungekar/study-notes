@@ -5,7 +5,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   font-family: 'Gabriela', serif;
   background: #f8f9fa;
@@ -49,40 +50,42 @@ nav a:hover {
 
 /* ========== Scrollable Main Content ========== */
 .main-content {
-  padding: 80px 20px 80px 20px; /* Top for header, bottom for footer */
-  min-height: calc(100vh - 120px); /* Adjust for header + footer */
+  padding: 80px 20px 80px 20px;
+  /* Top for header, bottom for footer */
+  min-height: calc(100vh - 120px);
+  /* Adjust for header + footer */
   max-width: 1000px;
   margin: 0 auto;
 }
 
 /* ========== Slider ========== */
 .slider-container {
-            
-            
-            margin: auto;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-            width: 320px;
-            height: 150px;
-            margin: 0 auto 20px auto;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
 
-        .slider-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            width: 400%;
-            /* 100% * number of images (3 + 1 clone) */
-        }
 
-        .slide-img {
-            width: 320px;
-            height: 150px;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 320px;
+  height: 150px;
+  margin: 0 auto 20px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 400%;
+  /* 100% * number of images (3 + 1 clone) */
+}
+
+.slide-img {
+  width: 320px;
+  height: 150px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
 
 /* ========== Button Grid ========== */
 .branch-grid {
@@ -195,7 +198,8 @@ nav a:hover {
 /* ========== Desktop View (Sidebar) ========== */
 @media (min-width: 768px) {
   .mobile-footer {
-    top: 60px; /* below header */
+    top: 60px;
+    /* below header */
     bottom: auto;
     right: 0;
     left: auto;
@@ -215,7 +219,8 @@ nav a:hover {
   }
 
   .footer-item span {
-    display: none; /* hide labels on desktop */
+    display: none;
+    /* hide labels on desktop */
   }
 }
 
@@ -238,7 +243,7 @@ nav a:hover {
 }
 
 
-    .header-content {
+.header-content {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -304,8 +309,8 @@ nav a:hover {
 
 /* Space for Android + iPhone home indicator in standalone PWA */
 @media (max-width: 600px) and (display-mode: standalone) {
-  
-   body {
+
+  body {
     padding-bottom: env(safe-area-inset-bottom, 0px);
     padding-top: env(safe-area-inset-top, 0px);
     padding-left: env(safe-area-inset-left, 0px);
@@ -313,9 +318,11 @@ nav a:hover {
   }
 
   .mobile-footer {
-    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
-    background-color: rgba(26, 123, 187, 0.1);
-    /* margin-bottom: 50px; */
+    margin-bottom: 50px;
+  }
+
+  .floating-share {
+    bottom: 59px;
   }
 
   /* .footer-item {
