@@ -304,10 +304,7 @@ nav a:hover {
 
 /* Space for Android + iPhone home indicator in standalone PWA */
 @media (max-width: 600px) and (display-mode: standalone) {
-  body {
-    /* Remove this — it was pushing the whole page content */
-    /* padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 40px); */
-  }
+  
 
   .mobile-footer {
     padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px);
