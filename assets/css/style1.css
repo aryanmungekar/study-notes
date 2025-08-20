@@ -310,7 +310,7 @@ nav a:hover {
 /* Space for Android + iPhone home indicator in standalone PWA */
 @media (max-width: 600px) and (display-mode: standalone) {
 
-  body {
+  /* body {
     padding-bottom: 50px;
 
   }
@@ -321,9 +321,17 @@ nav a:hover {
 
   .floating-share {
     margin-bottom: 20px;
-  }
+  } */
 
   /* .footer-item {
     padding-bottom: 0;
   } */
+
+  .mobile-footer {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .floating-share {
+    margin-bottom: env(safe-area-inset-bottom, 0px);
+  }
 }
