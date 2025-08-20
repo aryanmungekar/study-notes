@@ -1,5 +1,5 @@
 // ✅ Update this when you deploy
-const CACHE_NAME = "sppu-notes-v9";  
+const CACHE_NAME = "sppu-notes-v10";  
 
 // Precache essential offline assets
 const OFFLINE_FILES = [
@@ -12,14 +12,12 @@ const OFFLINE_FILES = [
 // INSTALL: Pre-cache core files
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(OFFLINE_FILES);
-    })
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(OFFLINE_FILES))
   );
   self.skipWaiting(); // activate immediately
 });
 
-// ACTIVATE: Clean up old caches
+// ACTIVATE: Clean up old caches + refresh clients
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
@@ -33,17 +31,21 @@ self.addEventListener("activate", (event) => {
       )
     )
   );
+
   self.clients.claim();
+  // 🔄 Force open tabs to reload when SW updates
+  self.clients.matchAll({ type: "window" }).then((clients) => {
+    clients.forEach((client) => client.navigate(client.url));
+  });
 });
 
 // FETCH: Apply caching strategies
 self.addEventListener("fetch", (event) => {
   const req = event.request;
-  const url = new URL(req.url);
 
-  // 1️⃣ Network-first for CSS & JS
+  // 1️⃣ Always network for CSS & JS (fallback to cache if offline)
   if (req.destination === "style" || req.destination === "script") {
-    event.respondWith(networkFirst(req));
+    event.respondWith(fetch(req).catch(() => caches.match(req)));
     return;
   }
 
@@ -53,7 +55,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // 3️⃣ Default: Try cache, then network, fallback to offline
+  // 3️⃣ Default: Try cache, then network, fallback to offline page
   event.respondWith(
     caches.match(req).then((cached) => {
       return (
@@ -72,17 +74,6 @@ self.addEventListener("fetch", (event) => {
 // Helpers
 // --------------------
 
-async function networkFirst(req) {
-  try {
-    const fresh = await fetch(req);
-    const cache = await caches.open(CACHE_NAME);
-    cache.put(req, fresh.clone());
-    return fresh;
-  } catch (e) {
-    return caches.match(req);
-  }
-}
-
 async function staleWhileRevalidate(req) {
   const cache = await caches.open(CACHE_NAME);
   const cached = await cache.match(req);
@@ -90,7 +81,7 @@ async function staleWhileRevalidate(req) {
   const fresh = fetch(req).then((res) => {
     cache.put(req, res.clone());
     return res;
-  });
+  }).catch(() => cached);
 
   return cached || fresh;
 }
