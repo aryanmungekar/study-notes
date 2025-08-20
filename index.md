@@ -69,13 +69,13 @@ title: Home
         border: 3px solid black;
         margin-bottom: 10px;
     }
-    footer {
+    /* footer {
         background: #eee;
         padding: 20px;
         text-align: center;
         color: #555;
         font-size: 0.9rem;
-    }
+    } */
 </style>
 
 <!-- <div class="slider-container">
