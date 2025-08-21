@@ -37,7 +37,7 @@ client.auth.getSession().then(({ data: { session } }) => {
   const container = document.getElementById("account-info");
 
   if (!session) {
-    container.innerHTML = "<p>You are not logged in. <a href='/login/'>Login here</a></p>";
+    container.innerHTML = "<p>You are not logged in. <a href='/pages/login/'>Login here</a></p>";
     document.getElementById("logout-btn").style.display = "none";
     return;
   }
