@@ -5,7 +5,7 @@ title: notifications
 
 <style>
   body { font-family: Arial, sans-serif; padding: 2rem; text-align: center; }
-  #content { display: none; } /* Hidden until check is done */
+  #content { display: none; }
   #blocked { display: none; color: red; }
   #ask-permission { padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer; }
 </style>
@@ -22,44 +22,57 @@ title: notifications
 </div>
 
 <script>
-  // Ensure OneSignal is loaded
-  window.OneSignal = window.OneSignal || [];
+  // Ensure the DOM is fully loaded before running the script
+  document.addEventListener('DOMContentLoaded', function() {
+    // Ensure OneSignal is loaded
+    if (typeof OneSignal === "undefined") {
+      console.error("OneSignal SDK not found. Please ensure it's loaded in your <head> tag.");
+      // Fallback for when the SDK isn't available
+      document.getElementById('content').style.display = 'none';
+      document.getElementById('blocked').style.display = 'block';
+      return;
+    }
 
-  OneSignal.push(function() {
-    // Only init if not already initialized
-    if (!window.onesignalInitialized) {
-      OneSignal.init({
+    // Function to update page visibility based on subscription status
+    function updateContent(isEnabled) {
+      const contentDiv = document.getElementById('content');
+      const blockedDiv = document.getElementById('blocked');
+
+      if (isEnabled) {
+        if (blockedDiv) blockedDiv.style.display = 'none';
+        if (contentDiv) contentDiv.style.display = 'block';
+      } else {
+        if (contentDiv) contentDiv.style.display = 'none';
+        if (blockedDiv) blockedDiv.style.display = 'block';
+      }
+    }
+
+    // Use OneSignal's deferred array to ensure the code runs after initialization
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    window.OneSignalDeferred.push(async function(OneSignal) {
+      // Initialize OneSignal with your app ID
+      await OneSignal.init({
         appId: "ee9cfc93-71c9-41e0-a30c-20662ea9937f",
         safari_web_id: "web.onesignal.auto.204803f7-478b-4564-9a97-0318e873c676",
         notifyButton: { enable: true }
       });
-      window.onesignalInitialized = true;
-    }
 
-    // Function to update page visibility based on subscription
-    function updateContent(isEnabled) {
-      if (isEnabled) {
-        document.getElementById('blocked').style.display = 'none';
-        document.getElementById('content').style.display = 'block';
-      } else {
-        document.getElementById('content').style.display = 'none';
-        document.getElementById('blocked').style.display = 'block';
-      }
-    }
-
-    // Check if notifications are enabled
-    OneSignal.isPushNotificationsEnabled(function(isEnabled) {
+      // Check the initial push notification status
+      const isEnabled = await OneSignal.isPushNotificationsEnabled();
       updateContent(isEnabled);
-    });
 
-    // Listen for subscription changes dynamically
-    OneSignal.on('subscriptionChange', function(isSubscribed) {
-      updateContent(isSubscribed);
-    });
+      // Add a listener for when the subscription status changes
+      OneSignal.on('subscriptionChange', function(isSubscribed) {
+        updateContent(isSubscribed);
+      });
 
-    // Button to request permission if blocked
-    document.getElementById('ask-permission').addEventListener('click', function() {
-      OneSignal.showSlidedownPrompt();
+      // Add click event to the "Enable Notifications" button
+      const askPermissionBtn = document.getElementById('ask-permission');
+      if (askPermissionBtn) {
+        askPermissionBtn.addEventListener('click', function() {
+          OneSignal.showSlidedownPrompt();
+        });
+      }
     });
   });
 </script>
