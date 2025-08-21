@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Account
+permalink: /account/
 ---
 
 # Account Information

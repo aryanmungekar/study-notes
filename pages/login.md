@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Login
+permalink: /account/
 ---
 
 # Login with Google
