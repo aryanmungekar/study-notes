@@ -26,8 +26,9 @@ title: Login
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
-// ✅ Initialize Supabase
 const { createClient } = window.supabase;
+
+// ✅ Initialize Supabase
 const client = createClient(
   "https://lkhrfezubnpdzyduoglu.supabase.co",
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxraHJmZXp1Ym5wZHp5ZHVvZ2x1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU3NzQ3NTYsImV4cCI6MjA3MTM1MDc1Nn0.CmXHYzLAP370bjXa9mjSa-O7uH4sx3ADl7djAvQSWOY"
@@ -35,9 +36,9 @@ const client = createClient(
 
 // ✅ Redirect if already logged in
 (async () => {
-  const { data: { user } } = await client.auth.getUser();
-  if (user) {
-    window.location.href = "/"; // redirect to home if logged in
+  const { data: { session } } = await client.auth.getSession();
+  if (session) {
+    window.location.href = "/account"; // redirect logged-in users
   }
 })();
 
@@ -46,7 +47,7 @@ document.getElementById("google-login").addEventListener("click", async () => {
   const { error } = await client.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: window.location.origin + "/",
+      redirectTo: window.location.origin + "/account", // after login → account page
     },
   });
   if (error) {
