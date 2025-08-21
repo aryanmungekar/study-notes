@@ -71,30 +71,31 @@
 
 <body>
 
- <!-- Fixed Header -->
-<header>
-  <div class="header-content">
-    <div>
-      <h1>Pune University</h1>
-    </div>
-    <div>
-      <nav>
-        <!-- Search Button -->
-        <a href="/search/">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </a>
+  <!-- Fixed Header -->
+  <header>
+    <div class="header-content">
+      <div>
+        <h1>Pune University</h1>
+      </div>
+      <div>
+        <nav>
+          <!-- Search Button -->
+          <a href="/search/">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </a>
 
-        <!-- User Icon (Visible only when logged in) -->
-        <a href="/account/" id="user-profile-link" style="display: none;">
-          <img id="user-avatar" 
-               src="" 
-               alt="Profile" 
-               style="width:30px; height:30px; border-radius:50%; margin-left:10px;">
-        </a>
-      </nav>
+          <!-- Account Icon Placeholder -->
+          <div id="account-icon" style="display: none; margin-right: 15px;">
+            <a href="/account/">
+              <img id="profile-photo" src="/assets/img/default-user.png" alt="Account"
+                style="width:35px; height:35px; border-radius:50%; object-fit:cover;">
+            </a>
+          </div>
+
+        </nav>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
 
   <!-- Main content area -->
@@ -211,9 +212,9 @@
 
 
 
-<script>
-  showAccountLogo();
-</script>
+  <script>
+    showAccountLogo();
+  </script>
 
 
 
