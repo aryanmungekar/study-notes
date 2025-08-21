@@ -46,4 +46,3 @@ document.getElementById("google-login").addEventListener("click", async () => {
   }
 });
 </script>
-d
