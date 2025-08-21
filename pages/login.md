@@ -25,34 +25,11 @@ permalink: /login/
   </button>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
-const { createClient } = window.supabase;
+  // Redirect logged-in users to account page
+  redirectIfLoggedIn("/account");
 
-// ✅ Initialize Supabase
-const client = createClient(
-  "https://lkhrfezubnpdzyduoglu.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxraHJmZXp1Ym5wZHp5ZHVvZ2x1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU3NzQ3NTYsImV4cCI6MjA3MTM1MDc1Nn0.CmXHYzLAP370bjXa9mjSa-O7uH4sx3ADl7djAvQSWOY"
-);
-
-// ✅ Redirect if already logged in
-(async () => {
-  const { data: { session } } = await client.auth.getSession();
-  if (session) {
-    window.location.href = "/account"; // redirect logged-in users
-  }
-})();
-
-// ✅ Google Login
-document.getElementById("google-login").addEventListener("click", async () => {
-  const { error } = await client.auth.signInWithOAuth({
-    provider: "google",
-    options: {
-      redirectTo: window.location.origin + "/account", // after login → account page
-    },
+  document.getElementById("google-login").addEventListener("click", () => {
+    loginWithGoogle();
   });
-  if (error) {
-    alert("Login failed: " + error.message);
-  }
-});
 </script>
