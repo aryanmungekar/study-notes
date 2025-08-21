@@ -70,15 +70,14 @@
 
   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 
-<style>
-  #notification-banner {
-  display: none;
-  transform: translateY(100%);
-  opacity: 0;
-  transition: all 0.3s ease;
-}
-
-</style>
+  <style>
+    #notification-banner {
+      display: none;
+      transform: translateY(100%);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+  </style>
 
 
 
@@ -127,8 +126,8 @@
   </div>
 
 
-<!-- Notification Banner -->
-<div id="notification-banner" style="
+  <!-- Notification Banner -->
+  <div id="notification-banner" style="
   display:none; 
   position:fixed; 
   bottom:0; 
@@ -145,8 +144,8 @@
   opacity: 0;
   transition: transform 0.3s ease, opacity 0.3s ease;
 ">
-  Enable notifications to get daily updates and points! 
-  <button id="enable-notifications" style="
+    Enable notifications to get daily updates and points!
+    <button id="enable-notifications" style="
     margin-left:15px; 
     background:white; 
     color:#4a90e2; 
@@ -156,12 +155,12 @@
     cursor:pointer; 
     font-weight:bold;
   ">Enable</button>
-  <span id="close-banner" style="
+    <span id="close-banner" style="
     margin-left:10px; 
     cursor:pointer; 
     font-weight:bold;
   ">×</span>
-</div>
+  </div>
 
   <!-- Fixed Footer -->
   <footer class="mobile-footer">
@@ -273,52 +272,52 @@
     showAccountLogo();
   </script>
 
-<!-- OneSignal SDK -->
-<script>
-window.OneSignalDeferred = window.OneSignalDeferred || [];
+  <!-- OneSignal SDK -->
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
 
-OneSignalDeferred.push(async function(OneSignal) {
+    OneSignalDeferred.push(async function (OneSignal) {
 
-  // Initialize OneSignal
-  await OneSignal.init({
-    appId: "ee9cfc93-71c9-41e0-a30c-20662ea9937f",
-    safari_web_id: "web.onesignal.auto.204803f7-478b-4564-9a97-0318e873c676",
-    notifyButton: { enable: false }
-  });
+      // Initialize OneSignal
+      await OneSignal.init({
+        appId: "ee9cfc93-71c9-41e0-a30c-20662ea9937f",
+        safari_web_id: "web.onesignal.auto.204803f7-478b-4564-9a97-0318e873c676",
+        notifyButton: { enable: false }
+      });
 
-  // Use new API to check subscription
-  const subscription = await OneSignal.getSubscription();
+      // Use new API to check subscription
+      const subscription = await OneSignal.getSubscription();
 
-  if (!subscription) {
-    const banner = document.getElementById("notification-banner");
-    if (!banner) return;
+      if (!subscription) {
+        const banner = document.getElementById("notification-banner");
+        if (!banner) return;
 
-    // Show banner with animation
-    banner.style.display = "block";
-    setTimeout(() => {
-      banner.style.transform = "translateY(0)";
-      banner.style.opacity = "1";
-    }, 50);
+        // Show banner with animation
+        banner.style.display = "block";
+        setTimeout(() => {
+          banner.style.transform = "translateY(0)";
+          banner.style.opacity = "1";
+        }, 50);
 
-    // Enable notifications button
-    const enableBtn = document.getElementById("enable-notifications");
-    enableBtn.onclick = async () => {
-      await OneSignal.showNativePrompt();
-      banner.style.transform = "translateY(100%)";
-      banner.style.opacity = "0";
-      setTimeout(() => banner.style.display = "none", 300);
-    };
+        // Enable notifications button
+        const enableBtn = document.getElementById("enable-notifications");
+        enableBtn.onclick = async () => {
+          await OneSignal.showNativePrompt();
+          banner.style.transform = "translateY(100%)";
+          banner.style.opacity = "0";
+          setTimeout(() => banner.style.display = "none", 300);
+        };
 
-    // Close button
-    const closeBtn = document.getElementById("close-banner");
-    closeBtn.onclick = () => {
-      banner.style.transform = "translateY(100%)";
-      banner.style.opacity = "0";
-      setTimeout(() => banner.style.display = "none", 300);
-    };
-  }
-});
-</script>
+        // Close button
+        const closeBtn = document.getElementById("close-banner");
+        closeBtn.onclick = () => {
+          banner.style.transform = "translateY(100%)";
+          banner.style.opacity = "0";
+          setTimeout(() => banner.style.display = "none", 300);
+        };
+      }
+    });
+  </script>
 
 
 
