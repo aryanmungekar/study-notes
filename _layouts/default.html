@@ -241,34 +241,26 @@
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   OneSignalDeferred.push(async function(OneSignal) {
     await OneSignal.init({
-      appId: "YOUR_APP_ID",
-      safari_web_id: "YOUR_SAFARI_WEB_ID",
-      notifyButton: { enable: false }
+      appId: "YOUR_APP_ID", // replace with your OneSignal appId
+      safari_web_id: "YOUR_SAFARI_WEB_ID", // replace with your Safari ID
+      notifyButton: { enable: false } // hide floating button
     });
 
-    // Only show banner if notifications not enabled
+    // Show banner only if notifications not already enabled
     const isEnabled = await OneSignal.isPushNotificationsEnabled();
-    if (isEnabled) return;
-
-    const lastPrompt = localStorage.getItem("notification_banner_last");
-    const now = new Date().getTime();
-    const oneDay = 24 * 60 * 60 * 1000;
-
-    if (!lastPrompt || now - lastPrompt > oneDay) {
+    if (!isEnabled) {
       const banner = document.getElementById("notification-banner");
       banner.style.display = "block";
 
-      // Enable button
+      // Enable button triggers native prompt
       document.getElementById("enable-notifications").addEventListener("click", async () => {
         await OneSignal.showNativePrompt();
         banner.style.display = "none";
-        localStorage.setItem("notification_banner_last", now);
       });
 
-      // Close button
+      // Close button just hides the banner temporarily
       document.getElementById("close-banner").addEventListener("click", () => {
         banner.style.display = "none";
-        localStorage.setItem("notification_banner_last", now);
       });
     }
   });
