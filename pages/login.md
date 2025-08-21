@@ -5,7 +5,7 @@ title: Login
 
 # Login with Google
 
-<div class="login-container" style="text-align:center; margin-top:50px;">
+<div id="login-section" class="login-container" style="text-align:center; margin-top:50px;">
   <button id="google-login" style="
       background: #4285F4; 
       color: white; 
@@ -26,14 +26,22 @@ title: Login
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
-// ✅ Use correct client initialization
+// ✅ Initialize Supabase
 const { createClient } = window.supabase;
 const client = createClient(
   "https://lkhrfezubnpdzyduoglu.supabase.co",
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxraHJmZXp1Ym5wZHp5ZHVvZ2x1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU3NzQ3NTYsImV4cCI6MjA3MTM1MDc1Nn0.CmXHYzLAP370bjXa9mjSa-O7uH4sx3ADl7djAvQSWOY"
 );
 
-// Google Login
+// ✅ Redirect if already logged in
+(async () => {
+  const { data: { user } } = await client.auth.getUser();
+  if (user) {
+    window.location.href = "/"; // redirect to home if logged in
+  }
+})();
+
+// ✅ Google Login
 document.getElementById("google-login").addEventListener("click", async () => {
   const { error } = await client.auth.signInWithOAuth({
     provider: "google",
