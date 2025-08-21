@@ -62,12 +62,11 @@ async function showAccountLogo(containerId = "home-account-logo") {
 
   if (!container) return;
 
-  if (!user) {
-    container.innerHTML = `
-      <a href="/login/" style="text-decoration:none; color:#333;">Login</a>
-    `;
-    return;
-  }
+ if (!user) {
+  container.style.display = "none"; // hide the account logo div
+  return;
+}
+
 
   const avatarUrl = user.user_metadata?.avatar_url || "https://via.placeholder.com/40";
 
@@ -78,6 +77,8 @@ async function showAccountLogo(containerId = "home-account-logo") {
            style="border-radius:50%; vertical-align:middle; cursor:pointer;">
     </a>
   `;
+  container.style.display = "inline-block"; // ensures the div is visible
+
 }
 
 // Run when DOM is ready
