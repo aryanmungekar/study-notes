@@ -1,247 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: default
+title: notifications
+---
 
-<head>
-  <meta charset="UTF-8" />
+<style>
+  body { font-family: Arial, sans-serif; padding: 2rem; text-align: center; }
+  #content { display: none; }
+  #blocked { display: none; color: red; }
+  #ask-permission { padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer; }
+</style>
 
-  <!-- 🔽 SEO START -->
-  <title>{{ page.title | default: "SPPU Notes - PYQ & Solved Papers" }}</title>
-  <meta name="description" content="{{ page.description | default: " Download solved SPPU notes and previous year
-    question papers for Computer Engineering, Information Technology, and AI & Data Science. Covers 2019 and 2024
-    pattern for Insem and Endsem exams." }}">
-  <meta name="keywords" content="{{ page.keywords | default: " SPPU notes, PYQ, solved papers, Computer Engineering, IT,
-    AI & DS, 2019 pattern, 2024 pattern, Insem, Endsem, SPPU question papers" }}">
-  <meta name="author" content="{{ site.author | default: 'RN' }}">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="{{ page.title | default: 'SPPU Notes - PYQ & Solved Papers' }}">
-  <meta property="og:description"
-    content="{{ page.description | default: 'Solved SPPU notes and question papers for Computer, IT, and AI & DS (2019 & 2024 pattern). Includes Insem and Endsem coverage.' }}">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="en_IN">
-  <meta property="og:url" content="{{ page.url | absolute_url }}">
+<div id="content">
+  <h1>Welcome to the Exclusive Page!</h1>
+  <p>Since you have enabled notifications, you can access this content.</p>
+</div>
 
-  <!-- End SEO block -->
+<div id="blocked">
+  <h1>Notifications Required</h1>
+  <p>Please enable push notifications to access this page.</p>
+  <button id="ask-permission">Enable Notifications</button>
+</div>
 
-  <!-- supabase codes -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="/assets/js/auth.js"></script>
-
-
-
-  <!-- 🔽 Structured Data / Schema.org Markup -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalOccupationalProgram",
-    "name": "Engineering Physics Notes 2024 SPPU",
-    "educationalCredentialAwarded": "Bachelor of Engineering",
-    "provider": {
-      "@type": "CollegeOrUniversity",
-      "name": "Savitribai Phule Pune University"
-    }
-  }
-  </script>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="{{ '/assets/css/style1.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/share-button.css?' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/home-buttons.css?' | relative_url }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css?" />
-
-  <!-- pwa app -->
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#ffffff">
-
-  <!-- ✅ Link to external subject style (for semester page css) -->
-  <link rel="stylesheet" href="/assets/css/semester.css">
-  <link rel="stylesheet" href="/assets/css/subject.css">
-  <link rel="stylesheet" href="/assets/css/breadcrumb.css">
-  <link rel="stylesheet" href="/assets/css/content.css">
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LQG84EC42F"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-LQG84EC42F');
-  </script>
-
- <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "ee9cfc93-71c9-41e0-a30c-20662ea9937f",
-      safari_web_id: "web.onesignal.auto.204803f7-478b-4564-9a97-0318e873c676",
-      notifyButton: {
-        enable: true,
-      },
-    });
-  });
-</script>
-
-
-
-</head>
-
-<body>
-
-  <!-- Fixed Header -->
-  <header>
-    <div class="header-content">
-      <div>
-        <h1>Pune University</h1>
-      </div>
-      <div>
-        <nav>
-          <!-- Search Button -->
-          <a href="/search/">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </a>
-
-
-        </nav>
-      </div>
-    </div>
-  </header>
-
-
-  <!-- Main content area -->
-  <div class="main-content">
-    {{ content }}
-
-    <!-- <div style="height:300px;"></div> -->
-    {% include disqus.html %}
-  </div>
-
-  <!-- Floating share button -->
-  <div class="floating-share">
-    <button class="share-toggle" onclick="toggleShareMenu()"><i class="fa-solid fa-share"></i></button>
-    <div class="floating-share-menu" id="shareMenu">
-      <a target="_blank" href="#" id="share-whatsapp"><i class="fab fa-whatsapp"></i></a>
-      <a target="_blank" href="#" id="share-telegram"><i class="fab fa-telegram"></i></a>
-      <a target="_blank" href="#" id="share-facebook"><i class="fab fa-facebook-f"></i></a>
-      <a target="_blank" href="#" id="share-twitter"><i class="fab fa-twitter"></i></a>
-      <button onclick="copyLink()" title="Copy"><i class="fas fa-link"></i></button>
-    </div>
-  </div>
-
-
-  <!-- Fixed Footer -->
-  <footer class="mobile-footer">
-    <a href="/" class="footer-item">
-      <i class="fa-solid fa-house"></i>
-      <span>Home</span>
-    </a>
-    <a href="/sppu/" class="footer-item">
-      <i class="fa-solid fa-file-pdf"></i>
-      <span>Notes</span>
-    </a>
-
-    <!-- <a href="/pages/updates/" class="footer-item">
-      <i class="fas fa-comments"></i>
-      <span>Updates</span>
-    </a>
-     -->
-    <a href="/search/" class="footer-item">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <span>Search</span>
-    </a>
-    <a href="/pages/community/" class="footer-item">
-      <i class="fas fa-user-friends"></i>
-      <span>Community</span>
-    </a>
-    <a href="/pages/download/" class="footer-item">
-      <i class="fas fa-download"></i>
-      <span>Downlaod</span>
-    </a>
-
-    <!-- Account Icon Placeholder -->
-
-    <!-- Footer Account Icon -->
-    <div id="home-account-logo" class="footer-item" style="text-align: center; display:flex;">
-      <a href="/account/">
-        <img id="profile-photo" src="/assets/img/default-user.png" alt="Account"
-          style="width:24px; height:24px; border-radius:50%; object-fit:cover; vertical-align:middle;">
-        <span>Account</span>
-      </a>
-    </div>
-
-
-
-
-
-  </footer>
-
-
-  <!-- Javascripts -->
-  <script src="/assets/js/share-button.js"></script>
-  <script src="/assets/js/slider.js"></script>
-  <script src="/service-worker.js"></script>
-
-  <!-- ✅ Shared JS for breadcrumb -->
-  <script src="/assets/js/breadcrumb.js"></script>
-
-  <!-- ✅ External JS of 1000.md etc-->
-  <!-- <script src="/assets/js/viewer-loader.js"></script> -->
-  <script src="/assets/js/doc-loader.js"></script>
-
-
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then(reg => console.log('✅ Service Worker registered'))
-        .catch(err => console.error('❌ SW registration failed', err));
+  // Ensure the DOM is fully loaded before running the script
+  document.addEventListener('DOMContentLoaded', function() {
+    // Ensure OneSignal is loaded
+    if (typeof OneSignal === "undefined") {
+      console.error("OneSignal SDK not found. Please ensure it's loaded in your <head> tag.");
+      // Fallback for when the SDK isn't available
+      document.getElementById('content').style.display = 'none';
+      document.getElementById('blocked').style.display = 'block';
+      return;
     }
 
+    // Function to update page visibility based on subscription status
+    function updateContent(isEnabled) {
+      const contentDiv = document.getElementById('content');
+      const blockedDiv = document.getElementById('blocked');
 
+      if (isEnabled) {
+        if (blockedDiv) blockedDiv.style.display = 'none';
+        if (contentDiv) contentDiv.style.display = 'block';
+      } else {
+        if (contentDiv) contentDiv.style.display = 'none';
+        if (blockedDiv) blockedDiv.style.display = 'block';
+      }
+    }
 
+    // Use OneSignal's deferred array to ensure the code runs after initialization
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    window.OneSignalDeferred.push(async function(OneSignal) {
+      // Initialize OneSignal with your app ID
+      await OneSignal.init({
+        appId: "ee9cfc93-71c9-41e0-a30c-20662ea9937f",
+        safari_web_id: "web.onesignal.auto.204803f7-478b-4564-9a97-0318e873c676",
+        notifyButton: { enable: true }
+      });
 
-    let deferredPrompt;
+      // Check the initial push notification status
+      const isEnabled = await OneSignal.isPushNotificationsEnabled();
+      updateContent(isEnabled);
 
-    // Listen for the event
-    window.addEventListener('beforeinstallprompt', (e) => {
-      console.log('✅ beforeinstallprompt fired');
-      // Prevent Chrome's default prompt
-      e.preventDefault();
-      deferredPrompt = e;
+      // Add a listener for when the subscription status changes
+      OneSignal.on('subscriptionChange', function(isSubscribed) {
+        updateContent(isSubscribed);
+      });
 
-      // Show a custom install button
-      document.getElementById('install-button').style.display = 'block';
-    });
-
-    // Handle click on install button
-    document.getElementById('install-button').addEventListener('click', () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();  // Show install prompt
-        deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('✅ User accepted the install prompt');
-          } else {
-            console.log('❌ User dismissed the install prompt');
-          }
-          deferredPrompt = null;
+      // Add click event to the "Enable Notifications" button
+      const askPermissionBtn = document.getElementById('ask-permission');
+      if (askPermissionBtn) {
+        askPermissionBtn.addEventListener('click', function() {
+          OneSignal.showSlidedownPrompt();
         });
       }
     });
-
-
-
-  </script>
-
-
-
-
-  <script>
-    showAccountLogo();
-  </script>
-
-  
-
-
-</body>
-
-</html>
+  });
+</script>
