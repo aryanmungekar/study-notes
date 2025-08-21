@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Account
+permalink: /account/
 ---
 
 # My Account
@@ -26,25 +27,24 @@ title: Account
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
-const { createClient } = window.supabase;
-const client = createClient(
-  "https://lkhrfezubnpdzyduoglu.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxraHJmZXp1Ym5wZHp5ZHVvZ2x1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU3NzQ3NTYsImV4cCI6MjA3MTM1MDc1Nn0.CmXHYzLAP370bjXa9mjSa-O7uH4sx3ADl7djAvQSWOY"
-);
+const SUPABASE_URL = "https://lkhrfezubnpdzyduoglu.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxraHJmZXp1Ym5wZHp5ZHVvZ2x1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU3NzQ3NTYsImV4cCI6MjA3MTM1MDc1Nn0.CmXHYzLAP370bjXa9mjSa-O7uH4sx3ADl7djAvQSWOY";
 
-// Check session on page load
-client.auth.getSession().then(({ data: { session } }) => {
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// 🔹 Function to load account info
+async function loadAccount() {
+  const { data: { session } } = await supabase.auth.getSession();
   const container = document.getElementById("account-info");
 
   if (!session) {
-    container.innerHTML = "<p>You are not logged in. <a href='/pages/login/'>Login here</a></p>";
+    container.innerHTML = "<p>You are not logged in. <a href='/login/'>Login here</a></p>";
     document.getElementById("logout-btn").style.display = "none";
     return;
   }
 
   const user = session.user;
 
-  // Extract Google metadata
   const name = user.user_metadata.full_name || "No name";
   const email = user.email;
   const avatar = user.user_metadata.avatar_url || "https://via.placeholder.com/100";
@@ -54,11 +54,14 @@ client.auth.getSession().then(({ data: { session } }) => {
     <h2>${name}</h2>
     <p>${email}</p>
   `;
-});
+}
 
-// Logout
+// 🔹 Load account info on page load
+loadAccount();
+
+// 🔹 Logout handler
 document.getElementById("logout-btn").addEventListener("click", async () => {
-  await client.auth.signOut();
-  window.location.href = "/"; // redirect to homepage
+  await supabase.auth.signOut();
+  window.location.href = "/"; // back to home
 });
 </script>
