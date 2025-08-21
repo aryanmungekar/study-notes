@@ -69,27 +69,10 @@
   </script>
 
   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-  const isEnabled = await OneSignal.isPushNotificationsEnabled();
-  if (isEnabled) return; // user already approved, do nothing
 
-  // Step 2: Check localStorage timestamp
-  const lastPrompt = localStorage.getItem("onesignal_last_prompt");
-  const now = new Date().getTime();
-  const oneDay = 24 * 60 * 60 * 1000;
 
-  if (!lastPrompt || now - lastPrompt > oneDay) {
-    // Show the native prompt
-    OneSignal.showNativePrompt();
 
-    // Update timestamp
-    localStorage.setItem("onesignal_last_prompt", now);
-  }
-});
 
-</script>
 
 </head>
 
@@ -135,6 +118,13 @@
     </div>
   </div>
 
+
+    <!-- Notification Banner -->
+<div id="notification-banner" style="display:none; position:fixed; bottom:0; left:0; width:100%; background:#4a90e2; color:white; padding:15px; text-align:center; font-family:sans-serif; z-index:9999; box-shadow:0 -2px 8px rgba(0,0,0,0.2);">
+  Enable notifications to get daily updates and points! 
+  <button id="enable-notifications" style="margin-left:15px; background:white; color:#4a90e2; border:none; padding:8px 12px; border-radius:5px; cursor:pointer; font-weight:bold;">Enable</button>
+  <span id="close-banner" style="margin-left:10px; cursor:pointer; font-weight:bold;">×</span>
+</div>
 
   <!-- Fixed Footer -->
   <footer class="mobile-footer">
@@ -246,7 +236,43 @@
     showAccountLogo();
   </script>
 
+<!-- onesignal popup code -->
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "YOUR_APP_ID",
+      safari_web_id: "YOUR_SAFARI_WEB_ID",
+      notifyButton: { enable: false }
+    });
 
+    // Only show banner if notifications not enabled
+    const isEnabled = await OneSignal.isPushNotificationsEnabled();
+    if (isEnabled) return;
+
+    const lastPrompt = localStorage.getItem("notification_banner_last");
+    const now = new Date().getTime();
+    const oneDay = 24 * 60 * 60 * 1000;
+
+    if (!lastPrompt || now - lastPrompt > oneDay) {
+      const banner = document.getElementById("notification-banner");
+      banner.style.display = "block";
+
+      // Enable button
+      document.getElementById("enable-notifications").addEventListener("click", async () => {
+        await OneSignal.showNativePrompt();
+        banner.style.display = "none";
+        localStorage.setItem("notification_banner_last", now);
+      });
+
+      // Close button
+      document.getElementById("close-banner").addEventListener("click", () => {
+        banner.style.display = "none";
+        localStorage.setItem("notification_banner_last", now);
+      });
+    }
+  });
+</script>
 
 </body>
 
