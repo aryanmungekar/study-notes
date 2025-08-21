@@ -55,3 +55,30 @@ async function logout() {
   await supabase.auth.signOut();
   window.location.href = "/login";
 }
+
+// Show user logo in home page (if logged in)
+async function showAccountLogo(containerId = "home-account-logo") {
+  const { data: { session } } = await supabase.auth.getSession();
+  const container = document.getElementById(containerId);
+
+  if (!container) return; // in case element not present
+
+  if (!session) {
+    // If not logged in, show login button
+    container.innerHTML = `
+      <a href="/login" style="text-decoration:none; color:#333;">
+        Login
+      </a>
+    `;
+    return;
+  }
+
+  const user = session.user;
+  container.innerHTML = `
+    <a href="/account" title="Go to Account">
+      <img src="${user.user_metadata.avatar_url}" 
+           width="40" height="40" 
+           style="border-radius:50%; vertical-align:middle; cursor:pointer;">
+    </a>
+  `;
+}
