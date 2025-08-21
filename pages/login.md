@@ -26,18 +26,19 @@ title: Login
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
-// 🔹 Replace these with your Supabase project details
-const SUPABASE_URL = "https://lkhrfezubnpdzyduoglu.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxraHJmZXp1Ym5wZHp5ZHVvZ2x1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU3NzQ3NTYsImV4cCI6MjA3MTM1MDc1Nn0.CmXHYzLAP370bjXa9mjSa-O7uH4sx3ADl7djAvQSWOY";
-
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// ✅ Use correct client initialization
+const { createClient } = window.supabase;
+const client = createClient(
+  "https://lkhrfezubnpdzyduoglu.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxraHJmZXp1Ym5wZHp5ZHVvZ2x1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU3NzQ3NTYsImV4cCI6MjA3MTM1MDc1Nn0.CmXHYzLAP370bjXa9mjSa-O7uH4sx3ADl7djAvQSWOY"
+);
 
 // Google Login
 document.getElementById("google-login").addEventListener("click", async () => {
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'google',
+  const { error } = await client.auth.signInWithOAuth({
+    provider: "google",
     options: {
-      redirectTo: window.location.origin + '/dashboard/', // after login
+      redirectTo: window.location.origin + "/dashboard/",
     },
   });
   if (error) {
