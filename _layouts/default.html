@@ -70,7 +70,15 @@
 
   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 
+<style>
+  #notification-banner {
+  display: none;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
 
+</style>
 
 
 
@@ -238,42 +246,48 @@
 
 <!-- OneSignal Initialization + Banner JS -->
 <script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
+window.OneSignalDeferred = window.OneSignalDeferred || [];
+OneSignalDeferred.push(async function(OneSignal) {
 
-    await OneSignal.init({
-      appId: "ee9cfc93-71c9-41e0-a30c-20662ea9937f",           // Replace with your OneSignal App ID
-      notifyButton: { enable: false } // hide floating button
-    });
-
-    // Check if notifications are already enabled
-    const isEnabled = await OneSignal.isPushNotificationsEnabled();
-
-    if (!isEnabled) {
-      const banner = document.getElementById("notification-banner");
-
-      // Show banner with slide-in animation
-      banner.style.display = "block";
-      setTimeout(() => banner.style.transform = "translateY(0)", 50);
-      setTimeout(() => banner.style.opacity = "1", 50);
-
-      // Enable button triggers native prompt
-      document.getElementById("enable-notifications").onclick = async () => {
-        await OneSignal.showNativePrompt();
-        banner.style.transform = "translateY(100%)";
-        banner.style.opacity = "0";
-        setTimeout(() => banner.style.display = "none", 300);
-      };
-
-      // Close button hides banner temporarily
-      document.getElementById("close-banner").onclick = () => {
-        banner.style.transform = "translateY(100%)";
-        banner.style.opacity = "0";
-        setTimeout(() => banner.style.display = "none", 300);
-      };
-    }
+  // Initialize OneSignal
+  await OneSignal.init({
+    appId: "ee9cfc93-71c9-41e0-a30c-20662ea9937f",
+    notifyButton: { enable: false }
   });
+
+  // Check if notifications are enabled
+  const isEnabled = await OneSignal.isPushNotificationsEnabled();
+
+  if (!isEnabled) {
+    const banner = document.getElementById("notification-banner");
+    if (!banner) return;
+
+    // Show banner
+    banner.style.display = "block";
+    setTimeout(() => {
+      banner.style.transform = "translateY(0)";
+      banner.style.opacity = "1";
+    }, 50);
+
+    // Enable button triggers native prompt
+    document.getElementById("enable-notifications").onclick = async () => {
+      await OneSignal.showNativePrompt();
+      banner.style.transform = "translateY(100%)";
+      banner.style.opacity = "0";
+      setTimeout(() => banner.style.display = "none", 300);
+    };
+
+    // Close button hides banner temporarily
+    document.getElementById("close-banner").onclick = () => {
+      banner.style.transform = "translateY(100%)";
+      banner.style.opacity = "0";
+      setTimeout(() => banner.style.display = "none", 300);
+    };
+  }
+
+});
 </script>
+
 
 </body>
 
