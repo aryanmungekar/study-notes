@@ -1,5 +1,3 @@
-// assets/js/auth.js
-
 // Initialize Supabase client globally
 const supabase = window.supabase.createClient(
   "https://lkhrfezubnpdzyduoglu.supabase.co",
@@ -40,8 +38,10 @@ async function loadUserInfo(containerId = "account-info") {
   }
 
   const user = session.user;
+  const avatarUrl = user.user_metadata?.avatar_url || "https://via.placeholder.com/80";
+
   container.innerHTML = `
-    <img src="${user.user_metadata.avatar_url}" width="80" height="80" style="border-radius:50%;"><br><br>
+    <img src="${avatarUrl}" width="80" height="80" style="border-radius:50%;"><br><br>
     <strong>Name:</strong> ${user.user_metadata.full_name}<br>
     <strong>Email:</strong> ${user.email}<br><br>
     <button onclick="logout()" style="
@@ -60,11 +60,9 @@ async function logout() {
 async function showAccountLogo(containerId = "home-account-logo") {
   const { data: { session } } = await supabase.auth.getSession();
   const container = document.getElementById(containerId);
-
-  if (!container) return; // in case element not present
+  if (!container) return;
 
   if (!session) {
-    // If not logged in, show login button
     container.innerHTML = `
       <a href="/login" style="text-decoration:none; color:#333;">
         Login
@@ -74,11 +72,19 @@ async function showAccountLogo(containerId = "home-account-logo") {
   }
 
   const user = session.user;
+  const avatarUrl = user.user_metadata?.avatar_url || "https://via.placeholder.com/40";
+
   container.innerHTML = `
     <a href="/account" title="Go to Account">
-      <img src="${user.user_metadata.avatar_url}" 
+      <img src="${avatarUrl}" 
            width="40" height="40" 
            style="border-radius:50%; vertical-align:middle; cursor:pointer;">
     </a>
   `;
 }
+
+// Run on page load + update on auth change
+showAccountLogo();
+supabase.auth.onAuthStateChange(() => {
+  showAccountLogo();
+});
