@@ -3,57 +3,63 @@ layout: default
 title: notifications
 ---
 
+<style>
+  body { font-family: Arial, sans-serif; padding: 2rem; text-align: center; }
+  #content { display: none; } /* Hidden until check is done */
+  #blocked { display: none; color: red; }
+  #ask-permission { padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer; }
+</style>
 
-  <style>
-    body { font-family: Arial, sans-serif; padding: 2rem; text-align: center; }
-    #content { display: none; } /* Hide until check is done */
-    #blocked { display: none; color: red; }
-  </style>
+<div id="content">
+  <h1>Welcome to the Exclusive Page!</h1>
+  <p>Since you have enabled notifications, you can access this content.</p>
+</div>
 
+<div id="blocked">
+  <h1>Notifications Required</h1>
+  <p>Please enable push notifications to access this page.</p>
+  <button id="ask-permission">Enable Notifications</button>
+</div>
 
+<script>
+  // Ensure OneSignal is loaded
+  window.OneSignal = window.OneSignal || [];
 
-  <div id="content">
-    <h1>Welcome to the Exclusive Page!</h1>
-    <p>Since you have enabled notifications, you can access this content.</p>
-  </div>
-
-  <div id="blocked">
-    <h1>Notifications Required</h1>
-    <p>Please enable push notifications to access this page.</p>
-    <button id="ask-permission">Enable Notifications</button>
-  </div>
-
-  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-  <script>
-    window.OneSignal = window.OneSignal || [];
-    OneSignal.push(function() {
+  OneSignal.push(function() {
+    // Only init if not already initialized
+    if (!window.onesignalInitialized) {
       OneSignal.init({
-       appId: "ee9cfc93-71c9-41e0-a30c-20662ea9937f",
-      safari_web_id: "web.onesignal.auto.204803f7-478b-4564-9a97-0318e873c676",
+        appId: "ee9cfc93-71c9-41e0-a30c-20662ea9937f",
+        safari_web_id: "web.onesignal.auto.204803f7-478b-4564-9a97-0318e873c676",
         notifyButton: { enable: true }
       });
+      window.onesignalInitialized = true;
+    }
 
-      // Check if notifications are enabled
-      OneSignal.isPushNotificationsEnabled(function(isEnabled) {
-        if (isEnabled) {
-          // Show the page content
-          document.getElementById('content').style.display = 'block';
-        } else {
-          // Show blocked message
-          document.getElementById('blocked').style.display = 'block';
-        }
-      });
+    // Function to update page visibility based on subscription
+    function updateContent(isEnabled) {
+      if (isEnabled) {
+        document.getElementById('blocked').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+      } else {
+        document.getElementById('content').style.display = 'none';
+        document.getElementById('blocked').style.display = 'block';
+      }
+    }
 
-      // Button to request permission if blocked
-      document.getElementById('ask-permission').addEventListener('click', function() {
-        OneSignal.showSlidedownPrompt();
-        OneSignal.on('subscriptionChange', function(isSubscribed) {
-          if (isSubscribed) {
-            location.reload(); // Reload the page if user enabled notifications
-          }
-        });
-      });
-
+    // Check if notifications are enabled
+    OneSignal.isPushNotificationsEnabled(function(isEnabled) {
+      updateContent(isEnabled);
     });
-  </script>
 
+    // Listen for subscription changes dynamically
+    OneSignal.on('subscriptionChange', function(isSubscribed) {
+      updateContent(isSubscribed);
+    });
+
+    // Button to request permission if blocked
+    document.getElementById('ask-permission').addEventListener('click', function() {
+      OneSignal.showSlidedownPrompt();
+    });
+  });
+</script>
