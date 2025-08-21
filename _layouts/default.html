@@ -208,28 +208,7 @@
 
   </script>
 
-<script>
-  // Initialize Supabase
-  const supabase = window.supabase.createClient(
-    "https://YOUR_PROJECT_ID.supabase.co",
-    "YOUR_PUBLIC_ANON_KEY"
-  );
 
-  async function checkUser() {
-    const { data: { user } } = await supabase.auth.getUser();
-
-    if (user) {
-      // Show profile link
-      document.getElementById("user-profile-link").style.display = "inline-block";
-
-      // If Google profile pic is available, show it
-      const avatar = user.user_metadata.avatar_url || "https://via.placeholder.com/30";
-      document.getElementById("user-avatar").src = avatar;
-    }
-  }
-
-  checkUser();
-</script>
 
 
 
