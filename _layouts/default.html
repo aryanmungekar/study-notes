@@ -236,32 +236,42 @@
     showAccountLogo();
   </script>
 
-<!-- onesignal popup code -->
+<!-- OneSignal Initialization + Banner JS -->
 <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   OneSignalDeferred.push(async function(OneSignal) {
+
     await OneSignal.init({
-      appId: "YOUR_APP_ID", // replace with your OneSignal appId
-      safari_web_id: "YOUR_SAFARI_WEB_ID", // replace with your Safari ID
+      appId: "YOUR_APP_ID",           // Replace with your OneSignal App ID
+      safari_web_id: "YOUR_SAFARI_WEB_ID", // Replace with Safari ID
       notifyButton: { enable: false } // hide floating button
     });
 
-    // Show banner only if notifications not already enabled
+    // Check if notifications are already enabled
     const isEnabled = await OneSignal.isPushNotificationsEnabled();
+
     if (!isEnabled) {
       const banner = document.getElementById("notification-banner");
+
+      // Show banner with slide-in animation
       banner.style.display = "block";
+      setTimeout(() => banner.style.transform = "translateY(0)", 50);
+      setTimeout(() => banner.style.opacity = "1", 50);
 
       // Enable button triggers native prompt
-      document.getElementById("enable-notifications").addEventListener("click", async () => {
+      document.getElementById("enable-notifications").onclick = async () => {
         await OneSignal.showNativePrompt();
-        banner.style.display = "none";
-      });
+        banner.style.transform = "translateY(100%)";
+        banner.style.opacity = "0";
+        setTimeout(() => banner.style.display = "none", 300);
+      };
 
-      // Close button just hides the banner temporarily
-      document.getElementById("close-banner").addEventListener("click", () => {
-        banner.style.display = "none";
-      });
+      // Close button hides banner temporarily
+      document.getElementById("close-banner").onclick = () => {
+        banner.style.transform = "translateY(100%)";
+        banner.style.opacity = "0";
+        setTimeout(() => banner.style.display = "none", 300);
+      };
     }
   });
 </script>
