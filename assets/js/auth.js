@@ -77,7 +77,7 @@ async function showAccountLogo(containerId = "home-account-logo") {
            style="border-radius:50%; vertical-align:middle; cursor:pointer;">
     </a>
   `;
-  container.style.display = "inline-block"; // ensures the div is visible
+  container.style.display = "grid"; // ensures the div is visible
 
 }
 
