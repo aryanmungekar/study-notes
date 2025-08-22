@@ -16,7 +16,7 @@ title: Events
   /* Container for all cards */
   .events-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 332px);
+    grid-template-columns: repeat(auto-fill, 300px);
     justify-content: center;
     gap: 20px;
     padding: 40px 20px;
