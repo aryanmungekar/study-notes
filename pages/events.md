@@ -12,11 +12,6 @@ title: Events
   <link rel="stylesheet" href="/assets/css/content.css"> -->
 
 <style>
-  h1 {
-    text-align: center;
-    margin-top: 30px;
-    color: #333;
-  }
 
   /* Container for all cards */
   .events-container {
