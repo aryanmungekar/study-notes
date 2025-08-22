@@ -200,98 +200,72 @@ title: Events
   <h1>Upcoming Events</h1>
 
   <div class="events-container">
-    <div id="grid">
-      <div class="event-card">
-        <img class="event-thumb" src="\assets\images\1.png" alt="Event Thumbnail">
-        <div class="event-info">
-          <h3 class="event-title">Google Summer of Code</h3>
-          <p class="event-date">Deadline: March 15, 2025</p>
-          <p class="event-desc">Work with open-source organizations and get stipends. Apply now!</p>
-        </div>
-        <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
-        <div class="share-group">
-          <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
-            <i class="fa-solid fa-arrow-up-from-bracket"></i>
-          </button>
-        </div>
-      </div>
+    <div class="event-card">
+    <img class="event-thumb" src="/assets/images/1.png" alt="Event Thumbnail">
+    <div class="event-info">
+      <h3 class="event-title">Google Summer of Code</h3>
+      <p class="event-date">Deadline: March 15, 2025</p>
+      <p class="event-desc">Work with open-source organizations and get stipends. Apply now!</p>
     </div>
+    <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
+    <div class="share-group">
+      <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
+        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+      </button>
+    </div>
+  </div>
 
-    <div id="grid">
-      <div class="event-card">
-        <img class="event-thumb" src="\assets\images\1.png" alt="Event Thumbnail">
-        <div class="event-info">
-          <h3 class="event-title">Google Summer of Code</h3>
-          <p class="event-date">Deadline: March 15, 2025</p>
-          <p class="event-desc">Work with open-source organizations and get stipends. Apply now!</p>
-        </div>
-        <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
-        <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn1">View Details</a>
-        <div class="share-group">
-          <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
-            <i class="fa-solid fa-arrow-up-from-bracket"></i>
-          </button>
-        </div>
-      </div>
+  <div class="event-card">
+    <img class="event-thumb" src="/assets/images/1.png" alt="Event Thumbnail">
+    <div class="event-info">
+      <h3 class="event-title">Google Summer of Code</h3>
+      <p class="event-date">Deadline: March 15, 2025</p>
+      <p class="event-desc">Work with open-source organizations and get stipends. Apply now!</p>
     </div>
+    <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
+    <div class="share-group">
+      <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
+        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+      </button>
+    </div>
+  </div>
 
-    <div id="grid">
-      <div class="event-card">
-        <img class="event-thumb" src="\assets\images\1.png" alt="Event Thumbnail">
-        <div class="event-info">
-          <h3 class="event-title">Google Summer of Code</h3>
-          <p class="event-date">Deadline: March 15, 2025</p>
-          <p class="event-desc"><i class="fa-solid fa-location-dot"></i> Parvatibai Genba Moze, Wagholi</p>
-        </div>
-        <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
-        <div class="share-group">
-          <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
-            <i class="fa-solid fa-arrow-up-from-bracket"></i>
-          </button>
-        </div>
-      </div>
+  <div class="event-card">
+    <img class="event-thumb" src="/assets/images/1.png" alt="Event Thumbnail">
+    <div class="event-info">
+      <h3 class="event-title">Google Summer of Code</h3>
+      <p class="event-date">Deadline: March 15, 2025</p>
+      <p class="event-desc">Work with open-source organizations and get stipends. Apply now!</p>
     </div>
-
-    <div id="grid">
-      <div class="event-card">
-        <img class="event-thumb" src="\assets\images\1.png" alt="Event Thumbnail">
-        <div class="event-info">
-          <h3 class="event-title">Google Summer of Code</h3>
-          <p class="event-date">Deadline: March 15, 2025</p>
-          <p class="event-desc"><i class="fa-solid fa-location-dot"></i> Parvatibai Genba Moze, Wagholi</p>
-        </div>
-        <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
-        <div class="share-group">
-          <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
-            <i class="fa-solid fa-arrow-up-from-bracket"></i>
-          </button>
-        </div>
-      </div>
+    <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
+    <div class="share-group">
+      <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
+        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+      </button>
     </div>
+  </div>
 
   </div>
 
 
-  <!-- Javascripts -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const grid = document.getElementById('grid');
-      grid.querySelectorAll(".share-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const shareUrl = window.location.origin + btn.getAttribute("data-url");
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".share-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const shareUrl = window.location.origin + btn.getAttribute("data-url");
 
-          if (navigator.share) {
-            navigator.share({
-              title: "Check this new upcomming event",
-              text: "Pune University:",
-              url: shareUrl
-            }).catch(err => console.error("Sharing failed:", err));
-          } else {
-            navigator.clipboard.writeText(shareUrl)
-              .then(() => alert("Link copied to clipboard!"))
-              .catch(() => alert("Failed to copy link"));
-          }
-        });
-      });
+      if (navigator.share) {
+        navigator.share({
+          title: "Check this new upcoming event",
+          text: "Pune University:",
+          url: shareUrl
+        }).catch(err => console.error("Sharing failed:", err));
+      } else {
+        navigator.clipboard.writeText(shareUrl)
+          .then(() => alert("Link copied to clipboard!"))
+          .catch(() => alert("Failed to copy link"));
+      }
     });
-  </script>
+  });
+});
+</script>
