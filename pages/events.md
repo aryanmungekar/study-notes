@@ -16,7 +16,7 @@ title: Events
   /* Container for all cards */
   .events-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 300px);
+    grid-template-columns: repeat(auto-fill, 250px);
     justify-content: center;
     gap: 20px;
     padding: 40px 20px;
@@ -33,7 +33,7 @@ title: Events
     flex-direction: column;
     gap: 8px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    width: 300px;
+    width: 100%;
     height: 300px;
   }
 
@@ -186,6 +186,7 @@ title: Events
   @media (max-width: 677px) {
     .events-container {
       gap: 0px;
+      grid-template-columns: repeat(auto-fill, 300px);
     }
 
         .main-content {
