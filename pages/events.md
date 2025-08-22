@@ -179,9 +179,17 @@ title: Events
     z-index: 2;
   }
 
+  .main-content {
+    padding: 75px 70px 80px 10px;
+}
+
   @media (max-width: 677px) {
     .events-container {
       gap: 0px;
+    }
+
+        .main-content {
+        padding: 80px 10px 80px 10px;
     }
 
   }
