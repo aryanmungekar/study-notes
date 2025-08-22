@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Events
-permalink: /login/
 ---
 
 <!-- <meta charset="UTF-8">
