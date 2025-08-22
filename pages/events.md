@@ -192,9 +192,6 @@ title: Events
   }
 </style>
 
-</head>
-
-<body>
 
   <h1>Upcoming Events</h1>
 
