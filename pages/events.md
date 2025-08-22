@@ -183,7 +183,7 @@ title: Events
     padding: 75px 70px 80px 10px;
 }
 
-  @media (max-width: 677px) {
+  @media (max-width: 650px) {
     .events-container {
       gap: 0px;
       grid-template-columns: repeat(auto-fill, 300px);
