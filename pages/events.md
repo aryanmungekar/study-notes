@@ -132,7 +132,7 @@ title: Events
     /* Leaves space for buttons */
   }
 
-  .event-card-actions {
+  .card-actions {
     position: absolute;
     bottom: 12px;
     left: 16px;
@@ -141,8 +141,8 @@ title: Events
     justify-content: space-between;
   }
 
-  .event-btn-open,
-  .event-btn-share {
+  .btn-open,
+  .btn-share {
     background: #007bff;
     color: #fff;
     padding: 8px 14px;
@@ -154,19 +154,19 @@ title: Events
     transition: background 0.2s ease;
   }
 
-  .event-btn-open:hover {
+  .btn-open:hover {
     background: #0056b3;
   }
 
-  .event-btn-share {
+  .btn-share {
     background: #28a745;
   }
 
-  .event-btn-share:hover {
+  .btn-share:hover {
     background: #1e7e34;
   }
 
-  .event-share-group {
+  .share-group {
     position: absolute;
     right: -1px;
     bottom: 285px;
@@ -183,7 +183,7 @@ title: Events
     padding: 75px 70px 80px 10px;
 }
 
-  @media (max-width: 650px) {
+  @media (max-width: 677px) {
     .events-container {
       gap: 0px;
       grid-template-columns: repeat(auto-fill, 300px);
@@ -209,7 +209,7 @@ title: Events
           <p class="event-desc">Work with open-source organizations and get stipends. Apply now!</p>
         </div>
         <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
-        <div class="event-share-group">
+        <div class="share-group">
           <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
             <i class="fa-solid fa-arrow-up-from-bracket"></i>
           </button>
@@ -227,7 +227,7 @@ title: Events
         </div>
         <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
         <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn1">View Details</a>
-        <div class="event-share-group">
+        <div class="share-group">
           <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
             <i class="fa-solid fa-arrow-up-from-bracket"></i>
           </button>
@@ -244,7 +244,7 @@ title: Events
           <p class="event-desc"><i class="fa-solid fa-location-dot"></i> Parvatibai Genba Moze, Wagholi</p>
         </div>
         <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
-        <div class="event-share-group">
+        <div class="share-group">
           <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
             <i class="fa-solid fa-arrow-up-from-bracket"></i>
           </button>
@@ -261,7 +261,7 @@ title: Events
           <p class="event-desc"><i class="fa-solid fa-location-dot"></i> Parvatibai Genba Moze, Wagholi</p>
         </div>
         <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
-        <div class="event-share-group">
+        <div class="share-group">
           <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
             <i class="fa-solid fa-arrow-up-from-bracket"></i>
           </button>
