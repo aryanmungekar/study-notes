@@ -132,7 +132,7 @@ title: Events
     /* Leaves space for buttons */
   }
 
-  .card-actions {
+  .event-card-actions {
     position: absolute;
     bottom: 12px;
     left: 16px;
@@ -141,8 +141,8 @@ title: Events
     justify-content: space-between;
   }
 
-  .btn-open,
-  .btn-share {
+  .event-btn-open,
+  .event-btn-share {
     background: #007bff;
     color: #fff;
     padding: 8px 14px;
@@ -154,19 +154,19 @@ title: Events
     transition: background 0.2s ease;
   }
 
-  .btn-open:hover {
+  .event-btn-open:hover {
     background: #0056b3;
   }
 
-  .btn-share {
+  .event-btn-share {
     background: #28a745;
   }
 
-  .btn-share:hover {
+  .event-btn-share:hover {
     background: #1e7e34;
   }
 
-  .share-group {
+  .event-share-group {
     position: absolute;
     right: -1px;
     bottom: 285px;
@@ -209,7 +209,7 @@ title: Events
           <p class="event-desc">Work with open-source organizations and get stipends. Apply now!</p>
         </div>
         <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
-        <div class="share-group">
+        <div class="event-share-group">
           <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
             <i class="fa-solid fa-arrow-up-from-bracket"></i>
           </button>
@@ -227,7 +227,7 @@ title: Events
         </div>
         <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
         <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn1">View Details</a>
-        <div class="share-group">
+        <div class="event-share-group">
           <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
             <i class="fa-solid fa-arrow-up-from-bracket"></i>
           </button>
@@ -244,7 +244,7 @@ title: Events
           <p class="event-desc"><i class="fa-solid fa-location-dot"></i> Parvatibai Genba Moze, Wagholi</p>
         </div>
         <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
-        <div class="share-group">
+        <div class="event-share-group">
           <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
             <i class="fa-solid fa-arrow-up-from-bracket"></i>
           </button>
@@ -261,7 +261,7 @@ title: Events
           <p class="event-desc"><i class="fa-solid fa-location-dot"></i> Parvatibai Genba Moze, Wagholi</p>
         </div>
         <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
-        <div class="share-group">
+        <div class="event-share-group">
           <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
             <i class="fa-solid fa-arrow-up-from-bracket"></i>
           </button>
