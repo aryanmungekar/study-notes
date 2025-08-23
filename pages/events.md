@@ -200,7 +200,7 @@ title: Events
 
 <center>
     <div class='onesignal-customlink-container'
-      style="border: 1px solid; border-radius: 15px; padding-top: 5px; width: 300px;"></div>
+      style="border: 0px solid; border-radius: 15px; padding-top: 5px; width: 300px;"></div>
   </center>
 
 
@@ -257,7 +257,7 @@ title: Events
 
   <div class="events-container">
     <div class="event-card">
-      <img class="event-thumb" src="/assets/images/1.png" alt="Event Thumbnail">
+      <img class="event-thumb" src="https://hackodisha-4.devfolio.co/_next/image?url=https%3A%2F%2Fassets.devfolio.co%2Fhackathons%2Fd7d594eaf4ac4a4db9cd998c65c0fc9a%2Fassets%2Fcover%2F381.png&w=1440&q=100" alt="Event Thumbnail">
       <div class="event-info">
         <h3 class="event-title">Google Summer of Code</h3>
         <p class="event-date">Deadline: March 15, 2025</p>
