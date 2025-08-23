@@ -221,7 +221,7 @@ title: Events
     </button>
   </div>
 
-  <div id="mac-ios-banner" style="display:none;"><h3>tretyr</h3>
+  <div style="display:none;"><h3>tretyr</h3>
     <img src="https://global-uploads.webflow.com/608d884fb0c441100e04eee7/629a6f3aabdbeb309eb8cb23_How%20to%20Add%20Momentum%20(iOS)%20to%20Home%20Screen%20pt%202.jpg" alt="Special Banner" />
 
     
