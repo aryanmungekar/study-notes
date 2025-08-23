@@ -198,6 +198,11 @@ title: Events
 
 <h1>Upcoming Events</h1><br>
 
+<center>
+    <div class='onesignal-customlink-container'
+      style="border: 1px solid; border-radius: 15px; padding-top: 5px; width: 300px;"></div>
+  </center>
+
 
 <div id="events-message"
   style="display:none; text-align:center; padding:20px; max-width:500px; margin:auto; background:#f8f8f8; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
@@ -247,10 +252,7 @@ title: Events
 <div id="events-content">
 
 
-  <center>
-    <div class='onesignal-customlink-container'
-      style="border: 1px solid; border-radius: 15px; padding-top: 5px; width: 300px;"></div>
-  </center>
+  
 
 
   <div class="events-container">
