@@ -314,16 +314,16 @@ title: Events
     </div>
 
   <div class="event-card">
-      <img class="event-thumb" src="/assets/images/eventcover.png" alt="Event Thumbnail">
+      <img class="event-thumb" src="/assets/images/event1.png" alt="Event Thumbnail">
       <div class="event-info">
-        <h3 class="event-title"></h3>
-        <p class="event-date"><i class="fa-solid fa-calendar"></i>: </p>
-        <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Online</p>
-        <p class="event-desc"><i class="fa-solid fa-trophy"></i>: ₹</p>
-        <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: Free</p>
-        <p class="event-desc"><b>Type:</b> Hackthon</p>      
+        <h3 class="event-title">IDEA Bootcamp & Pitch Fest 2025</h3>
+        <p class="event-date"><i class="fa-solid fa-calendar"></i>:  6th, 7th & 8th August 2025</p>
+        <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Seminar Hall, ADYPSOE, Lohegaon</p>
+        <p class="event-desc"><i class="fa-solid fa-trophy"></i>: Exciting Prizes and Certificates</p>
+        <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: ₹ 49</p>
+        <p class="event-desc"><b>Type:</b> Event</p>      
       </div>
-      <a href="https://elastic.hackerearth.com/" target="_blank" class="event-btn">Register Now</a>
+      <a href="https://forms.gle/A3jYQcqP3dTGsK8v7" target="_blank" class="event-btn">Register Now</a>
       <div class="share-group">
         <button class="share-btn" data-url="#" title="Share Link">
           <i class="fa-solid fa-arrow-up-from-bracket"></i>
@@ -331,23 +331,6 @@ title: Events
       </div>
     </div>
     
-  <div class="event-card">
-      <img class="event-thumb" src="/assets/images/eventcover.png" alt="Event Thumbnail">
-      <div class="event-info">
-        <h3 class="event-title"></h3>
-        <p class="event-date"><i class="fa-solid fa-calendar"></i>: </p>
-        <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Online</p>
-        <p class="event-desc"><i class="fa-solid fa-trophy"></i>: ₹</p>
-        <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: Free</p>
-        <p class="event-desc"><b>Type:</b> Hackthon</p>        
-      </div>
-      <a href="https://elastic.hackerearth.com/" target="_blank" class="event-btn">Register Now</a>
-      <div class="share-group">
-        <button class="share-btn" data-url="#" title="Share Link">
-          <i class="fa-solid fa-arrow-up-from-bracket"></i>
-        </button>
-      </div>
-    </div>
 
   </div>
 
