@@ -271,7 +271,7 @@ title: Events
       </div>
     </div>
 
-    <div class="event-card">
+  <div class="event-card">
       <img class="event-thumb" src="/assets/images/1.png" alt="Event Thumbnail">
       <div class="event-info">
         <h3 class="event-title">Google Summer of Code</h3>
@@ -286,7 +286,26 @@ title: Events
       </div>
     </div>
 
-    <div class="event-card">
+  <div class="event-card">
+      <img class="event-thumb" src="/assets/images/event2.png" alt="Event Thumbnail">
+      <div class="event-info">
+        <h3 class="event-title">HackOdisha 5.0</h3>
+        <p class="event-date"><i class="fa-solid fa-calendar"></i>: Sep 6 - 7, 2025</p>
+        <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Online</p>
+        <p class="event-desc"><i class="fa-solid fa-trophy"></i>: $7,840</p>
+        <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i>Fees: Free</p>
+        <p class="event-desc"><b>Type:</b> Hackthon</p>
+        <p class="event-desc"><b>Mode:</b> Online</p>
+      </div>
+      <a href="https://hackodisha-4.devfolio.co/" target="_blank" class="event-btn">Register Now</a>
+      <div class="share-group">
+        <button class="share-btn" data-url="#" title="Share Link">
+          <i class="fa-solid fa-arrow-up-from-bracket"></i>
+        </button>
+      </div>
+    </div>
+
+  <div class="event-card">
       <img class="event-thumb" src="/assets/images/1.png" alt="Event Thumbnail">
       <div class="event-info">
         <h3 class="event-title">Google Summer of Code</h3>
@@ -301,22 +320,7 @@ title: Events
       </div>
     </div>
 
-    <div class="event-card">
-      <img class="event-thumb" src="/assets/images/1.png" alt="Event Thumbnail">
-      <div class="event-info">
-        <h3 class="event-title">Google Summer of Code</h3>
-        <p class="event-date">Deadline: March 15, 2025</p>
-        <p class="event-desc">Work with open-source organizations and get stipends. Apply now!</p>
-      </div>
-      <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
-      <div class="share-group">
-        <button class="share-btn" data-url="#" title="Share Link">
-          <i class="fa-solid fa-arrow-up-from-bracket"></i>
-        </button>
-      </div>
-    </div>
-
-    <div class="event-card">
+  <div class="event-card">
       <img class="event-thumb" src="/assets/images/1.png" alt="Event Thumbnail">
       <div class="event-info">
         <h3 class="event-title">Google Summer of Code</h3>
