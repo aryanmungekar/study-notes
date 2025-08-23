@@ -218,7 +218,7 @@ title: Events
 </div>
 
 
-<div class="events-container" id="events-content">
+<div id="events-content">
 
 
   <center><div class='onesignal-customlink-container' style="border: 1px solid; border-radius: 15px; padding-top: 5px; width: 300px;"></div></center>
