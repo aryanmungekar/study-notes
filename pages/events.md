@@ -459,7 +459,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 </script>
 
-<script>
+
 <script>
   // Make sure OneSignal is fully initialized
   window.OneSignal = window.OneSignal || [];
@@ -490,4 +490,3 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
 
-</script>
