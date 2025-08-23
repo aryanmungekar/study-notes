@@ -4,7 +4,7 @@ const CACHE_NAME = "sppu-notes-v11";
 // Precache essential offline assets
 const OFFLINE_FILES = [
   "/", 
-  "/index.html",
+  // "/index.html",
   "/web-app-manifest-192x192.png",
   "/web-app-manifest-512x512.png",
 ];
