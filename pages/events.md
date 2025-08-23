@@ -443,7 +443,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 </script>
 
 
-<script>
+<!-- <script>
   // Make sure OneSignal is fully initialized
   window.OneSignal = window.OneSignal || [];
   OneSignal.push(function() {
@@ -469,7 +469,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       updateUI();
     });
   });
-</script>
+</script> -->
 
 
 
