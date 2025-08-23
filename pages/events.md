@@ -223,7 +223,7 @@ title: Events
 
  <div id="mac-ios-banner" style="display:none; max-width: 400px; margin:15px auto; padding:15px; background:#f9f9f9; border:1px solid #ddd; border-radius:10px; text-align:center; font-family:Arial, sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
   
-  <h3 style="margin:0 0 8px; font-size:18px; color:#333;">Using the Installed App?</h3>
+  <h3 style="margin:0 0 8px; font-size:18px; color:#333;">Already the Installed App?</h3>
   
   <p style="font-size:14px; color:#555; margin:0 0 10px;">
     Simply open the <b>Events</b> tab inside the app and enjoy!  
