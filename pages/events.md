@@ -186,7 +186,7 @@ title: Events
   @media (max-width: 677px) {
     .events-container {
       gap: 0px;
-      grid-template-columns: repeat(auto-fill, 300px);
+      grid-template-columns: repeat(auto-fill, 350px);
     }
 
         .main-content {
