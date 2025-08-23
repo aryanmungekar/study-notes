@@ -41,12 +41,16 @@ async function loadUserInfo(containerId = "account-info") {
 
   // If logged in, show account info
   const avatar = user.user_metadata?.avatar_url || "https://via.placeholder.com/100";
-  container.innerHTML = `
-    <img src="${avatar}" alt="Profile" 
-         style="width:100px; height:100px; border-radius:50%;"><br><br>
-    <strong>Email:</strong> ${user.email}<br>
-    <button id="logout-btn" style="margin-top:20px;">Logout</button>
-  `;
+const name = user.user_metadata?.full_name || user.user_metadata?.name || "No Name";
+
+container.innerHTML = `
+  <img src="${avatar}" alt="Profile" 
+       style="width:100px; height:100px; border-radius:50%;"><br><br>
+  <strong>Name:</strong> ${name}<br>
+  <strong>Email:</strong> ${user.email}<br>
+  <button id="logout-btn" style="margin-top:20px;">Logout</button>
+`;
+
 
   // Attach logout event
   document.getElementById("logout-btn").addEventListener("click", async () => {
