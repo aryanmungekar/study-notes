@@ -33,7 +33,7 @@ title: Events
     gap: 8px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     width: 100%;
-    height: 300px;
+    height: 100%;
   }
 
   .event-card:hover {
@@ -260,8 +260,12 @@ title: Events
       <img class="event-thumb" src="https://hackodisha-4.devfolio.co/_next/image?url=https%3A%2F%2Fassets.devfolio.co%2Fhackathons%2Fd7d594eaf4ac4a4db9cd998c65c0fc9a%2Fassets%2Fcover%2F381.png&w=1440&q=100" alt="Event Thumbnail">
       <div class="event-info">
         <h3 class="event-title">Google Summer of Code</h3>
-        <p class="event-date">Deadline: March 15, 2025</p>
-        <p class="event-desc">Work with open-source organizations and get stipends. Apply now!</p>
+        <p class="event-date"><i class="fa-solid fa-calendar"></i>: Sep 6 - 7, 2025</p>
+        <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Online</p>
+        <p class="event-desc"><i class="fa-solid fa-trophy"></i>: $7,840</p>
+        <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: Free</p>
+        <p class="event-desc"><b>Type:</b> Hackthon</p>
+        <p class="event-desc"><b>Mode:</b> Online</p>
       </div>
       <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
       <div class="share-group">
