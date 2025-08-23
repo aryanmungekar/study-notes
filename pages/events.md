@@ -295,7 +295,7 @@ title: Events
     </div>
 
   <div class="event-card">
-      <img class="event-thumb" src="/assets/images/" alt="Event Thumbnail">
+      <img class="event-thumb" src="/assets/images/eventcover.png" alt="Event Thumbnail">
       <div class="event-info">
         <h3 class="event-title"></h3>
         <p class="event-date"><i class="fa-solid fa-calendar"></i>: </p>
@@ -314,7 +314,7 @@ title: Events
     </div>
 
   <div class="event-card">
-      <img class="event-thumb" src="/assets/images/" alt="Event Thumbnail">
+      <img class="event-thumb" src="/assets/images/eventcover.png" alt="Event Thumbnail">
       <div class="event-info">
         <h3 class="event-title"></h3>
         <p class="event-date"><i class="fa-solid fa-calendar"></i>: </p>
@@ -333,7 +333,7 @@ title: Events
     </div>
     
   <div class="event-card">
-      <img class="event-thumb" src="/assets/images/" alt="Event Thumbnail">
+      <img class="event-thumb" src="/assets/images/eventcover.png" alt="Event Thumbnail">
       <div class="event-info">
         <h3 class="event-title"></h3>
         <p class="event-date"><i class="fa-solid fa-calendar"></i>: </p>
