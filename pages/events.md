@@ -200,7 +200,7 @@ title: Events
 
 <center>
     <div class='onesignal-customlink-container'
-      style="border: 0px solid; border-radius: 15px; padding-top: 5px; width: 300px;"></div>
+      style="border: 1px solid; border-radius: 15px; padding-top: 5px; width: 300px;"></div>
   </center>
 
 
