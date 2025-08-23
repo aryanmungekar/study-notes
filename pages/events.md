@@ -261,7 +261,7 @@ title: Events
     <div class="event-card">
       <img class="event-thumb" src="https://hackodisha-4.devfolio.co/_next/image?url=https%3A%2F%2Fassets.devfolio.co%2Fhackathons%2Fd7d594eaf4ac4a4db9cd998c65c0fc9a%2Fassets%2Fcover%2F381.png&w=1440&q=100" alt="Event Thumbnail">
       <div class="event-info">
-        <h3 class="event-title">Google Summer of Code</h3>
+        <h3 class="event-title">HackOdisha 5.0</h3>
         <p class="event-date"><i class="fa-solid fa-calendar"></i>: Sep 6 - 7, 2025</p>
         <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Online</p>
         <p class="event-desc"><i class="fa-solid fa-trophy"></i>: $7,840</p>
@@ -269,7 +269,7 @@ title: Events
         <p class="event-desc"><b>Type:</b> Hackthon</p>
         <p class="event-desc"><b>Mode:</b> Online</p>
       </div>
-      <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
+      <a href="https://hackodisha-4.devfolio.co/" target="_blank" class="event-btn">View Details</a>
       <div class="share-group">
         <button class="share-btn" data-url="#" title="Share Link">
           <i class="fa-solid fa-arrow-up-from-bracket"></i>
@@ -299,15 +299,15 @@ title: Events
   <div class="event-card">
       <img class="event-thumb" src="/assets/images/eventcover.png" alt="Event Thumbnail">
       <div class="event-info">
-        <h3 class="event-title"></h3>
-        <p class="event-date"><i class="fa-solid fa-calendar"></i>: </p>
-        <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Online</p>
-        <p class="event-desc"><i class="fa-solid fa-trophy"></i>: ₹</p>
+        <h3 class="event-title">Ctrl+Space</h3>
+        <p class="event-date"><i class="fa-solid fa-calendar"></i>: 24 Aug 25</p>
+        <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Newton School of Technology, ADYPU Pune (Online)</p>
+        <p class="event-desc"><i class="fa-solid fa-trophy"></i>: ₹60,000</p>
         <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: Free</p>
         <p class="event-desc"><b>Type:</b> Hackthon</p>
         <p class="event-desc"><b>Mode:</b> Online</p>
       </div>
-      <a href="https://elastic.hackerearth.com/" target="_blank" class="event-btn">Register Now</a>
+      <a href="https://unstop.com/hackathons/ctrlspace-newton-school-of-technology-adypu-pune-1533848" target="_blank" class="event-btn">Register Now</a>
       <div class="share-group">
         <button class="share-btn" data-url="#" title="Share Link">
           <i class="fa-solid fa-arrow-up-from-bracket"></i>
