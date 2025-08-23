@@ -436,4 +436,69 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 });
 </script>
+<script>
+// Detect if user is logged in (replace with your login check logic)
+function isUserLoggedIn() {
+  return !!localStorage.getItem("userLoggedIn"); 
+  // Change this to your own login logic
+}
+
+// Detect if PWA is installed (works for Chrome/Android/PC and iOS standalone mode)
+function isPWAInstalled() {
+  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+
+function isIOS() {
+  return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+function isChrome() {
+  return /Chrome/i.test(navigator.userAgent) && !isIOS();
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  const eventsTab = document.getElementById('events-tab'); // Change to your events tab ID
+  const installGuide = document.getElementById('install-guide'); // Optional install button
+  const popup = document.createElement('div');
+  popup.style.position = 'fixed';
+  popup.style.bottom = '10px';
+  popup.style.left = '50%';
+  popup.style.transform = 'translateX(-50%)';
+  popup.style.background = '#ffdddd';
+  popup.style.padding = '10px 15px';
+  popup.style.borderRadius = '8px';
+  popup.style.color = '#333';
+  popup.style.fontSize = '14px';
+  popup.style.zIndex = '9999';
+  popup.style.display = 'none';
+  document.body.appendChild(popup);
+
+  if (isIOS()) {
+    if (isPWAInstalled()) {
+      // iOS PWA app
+      if (isUserLoggedIn()) {
+        eventsTab.style.display = 'block';
+      } else {
+        eventsTab.style.display = 'none';
+      }
+    } else {
+      // iOS Safari (not installed)
+      eventsTab.style.display = 'none';
+      popup.textContent = 'Events are only available in the installed app. Please "Add to Home Screen".';
+      popup.style.display = 'block';
+      if (installGuide) installGuide.style.display = 'none'; // iOS has no install prompt
+    }
+  } else if (isChrome()) {
+    // Chrome on PC/Android
+    if (isPWAInstalled() && isUserLoggedIn()) {
+      eventsTab.style.display = 'block';
+    } else {
+      eventsTab.style.display = 'none';
+    }
+  } else {
+    // Other browsers: Keep normal logic (no change)
+    eventsTab.style.display = isUserLoggedIn() ? 'block' : 'none';
+  }
+});
+</script>
 
