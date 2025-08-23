@@ -312,21 +312,11 @@ document.addEventListener("DOMContentLoaded", async function () {
   const installBtn = document.getElementById("install-btn");
   let deferredPrompt = null;
 
-  function isIOS() {
-    return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  }
-
   function isPWAInstalled() {
-    // Detects PWA installation
     return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
   }
 
-  function isChromeLike() {
-    // Basic Chrome/Chromium detection for desktop/mobile
-    return /Chrome|CriOS|Chromium/i.test(navigator.userAgent) && !isIOS();
-  }
-
-  // Handle PWA install prompt (for Android/desktop)
+  // Handle PWA install prompt
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
@@ -336,14 +326,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 
   installBtn.addEventListener("click", async () => {
-    if (isIOS() && !isPWAInstalled()) {
-      // iOS fallback instructions
-      alert(
-        "How to install on iOS:\n\n1. Tap the Share icon in Safari.\n2. Scroll down and select 'Add to Home Screen'.\n3. Tap 'Add' on the top-right.\n\nOpen the installed app from your home screen."
-      );
-      return;
-    }
-
     if (deferredPrompt) {
       deferredPrompt.prompt();
       const choiceResult = await deferredPrompt.userChoice;
@@ -372,35 +354,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     const { data: { user } } = await supabase.auth.getUser();
     const installed = isPWAInstalled();
 
-    // iOS logic: show events only if opened as PWA
-    if (isIOS()) {
-      if (user && installed) {
-        eventsContent.style.display = "grid";
-        eventsMessage.style.display = "none";
-      } else {
-        eventsContent.style.display = "none";
-        eventsMessage.style.display = "block";
-        loginBtn.style.display = user ? "none" : "inline-block";
-        if (installed) installBtn.style.display = "none";
-      }
-      return;
-    }
-
-    // Chrome/desktop logic: show events if user is logged in and PWA installed (even if browsing in Chrome)
-    if (isChromeLike()) {
-      // We rely on Supabase login; installed check can be enhanced via server if needed
-      if (user) {
-        eventsContent.style.display = "grid";
-        eventsMessage.style.display = "none";
-      } else {
-        eventsContent.style.display = "none";
-        eventsMessage.style.display = "block";
-        loginBtn.style.display = "inline-block";
-      }
-      return;
-    }
-
-    // Default fallback for other browsers
     if (user && installed) {
       eventsContent.style.display = "grid";
       eventsMessage.style.display = "none";
@@ -414,7 +367,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   await checkAccess();
   supabase.auth.onAuthStateChange(() => {
-    checkAccess();
+    checkAccess(); // Removed auto-refresh here
   });
 
   // Share button logic
@@ -436,4 +389,3 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 });
 </script>
-
