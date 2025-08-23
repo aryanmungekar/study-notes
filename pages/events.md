@@ -211,7 +211,9 @@ title: Events
   </ul>
   <div style="margin-top:10px;">
     <button id="login-btn" style="display:none; padding:10px 20px; background:#007bff; color:white; border:none; border-radius:6px; cursor:pointer;">Login to Continue</button>
-    <button id="install-btn" style="display:none; padding:10px 20px; background:#28a745; color:white; border:none; border-radius:6px; cursor:pointer;">Install App</button>
+    <button id="install-btn" style="display:none; padding:10px 20px; background:#28a745; color:white; border:none; border-radius:6px; cursor:pointer;">
+  Install App
+</button>   
   </div>
 </div>
 
@@ -308,48 +310,72 @@ document.addEventListener("DOMContentLoaded", async function () {
   const eventsMessage = document.getElementById("events-message");
   const loginBtn = document.getElementById("login-btn");
   const installBtn = document.getElementById("install-btn");
+  let deferredPrompt = null;
 
   function isPWAInstalled() {
     return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
   }
 
+  // Handle PWA install prompt
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (!isPWAInstalled()) {
+      installBtn.style.display = 'inline-block';
+    }
+  });
+
+  installBtn.addEventListener("click", async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const choiceResult = await deferredPrompt.userChoice;
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+        location.reload(); // refresh after install
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      deferredPrompt = null;
+    } else {
+      // fallback for browsers with no beforeinstallprompt
+      alert("To install the app, open your browser menu and tap 'Add to Home Screen'!");
+    }
+  });
+
+  loginBtn.addEventListener("click", () => {
+    window.location.href = "/login/";
+  });
+
   async function checkAccess() {
     if (!window.supabase) {
-      console.error("Supabase not initialized. Make sure @supabase/supabase-js and auth.js are loaded.");
+      console.error("Supabase not initialized. Ensure auth.js is loaded first.");
       return;
     }
-    const { data: { user } } = await supabase.auth.getUser();
-    const isPWA = isPWAInstalled();
 
-    if (user && isPWA) {
+    const { data: { user } } = await supabase.auth.getUser();
+    const installed = isPWAInstalled();
+
+    if (user && installed) {
       eventsContent.style.display = "grid";
       eventsMessage.style.display = "none";
     } else {
       eventsContent.style.display = "none";
       eventsMessage.style.display = "block";
-      if (!user) loginBtn.style.display = "inline-block";
-      if (!isPWA) installBtn.style.display = "inline-block";
+      loginBtn.style.display = user ? "none" : "inline-block";
+      if (installed) installBtn.style.display = "none";
     }
   }
 
-  loginBtn.addEventListener("click", () => window.location.href = "/login/");
-  installBtn.addEventListener("click", () => {
-    alert("To install the app, open your browser menu and tap 'Add to Home Screen'!");
+  await checkAccess();
+  supabase.auth.onAuthStateChange(() => {
+    checkAccess();
+    location.reload(); // auto refresh when auth changes (login/logout)
   });
 
-  await checkAccess();
-  supabase.auth.onAuthStateChange(() => checkAccess());
-});
-</script>
-
-
-
-  <script>
-document.addEventListener("DOMContentLoaded", function () {
+  // Share button logic
   document.querySelectorAll(".share-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       const shareUrl = window.location.origin + btn.getAttribute("data-url");
-
       if (navigator.share) {
         navigator.share({
           title: "Check this new upcoming event",
