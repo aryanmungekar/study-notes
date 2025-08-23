@@ -198,33 +198,36 @@ title: Events
 
 <h1>Upcoming Events</h1><br>
 
-<div id="events-message"
-  style="display:none; text-align:center; padding:20px; max-width:500px; margin:auto; background:#f8f8f8; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-  <h2>Unlock Exclusive Opportunities 🚀</h2>
-  <p>Sign in and install our app to explore <b>amazing events, internships, hackathons, and scholarships</b> tailored
-    for you.</p>
-  <p>Benefits of logging in & installing:</p>
-  <ul style="text-align:left; display:inline-block; margin-top:10px;">
-    <li>🎯 Personalized event recommendations</li>
-    <li>📩 Instant notifications before deadlines</li>
-    <li>📥 Offline access via our PWA</li>
-    <li>🤝 Connect & share events with friends</li>
-  </ul>
-  <div style="margin-top:10px;">
-    <button id="login-btn"
-      style="display:none; padding:10px 20px; background:#007bff; color:white; border:none; border-radius:6px; cursor:pointer;">Login
-      to Continue</button>
-    <button id="install-btn"
-      style="display:none; padding:10px 20px; background:#28a745; color:white; border:none; border-radius:6px; cursor:pointer;">
-      Install App
-    </button>
+<div id="events-message">
+  <div
+    style="display:none; text-align:center; padding:20px; max-width:500px; margin:auto; background:#f8f8f8; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+    <h2>Unlock Exclusive Opportunities 🚀</h2>
+    <p>Sign in and install our app to explore <b>amazing events, internships, hackathons, and scholarships</b> tailored
+      for you.</p>
+    <p>Benefits of logging in & installing:</p>
+    <ul style="text-align:left; display:inline-block; margin-top:10px;">
+      <li>🎯 Personalized event recommendations</li>
+      <li>📩 Instant notifications before deadlines</li>
+      <li>📥 Offline access via our PWA</li>
+      <li>🤝 Connect & share events with friends</li>
+    </ul>
+    <div style="margin-top:10px;">
+      <button id="login-btn"
+        style="display:none; padding:10px 20px; background:#007bff; color:white; border:none; border-radius:6px; cursor:pointer;">Login
+        to Continue</button>
+      <button id="install-btn"
+        style="display:none; padding:10px 20px; background:#28a745; color:white; border:none; border-radius:6px; cursor:pointer;">
+        Install App
+      </button>
+    </div>
   </div>
 
-  <div id="mac-ios-banner" style="display:none;">
-    <img src="https://global-uploads.webflow.com/608d884fb0c441100e04eee7/629a6f3aabdbeb309eb8cb23_How%20to%20Add%20Momentum%20(iOS)%20to%20Home%20Screen%20pt%202.jpg" alt="Special Banner" />
-  </div>
+  <div id="mac-ios-banner" style=" width: 100%;">
+      <img
+        src="https://global-uploads.webflow.com/608d884fb0c441100e04eee7/629a6f3aabdbeb309eb8cb23_How%20to%20Add%20Momentum%20(iOS)%20to%20Home%20Screen%20pt%202.jpg"
+        alt="Special Banner" />
+    </div>
 </div>
-
 
 <div id="events-content">
 
