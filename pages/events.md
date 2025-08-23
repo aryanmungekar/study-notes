@@ -168,7 +168,7 @@ title: Events
   .share-group {
     position: absolute;
     right: -1px;
-    bottom: 253px;
+    top: 0px;
     display: flex;
     gap: 6px;
     background: rgba(255, 255, 255, 0.9);
