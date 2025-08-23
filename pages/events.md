@@ -293,7 +293,7 @@ title: Events
         <p class="event-date"><i class="fa-solid fa-calendar"></i>: Sep 6 - 7, 2025</p>
         <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Online</p>
         <p class="event-desc"><i class="fa-solid fa-trophy"></i>: $7,840</p>
-        <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i>Fees: Free</p>
+        <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: Free</p>
         <p class="event-desc"><b>Type:</b> Hackthon</p>
         <p class="event-desc"><b>Mode:</b> Online</p>
       </div>
