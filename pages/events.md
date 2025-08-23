@@ -199,6 +199,8 @@ title: Events
 
   <h1>Upcoming Events</h1>
 
+  <div class='onesignal-customlink-container'></div>
+
   <div class="events-container">
     <div class="event-card">
     <img class="event-thumb" src="/assets/images/1.png" alt="Event Thumbnail">
