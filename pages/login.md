@@ -28,15 +28,9 @@ permalink: /login/
 
 <script>
   // Redirect logged-in users to account page
-  const redirectParam = new URLSearchParams(window.location.search).get('redirect');
-redirectIfLoggedIn(redirectParam || "/account");
-
+  redirectIfLoggedIn("/account");
 
   document.getElementById("google-login").addEventListener("click", () => {
-    const redirectParam = new URLSearchParams(window.location.search).get('redirect') || "/account";
-loginWithGoogle().then(() => {
-  window.location.href = redirectParam;
-});
-
+    loginWithGoogle();
   });
 </script>

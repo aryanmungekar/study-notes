@@ -389,11 +389,8 @@ title: Events
     });
 
     loginBtn.addEventListener("click", () => {
-  // include current page path (and query string) as a redirect parameter
-  const redirectUrl = encodeURIComponent(window.location.pathname + window.location.search);
-  window.location.href = "/login?redirect=" + redirectUrl;
-});
-
+      window.location.href = "/login/";
+    });
 
     async function checkAccess() {
       if (!window.supabase) {
