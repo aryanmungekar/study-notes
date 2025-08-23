@@ -19,7 +19,7 @@ title: Events
     grid-template-columns: repeat(auto-fill, 250px);
     justify-content: center;
     gap: 20px;
-    padding: 40px 20px;
+    padding: 5px 20px;
   }
 
 
