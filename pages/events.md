@@ -34,6 +34,7 @@ title: Events
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     width: 100%;
     height: 100%;
+    justify-content: space-between;
   }
 
   .event-card:hover {
