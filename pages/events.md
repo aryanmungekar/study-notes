@@ -209,7 +209,7 @@ title: Events
     </div>
     <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
     <div class="share-group">
-      <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
+      <button class="share-btn" data-url="#" title="Share Link">
         <i class="fa-solid fa-arrow-up-from-bracket"></i>
       </button>
     </div>
@@ -224,7 +224,7 @@ title: Events
     </div>
     <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
     <div class="share-group">
-      <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
+      <button class="share-btn" data-url="#" title="Share Link">
         <i class="fa-solid fa-arrow-up-from-bracket"></i>
       </button>
     </div>
@@ -239,7 +239,7 @@ title: Events
     </div>
     <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
     <div class="share-group">
-      <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
+      <button class="share-btn" data-url="#" title="Share Link">
         <i class="fa-solid fa-arrow-up-from-bracket"></i>
       </button>
     </div>
@@ -254,7 +254,7 @@ title: Events
     </div>
     <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
     <div class="share-group">
-      <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
+      <button class="share-btn" data-url="#" title="Share Link">
         <i class="fa-solid fa-arrow-up-from-bracket"></i>
       </button>
     </div>
@@ -269,7 +269,7 @@ title: Events
     </div>
     <a href="https://summerofcode.withgoogle.com/" target="_blank" class="event-btn">View Details</a>
     <div class="share-group">
-      <button class="share-btn" data-url="/events/summerofcode" title="Share Link">
+      <button class="share-btn" data-url="#" title="Share Link">
         <i class="fa-solid fa-arrow-up-from-bracket"></i>
       </button>
     </div>
