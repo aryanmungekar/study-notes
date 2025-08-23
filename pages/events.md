@@ -440,3 +440,17 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   });
 </script>
+
+<script>
+  OneSignal.push(function() {
+  OneSignal.isPushNotificationsEnabled(function(isEnabled) {
+    const onesignalDiv = document.querySelector('.onesignal-customlink-container');
+    if (isEnabled) {
+      onesignalDiv.style.display = 'none'; // hide if already subscribed
+    } else {
+      onesignalDiv.style.display = 'block'; // show if not subscribed
+    }
+  });
+});
+
+</script>
