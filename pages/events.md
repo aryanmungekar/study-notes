@@ -460,15 +460,23 @@ document.addEventListener("DOMContentLoaded", async function () {
 </script>
 
 <script>
-  OneSignal.push(function() {
-  OneSignal.isPushNotificationsEnabled(function(isEnabled) {
-    const onesignalDiv = document.querySelector('.onesignal-customlink-container');
-    if (isEnabled) {
-      onesignalDiv.style.display = 'none'; // hide if already subscribed
-    } else {
-      onesignalDiv.style.display = 'block'; // show if not subscribed
-    }
+ OneSignal.push(function() {
+  const onesignalDiv = document.querySelector('.onesignal-customlink-container');
+
+  function updateOneSignalUI() {
+    OneSignal.isPushNotificationsEnabled(function(isEnabled) {
+      onesignalDiv.style.display = isEnabled ? 'none' : 'block';
+    });
+  }
+
+  // Initial check
+  updateOneSignalUI();
+
+  // Listen for subscription changes
+  OneSignal.on('subscriptionChange', function(isSubscribed) {
+    updateOneSignalUI();
   });
 });
+
 
 </script>
