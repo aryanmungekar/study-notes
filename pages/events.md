@@ -302,7 +302,6 @@ title: Events
 
 </div>
 
-<!-- Your Supabase check script should stay at the bottom of the page -->
 <script>
 document.addEventListener("DOMContentLoaded", async function () {
   const eventsContent = document.getElementById("events-content");
@@ -310,36 +309,39 @@ document.addEventListener("DOMContentLoaded", async function () {
   const loginBtn = document.getElementById("login-btn");
   const installBtn = document.getElementById("install-btn");
 
-  // Check if PWA is installed
-  const isPWA = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  function isPWAInstalled() {
+    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  }
 
-  // Check Supabase login status
-  const { data: { user } } = await window.supabase.auth.getUser();
-
-  if (user && isPWA) {
-    if (eventsContent) eventsContent.style.display = "grid";
-    if (eventsMessage) eventsMessage.style.display = "none";
-  } else {
-    if (eventsContent) eventsContent.style.display = "none";
-    if (eventsMessage) eventsMessage.style.display = "block";
-
-    if (!user && loginBtn) loginBtn.style.display = "inline-block";
-    if (!isPWA && installBtn) installBtn.style.display = "inline-block";
-
-    if (loginBtn) {
-      loginBtn.addEventListener("click", () => {
-        window.location.href = "/login/";
-      });
+  async function checkAccess() {
+    if (!window.supabase) {
+      console.error("Supabase not initialized. Make sure @supabase/supabase-js and auth.js are loaded.");
+      return;
     }
+    const { data: { user } } = await supabase.auth.getUser();
+    const isPWA = isPWAInstalled();
 
-    if (installBtn) {
-      installBtn.addEventListener("click", () => {
-        alert("To install the app, open your browser menu and tap 'Add to Home Screen'!");
-      });
+    if (user && isPWA) {
+      eventsContent.style.display = "grid";
+      eventsMessage.style.display = "none";
+    } else {
+      eventsContent.style.display = "none";
+      eventsMessage.style.display = "block";
+      if (!user) loginBtn.style.display = "inline-block";
+      if (!isPWA) installBtn.style.display = "inline-block";
     }
   }
+
+  loginBtn.addEventListener("click", () => window.location.href = "/login/");
+  installBtn.addEventListener("click", () => {
+    alert("To install the app, open your browser menu and tap 'Add to Home Screen'!");
+  });
+
+  await checkAccess();
+  supabase.auth.onAuthStateChange(() => checkAccess());
 });
 </script>
+
 
 
   <script>
