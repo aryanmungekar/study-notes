@@ -221,11 +221,26 @@ title: Events
     </button>
   </div>
 
-  <div style="display:none;"><h3>tretyr</h3>
-    <img src="https://global-uploads.webflow.com/608d884fb0c441100e04eee7/629a6f3aabdbeb309eb8cb23_How%20to%20Add%20Momentum%20(iOS)%20to%20Home%20Screen%20pt%202.jpg" alt="Special Banner" />
+ <div id="mac-ios-banner" style="display:none; max-width: 400px; margin:15px auto; padding:15px; background:#f9f9f9; border:1px solid #ddd; border-radius:10px; text-align:center; font-family:Arial, sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  
+  <h3 style="margin:0 0 8px; font-size:18px; color:#333;">Using the Installed App?</h3>
+  
+  <p style="font-size:14px; color:#555; margin:0 0 10px;">
+    Simply open the <b>Events</b> tab inside the app and enjoy!  
+  </p>
+  
+  <p style="font-size:14px; color:#444; margin:0 0 10px;">
+    Haven’t installed it yet? No worries—here’s how (it’s super quick):
+  </p>
+  
+  <ol style="font-size:14px; color:#333; text-align:left; margin:0 auto; display:inline-block; padding-left:18px;">
+    <li>Tap the <strong>Share</strong> icon <span style="font-size:12px;">(bottom of Safari)</span>.</li>
+    <li>Scroll & tap <strong>Add to Home Screen</strong>.</li>
+    <li>Launch it anytime from your home screen 🎉</li>
+  </ol>
 
-    
-  </div>
+</div>
+
 </div>
 
 
