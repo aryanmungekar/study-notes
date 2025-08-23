@@ -199,25 +199,6 @@ title: Events
 
   <h1>Upcoming Events</h1><br>
 
-<div id="events-message" style="display:none; text-align:center; padding:20px; max-width:500px; margin:auto; background:#f8f8f8; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-  <h2>Unlock Exclusive Opportunities 🚀</h2>
-  <p>Sign in and install our app to explore <b>amazing events, internships, hackathons, and scholarships</b> tailored for you.</p>
-  <p>Benefits of logging in & installing:</p>
-  <ul style="text-align:left; display:inline-block; margin-top:10px;">
-    <li>🎯 Personalized event recommendations</li>
-    <li>📩 Instant notifications before deadlines</li>
-    <li>📥 Offline access via our PWA</li>
-    <li>🤝 Connect & share events with friends</li>
-  </ul>
-  <div style="margin-top:10px;">
-    <button id="login-btn" style="display:none; padding:10px 20px; background:#007bff; color:white; border:none; border-radius:6px; cursor:pointer;">Login to Continue</button>
-    <button id="install-btn" style="display:none; padding:10px 20px; background:#28a745; color:white; border:none; border-radius:6px; cursor:pointer;">Install App</button>
-  </div>
-</div>
-
-
-<div class="events-container" id="events-content">
-
 
   <center><div class='onesignal-customlink-container' style="border: 1px solid; border-radius: 15px; padding-top: 5px; width: 300px;"></div></center>
 
@@ -299,47 +280,6 @@ title: Events
   </div>
 
   </div>
-
-</div>
-
-<!-- Your Supabase check script should stay at the bottom of the page -->
-<script>
-document.addEventListener("DOMContentLoaded", async function () {
-  const eventsContent = document.getElementById("events-content");
-  const eventsMessage = document.getElementById("events-message");
-  const loginBtn = document.getElementById("login-btn");
-  const installBtn = document.getElementById("install-btn");
-
-  // Check if PWA is installed
-  const isPWA = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-
-  // Check Supabase login status
-  const { data: { user } } = await window.supabase.auth.getUser();
-
-  if (user && isPWA) {
-    if (eventsContent) eventsContent.style.display = "grid";
-    if (eventsMessage) eventsMessage.style.display = "none";
-  } else {
-    if (eventsContent) eventsContent.style.display = "none";
-    if (eventsMessage) eventsMessage.style.display = "block";
-
-    if (!user && loginBtn) loginBtn.style.display = "inline-block";
-    if (!isPWA && installBtn) installBtn.style.display = "inline-block";
-
-    if (loginBtn) {
-      loginBtn.addEventListener("click", () => {
-        window.location.href = "/login/";
-      });
-    }
-
-    if (installBtn) {
-      installBtn.addEventListener("click", () => {
-        alert("To install the app, open your browser menu and tap 'Add to Home Screen'!");
-      });
-    }
-  }
-});
-</script>
 
 
   <script>
