@@ -199,7 +199,9 @@ title: Events
 
   <h1>Upcoming Events</h1><br>
 
+<div style="border: 1px solid; border-radius: 15px; padding: 5px;">
   <center><div class='onesignal-customlink-container'></div></center>
+</div>
 
   <div class="events-container">
     <div class="event-card">
