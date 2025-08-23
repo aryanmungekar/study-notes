@@ -460,23 +460,34 @@ document.addEventListener("DOMContentLoaded", async function () {
 </script>
 
 <script>
- OneSignal.push(function() {
-  const onesignalDiv = document.querySelector('.onesignal-customlink-container');
+<script>
+  // Make sure OneSignal is fully initialized
+  window.OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    const onesignalDiv = document.querySelector('.onesignal-customlink-container');
 
-  function updateOneSignalUI() {
-    OneSignal.isPushNotificationsEnabled(function(isEnabled) {
-      onesignalDiv.style.display = isEnabled ? 'none' : 'block';
+    // Function to update the visibility
+    function updateUI() {
+      OneSignal.isPushNotificationsEnabled().then(function(isEnabled) {
+        onesignalDiv.style.display = isEnabled ? 'none' : 'block';
+      });
+    }
+
+    // Initial check after SDK is ready
+    updateUI();
+
+    // Listen for subscription changes
+    OneSignal.on('subscriptionChange', function(isSubscribed) {
+      updateUI();
     });
-  }
 
-  // Initial check
-  updateOneSignalUI();
-
-  // Listen for subscription changes
-  OneSignal.on('subscriptionChange', function(isSubscribed) {
-    updateOneSignalUI();
+    // Also check on notification permission change (for Safari iOS)
+    OneSignal.on('notificationPermissionChange', function(permission) {
+      updateUI();
+    });
   });
-});
+</script>
+
 
 
 </script>
