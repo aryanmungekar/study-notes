@@ -267,10 +267,9 @@ title: Events
         <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Online</p>
         <p class="event-desc"><i class="fa-solid fa-trophy"></i>: $7,840</p>
         <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: Free</p>
-        <p class="event-desc"><b>Type:</b> Hackthon</p>
-        <p class="event-desc"><b>Mode:</b> Online</p>
+        <p class="event-desc"><b>Type:</b> Hackthon</p>        
       </div>
-      <a href="https://hackodisha-4.devfolio.co/" target="_blank" class="event-btn">View Details</a>
+      <a href="https://hackodisha-4.devfolio.co/" target="_blank" class="event-btn">Register Now</a>
       <div class="share-group">
         <button class="share-btn" data-url="#" title="Share Link">
           <i class="fa-solid fa-arrow-up-from-bracket"></i>
@@ -286,8 +285,7 @@ title: Events
         <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Online</p>
         <p class="event-desc"><i class="fa-solid fa-trophy"></i>: ₹300000</p>
         <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: Free</p>
-        <p class="event-desc"><b>Type:</b> Hackthon</p>
-        <p class="event-desc"><b>Mode:</b> Online</p>
+        <p class="event-desc"><b>Type:</b> Hackthon</p>        
       </div>
       <a href="https://elastic.hackerearth.com/" target="_blank" class="event-btn">Register Now</a>
       <div class="share-group">
@@ -306,7 +304,6 @@ title: Events
         <p class="event-desc"><i class="fa-solid fa-trophy"></i>: ₹60,000</p>
         <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: Free</p>
         <p class="event-desc"><b>Type:</b> Hackthon</p>
-        <p class="event-desc"><b>Mode:</b> Online</p>
       </div>
       <a href="https://unstop.com/hackathons/ctrlspace-newton-school-of-technology-adypu-pune-1533848" target="_blank" class="event-btn">Register Now</a>
       <div class="share-group">
@@ -324,8 +321,7 @@ title: Events
         <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Online</p>
         <p class="event-desc"><i class="fa-solid fa-trophy"></i>: ₹</p>
         <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: Free</p>
-        <p class="event-desc"><b>Type:</b> Hackthon</p>
-        <p class="event-desc"><b>Mode:</b> Online</p>
+        <p class="event-desc"><b>Type:</b> Hackthon</p>      
       </div>
       <a href="https://elastic.hackerearth.com/" target="_blank" class="event-btn">Register Now</a>
       <div class="share-group">
@@ -343,8 +339,7 @@ title: Events
         <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Online</p>
         <p class="event-desc"><i class="fa-solid fa-trophy"></i>: ₹</p>
         <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: Free</p>
-        <p class="event-desc"><b>Type:</b> Hackthon</p>
-        <p class="event-desc"><b>Mode:</b> Online</p>
+        <p class="event-desc"><b>Type:</b> Hackthon</p>        
       </div>
       <a href="https://elastic.hackerearth.com/" target="_blank" class="event-btn">Register Now</a>
       <div class="share-group">
