@@ -331,7 +331,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       const choiceResult = await deferredPrompt.userChoice;
       if (choiceResult.outcome === 'accepted') {
         console.log('User accepted the install prompt');
-        location.reload(); // refresh after install
       } else {
         console.log('User dismissed the install prompt');
       }
@@ -368,8 +367,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   await checkAccess();
   supabase.auth.onAuthStateChange(() => {
-    checkAccess();
-    location.reload(); // auto refresh when auth changes (login/logout)
+    checkAccess(); // Removed auto-refresh here
   });
 
   // Share button logic
