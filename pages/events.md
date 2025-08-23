@@ -167,7 +167,7 @@ title: Events
 
   .share-group {
     position: absolute;
-    right: -1px;
+    right: 0px;
     top: 0px;
     display: flex;
     gap: 6px;
@@ -176,6 +176,8 @@ title: Events
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     z-index: 2;
+    height: 50px;
+    width: 50px;
   }
 
   .main-content {
