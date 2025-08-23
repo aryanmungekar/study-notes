@@ -299,7 +299,7 @@ title: Events
       <img class="event-thumb" src="/assets/images/eventcover.png" alt="Event Thumbnail">
       <div class="event-info">
         <h3 class="event-title">Ctrl+Space</h3>
-        <p class="event-date"><i class="fa-solid fa-calendar"></i>: 24 Aug 25</p>
+        <p class="event-date"><i class="fa-solid fa-calendar"></i>: 24 Aug 2025</p>
         <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Newton School of Technology, ADYPU Pune (Online)</p>
         <p class="event-desc"><i class="fa-solid fa-trophy"></i>: ₹60,000</p>
         <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: Free</p>
@@ -317,7 +317,7 @@ title: Events
       <img class="event-thumb" src="/assets/images/event1.png" alt="Event Thumbnail">
       <div class="event-info">
         <h3 class="event-title">IDEA Bootcamp & Pitch Fest 2025</h3>
-        <p class="event-date"><i class="fa-solid fa-calendar"></i>:  6th, 7th & 8th August 2025</p>
+        <p class="event-date"><i class="fa-solid fa-calendar"></i>:  6th, 7th & 8th Aug 2025</p>
         <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Seminar Hall, ADYPSOE, Lohegaon</p>
         <p class="event-desc"><i class="fa-solid fa-trophy"></i>: Exciting Prizes and Certificates</p>
         <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: ₹ 49</p>
