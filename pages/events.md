@@ -198,8 +198,8 @@ title: Events
 
 <h1>Upcoming Events</h1><br>
 
-<div  id="events-message">
-<div
+
+<div id="events-message"
   style="display:none; text-align:center; padding:20px; max-width:500px; margin:auto; background:#f8f8f8; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
   <h2>Unlock Exclusive Opportunities 🚀</h2>
   <p>Sign in and install our app to explore <b>amazing events, internships, hackathons, and scholarships</b> tailored
@@ -227,7 +227,7 @@ title: Events
     
   </div>
 </div>
-</div>
+
 
 <div id="events-content">
 
