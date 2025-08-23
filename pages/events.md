@@ -197,7 +197,7 @@ title: Events
 </style>
 
 
-  <h1>Upcoming Events</h1>
+  <h1>Upcoming Events</h1><br>
 
   <div class='onesignal-customlink-container'></div>
 
