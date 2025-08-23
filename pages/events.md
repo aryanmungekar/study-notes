@@ -418,7 +418,7 @@ title: Events
       // Chrome/desktop logic: show events if user is logged in and PWA installed (even if browsing in Chrome)
       if (isChromeLike()) {
         // We rely on Supabase login; installed check can be enhanced via server if needed
-        if (user) {
+        if (user && installed) {
           eventsContent.style.display = "grid";
           eventsMessage.style.display = "none";
         } else {
