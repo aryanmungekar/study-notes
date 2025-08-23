@@ -334,89 +334,201 @@ title: Events
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", async function () {
-  const eventsContent = document.getElementById("events-content");
-  const eventsMessage = document.getElementById("events-message");
-  const loginBtn = document.getElementById("login-btn");
-  const installBtn = document.getElementById("install-btn");
-  let deferredPrompt = null;
+  document.addEventListener("DOMContentLoaded", async function () {
+    const eventsContent = document.getElementById("events-content");
+    const eventsMessage = document.getElementById("events-message");
+    const loginBtn = document.getElementById("login-btn");
+    const installBtn = document.getElementById("install-btn");
+    let deferredPrompt = null;
 
-  function isPWAInstalled() {
-    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-  }
-
-  // Handle PWA install prompt
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    if (!isPWAInstalled()) {
-      installBtn.style.display = 'inline-block';
-    }
-  });
-
-  installBtn.addEventListener("click", async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const choiceResult = await deferredPrompt.userChoice;
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the install prompt');
-      } else {
-        console.log('User dismissed the install prompt');
-      }
-      deferredPrompt = null;
-    } else {
-      // fallback for browsers with no beforeinstallprompt
-      alert("To install the app, open your browser menu and tap 'Add to Home Screen'!");
-    }
-  });
-
-  loginBtn.addEventListener("click", () => {
-    window.location.href = "/login/";
-  });
-
-  async function checkAccess() {
-    if (!window.supabase) {
-      console.error("Supabase not initialized. Ensure auth.js is loaded first.");
-      return;
+    function isIOS() {
+      return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     }
 
-    const { data: { user } } = await supabase.auth.getUser();
-    const installed = isPWAInstalled();
-
-    if (user && installed) {
-      eventsContent.style.display = "grid";
-      eventsMessage.style.display = "none";
-    } else {
-      eventsContent.style.display = "none";
-      eventsMessage.style.display = "block";
-      loginBtn.style.display = user ? "none" : "inline-block";
-      if (installed) installBtn.style.display = "none";
+    function isPWAInstalled() {
+      // Detects PWA installation
+      return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
     }
-  }
 
-  await checkAccess();
-  supabase.auth.onAuthStateChange(() => {
-    checkAccess(); // Removed auto-refresh here
-  });
+    function isChromeLike() {
+      // Basic Chrome/Chromium detection for desktop/mobile
+      return /Chrome|CriOS|Chromium/i.test(navigator.userAgent) && !isIOS();
+    }
 
-  // Share button logic
-  document.querySelectorAll(".share-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const shareUrl = window.location.origin + btn.getAttribute("data-url");
-      if (navigator.share) {
-        navigator.share({
-          title: "Check this new upcoming event",
-          text: "Pune University:",
-          url: shareUrl
-        }).catch(err => console.error("Sharing failed:", err));
-      } else {
-        navigator.clipboard.writeText(shareUrl)
-          .then(() => alert("Link copied to clipboard!"))
-          .catch(() => alert("Failed to copy link"));
+    // Handle PWA install prompt (for Android/desktop)
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      if (!isPWAInstalled()) {
+        installBtn.style.display = 'inline-block';
       }
     });
+
+    installBtn.addEventListener("click", async () => {
+      if (isIOS() && !isPWAInstalled()) {
+        // iOS fallback instructions
+        alert(
+          "How to install on iOS:\n\n1. Tap the Share icon in Safari.\n2. Scroll down and select 'Add to Home Screen'.\n3. Tap 'Add' on the top-right.\n\nOpen the installed app from your home screen."
+        );
+        return;
+      }
+
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const choiceResult = await deferredPrompt.userChoice;
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        deferredPrompt = null;
+      } else {
+        // fallback for browsers with no beforeinstallprompt
+        alert("To install the app, open your browser menu and tap 'Add to Home Screen'!");
+      }
+    });
+
+    loginBtn.addEventListener("click", () => {
+      window.location.href = "/login/";
+    });
+
+    async function checkAccess() {
+      if (!window.supabase) {
+        console.error("Supabase not initialized. Ensure auth.js is loaded first.");
+        return;
+      }
+
+      const { data: { user } } = await supabase.auth.getUser();
+      const installed = isPWAInstalled();
+
+      // iOS logic: show events only if opened as PWA
+      if (isIOS()) {
+        if (user && installed) {
+          eventsContent.style.display = "grid";
+          eventsMessage.style.display = "none";
+        } else {
+          eventsContent.style.display = "none";
+          eventsMessage.style.display = "block";
+          loginBtn.style.display = user ? "none" : "inline-block";
+          if (installed) installBtn.style.display = "none";
+        }
+        return;
+      }
+
+      // Chrome/desktop logic: show events if user is logged in and PWA installed (even if browsing in Chrome)
+      if (isChromeLike()) {
+        // We rely on Supabase login; installed check can be enhanced via server if needed
+        if (user && installed) {
+          eventsContent.style.display = "grid";
+          eventsMessage.style.display = "none";
+        } else {
+          eventsContent.style.display = "none";
+          eventsMessage.style.display = "block";
+          loginBtn.style.display = "inline-block";
+        }
+        return;
+      }
+
+      // Default fallback for other browsers
+      if (user && installed) {
+        eventsContent.style.display = "grid";
+        eventsMessage.style.display = "none";
+      } else {
+        eventsContent.style.display = "none";
+        eventsMessage.style.display = "block";
+        loginBtn.style.display = user ? "none" : "inline-block";
+        if (installed) installBtn.style.display = "none";
+      }
+    }
+
+    await checkAccess();
+    supabase.auth.onAuthStateChange(() => {
+      checkAccess();
+    });
+
+    // Share button logic
+    document.querySelectorAll(".share-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const shareUrl = window.location.origin + btn.getAttribute("data-url");
+        if (navigator.share) {
+          navigator.share({
+            title: "Check this new upcoming event",
+            text: "Pune University:",
+            url: shareUrl
+          }).catch(err => console.error("Sharing failed:", err));
+        } else {
+          navigator.clipboard.writeText(shareUrl)
+            .then(() => alert("Link copied to clipboard!"))
+            .catch(() => alert("Failed to copy link"));
+        }
+      });
+    });
   });
-});
+</script>
+<script>
+  // Detect if user is logged in (replace with your login check logic)
+  function isUserLoggedIn() {
+    return !!localStorage.getItem("userLoggedIn");
+    // Change this to your own login logic
+  }
+
+  // Detect if PWA is installed (works for Chrome/Android/PC and iOS standalone mode)
+  function isPWAInstalled() {
+    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  }
+
+  function isIOS() {
+    return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  }
+
+  function isChrome() {
+    return /Chrome/i.test(navigator.userAgent) && !isIOS();
+  }
+
+  window.addEventListener('DOMContentLoaded', function () {
+    const eventsTab = document.getElementById('events-tab'); // Change to your events tab ID
+    const installGuide = document.getElementById('install-guide'); // Optional install button
+    const popup = document.createElement('div');
+    popup.style.position = 'fixed';
+    popup.style.bottom = '10px';
+    popup.style.left = '50%';
+    popup.style.transform = 'translateX(-50%)';
+    popup.style.background = '#ffdddd';
+    popup.style.padding = '10px 15px';
+    popup.style.borderRadius = '8px';
+    popup.style.color = '#333';
+    popup.style.fontSize = '14px';
+    popup.style.zIndex = '9999';
+    popup.style.display = 'none';
+    document.body.appendChild(popup);
+
+    if (isIOS()) {
+      if (isPWAInstalled()) {
+        // iOS PWA app
+        if (isUserLoggedIn()) {
+          eventsTab.style.display = 'block';
+        } else {
+          eventsTab.style.display = 'none';
+        }
+      } else {
+        // iOS Safari (not installed)
+        eventsTab.style.display = 'none';
+        popup.textContent = 'Events are only available in the installed app. Please "Add to Home Screen".';
+        popup.style.display = 'block';
+        if (installGuide) installGuide.style.display = 'none'; // iOS has no install prompt
+      }
+    } else if (isChrome()) {
+      // Chrome on PC/Android
+      if (isPWAInstalled() && isUserLoggedIn()) {
+        eventsTab.style.display = 'block';
+      } else {
+        eventsTab.style.display = 'none';
+      }
+    } else {
+      // Other browsers: Keep normal logic (no change)
+      eventsTab.style.display = isUserLoggedIn() ? 'block' : 'none';
+    }
+  });
 </script>
 
 <script>
