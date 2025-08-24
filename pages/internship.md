@@ -33,10 +33,10 @@ title: Internships
 
   <h1>Coming Soon...</h1><br>
 
-  <center>
+  <!-- <center>
     <div class='onesignal-customlink-container'
       style="border: 0px solid; border-radius: 15px; padding-top: 5px; width: 300px;"></div>
-  </center><br>
+  </center><br> -->
 
 
   <div id="timer">Loading timer...</div>
