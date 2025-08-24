@@ -19,3 +19,19 @@
   0%, 50%, 100% { opacity: 1; }
   25%, 75% { opacity: 0; }
 }
+
+@media (min-width: 768px) {
+  .footer-item span {
+    display: none; /* hides all spans including your NEW label */
+  }
+}
+
+@media (min-width: 768px) {
+  .footer-item .new-label {
+    display: inline-block; /* make it visible */
+    top: 10px;   /* adjust for vertical footer */
+    right: 10px; /* adjust for vertical footer */
+    font-size: 12px;
+    padding: 3px 5px;
+  }
+}
