@@ -201,10 +201,10 @@ title: Events
 
 <h1>Upcoming Events</h1><br>
 
-<!-- <center>
+<center>
     <div class='onesignal-customlink-container'
       style="border: 0px solid; border-radius: 15px; padding-top: 5px; width: 300px;"></div>
-  </center> -->
+  </center>
 
 
 <div id="events-message"
