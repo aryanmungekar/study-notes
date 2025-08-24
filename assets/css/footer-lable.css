@@ -4,8 +4,8 @@
 
 .new-label {
   position: absolute;
-  top: -5px;  /* Adjust depending on your layout */
-  right: -10px; /* Adjust depending on your layout */
+  top: 2px;  /* Adjust depending on your layout */
+  right: -8px; /* Adjust depending on your layout */
   background-color: red;
   color: white;
   font-size: 10px;
