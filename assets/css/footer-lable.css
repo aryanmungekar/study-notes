@@ -1,0 +1,21 @@
+.footer-item {
+  position: relative; /* Needed for the label positioning */
+}
+
+.new-label {
+  position: absolute;
+  top: -5px;  /* Adjust depending on your layout */
+  right: -10px; /* Adjust depending on your layout */
+  background-color: red;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 4px;
+  border-radius: 3px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
