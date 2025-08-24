@@ -207,9 +207,52 @@ title: Events
   </center>
 
 
+<div id="events-message"
+  style="display:none; text-align:center; padding:20px; max-width:500px; margin:auto; background:#f8f8f8; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  <h2>Unlock Exclusive Opportunities 🚀</h2>
+  <p>Sign in and install our app to explore <b>amazing events, internships, hackathons, and scholarships</b> tailored
+    for you.</p>
+  <p>Benefits of logging in & installing:</p>
+  <ul style="text-align:left; display:inline-block; margin-top:10px;">
+    <li>🎯 Personalized event recommendations</li>
+    <li>📩 Instant notifications before deadlines</li>
+    <li>📥 Offline access via our PWA</li>
+    <li>🤝 Connect & share events with friends</li>
+  </ul>
+  <div style="margin-top:10px;">
+    <button id="login-btn"
+      style="display:none; padding:10px 20px; background:#007bff; color:white; border:none; border-radius:6px; cursor:pointer;">Login
+      to Continue</button>
+    <button id="install-btn"
+      style="display:none; padding:10px 20px; background:#28a745; color:white; border:none; border-radius:6px; cursor:pointer;">
+      Install App
+    </button>
+  </div>
+
+ <div id="mac-ios-banner" style="display:none; max-width: 400px; margin:15px auto; padding:15px; background:#f9f9f9; border:1px solid #ddd; border-radius:10px; text-align:center; font-family:Arial, sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+  
+  <h3 style="margin:0 0 8px; font-size:18px; color:#333;">Already Installed the App?</h3>
+  
+  <p style="font-size:14px; color:#555; margin:0 0 10px;">
+    Simply open the <b>Events</b> tab inside the app and enjoy!  
+  </p>
+  
+  <p style="font-size:14px; color:#444; margin:0 0 10px;">
+    Haven’t installed it yet? No worries—here’s how (it’s super quick):
+  </p>
+  
+  <ol style="font-size:14px; color:#333; text-align:left; margin:0 auto; display:inline-block; padding-left:18px;">
+    <li>Tap the <strong>Share</strong> icon <span style="font-size:12px;">(bottom of Safari)</span>.</li>
+    <li>Scroll & tap <strong>Add to Home Screen</strong>.</li>
+    <li>Launch it anytime from your home screen 🎉</li>
+  </ol>
+
+</div>
+
+</div>
 
 
-
+<div id="events-content">
 
 
   
@@ -290,5 +333,143 @@ title: Events
     
 
   </div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async function () {
+  const eventsContent = document.getElementById("events-content");
+  const eventsMessage = document.getElementById("events-message");
+  const loginBtn = document.getElementById("login-btn");
+  const installBtn = document.getElementById("install-btn");
+  let deferredPrompt = null;
+
+  function isPWAInstalled() {
+    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  }
+
+  // Handle PWA install prompt
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (!isPWAInstalled()) {
+      installBtn.style.display = 'inline-block';
+    }
+  });
+
+  installBtn.addEventListener("click", async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const choiceResult = await deferredPrompt.userChoice;
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      deferredPrompt = null;
+    } else {
+      // fallback for browsers with no beforeinstallprompt
+      alert("To install the app, open your browser menu and tap 'Add to Home Screen'!");
+    }
+  });
+
+  loginBtn.addEventListener("click", () => {
+    window.location.href = "/login/";
+  });
+
+  async function checkAccess() {
+    if (!window.supabase) {
+      console.error("Supabase not initialized. Ensure auth.js is loaded first.");
+      return;
+    }
+
+    const { data: { user } } = await supabase.auth.getUser();
+    const installed = isPWAInstalled();
+
+    if (user && installed) {
+      eventsContent.style.display = "grid";
+      eventsMessage.style.display = "none";
+    } else {
+      eventsContent.style.display = "none";
+      eventsMessage.style.display = "block";
+      loginBtn.style.display = user ? "none" : "inline-block";
+      if (installed) installBtn.style.display = "none";
+    }
+  }
+
+  await checkAccess();
+  supabase.auth.onAuthStateChange(() => {
+    checkAccess(); // Removed auto-refresh here
+  });
+
+  // Share button logic
+  document.querySelectorAll(".share-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const shareUrl = window.location.origin + btn.getAttribute("data-url");
+      if (navigator.share) {
+        navigator.share({
+          title: "Check this new upcoming event",
+          text: "Pune University:",
+          url: shareUrl
+        }).catch(err => console.error("Sharing failed:", err));
+      } else {
+        navigator.clipboard.writeText(shareUrl)
+          .then(() => alert("Link copied to clipboard!"))
+          .catch(() => alert("Failed to copy link"));
+      }
+    });
+  });
+});
+</script>
+
+<script>
+  function isMacOrIOS() {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+    // Detect iOS (iPhone/iPad/iPod)
+    const iOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+
+    // Detect macOS
+    const mac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+
+    return iOS || mac;
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    if (isMacOrIOS()) {
+      document.getElementById("mac-ios-banner").style.display = "block";
+    }
+  });
+</script>
+
+
+<!-- <script>
+  // Make sure OneSignal is fully initialized
+  window.OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    const onesignalDiv = document.querySelector('.onesignal-customlink-container');
+
+    // Function to update the visibility
+    function updateUI() {
+      OneSignal.isPushNotificationsEnabled().then(function(isEnabled) {
+        onesignalDiv.style.display = isEnabled ? 'none' : 'block';
+      });
+    }
+
+    // Initial check after SDK is ready
+    updateUI();
+
+    // Listen for subscription changes
+    OneSignal.on('subscriptionChange', function(isSubscribed) {
+      updateUI();
+    });
+
+    // Also check on notification permission change (for Safari iOS)
+    OneSignal.on('notificationPermissionChange', function(permission) {
+      updateUI();
+    });
+  });
+</script> -->
+
 
 
