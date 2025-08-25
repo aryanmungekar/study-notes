@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Coming Soon
-comments: true
+comments: false
 permalink: /coming-soon/
 ---
 
