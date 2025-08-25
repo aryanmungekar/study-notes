@@ -32,6 +32,6 @@ permalink: /coming-soon/
 
 
   <div class="coming-soon">
-    <img src="https://i.gifer.com/YCZH.gif" alt="Working Animation">
+    <img src="https://i.gifer.com/XOsX.gif" alt="Working Animation">
     <p>🚧 Our team is continuously working on it.<br>✨ Coming Soon!</p>
   </div>
