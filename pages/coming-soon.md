@@ -33,5 +33,5 @@ permalink: /coming-soon/
 
   <div class="coming-soon">
     <img src="https://i.gifer.com/XOsX.gif" alt="Working Animation">
-    <p>🚧 Our team is continuously working on it.<br>✨ Coming Soon!</p>
+    <p>⚙️ We are engineering something special…<br>🚧 Error कमी झाले की तुम्हाला दाखवतो!</p>
   </div>
