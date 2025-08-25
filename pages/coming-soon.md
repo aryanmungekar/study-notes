@@ -28,12 +28,24 @@ permalink: /coming-soon/
       color: #333;
       font-weight: bold;
     }
+
+    .gear {
+  display: inline-block;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
   </style>
 
 
   <div class="coming-soon">
     <img src="https://i.gifer.com/XOsX.gif" alt="Working Animation">
 
-    <h2>⚙️ We are engineering something special…</h2><br>
+    <h2>
+    <span class="gear"><i class="fa-solid fa-gear"></i></span>
+    We are engineering something special…</h2><br>
     <p>🚧 Error कमी झाले की तुम्हाला दाखवतो!</p>
   </div>
