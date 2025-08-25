@@ -8,7 +8,7 @@ permalink: /coming-soon/
  <style>
     .coming-soon {
       width: 100%;
-      max-width: 400px;
+      max-width: 600px;
       margin: 50px auto;
       padding: 20px;
       text-align: center;
