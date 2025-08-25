@@ -31,7 +31,7 @@ permalink: /coming-soon/
 
     .gear {
   display: inline-block;
-  animation: spin 2s linear infinite;
+  animation: spin 3s linear infinite;
 }
 
 @keyframes spin {
