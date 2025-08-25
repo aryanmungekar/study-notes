@@ -17,10 +17,11 @@ permalink: /coming-soon/
       background: #f9f9f9;
       box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
       font-family: Arial, sans-serif;
+      margin-top: 0px;
     }
     .coming-soon img {
-      width: 80px;
-      height: 80px;
+      /* width: 80px; */
+      height: 300px;
       margin-bottom: 15px;
     }
     .coming-soon h2 {
