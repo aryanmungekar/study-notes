@@ -23,7 +23,7 @@ permalink: /coming-soon/
       height: 80px;
       margin-bottom: 15px;
     }
-    .coming-soon p {
+    .coming-soon h2 {
       font-size: 18px;
       color: #333;
       font-weight: bold;
