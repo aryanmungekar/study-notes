@@ -24,7 +24,7 @@ permalink: /coming-soon/
       margin-bottom: 15px;
     }
     .coming-soon h2 {
-      font-size: 18px;
+      font-size: 25px;
       color: #333;
       font-weight: bold;
     }
