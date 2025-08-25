@@ -42,6 +42,10 @@ title: SPPU
     </div>
   </a>
 
+
+
+</div>
+
 <br><br>
 
   <h2>2024 Pattern</h2>
@@ -83,4 +87,4 @@ title: SPPU
     </div>
   </a>
 
-</div>
+  </div>
