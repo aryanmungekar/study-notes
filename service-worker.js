@@ -1,5 +1,5 @@
 // ✅ Update this when you deploy
-const CACHE_NAME = "sppu-notes-v11";  
+const CACHE_NAME = "sppu-notes-v12";  
 
 // Precache essential offline assets
 const OFFLINE_FILES = [
