@@ -43,7 +43,7 @@ title: Internships
 
   <script>
     // SET TARGET DATE HERE
-    const targetDate = new Date("2025-08-27T12:00:00").getTime(); // YYYY-MM-DDTHH:MM:SS
+    const targetDate = new Date("2025-08-29T12:00:00").getTime(); // YYYY-MM-DDTHH:MM:SS
 
     const timerEl = document.getElementById('timer');
 
