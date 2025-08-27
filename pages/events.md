@@ -3,13 +3,16 @@ layout: default
 title: Events
 ---
 
-<!-- <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css?" />
-  <link rel="stylesheet" href="/assets/css/semester.css">
-  <link rel="stylesheet" href="/assets/css/subject.css">
-  <link rel="stylesheet" href="/assets/css/breadcrumb.css">
-  <link rel="stylesheet" href="/assets/css/content.css"> -->
+<!-- onesignal push notification -->
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "ee9cfc93-71c9-41e0-a30c-20662ea9937f",
+    });
+  });
+</script>
 
 <style>
   /* Container for all cards */
