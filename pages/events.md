@@ -226,7 +226,7 @@ title: Events
         <p class="event-date"><i class="fa-solid fa-calendar"></i>: Sep 6 - 7, 2025</p>
         <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Online</p>
         <p class="event-desc"><i class="fa-solid fa-trophy"></i>: $7,840</p>
-        <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: Free</p>
+        <p class="event-desc"><b>Fees</b>: Free</p>
         <p class="event-desc"><b>Type:</b> Hackthon</p>        
       </div>
       <a href="https://hackodisha-4.devfolio.co/" target="_blank" class="event-btn">Register Now</a>
@@ -244,7 +244,7 @@ title: Events
         <p class="event-date"><i class="fa-solid fa-calendar"></i>: Sep 07, 2025</p>
         <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Online</p>
         <p class="event-desc"><i class="fa-solid fa-trophy"></i>: ₹300000</p>
-        <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: Free</p>
+        <p class="event-desc"><b>Fees</b>: Free</p>
         <p class="event-desc"><b>Type:</b> Hackthon</p>        
       </div>
       <a href="https://elastic.hackerearth.com/" target="_blank" class="event-btn">Register Now</a>
@@ -262,7 +262,7 @@ title: Events
         <p class="event-date"><i class="fa-solid fa-calendar"></i>: 24 Aug 2025</p>
         <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Newton School of Technology, ADYPU Pune (Online)</p>
         <p class="event-desc"><i class="fa-solid fa-trophy"></i>: ₹60,000</p>
-        <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: Free</p>
+        <p class="event-desc"><b>Fees</b>: Free</p>
         <p class="event-desc"><b>Type:</b> Hackthon</p>
       </div>
       <a href="https://unstop.com/hackathons/ctrlspace-newton-school-of-technology-adypu-pune-1533848" target="_blank" class="event-btn">Register Now</a>
@@ -280,7 +280,7 @@ title: Events
         <p class="event-date"><i class="fa-solid fa-calendar"></i>:  6th, 7th & 8th Aug 2025</p>
         <p class="event-desc"><i class="fa-solid fa-location-dot"></i>: Seminar Hall, ADYPSOE, Lohegaon</p>
         <p class="event-desc"><i class="fa-solid fa-trophy"></i>: Exciting Prizes and Certificates</p>
-        <p class="event-desc"><i class="fa-solid fa-indian-rupee-sign"></i><b>Fees</b>: ₹ 49</p>
+        <p class="event-desc"><b>Fees</b>: ₹ 49</p>
         <p class="event-desc"><b>Type:</b> Event</p>      
       </div>
       <a href="https://forms.gle/A3jYQcqP3dTGsK8v7" target="_blank" class="event-btn">Register Now</a>
