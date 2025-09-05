@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drive API JSON</title>
+</head>
+<body>
+  <h2>📂 Google Drive API Response</h2>
+  <pre id="json-output">Loading...</pre>
+
+  <script>
+    const API_KEY = "AIzaSyDVeYvprRkUxU9gwY6934UhPxbPUbmN1DU";
+    const FOLDER_ID = "1dqxp2FGU4wX7MOvZld8dNjwtvJcw58or";  // folder ID
+
+    async function fetchDriveFiles() {
+      const url = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents&key=${API_KEY}&fields=files(id,name,webViewLink,thumbnailLink,mimeType)`;
+      const res = await fetch(url);
+      const data = await res.json();
+
+      document.getElementById("json-output").textContent = JSON.stringify(data, null, 2);
+    }
+
+    fetchDriveFiles();
+  </script>
+</body>
+</html>
