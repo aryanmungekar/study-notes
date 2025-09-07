@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Drive API JSON</title>
+  <title>Custom Drive JSON</title>
 </head>
 <body>
-  <h2>📂 Google Drive API Response</h2>
+  <h2>📂 Custom JSON Format</h2>
   <pre id="json-output">Loading...</pre>
 
   <script>
@@ -13,11 +13,24 @@
     const FOLDER_ID = "1dqxp2FGU4wX7MOvZld8dNjwtvJcw58or";  // folder ID
 
     async function fetchDriveFiles() {
-      const url = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents&key=${API_KEY}&fields=files(id,name,webViewLink,thumbnailLink,mimeType)`;
+      const url = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents&key=${API_KEY}&fields=files(id,name,thumbnailLink,mimeType)`;
       const res = await fetch(url);
       const data = await res.json();
 
-      document.getElementById("json-output").textContent = JSON.stringify(data, null, 2);
+      // Transform into custom JSON
+      const formatted = data.files.map(file => {
+        let [title, subtitle, exam] = file.name.replace(".pdf", "").split("|").map(s => s.trim());
+
+        return {
+          title: title || "",
+          subtitle: subtitle || "",
+          exam: exam || "",
+          thumbnail: file.thumbnailLink || "",
+          url: file.id
+        };
+      });
+
+      document.getElementById("json-output").textContent = JSON.stringify(formatted, null, 2);
     }
 
     fetchDriveFiles();
