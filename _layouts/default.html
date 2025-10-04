@@ -6,12 +6,6 @@
 
   <!-- 🔽 SEO START -->
   <title>{{ page.title | default: "SPPU Notes - PYQ & Solved Papers" }}</title>
-
-  
-  <meta http-equiv="refresh" content="0; url=https://www.newdomain.com/" />
-
-
-
   <meta name="description" content="{{ page.description | default: " Download solved SPPU notes and previous year
     question papers for Computer Engineering, Information Technology, and AI & Data Science. Covers 2019 and 2024
     pattern for Insem and Endsem exams." }}">
@@ -249,7 +243,75 @@
     showAccountLogo();
   </script>
 
-  
+  <!-- 🟨 Redirect Popup full code -->
+<div id="redirect-popup">
+  <div id="redirect-box">
+    <h2>⚠️ This site has moved to a new domain.</h2>
+    <p>Redirecting in <span id="countdown">3</span> seconds...</p>
+  </div>
+</div>
+
+<style>
+  /* Popup overlay */
+  #redirect-popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+  }
+
+  /* Popup box */
+  #redirect-box {
+    background: white;
+    padding: 20px 30px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    max-width: 320px;
+    font-family: Arial, sans-serif;
+    animation: fadeIn 0.4s ease;
+  }
+
+  #redirect-box h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  #countdown {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d32f2f;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+  }
+</style>
+
+<script>
+  // ✅ Put your new domain here
+  const newDomainURL = "https://www.NEW-DOMAIN.com";
+
+  let timeLeft = 3;
+  const countdownEl = document.getElementById("countdown");
+
+  const timer = setInterval(() => {
+    timeLeft--;
+    countdownEl.textContent = timeLeft;
+
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      window.location.href = newDomainURL;
+    }
+  }, 1000);
+</script>
+
 
 
 </body>
