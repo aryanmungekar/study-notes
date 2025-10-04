@@ -6,31 +6,49 @@
 </head>
 <body>
   <h2>📂 Custom JSON Format</h2>
-  <pre id="json-output">Loading...</pre>
+  <pre id="custom-json">Loading custom JSON...</pre>
+
+  <h2>📂 Full Google Drive Metadata</h2>
+  <pre id="full-json">Loading full JSON...</pre>
 
   <script>
     const API_KEY = "AIzaSyDVeYvprRkUxU9gwY6934UhPxbPUbmN1DU";
-    const FOLDER_ID = "1dqxp2FGU4wX7MOvZld8dNjwtvJcw58or";  // folder ID
+    const FOLDER_ID = "1pUimtsPNNrWLUDiTtN7UqUmHZRdY7XDz";  // folder ID
 
     async function fetchDriveFiles() {
-      const url = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents&key=${API_KEY}&fields=files(id,name,thumbnailLink,mimeType)`;
-      const res = await fetch(url);
-      const data = await res.json();
+      try {
+        const url = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents&key=${API_KEY}&fields=files(*)`;
+        const res = await fetch(url);
+        const data = await res.json();
 
-      // Transform into custom JSON
-      const formatted = data.files.map(file => {
-        let [title, subtitle, exam] = file.name.replace(".pdf", "").split("|").map(s => s.trim());
+        // ✅ Custom format
+        const formatted = data.files.map(file => {
+          let [title, subtitle, exam] = file.name
+            .replace(".pdf", "")
+            .split("|")
+            .map(s => s.trim());
 
-        return {
-          title: title || "",
-          subtitle: subtitle || "",
-          exam: exam || "",
-          thumbnail: file.thumbnailLink || "",
-          url: file.id
-        };
-      });
+          return {
+            title: title || "",
+            subtitle: subtitle || "",
+            exam: exam || "",
+            thumbnail: file.thumbnailLink || "",
+            url: file.id
+          };
+        });
 
-      document.getElementById("json-output").textContent = JSON.stringify(formatted, null, 2);
+        // Show custom JSON
+        document.getElementById("custom-json").textContent =
+          JSON.stringify(formatted, null, 2);
+
+        // Show full metadata JSON
+        document.getElementById("full-json").textContent =
+          JSON.stringify(data.files, null, 2);
+
+      } catch (err) {
+        document.getElementById("custom-json").textContent = "❌ Error fetching data";
+        document.getElementById("full-json").textContent = err.message;
+      }
     }
 
     fetchDriveFiles();

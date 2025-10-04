@@ -22,7 +22,7 @@ title: SPPU
 
 
   <a href="/sppu/2019-Pattern/computer-science/" style="text-decoration: none; color: inherit;">
-    <div style="background-color: rgba(255, 255, 255, 1));" class="button-card">
+    <div style="background-color: rgba(255, 255, 255, 1);" class="button-card">
       <i style="font-size: 40px; color: black;" class="fa-solid fa-chalkboard"></i>
       <h4>Computer Science</h4>
     </div>
@@ -67,7 +67,7 @@ title: SPPU
 
 
   <a href="/coming-soon/" style="text-decoration: none; color: inherit;">
-    <div style="background-color: rgba(255, 255, 255, 1));" class="button-card">
+    <div style="background-color: rgba(255, 255, 255, 1);" class="button-card">
       <i style="font-size: 40px; color: black;" class="fa-solid fa-chalkboard"></i>
       <h4>Computer Science</h4>
     </div>
